@@ -17,4 +17,24 @@ class Part extends \App\Models\Base\Part
     {
         return $this->hasMany('App\Models\PartStock','part_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\PartCategory','partCategory_id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\PartStatus','partStatus_id');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo('App\Models\PartType','partType_id');
+    }
+
+    public function colour()
+    {
+        return $this->belongsTo('App\Models\PartColour','partColour_id');
+    }
 }
