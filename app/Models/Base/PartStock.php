@@ -20,7 +20,7 @@ class PartStock extends Model
   * 
   * @var bool
   */
-  protected $incrementing=false;
+  public $incrementing=false;
   
   /**  
   * The model's default values for attributes.

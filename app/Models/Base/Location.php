@@ -20,7 +20,7 @@ class Location extends Model
   * 
   * @var bool
   */
-  protected $incrementing=false;
+  public $incrementing=false;
   
   /**  
   * The attributes that should be cast to native types.
