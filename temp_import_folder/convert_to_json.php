@@ -1,26 +1,5 @@
 <?php
 
-set_time_limit(0);
-ini_set('max_execution_time', 0);
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tts-erp-01";
-
-$conn = new mysqli($servername, $username);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sl_db_q = "USE ttserp01";
-
-if (mysqli_query($conn, $sl_db_q)) {
-    echo "Database Selected Successfully";
-} else {
-    echo "Error: " . $sl_db_q . "<br>" . mysqli_error($conn);
-}
 
 
 
