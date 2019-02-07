@@ -20,3 +20,11 @@ Route::get('/', function () {
     echo "</pre>";
     // return view('welcome');
 });
+
+Route::get('/part-price', function () {
+    // return Part::all();
+    echo "<pre>";
+    echo json_encode(Part::with('price')->get(),JSON_PRETTY_PRINT);
+    echo "</pre>";
+    // return view('welcome');
+});

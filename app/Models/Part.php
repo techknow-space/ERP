@@ -3,7 +3,13 @@ namespace App\Models;
 
 class Part extends \App\Models\Base\Part
 {
-    public function devices(){
+    public function devices()
+    {
         return $this->belongsTo('App\Models\Device', 'device_id');
+    }
+
+    public function price()
+    {
+        return $this->hasOne('App\Models\PartPrice','part_id');
     }
 }
