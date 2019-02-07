@@ -12,4 +12,9 @@ class Part extends \App\Models\Base\Part
     {
         return $this->hasOne('App\Models\PartPrice','part_id');
     }
+
+    public function stock()
+    {
+        return $this->hasMany('App\Models\PartStock','part_id');
+    }
 }
