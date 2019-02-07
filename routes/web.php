@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Part as Part;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return Part::all();
+    echo "<pre>";
+    echo json_encode(Part::with('devices')->get(),JSON_PRETTY_PRINT);
+    echo "</pre>";
+    // return view('welcome');
 });
