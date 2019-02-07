@@ -1,0 +1,78 @@
+manufacturer,brand,model name,model number,part name,Price,Q-ty TO,Q-ty S1,Sold TO All Time,Sold S1 All Time,Cost,First Recd Date,SKU
+Apple,iPhone,6,"A1549,A1586,A1589",Back Camera,89.95,4,6,7,6,7.27,,229767073
+Apple,iPhone,6,"A1549,A1586,A1589",Back Housing Gold,129.99,1,1,1,2,38.31,,915322696
+Apple,iPhone,6,"A1549,A1586,A1589",Back Housing Gray,129.99,2,2,1,1,38.31,,676030053
+Apple,iPhone,6,"A1549,A1586,A1589",Back Housing Silver,129.99,0,0,,2,38.31,,699074601
+Apple,iPhone,6,"A1549,A1586,A1589",Battery,,,,,,,,566287356
+Apple,iPhone,6,"A1549,A1586,A1589",Front Camera Flex Cable w/Proximity Sensor,89.95,3,3,23,25,3.66,,716277402
+Apple,iPhone,6,"A1549,A1586,A1589",Camera Lens,49.95,11,12,7,2,1.92,,313410794
+Apple,iPhone,6,"A1549,A1586,A1589",Charging Port Flex Cable (Black) w/ microphone and headphone jack,79.95,6,11,83,45,2.58,8/10/2014,188037606
+Apple,iPhone,6,"A1549,A1586,A1589",Earpiece,89.95,4,5,4,14,0.53,8/10/2014,827950294
+Apple,iPhone,6,"A1549,A1586,A1589",Home Button BLK FINGERPRINT WILL NOT WORK,89.95,7,8,2,5,1.13,8/10/2014,118225378
+Apple,iPhone,6,"A1549,A1586,A1589",Home Button Extension Flex Cable Long,89.95,3,5,,4,1.61,,350775686
+Apple,iPhone,6,"A1549,A1586,A1589",Home Button Flex Cable,89.95,0,0,3,2,1.32,8/10/2014,797695441
+Apple,iPhone,6,"A1549,A1586,A1589",Home Button WHT FINGERPRINT WILL NOT WORK,89.95,5,6,6,10,1.13,8/10/2014,880569425
+Apple,iPhone,6,"A1549,A1586,A1589",Loud Speaker,89.95,2,3,1,3,6.87,8/10/2014,127414409
+Apple,iPhone,6,"A1549,A1586,A1589",Power Button Flex,89.95,16,10,1,3,1.59,8/10/2014,899925300
+Apple,iPhone,6,"A1549,A1586,A1589",Screen Assembly BLK (prices on 3 pages),99.95,17,31,1320,463,13.74,,664281477
+Apple,iPhone,6,"A1549,A1586,A1589",Screen Assembly WhT (prices on 3 pages),99.95,13,26,829,523,13.74,,465432771
+Apple,iPhone,6,"A1549,A1586,A1589","Sim card reader (Not tray, slot only)",139.95,2,3,,,0.52,,683527830
+Apple,iPhone,6,"A1549,A1586,A1589",Volume button Flex cable,89.95,5,4,,,1.98,,612591672
+Apple,iPhone,6,"A1549,A1586,A1589",WiFi/Bluetooth Antenna,79.95,1,2,4,4,0.4,,936626223
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Back Camera,79.95,2,3,4,4,14.12,,223374896
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Back Housing Gold,129.99,2,2,,1,52.84,,463842145
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Back Housing Gray,129.99,1,1,1,2,52.84,,647146422
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Back Housing Silver,129.99,2,2,,,52.84,,326614208
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Battery,,,,,,,,983666988
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Charging Port Flex Cable (Black) w/ bottom mic and headphone jack,89.95,4,5,7,12,8.12,8/10/2014,808980969
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Earpiece,89.95,4,4,1,5,0.4,8/10/2014,333062425
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Front Camera & Promixity Sensor w/ Siri Microphone,89.95,9,10,6,11,3.98,8/10/2014,278223192
+Apple,iPhone,6 Plus,"A1522,A1524,A1593","Home Button 
+(fingerprint sensor will not work after replacement)",89.95,6,10,,1,1.59,8/10/2014,967266054
+Apple,iPhone,6 Plus,"A1522,A1524,A1593","Home Button Flex Cable 
+(fingerprint sensor will not work after replacement)",89.95,6,8,1,2,4.08,8/10/2014,775357697
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Power Button Flex Cable,89.95,8,8,,,3.7,8/10/2014,826095267
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Screen Assembly Black (prices on 3 pages),109.95,14,12,162,116,18.07,,198290353
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Screen Assembly WhT (prices on 3 pages),109.95,18,11,193,151,18.07,,178842325
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Speaker,89.95,1,2,1,,3.66,8/10/2014,652849177
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Vibrator,89.95,1,1,,,0,,964430247
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Volume Flex,89.95,,2,1,,0,,945070195
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",Wifi,89.95,2,3,,,1.1,,123502207
+Apple,iPhone,6 Plus,"A1522,A1524,A1593",WiFi/Bluetooth Antenna,79.95,,,,,,,168444491
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Back Camera,79.95,0,1,6,3,10.75,,308668568
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Battery,,,,,,,,722378518
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Cellular Antenna - on Charging Port,89.95,,,,,0,,442769868
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Charging Port Flex Cable,89.99,3,4,8,9,5.81,,407477358
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Earpiece,89.95,2,3,2,1,3.96,,572407471
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Front Camera & Proximity Sensor,89.99,2,2,3,7,6.55,,936981638
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700","Home Button And Flex Assembly BLK 
+(fingerprint sensor will not work after replacement)",89.95,1,1,1,,4.62,,373780334
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700","Home Button And Flex Assembly WHT
+(fingerprint sensor will not work after replacement)",89.95,1,1,1,2,4.62,,993711813
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Loud speaker,89.99,3,2,1,,1.98,,242863488
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Power Flex,89.99,9,7,,1,5.81,,118705914
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Screen Assembly Black,109.95,13,24,254,128,18.08,,754375339
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Screen Assembly WhT,109.95,10,20,255,164,18.08,,494611429
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Sim card reader (Not tray),149.95,2,3,,,0.52,,802985627
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Sim Card Tray,,,,,,,,922823995
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Vibrator Motor,89.95,1,2,,,1.98,,307295722
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",Volume Flex cable,89.95,2,1,,4,3.03,,798852639
+Apple,iPhone,6S,"A1633,A1688,A1691,A1700",WiFi/Bluetooth Antenna,79.95,,,,,,,299881468
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Back Camera,89.95,2,1,,8,40.73,,744060079
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Back Cover,,,,,,,,490312197
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Battery,,,,,,,,298747319
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Charging Port Flex Cable (Black),89.95,4,4,5,4,6.61,29/02/2016,426602434
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Earpiece,89.95,3,4,1,1,3.96,,656510627
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Front Camera & Proximity Sensor,89.95,6,8,3,6,4.21,,805005146
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699","Home Button And Flex Assembly BLK
+(fingerprint sensor will not work after replacement)",89.95,3,5,,,1.49,,442771105
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699","Home Button And Flex Assembly WHT
+(fingerprint sensor will not work after replacement)",89.9,2,3,,,1.49,,856463019
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Loud Speaker,89.95,1,1,,1,2.64,,861995755
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Power Button Flex,89.95,9,8,,,2.02,,504491547
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Screen Assembly Black,119.95,12,29,91,44,21.68,,167987906
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Screen Assembly WhT,119.95,14,8,56,65,21.68,,503156645
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Sim Card Tray,,,,,,,,110603854
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Vibrator Motor,89.95,1,2,,,1.59,,473413805
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",Volume Flex,89.95,1,2,,,1.59,,517772717
+Apple,iPhone,6S Plus,"A1634,A1687,A1690,A1699",WiFi/Bluetooth Antenna,79.95,2,3,,,0.66,,329718642
