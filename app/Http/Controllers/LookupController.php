@@ -68,7 +68,7 @@ class LookupController extends Controller
 
     public function findPartWithDeviceID($id)
     {
-        $parts = Part::where('device_id',$id)->get();
+        $parts = Part::where('device_id',$id)->orderBy('part_name', 'asc')->get();
         return response()->json($parts);
     }
 
@@ -81,8 +81,8 @@ class LookupController extends Controller
         $data['stock'] = $item->stock;
         $part['sku'] = $item->sku;
         $part['name'] = $item->part_name;
-        $part['price'] = $data['price']->selling_price_b2c;
-        $part['cost'] = $data['price']->last_cost;
+        $part['price'] = number_format((float)$data['price']->selling_price_b2c,2);
+        $part['cost'] = number_format((float)$data['price']->last_cost,2);
         foreach ($data['stock'] as $stock){
             $stock_details['qty'] = $stock->stock_qty;
             $stock_details['location'] = $stock->location->location;
