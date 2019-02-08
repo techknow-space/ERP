@@ -15,6 +15,8 @@ use App\Models\Part as Part;
 
 Route::get('/', 'LookupController@index');
 
+Route::get('itemlookup/{sku}','LookupController@lookup_sku');
+
 Route::get('/part-price', function () {
     // return Part::all();
     echo "<pre>";
