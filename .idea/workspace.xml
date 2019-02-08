@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="Added BArcode Lookup">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/barcodesearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/barcodesearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -437,15 +432,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549661345416</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Changed Barcode Scan tech to URL redirect">
+      <created>1549662695429</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549662695429</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25076000" />
+    <option name="totallyTimeSpent" value="25839000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25586355" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -483,7 +484,8 @@
     <MESSAGE value="Returned the Response to parts in Ascending Order by name. And Fixed the precision of Cost numbers." />
     <MESSAGE value="Fixed HTML markup in look up blade template" />
     <MESSAGE value="Added BArcode Lookup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added BArcode Lookup" />
+    <MESSAGE value="Changed Barcode Scan tech to URL redirect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Barcode Scan tech to URL redirect" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
