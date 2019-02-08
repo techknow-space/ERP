@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class PartStock extends \App\Models\Base\PartStock
+class PartStock extends Base\PartStock
 {
     public function part()
     {

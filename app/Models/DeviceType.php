@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class DeviceType extends \App\Models\Base\DeviceType
+class DeviceType extends Base\DeviceType
 {
     public function devices()
     {

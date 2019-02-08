@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Location extends \App\Models\Base\Location
+class Location extends Base\Location
 {
     public function part_stock()
     {

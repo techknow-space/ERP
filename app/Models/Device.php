@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Device extends \App\Models\Base\Device
+class Device extends Base\Device
 {
     public function brand()
     {

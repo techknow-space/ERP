@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Brand extends \App\Models\Base\Brand
+class Brand extends Base\Brand
 {
     public function manufacturer()
     {

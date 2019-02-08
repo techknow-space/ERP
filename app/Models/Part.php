@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-class Part extends \App\Models\Base\Part
+class Part extends Base\Part
 {
     public function devices()
     {
