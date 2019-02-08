@@ -36,30 +36,31 @@ class LookupController extends Controller
     public function lookup_sku($sku)
     {
 
-        $data = [];
-        $part = [];
+        // $data = [];
+        // $part = [];
 
-        $item = Part::where('sku',$sku)->firstOrFail();
+        $part = Part::where('sku',$sku)->with('devices.brand')->firstOrFail();
 
-        if($item){
+        // if($item){
 
-            $data['part'] = $item;
-            $data['price'] = $item->price;
-            $data['stock'] = $item->stock;
+        //     $data['part'] = $item;
+        //     $data['price'] = $item->price;
+        //     $data['stock'] = $item->stock;
 
-            $part['sku'] = $item->sku;
-            $part['name'] = $item->part_name;
-            $part['price'] = $data['price']->selling_price_b2c;
+        //     $part['sku'] = $item->sku;
+        //     $part['name'] = $item->part_name;
+        //     $part['price'] = $data['price']->selling_price_b2c;
 
-            foreach ($data['stock'] as $stock){
-                $stock_details['qty'] = $stock->stock_qty;
-                $stock_details['location'] = $stock->location->location;
-                $stock_details['sole_all_time'] = $stock->sold_all_time;
-                $part['stock'][] = $stock_details;
-            }
+        //     foreach ($data['stock'] as $stock){
+        //         $stock_details['qty'] = $stock->stock_qty;
+        //         $stock_details['location'] = $stock->location->location;
+        //         $stock_details['sole_all_time'] = $stock->sold_all_time;
+        //         $part['stock'][] = $stock_details;
+        //     }
 
-        }
+        // }
 
-        return view('part')->with('part',$part);
+        // return view('part')->with('part',$part);
+        return view('part')->with('part', $part);
     }
 }
