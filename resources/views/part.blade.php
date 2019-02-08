@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ $part->part_name }}</div>
+                <div class="card-header">{{ $part->part_name }} </div>
 
                 <div class="card-body">
                     <div>Compatible with - {{ $part->devices->brand->name }} {{ $part->devices->model_name }} ({{ $part->devices->model_number }})</div>
