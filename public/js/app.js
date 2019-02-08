@@ -48678,6 +48678,87 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(document).ready(function () {
+  $('#brand').on('change', function () {
+    var brandID = $(this).val();
+
+    if (brandID) {
+      $.ajax({
+        url: '/findModelWithBrandID/' + brandID,
+        type: "GET",
+        dataType: "json",
+        success: function success(data) {
+          //console.log(data);
+          if (data) {
+            $('#model').empty();
+            $('#model').focus;
+            $('#model').append('<option value="">-- Select Model --</option>');
+            $.each(data, function (key, value) {
+              $('select[name="model"]').append('<option value="' + value.id + '">' + value.model_name + '</option>');
+            });
+          } else {
+            $('#model').empty();
+          }
+        }
+      });
+    } else {
+      $('#model').empty();
+    }
+  });
+  $('#model').on('change', function () {
+    var modelID = $(this).val();
+
+    if (modelID) {
+      $.ajax({
+        url: '/findPartWithDeviceID/' + modelID,
+        type: "GET",
+        dataType: "json",
+        success: function success(data) {
+          //console.log(data);
+          if (data) {
+            $('#part').empty();
+            $('#part').focus;
+            $('#part').append('<option value="">-- Select Part --</option>');
+            $.each(data, function (key, value) {
+              $('select[name="part"]').append('<option value="' + value.id + '">' + value.part_name + '</option>');
+            });
+          } else {
+            $('#part').empty();
+          }
+        }
+      });
+    } else {
+      $('#part').empty();
+    }
+  });
+  $('#part').on('change', function () {
+    var partID = $(this).val();
+
+    if (partID) {
+      $.ajax({
+        url: '/getPartDetailsWithID/' + partID,
+        type: "GET",
+        dataType: "json",
+        success: function success(data) {
+          //console.log(data);
+          if (data) {
+            $('.part-details-table-col-part-name').html(data.name);
+            $('.part-details-table-col-last-cost').html(data.cost);
+            $('.part-details-table-col-selling-price').html(data.price);
+            $('.part-details-table-col-Qty-s1').html(data.stock[0].qty);
+            $('.part-details-table-col-qty-to1').html(data.stock[1].qty);
+            $('.part-details-table-col-sku').html(data.sku);
+            $('#part-details-table').show();
+          } else {
+            $('#part-details-table').hide();
+          }
+        }
+      });
+    } else {
+      $('#part-details-table').hide();
+    }
+  });
+});
 
 /***/ }),
 
@@ -48826,8 +48907,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /srv/erp/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /srv/erp/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\PHP_Projects\LaraERP\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\PHP_Projects\LaraERP\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

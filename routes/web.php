@@ -21,6 +21,14 @@ Route::get('itemlookup/id/{id}','LookupController@lookup_part_id');
 
 Route::get('devicelookup/id/{id}','LookupController@lookup_device_id');
 
+Route::get('lookup','LookupController@lookup_master');
+
+Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
+
+Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
+
+Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
+
 Route::get('/part-price', function () {
     // return Part::all();
     echo "<pre>";

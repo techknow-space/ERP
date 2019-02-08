@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Brand as Brand;
 use App\Models\Part as Part;
 use Illuminate\Http\Request;
 use App\Models\Device as Device;
@@ -51,5 +52,44 @@ class LookupController extends Controller
     {
         $device = Device::find($id);
         return view('devices')->with('device', $device);
+    }
+
+    public function lookup_master()
+    {
+        $brands = Brand::all();
+        return view('lookup',compact('brands'));
+    }
+
+    public function findModelWithBrandID($id)
+    {
+        $models = Device::where('brand_id',$id)->get();
+        return response()->json($models);
+    }
+
+    public function findPartWithDeviceID($id)
+    {
+        $parts = Part::where('device_id',$id)->get();
+        return response()->json($parts);
+    }
+
+    public function getPartDetailsWithID($id)
+    {
+        $item = Part::find($id);
+
+        $data['part'] = $item;
+        $data['price'] = $item->price;
+        $data['stock'] = $item->stock;
+        $part['sku'] = $item->sku;
+        $part['name'] = $item->part_name;
+        $part['price'] = $data['price']->selling_price_b2c;
+        $part['cost'] = $data['price']->last_cost;
+        foreach ($data['stock'] as $stock){
+            $stock_details['qty'] = $stock->stock_qty;
+            $stock_details['location'] = $stock->location->location;
+            $stock_details['sold_all_time'] = $stock->sold_all_time;
+            $part['stock'][] = $stock_details;
+        }
+
+        return response()->json($part);
     }
 }
