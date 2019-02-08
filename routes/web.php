@@ -13,13 +13,7 @@ use App\Models\Part as Part;
 |
 */
 
-Route::get('/', function () {
-    // return Part::all();
-    echo "<pre>";
-    echo json_encode(Part::with('devices')->get(),JSON_PRETTY_PRINT);
-    echo "</pre>";
-    // return view('welcome');
-});
+Route::get('/', 'LookupController@index');
 
 Route::get('/part-price', function () {
     // return Part::all();
@@ -27,4 +21,8 @@ Route::get('/part-price', function () {
     echo json_encode(Part::with('price')->get(),JSON_PRETTY_PRINT);
     echo "</pre>";
     // return view('welcome');
+});
+
+Route::get('/login', function(){
+
 });
