@@ -39,7 +39,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-
+                        @include('barcodesearch')
                     </ul>
                 </div>
             </div>

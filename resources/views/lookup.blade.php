@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card row">
-                    <div class="card-header">LookUp Master</div>
+                    <div class="card-header">LookUp Menu</div>
 
                     <div class="card-body">
                         <div class="row">
