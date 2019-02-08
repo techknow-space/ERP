@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand as Brand;
 use App\Models\Part as Part;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as Request;
 use App\Models\Device as Device;
 
 class LookupController extends Controller
@@ -91,5 +91,12 @@ class LookupController extends Controller
         }
 
         return response()->json($part);
+    }
+
+    public function searchBarcode()
+    {
+        $barcode = request('part-barcode');
+        return redirect('itemlookup/sku/'.$barcode);
+
     }
 }
