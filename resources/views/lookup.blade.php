@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <label for="roll">Brand <span class="required">*</span></label>
+                                <label for="brand">Brand <span class="required">*</span></label>
                                 <select name="brand" class="form-control" id="brand">
                                     <option value="">-- Select Brand --</option>
                                     @foreach ($brands as $brand)
@@ -19,12 +19,12 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <label for="roll">Model </label>
+                                <label for="model">Model </label>
                                 <select name="model" class="form-control" id="model">
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="roll">Parts </label>
+                                <label for="part">Parts </label>
                                 <select name="part" class="form-control" id="part">
                                 </select>
                             </div>
@@ -72,3 +72,4 @@
         </div>
     </div>
 @endsection
+
