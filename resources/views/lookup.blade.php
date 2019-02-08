@@ -37,31 +37,33 @@
                     <div class="card-header">Part Details</div>
                     <div class="card-body">
                         <div class="row">
-                            <div id="part-details">
-                                <table class="table" id="part-details-table" style="display: none;">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">Part</th>
-                                        <th scope="col">Last Cost</th>
-                                        <th scope="col">Selling Price</th>
-                                        <th scope="col">Qty-S1</th>
-                                        <th scope="col">Qty-TO1</th>
-                                        <th>SKU</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
+                            <div class="col-md-12">
+                                <div id="part-details">
+                                    <table class="table" id="part-details-table" style="display: none;">
+                                        <thead>
                                         <tr>
-                                            <td class="part-details-table-col-part-name"></td>
-                                            <td class="part-details-table-col-last-cost"></td>
-                                            <td class="part-details-table-col-selling-price"></td>
-                                            <td class="part-details-table-col-Qty-s1"></td>
-                                            <td class="part-details-table-col-qty-to1"></td>
-                                            <td class="part-details-table-col-sku"></td>
+                                            <th scope="col">Part</th>
+                                            <th scope="col">Last Cost</th>
+                                            <th scope="col">Selling Price</th>
+                                            <th scope="col">Qty-S1</th>
+                                            <th scope="col">Qty-TO1</th>
+                                            <th>SKU</th>
                                         </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
+                                            <tr>
+                                                <td class="part-details-table-col-part-name"></td>
+                                                <td class="part-details-table-col-last-cost"></td>
+                                                <td class="part-details-table-col-selling-price"></td>
+                                                <td class="part-details-table-col-Qty-s1"></td>
+                                                <td class="part-details-table-col-qty-to1"></td>
+                                                <td class="part-details-table-col-sku"></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
