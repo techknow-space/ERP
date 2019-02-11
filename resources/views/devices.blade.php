@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header" style="font-size: 1.2em;"><b>{{ $device->brand->manufacturer->manufacturer  }} {{ $device->brand->name  }} {{$device->model_name}} {{$device->model_number}}</b></div>
+                    <div class="card-header" style="font-size: 1.2em;"><b>{{ $device->brand->manufacturer->manufacturer  }} {{ $device->brand->name  }} {{$device->model_name}}</b> ({{$device->model_number}})</div>
 
                     <td class="card-body">
 
