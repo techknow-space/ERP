@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand as Brand;
 use App\Models\Part as Part;
+use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 use Illuminate\Http\Request as Request;
 use App\Models\Device as Device;
+
 
 class LookupController extends Controller
 {
@@ -103,7 +105,18 @@ class LookupController extends Controller
     {
         $barcode = request('part-barcode');
         return redirect('itemlookup/sku/'.$barcode);
-
     }
+
+    public function getPartDetailsWithSKU($sku)
+    {
+        try{
+            $part = Part::where('sku',$sku)->with('devices.brand')->firstOrFail();
+        }catch (ModelNotFoundException $exception){
+            $part['error'] = true;
+        }
+
+        return response()->json($part);
+    }
+
 
 }

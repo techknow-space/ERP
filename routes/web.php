@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Part as Part;
+use Illuminate\Support\Facades\Route as Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,17 @@ Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
 
 Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
 
+Route::get('getPartDetailsWithSKU/{sku}','LookupController@getPartDetailsWithSKU');
+
 Route::get('device/{id}','LookupController@lookup_device_id');
 
 Route::get('search/barcode','LookupController@searchBarcode');
+
+Route::get('stockcounts','StockCountController@index');
+
+Route::get('stockcount/count/id/{id}','StockCountController@details');
+
+Route::get('stockcounts/create','StockCountController@create');
 
 Route::get('/part-price', function () {
     // return Part::all();

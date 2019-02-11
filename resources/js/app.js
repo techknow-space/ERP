@@ -141,4 +141,54 @@ $(document).ready(function() {
         }
     });
 
+    $('#sc-barcode-form').on('submit', function () {
+
+        let barcode_box = $('#sc-barcode-entry');
+        let sku = barcode_box.val();
+
+        if(sku){
+            $.ajax({
+                url: '/getPartDetailsWithSKU/'+sku,
+                type: "GET",
+                dataType: "json",
+                success:function(data) {
+                    if(data['error'] !== true){
+
+                        let last_row = $('.sc-scanned-items tr:last');
+                        let last_sku = last_row.data("sku");
+                        let sku = data['sku'];
+
+                        if(sku == last_sku){
+                            let qty = last_row.find('.sc-partlist-qty').text();
+                            qty++;
+                            last_row.find('.sc-partlist-qty').text(qty);
+
+                        }
+                        else{
+
+                            let part_data_row =
+                                '<tr data-sku="'+sku+'">' +
+                                '<td class="sc-partlist-name">'+data['part_name']+'</td>'+
+                                '<td class="sc-partlist-device">'+data['devices']['brand']['name']+' '+data['devices']['model_name']+' '+data['devices']['model_number']+'</td>'+
+                                '<td class="sc-partlist-sku">'+data['sku']+'</td>'+
+                                '<td class="sc-partlist-qty">1</td>'+
+                                '</tr>' +
+                                '';
+                            //last_row.after(part_data_row);
+                            $('.sc-scanned-items').append(part_data_row);
+                        }
+
+                        barcode_box.val('');
+
+                    }
+                    else {
+                        alert('Unknown SKU');
+                        barcode_box.focus();
+                    }
+                }
+            });
+        }
+        return false
+    });
+
 });
