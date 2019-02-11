@@ -1,7 +1,3 @@
-<form action="/search/barcode" method="get">
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <input name="part-barcode" type="text" class="form-control" id="part-barcode-search">
-        </div>
-    </div>
+<form class="form-inline" action="/search/barcode" method="get">
+    <input name="part-barcode" type="search" class="form-control mr-sm-2" placeholder="Search" id="part-barcode-search">
 </form>

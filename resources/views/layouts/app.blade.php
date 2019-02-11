@@ -18,6 +18,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .navbar-light .navbar-nav .nav-link {
+            color: rgb(64, 64, 64);
+        }
+        .btco-menu li > a {
+            padding: 10px 15px;
+            color: #000;
+
+        }
+
+        .btco-menu .active a:focus,
+        .btco-menu li a:focus ,
+        .navbar > .show > a:focus{
+            background: transparent;
+            outline: 0;
+        }
+
+        .dropdown-menu .show > .dropdown-toggle::after{
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -33,7 +55,17 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-target="#" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    iPhone
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
+                                    <li><a class="dropdown-item" href="/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
+                                    <li><a class="dropdown-item" href="/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
+                                    <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
+                                </ul>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

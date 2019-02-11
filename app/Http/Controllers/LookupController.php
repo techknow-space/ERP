@@ -72,6 +72,12 @@ class LookupController extends Controller
         return response()->json($parts);
     }
 
+    public function showDeviceParts($id)
+    {
+        $parts = Part::where('device_id',$id)->orderBy('part_name', 'asc')->get();
+        return view('parts')->with('parts', $parts);;
+    }
+
     public function getPartDetailsWithID($id)
     {
         $item = Part::find($id);
@@ -99,4 +105,5 @@ class LookupController extends Controller
         return redirect('itemlookup/sku/'.$barcode);
 
     }
+
 }

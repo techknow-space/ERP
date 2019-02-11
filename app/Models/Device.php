@@ -15,6 +15,6 @@ class Device extends Base\Device
 
     public function parts()
     {
-        return $this->hasMany('App\Models\Part','device_id');
+        return $this->hasMany('App\Models\Part','device_id')->orderBy('part_name', 'asc');
     }
 }

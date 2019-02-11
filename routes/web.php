@@ -29,6 +29,8 @@ Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
 
 Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
 
+Route::get('device/{id}','LookupController@lookup_device_id');
+
 Route::get('search/barcode','LookupController@searchBarcode');
 
 Route::get('/part-price', function () {
