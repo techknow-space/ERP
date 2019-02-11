@@ -20,7 +20,7 @@ class StockCountItemsSeq extends Model
   * 
   * @var bool
   */
-  protected $incrementing=false;
+  public $incrementing=false;
   
   /**  
   * Customize column name for created_at timestamp
