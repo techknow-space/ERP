@@ -20,7 +20,7 @@ class StockCount extends Model
   * 
   * @var bool
   */
-  public $incrementing=false;
+  protected $incrementing=false;
   
   /**  
   * The attributes that should be cast to native types.
@@ -32,11 +32,16 @@ class StockCount extends Model
     'number'=>'string',
     'started_at'=>'datetime',
     'ended_at'=>'datetime',
-    'stockCountStatus_id'=>'string'
+    'stockCountStatus_id'=>'string',
+    'location_id'=>'string'
   ];
   public function StockCountStatus()
   {
     return $this->belongsTo('\App\Models\StockCountStatus','stockCountStatus_id','id');
+  }
+  public function Location()
+  {
+    return $this->belongsTo('\App\Models\Location','location_id','id');
   }
   public function StockCountItemsSeqs()
   {

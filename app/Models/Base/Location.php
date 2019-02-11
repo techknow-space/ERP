@@ -33,4 +33,8 @@ class Location extends Model
     'location_code'=>'string',
     'description'=>'string'
   ];
+  public function StockCounts()
+  {
+    return $this->hasMany('\App\Models\StockCount','location_id','id');
+  }
 }
