@@ -42,6 +42,11 @@ Route::get('stockcount/count/id/{id}','StockCountController@details');
 
 Route::get('stockcounts/create','StockCountController@create');
 
+Route::post('stockcount/additem','StockCountController@additem');
+
+Route::get('stockcount/aggregate/id/{id}','StockCountController@aggregate');
+
+
 Route::get('/part-price', function () {
     // return Part::all();
     echo "<pre>";

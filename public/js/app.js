@@ -36422,6 +36422,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //window.
 
 
 $(document).ready(function () {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
   $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
     var $el = $(this);
     var $parent = $(this).offsetParent(".dropdown-menu");
@@ -36530,13 +36535,14 @@ $(document).ready(function () {
     var sku = barcode_box.val();
 
     if (sku) {
+      /*Get Part Details*/
       $.ajax({
         url: '/getPartDetailsWithSKU/' + sku,
         type: "GET",
         dataType: "json",
         success: function success(data) {
           if (data['error'] !== true) {
-            var last_row = $('.sc-scanned-items tr:last');
+            var last_row = $('#sc-partlist-table tr:last');
             var last_sku = last_row.data("sku");
             var _sku = data['sku'];
 
@@ -36555,6 +36561,20 @@ $(document).ready(function () {
             alert('Unknown SKU');
             barcode_box.focus();
           }
+        }
+      });
+      /*Persist Scan in the DB */
+
+      $.ajax({
+        url: '/stockcount/additem',
+        type: 'POST',
+        data: {
+          "sku": sku,
+          "scid": $('#sc-partlist-table').data("scid")
+        },
+        dataType: 'JSON',
+        success: function success(data) {
+          console.log(data);
         }
       });
     }

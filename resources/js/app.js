@@ -35,6 +35,12 @@ require('./bootstrap');
 
 
 $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
         var $el = $( this );
         var $parent = $( this ).offsetParent( ".dropdown-menu" );
@@ -43,14 +49,14 @@ $(document).ready(function() {
         }
         var $subMenu = $( this ).next( ".dropdown-menu" );
         $subMenu.toggleClass( 'show' );
-        
+
         $( this ).parent( "li" ).toggleClass( 'show' );
 
         $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
             $( '.dropdown-menu .show' ).removeClass( "show" );
         } );
-        
-         if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
+
+        if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
             $el.next().css( { "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 } );
         }
 
@@ -147,6 +153,7 @@ $(document).ready(function() {
         let sku = barcode_box.val();
 
         if(sku){
+            /*Get Part Details*/
             $.ajax({
                 url: '/getPartDetailsWithSKU/'+sku,
                 type: "GET",
@@ -154,15 +161,16 @@ $(document).ready(function() {
                 success:function(data) {
                     if(data['error'] !== true){
 
-                        let last_row = $('.sc-scanned-items tr:last');
+                        let last_row = $('#sc-partlist-table tr:last');
                         let last_sku = last_row.data("sku");
                         let sku = data['sku'];
+
+
 
                         if(sku == last_sku){
                             let qty = last_row.find('.sc-partlist-qty').text();
                             qty++;
                             last_row.find('.sc-partlist-qty').text(qty);
-
                         }
                         else{
 
@@ -185,6 +193,18 @@ $(document).ready(function() {
                         alert('Unknown SKU');
                         barcode_box.focus();
                     }
+                }
+            });
+
+            /*Persist Scan in the DB */
+
+            $.ajax({
+                url: '/stockcount/additem',
+                type: 'POST',
+                data: {"sku":sku,"scid":$('#sc-partlist-table').data("scid")},
+                dataType: 'JSON',
+                success: function (data) {
+                    console.log(data);
                 }
             });
         }

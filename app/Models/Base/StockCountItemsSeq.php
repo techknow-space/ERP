@@ -28,6 +28,13 @@ class StockCountItemsSeq extends Model
   * @var string
   */
   protected $CREATED_AT='created_at';
+
+    /**
+     * Customize column name for updated_at timestamp
+     *
+     * @var string
+     */
+    protected $UPDATE_AT='updated_at';
   
   /**  
   * The attributes that should be cast to native types.
@@ -39,7 +46,8 @@ class StockCountItemsSeq extends Model
     'qty'=>'integer',
     'part_id'=>'string',
     'stockCount_id'=>'string',
-    'created_at'=>'datetime'
+    'created_at'=>'datetime',
+      'updated_at'=>'datetime'
   ];
   public function Part()
   {
