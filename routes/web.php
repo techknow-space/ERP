@@ -14,6 +14,35 @@ use Illuminate\Support\Facades\Route as Route;
 |
 */
 
+Route::prefix('lookup')->group(function(){
+    Route::get('/','LookupController@lookup_master');
+    Route::get('sku/{sku}','LookupController@lookup_part_sku');
+    Route::get('item/{id}','LookupController@lookup_part_id');
+    Route::get('device/{id}','LookupController@lookup_device_id');
+});
+
+Route::prefix('stock')->group(function(){
+    Route::get('/','StockCountController@index');
+    Route::get('view/{id}','StockCountController@details');
+    Route::get('create','StockCountController@create');
+    Route::post('additem','StockCountController@additem');
+    Route::get('summary/{id}','StockCountController@aggregate');
+});
+
+Route::prefix('search')->group(function(){
+    Route::get('barcode','LookupController@searchBarcode');
+    Route::get('{term}','SearchController@search')->name('search');
+});
+
+Route::prefix('api')->group(function(){
+    Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
+    Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
+    Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
+    Route::get('getPartDetailsWithSKU/{sku}','LookupController@getPartDetailsWithSKU');
+});
+
+// All routes below here require cleanup/removal and handlers to be adjusted accordingly
+
 Route::get('/', 'LookupController@index');
 
 Route::get('itemlookup/sku/{sku}','LookupController@lookup_part_sku');
@@ -32,9 +61,11 @@ Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
 
 Route::get('getPartDetailsWithSKU/{sku}','LookupController@getPartDetailsWithSKU');
 
-Route::get('device/{id}','LookupController@lookup_device_id');
-
 Route::get('search/barcode','LookupController@searchBarcode');
+
+Route::get('search/{term}','SearchController@search')->name('search');
+
+Route::get('device/{id}','LookupController@lookup_device_id');
 
 Route::get('stockcounts','StockCountController@index');
 
