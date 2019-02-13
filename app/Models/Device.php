@@ -1,8 +1,22 @@
 <?php
 namespace App\Models;
 
-class Device extends Base\Device
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+
+class Device extends Base\Device implements Searchable
 {
+    public function getSearchResult(): SearchResult
+    {
+        // $url = route('categories.show', $this->id);
+
+        // return new SearchResult(
+        //     $this,
+        //     $this->name,
+        //     $url
+        //  );
+    }
+
     public function brand()
     {
         return $this->belongsTo('App\Models\Brand','brand_id');
