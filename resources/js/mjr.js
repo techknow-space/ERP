@@ -172,12 +172,46 @@ $(document).ready(function() {
     });
 
     $('#main-barcode-form').on('submit', function () {
-        let barcode_box = $('#sc-barcode-entry');
+        let barcode_box = $('#main-barcode-entry');
         let sku = barcode_box.val();
-        console.log(sku);
+        getPartDetailswithSKU();
 
         return false
     });
+
+    function getPartDetailswithSKU() {
+        let barcode_box = $('#main-barcode-entry');
+        let sku = barcode_box.val();
+
+        $.ajax({
+            url: '/getPartDetailsWithSKU/'+sku,
+            type: "GET",
+            dataType: "json",
+            success:function(data) {
+                if(data['error'] !== true){
+
+                    let part_id = data.id;
+                    $('.part-details-table-col-part-name').html(data.devices.brand.name+" "+ data.devices.model_name +" "+data.part_name);
+                    $('.part-details-table-col-last-cost').html(data.price.last_cost);
+                    $('.part-details-table-col-selling-price').html(data.price.selling_price_b2c);
+                    $('.part-details-table-col-Qty-s1').html(data.stock[0].stock_qty);
+                    $('.part-details-table-col-qty-to1').html(data.stock[1].stock_qty);
+                    $('.part-details-table-col-sku').html(data.sku);
+
+                    $('#main-initiate-stock-count-link').attr('href','stockcount/initiate/'+part_id);
+                    $('#main-part-details-card').show();
+                    $('.main-operations-card').show();
+                    barcode_box.val('');
+                }
+                else {
+                    alert('Unknown SKU');
+                }
+                barcode_box.removeAttr("disabled");
+                barcode_box.focus();
+            }
+
+        });
+    }
 
 });
 

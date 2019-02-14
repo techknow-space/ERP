@@ -104,7 +104,7 @@ class LookupController extends Controller
     public function getPartDetailsWithSKU($sku)
     {
         try{
-            $part = Part::where('sku',$sku)->with('devices.brand')->firstOrFail();
+            $part = Part::where('sku',$sku)->with('price')->with('stock')->with('devices.brand')->firstOrFail();
         }catch (ModelNotFoundException $exception){
             $part['error'] = true;
         }

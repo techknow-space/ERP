@@ -44,6 +44,15 @@ Route::prefix('api')->group(function(){
 
 // All routes below here require cleanup/removal and handlers to be adjusted accordingly
 
+Route::prefix('stockcount')->group(function (){
+    Route::get('initiate/{part_id}','StockCountController@initiate');
+    Route::get('count/id/{id}','StockCountController@details');
+    Route::get('create','StockCountController@create');
+    Route::get('aggregate/id/{id}','StockCountController@aggregate');
+    Route::get('{status_update}/id/{id}','StockCountController@statusupdate')->where('status_update','(restart|pause|end)');
+    Route::post('additem','StockCountController@additem');
+});
+
 Route::get('/', 'LookupController@index');
 
 Route::view('/main','main');
@@ -68,15 +77,7 @@ Route::get('device/{id}','LookupController@lookup_device_id');
 
 Route::get('stockcounts','StockCountController@index');
 
-Route::get('stockcount/count/id/{id}','StockCountController@details');
 
-Route::get('stockcounts/create','StockCountController@create');
-
-Route::post('stockcount/additem','StockCountController@additem');
-
-Route::get('stockcount/aggregate/id/{id}','StockCountController@aggregate');
-
-Route::get('stockcount/{status_update}/id/{id}','StockCountController@statusupdate')->where('status_update','(restart|pause|end)');
 
 
 
