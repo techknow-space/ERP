@@ -1,3 +1,4 @@
-<form class="form-inline" action="/search/barcode" method="get">
+<form class="form-inline" action="/search/barcode" method="get" id="search">
     <input name="part-barcode" type="search" class="form-control mr-sm-2" placeholder="Search" id="part-barcode-search">
+    <span class="mic"><i class="fa fa-microphone fa-lg"></i>MIC</span>
 </form>

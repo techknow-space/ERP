@@ -57,10 +57,10 @@ function speechRecognition(form, mic)
     recognition.onresult = function (e) {
         var textarea = $('#'+form+' textarea');
         for (var i = e.resultIndex; i < e.results.length; ++i) {
-            // console.log(e.results[i]);
             if (e.results[i].isFinal) {
-                  fullString += e.results[i][0].transcript;
-                  textarea.val(fullString);
+                fullString += e.results[i][0].transcript;
+                textarea.val(fullString);
+                $('#search').submit();
             } else {
                 draftString = e.results[i][0].transcript;
                 textarea.val(fullString + ' ' + draftString);
@@ -71,8 +71,11 @@ function speechRecognition(form, mic)
     recognition.start();
 }
 
-
 $(document).ready(function() {
+    $('body').on('click','.mic', function(){
+        speechRecognition('#search', $(this));
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

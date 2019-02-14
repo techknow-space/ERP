@@ -34,6 +34,7 @@ Route::prefix('search')->group(function(){
     Route::get('{term}','SearchController@search')->name('search');
 });
 
+// TODO: Create API controller group
 Route::prefix('api')->group(function(){
     Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
     Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
