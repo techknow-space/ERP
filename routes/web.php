@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route as Route;
 
 Route::get('/', 'LookupController@index');
 
+Route::view('/main','main');
+
 Route::get('itemlookup/sku/{sku}','LookupController@lookup_part_sku');
 
 Route::get('itemlookup/id/{id}','LookupController@lookup_part_id');
@@ -45,6 +47,9 @@ Route::get('stockcounts/create','StockCountController@create');
 Route::post('stockcount/additem','StockCountController@additem');
 
 Route::get('stockcount/aggregate/id/{id}','StockCountController@aggregate');
+
+Route::get('stockcount/{status_update}/id/{id}','StockCountController@statusupdate')->where('status_update','(restart|pause|end)');
+
 
 
 Route::get('/part-price', function () {

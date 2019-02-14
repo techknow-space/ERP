@@ -25,7 +25,6 @@
                                 <th scope="col">Status</th>
                                 <th scope="col">Ended At</th>
                                 <th scope="col">Location</th>
-                                <th scope="col">Aggregate Report</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -38,7 +37,6 @@
                                             <td>{{ $stock_count->StockCountStatus->status }}</td>
                                             <td>{{ $stock_count->ended_at }}</td>
                                             <td>{{ $stock_count->Location->location }}</td>
-                                            <td><a href="/stockcount/aggregate/id/{{ $stock_count->id  }}">View List</a></td>
                                         </tr>
                                     @endforeach
                                 @else

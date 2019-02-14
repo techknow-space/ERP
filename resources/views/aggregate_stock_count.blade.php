@@ -7,7 +7,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="font-size: 1.2em;">
-                        <div class="float-left"><b>Aggregate of Stock Count - {{$stock_count->number}}</b></div>
+                        <div class="float-left"><b>Report of Stock Count - {{$stock_count->number}}</b></div>
                         <div class="float-right">
                             <b>Location - {{$stock_count->location->location}}</b>
                         </div>
@@ -30,14 +30,14 @@
                                 <th scope="col">Device Model</th>
                                 <th scope="col">SKU</th>
                                 <th scope="col">Scanned Qty.</th>
-                                <th scope="col">Reported Stock at {{$stock_count->location->location}}</th>
+                                <th scope="col">Stock in Hand at <br> {{$stock_count->location->location}}</th>
                             </tr>
                             </thead>
                             <tbody class="sc-scanned-items">
                             @foreach($stock_count->StockCountItems as $item)
                                 <tr data-sku="{{ $item->part->sku }}">
                                     <td class="sc-partlist-name">{{ $item->part->part_name }}</td>
-                                    <td class="sc-partlist-device">{{$item->part->devices->model_name}}</td>
+                                    <td class="sc-partlist-device">{{$item->part->devices->brand->name}} {{$item->part->devices->model_name}}</td>
                                     <td class="sc-partlist-sku">{{ $item->part->sku }}</td>
                                     <td class="sc-partlist-qty">{{ $item->qty }}</td>
                                     <td class="sc-partlist-reported-qty">

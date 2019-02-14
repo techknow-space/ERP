@@ -10,6 +10,7 @@ use App\Models\StockCountItemsSeq;
 use App\Models\StockCountStatus;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Carbon\Carbon;
 
 class StockCountController extends Controller
 {
@@ -32,7 +33,7 @@ class StockCountController extends Controller
         $stock_count = new StockCount();
 
         $location = Location::where('location_code','S1')->firstOrFail();
-        $status = StockCountStatus::where('status','started')->firstOrFail();
+        $status = StockCountStatus::where('status','Started')->firstOrFail();
         $stock_count->number = $this->create_sc_number();
         $stock_count->Location()->associate($location);
         $stock_count->StockCountStatus()->associate($status);
@@ -95,7 +96,78 @@ class StockCountController extends Controller
      */
     public function count(StockCount $stockCount)
     {
-        return view('count_stock_count')->with('stock_count',$stockCount);
+
+        if('Ended' == $stockCount->StockCountStatus->status){
+            return $this->aggregate($stockCount->id);
+        }
+
+        $allowed_operations = [
+            'restart'=>true,
+            'pause'=>true,
+            'end'=>true
+        ];
+
+        switch ($stockCount->StockCountStatus->status) {
+            case 'Started':
+                $allowed_operations['restart'] = false;
+                break;
+            case 'Ended':
+                $allowed_operations = [
+                    'restart'=>false,
+                    'pause'=>false,
+                    'end'=>false
+                ];
+                break;
+            case 'Paused':
+                $allowed_operations['pause'] = false;
+                break;
+        }
+
+        return view('count_stock_count',compact('stockCount','allowed_operations'));
+    }
+
+    public function statusupdate($type,$id)
+    {
+
+        if('pause' == $type){
+            $stock_count = StockCount::find($id);
+            if($stock_count){
+                $status = StockCountStatus::where('status','Paused')->firstORFail();
+                if($status){
+                    $stock_count->StockCountStatus()->associate($status);
+                    $stock_count->save();
+                }
+            }
+        }
+
+        elseif ('restart' == $type){
+            $stock_count = StockCount::find($id);
+            if($stock_count){
+                $status = StockCountStatus::where('status','Started')->firstORFail();
+                if($status){
+                    $stock_count->StockCountStatus()->associate($status);
+                    $stock_count->save();
+                }
+            }
+        }
+
+        elseif ('end' == $type) {
+            $stock_count = StockCount::find($id);
+            if($stock_count){
+                $status = StockCountStatus::where('status','Ended')->firstORFail();
+                if($status){
+                    $stock_count->StockCountStatus()->associate($status);
+                    $stock_count->ended_at = Carbon::now()->format('Y-m-d H:i:s');
+                    $stock_count->save();
+
+                    return $this->aggregate($id);
+                }
+            }
+        }
+
+        return $this->count($stock_count);
+
+
     }
 
     public function details($id)
@@ -112,44 +184,17 @@ class StockCountController extends Controller
     {
 
         try{
-
-            //$last_scanned_part = StockCountItemsSeq::where('stockCount_id',$request->get('scid'))->orderBy('updated_at','desc')->firstOrFail();
-
-            $last_scanned_part = StockCountItemsSeq::latest('updated_at')->first();
             $part = Part::where('sku',$request->get('sku'))->firstOrFail();
 
+            $sc = StockCount::find($request->get('scid'));
 
-            if($last_scanned_part){
-
-                if($last_scanned_part->part_id === $part->id){
-                    $last_scanned_part->qty++;
-                    $last_scanned_part->save();
-                }
-
-                else{
-                    $sc = StockCount::find($request->get('scid'));
-
-                    $sc_item_seq = new StockCountItemsSeq();
-                    $sc_item_seq->Part()->associate($part);
-                    $sc_item_seq->StockCount()->associate($sc);
-                    $sc_item_seq->qty = 1;
-                    $sc_item_seq->save();
-                }
-            }
-            else{
-                $sc = StockCount::find($request->get('scid'));
-
-                $sc_item_seq = new StockCountItemsSeq();
-                $sc_item_seq->Part()->associate($part);
-                $sc_item_seq->StockCount()->associate($sc);
-                $sc_item_seq->qty = 1;
-                $sc_item_seq->save();
-            }
-
-
+            $sc_item_seq = new StockCountItemsSeq();
+            $sc_item_seq->Part()->associate($part);
+            $sc_item_seq->StockCount()->associate($sc);
+            $sc_item_seq->qty = 1;
+            $sc_item_seq->save();
 
             $result = ['error'=> false];
-
 
         }catch (ModelNotFoundException $exception){
             $result['error'] = true;

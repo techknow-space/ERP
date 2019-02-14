@@ -36542,20 +36542,9 @@ $(document).ready(function () {
         dataType: "json",
         success: function success(data) {
           if (data['error'] !== true) {
-            var last_row = $('#sc-partlist-table tr:last');
-            var last_sku = last_row.data("sku");
-            var _sku = data['sku'];
+            var part_data_row = '<tr data-sku="' + sku + '">' + '<td class="sc-partlist-name">' + data['part_name'] + '</td>' + '<td class="sc-partlist-device">' + data['devices']['brand']['name'] + ' ' + data['devices']['model_name'] + '</td>' + '<td class="sc-partlist-sku">' + data['sku'] + '</td>' + '</tr>' + ''; //last_row.after(part_data_row);
 
-            if (_sku == last_sku) {
-              var qty = last_row.find('.sc-partlist-qty').text();
-              qty++;
-              last_row.find('.sc-partlist-qty').text(qty);
-            } else {
-              var part_data_row = '<tr data-sku="' + _sku + '">' + '<td class="sc-partlist-name">' + data['part_name'] + '</td>' + '<td class="sc-partlist-device">' + data['devices']['brand']['name'] + ' ' + data['devices']['model_name'] + ' ' + data['devices']['model_number'] + '</td>' + '<td class="sc-partlist-sku">' + data['sku'] + '</td>' + '<td class="sc-partlist-qty">1</td>' + '</tr>' + ''; //last_row.after(part_data_row);
-
-              $('.sc-scanned-items').append(part_data_row);
-            }
-
+            $('.sc-scanned-items').append(part_data_row);
             barcode_box.val('');
           } else {
             alert('Unknown SKU');
