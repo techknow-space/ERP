@@ -36442,7 +36442,7 @@ function speechRecognition(form, mic) {
   };
 
   recognition.onresult = function (e) {
-    var textarea = $('#' + form + ' textarea');
+    var textarea = $('#' + form + ' input');
 
     for (var i = e.resultIndex; i < e.results.length; ++i) {
       if (e.results[i].isFinal) {
@@ -36461,7 +36461,7 @@ function speechRecognition(form, mic) {
 
 $(document).ready(function () {
   $('body').on('click', '.mic', function () {
-    speechRecognition('#search', $(this));
+    speechRecognition('search', $(this));
   });
   $.ajaxSetup({
     headers: {

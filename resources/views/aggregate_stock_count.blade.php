@@ -62,7 +62,7 @@
                                 <tr data-sku="{{ $item->part->sku }}">
                                     <td class="sc-partlist-device">{{$item->part->devices->brand->name}} {{$item->part->devices->model_name}}</td>
                                     <td class="sc-partlist-name">{{ $item->part->part_name }}</td>
-                                    <td class="sc-partlist-cost">&dollar; {{$item->part->price->last_cost}}</td>
+                                    <td class="sc-partlist-cost">CAD {{$item->part->price->last_cost}}</td>
                                     <td class="sc-partlist-reported-qty">
                                         @foreach($item->part->stock as $stock)
                                             @if($stock->location_id == $stock_count->location->id)
