@@ -1,8 +1,22 @@
 <?php
 namespace App\Models;
 
-class Brand extends Base\Brand
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
+
+class Brand extends Base\Brand implements Searchable
 {
+    public function getSearchResult(): SearchResult
+    {
+        // $url = route('categories.show', $this->id);
+
+        // return new SearchResult(
+        //     $this,
+        //     $this->name,
+        //     $url
+        //  );
+    }
+
     public function manufacturer()
     {
         return $this->belongsTo('App\Models\Manufacturer','manufacturer_id');

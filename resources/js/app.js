@@ -32,9 +32,50 @@ require('./bootstrap');
 //    el: '#app'
 //});
 
+function speechRecognition(form, mic)
+{
+    var recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
 
+    draftString = '';
+    fullString = '';
+
+    recognition.onstart = function() {
+        mic.css('color', 'red');
+    };
+
+    recognition.onaudioend = function() {
+        mic.css('color', 'black');
+    };
+
+    recognition.onend = function() {
+        mic.css('color', 'black');
+    };
+
+    recognition.onresult = function (e) {
+        var textarea = $('#'+form+' textarea');
+        for (var i = e.resultIndex; i < e.results.length; ++i) {
+            if (e.results[i].isFinal) {
+                fullString += e.results[i][0].transcript;
+                textarea.val(fullString);
+                $('#search').submit();
+            } else {
+                draftString = e.results[i][0].transcript;
+                textarea.val(fullString + ' ' + draftString);
+            }
+        }
+    }
+
+    recognition.start();
+}
 
 $(document).ready(function() {
+    $('body').on('click','.mic', function(){
+        speechRecognition('#search', $(this));
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
