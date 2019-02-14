@@ -24,11 +24,11 @@
                                 Total Qty: {{$stock_count->StockCountItemsSeqs->count()}}
                             </div>
                             <div class="col-md-3">
-                                Delta Qty.: <br>
+                                Diff Qty.: <br>
 
                             </div>
                             <div class="col-md-3">
-                                Delta CAD: <br>
+                                Diff &dollar;: <br>
 
                             </div>
                         </div>
@@ -40,7 +40,7 @@
 
                 <div class="card">
                     <div class="card-header" style="font-size: 1.2em;">
-                        <div class="float-left"><b>Items Scanned</b></div>
+                        <div class="float-left"><b>Items</b></div>
                     </div>
 
                     <div class="card-body">
@@ -50,10 +50,10 @@
                                 <th scope="col">Device Model</th>
                                 <th scope="col">Part</th>
                                 <th scope="col">Cost</th>
-                                <th scope="col">In Hand at <br> {{$stock_count->location->location_code}}</th>
+                                <th scope="col">In Hand <br> {{$stock_count->location->location_code}}</th>
                                 <th scope="col">Count</th>
-                                <th scope="col" class="text-right">Discrepancy #</th>
-                                <th scope="col" class="text-right">Discrepancy &dollar;</th>
+                                <th scope="col" class="text-right">Diff #</th>
+                                <th scope="col" class="text-right">Diff &dollar;</th>
                                 <th scope="col" class="text-right">SKU</th>
                             </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                 <tr data-sku="{{ $item->part->sku }}">
                                     <td class="sc-partlist-device">{{$item->part->devices->brand->name}} {{$item->part->devices->model_name}}</td>
                                     <td class="sc-partlist-name">{{ $item->part->part_name }}</td>
-                                    <td class="sc-partlist-cost">CAD {{$item->part->price->last_cost}}</td>
+                                    <td class="sc-partlist-cost">&dollar; {{$item->part->price->last_cost}}</td>
                                     <td class="sc-partlist-reported-qty">
                                         @foreach($item->part->stock as $stock)
                                             @if($stock->location_id == $stock_count->location->id)
@@ -76,7 +76,7 @@
                                         {{
                                           (( ($item->qty) * $item->part->price->last_cost) - ($inhand * $item->part->price->last_cost) )
                                         }}
-                                        CAD
+                                        &dollar;
                                     </td>
                                     <td class="sc-partlist-sku text-right" >{{ $item->part->sku }}</td>
                                 </tr>
