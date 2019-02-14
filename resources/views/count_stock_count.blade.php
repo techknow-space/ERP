@@ -56,7 +56,9 @@
 
                 <div class="card">
                     <div class="card-header" style="font-size: 1.2em;">
-                        <div class="float-left"><b>Items Scanned</b></div>
+                        <div class="float-left">
+                            <b>Items</b>
+                        </div>
                     </div>
 
                     <div class="card-body">
