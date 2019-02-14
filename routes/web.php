@@ -30,8 +30,8 @@ Route::prefix('stock')->group(function(){
 });
 
 Route::prefix('search')->group(function(){
-    Route::get('barcode','LookupController@searchBarcode');
-    Route::get('{term}','SearchController@search')->name('search');
+    Route::get('barcode','SearchController@searchBarcode');
+    Route::get('/','SearchController@search')->name('search');
 });
 
 // TODO: Create API controller group
@@ -63,10 +63,6 @@ Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
 Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
 
 Route::get('getPartDetailsWithSKU/{sku}','LookupController@getPartDetailsWithSKU');
-
-Route::get('search/barcode','LookupController@searchBarcode');
-
-Route::get('search/{term}','SearchController@search')->name('search');
 
 Route::get('device/{id}','LookupController@lookup_device_id');
 
