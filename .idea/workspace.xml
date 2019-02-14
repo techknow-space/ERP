@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockCountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockCountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/mjr.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/mjr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,13 +34,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockCountController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+            <state relative-caret-position="338">
+              <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
               <folding>
                 <element signature="e#40#76#0#PHP" expanded="true" />
                 <element signature="e#1754#1799#0#PHP" />
                 <element signature="e#2439#3830#0#PHP" />
                 <element signature="e#3836#4003#0#PHP" />
+                <element signature="e#7283#7369#0#PHP" />
+                <element signature="e#7451#7652#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -441,7 +438,7 @@
       <workItem from="1550159930652" duration="64000" />
       <workItem from="1550160016730" duration="650000" />
       <workItem from="1550160949066" duration="270000" />
-      <workItem from="1550161248115" duration="14824000" />
+      <workItem from="1550161248115" duration="15799000" />
     </task>
     <task id="LOCAL-00001" summary="IUpdate">
       <created>1549574806779</created>
@@ -583,11 +580,18 @@
       <option name="project" value="LOCAL" />
       <updated>1550171877349</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Cleaned Up the Routes File a Bit. And created a basic first screen as described by Ash at /main.">
+      <created>1550178119716</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1550178119716</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101606000" />
+    <option name="totallyTimeSpent" value="102581000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -680,7 +684,8 @@
     <MESSAGE value="Added feature to Start, End and Pause the Stock Count along with some small changes to report UI" />
     <MESSAGE value="Added Discrepancy Columns to SC Report" />
     <MESSAGE value="Minor Text Changes to Stock Count Report. And added JS to fix scanning of Multiple Barcode at once in the Input box." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor Text Changes to Stock Count Report. And added JS to fix scanning of Multiple Barcode at once in the Input box." />
+    <MESSAGE value="Cleaned Up the Routes File a Bit. And created a basic first screen as described by Ash at /main." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned Up the Routes File a Bit. And created a basic first screen as described by Ash at /main." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1053,13 +1058,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockCountController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="24" column="42" lean-forward="true" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state relative-caret-position="338">
+          <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
           <folding>
             <element signature="e#40#76#0#PHP" expanded="true" />
             <element signature="e#1754#1799#0#PHP" />
             <element signature="e#2439#3830#0#PHP" />
             <element signature="e#3836#4003#0#PHP" />
+            <element signature="e#7283#7369#0#PHP" />
+            <element signature="e#7451#7652#0#PHP" />
           </folding>
         </state>
       </provider>

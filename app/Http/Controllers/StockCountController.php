@@ -186,53 +186,7 @@ class StockCountController extends Controller
         return $this->count($stock_count);
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function additem(Request $request)
-    {
 
-        try{
-            $part = Part::where('sku',$request->get('sku'))->firstOrFail();
-
-            $sc = StockCount::find($request->get('scid'));
-
-            $sc_item_seq = new StockCountItemsSeq();
-            $sc_item_seq->Part()->associate($part);
-            $sc_item_seq->StockCount()->associate($sc);
-            $sc_item_seq->qty = 1;
-            $sc_item_seq->save();
-
-            $result = ['error'=> false];
-
-        }catch (ModelNotFoundException $exception){
-            $result['error'] = true;
-        }
-
-        /* Add to Agggregate TAble now */
-        try{
-            $part_in_aggregate = StockCountItems::where(
-                [
-                    ['part_id',$part->id],
-                    ['stockCount_id',$request->get('scid')]
-                ]
-
-            )->firstOrFail();
-            $part_in_aggregate->qty++;
-            $part_in_aggregate->save();
-
-        } catch (ModelNotFoundException $exception){
-            $part_in_aggregate = new StockCountItems();
-            $part_in_aggregate->Part()->associate($part);
-            $part_in_aggregate->qty = 1;
-            $part_in_aggregate->StockCount()->associate(StockCount::find($request->get('scid')));
-
-            $part_in_aggregate->save();
-        }
-
-        return response()->json($result);
-    }
 
     public function aggregate($id)
     {
@@ -256,5 +210,74 @@ class StockCountController extends Controller
         $digits = 2;
         $random = rand(pow(10, $digits-1), pow(10, $digits)-1);
         return 'SC-'.$date.'-'.$random;
+    }
+
+    /*Cleaned Up and Refactored Functions below*/
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function additem(Request $request)
+    {
+
+        try{
+            $part = Part::where('sku',$request->get('sku'))->firstOrFail();
+            $sc = StockCount::find($request->get('scid'));
+            $this->addItemtoStockCount($sc,$part);
+
+            $result = ['error'=> false];
+
+        }catch (ModelNotFoundException $exception){
+
+            $result['error'] = true;
+
+        }
+
+        return response()->json($result);
+    }
+
+    /**
+     * @param StockCount $stockCount
+     * @param Part $item
+     * @return bool
+     */
+    public function addItemtoStockCount(StockCount $stockCount, Part $item)
+    {
+        $error = false;
+
+        try{
+
+            /* Adding item to Seq Table */
+            $sc_item_seq = new StockCountItemsSeq();
+            $sc_item_seq->Part()->associate($item);
+            $sc_item_seq->StockCount()->associate($stockCount);
+            $sc_item_seq->qty = 1;
+            $sc_item_seq->save();
+
+            /* Adding Item to Aggregate Table*/
+            try{
+                $part_in_aggregate = StockCountItems::where(
+                    [
+                        ['part_id',$item->id],
+                        ['stockCount_id',$stockCount->id]
+                    ]
+
+                )->firstOrFail();
+                $part_in_aggregate->qty++;
+                $part_in_aggregate->save();
+
+            } catch (ModelNotFoundException $exception){
+                $part_in_aggregate = new StockCountItems();
+                $part_in_aggregate->Part()->associate($item);
+                $part_in_aggregate->qty = 1;
+                $part_in_aggregate->StockCount()->associate($stockCount);
+                $part_in_aggregate->save();
+            }
+
+        }catch(ModelNotFoundException $e){
+            $error = false;
+        }
+        return $error;
     }
 }
