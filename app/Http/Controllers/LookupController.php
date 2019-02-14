@@ -101,12 +101,6 @@ class LookupController extends Controller
         return response()->json($part);
     }
 
-    public function searchBarcode()
-    {
-        $barcode = request('part-barcode');
-        return redirect('itemlookup/sku/'.$barcode);
-    }
-
     public function getPartDetailsWithSKU($sku)
     {
         try{
@@ -117,6 +111,4 @@ class LookupController extends Controller
 
         return response()->json($part);
     }
-
-
 }
