@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header" style="font-size: 1.2em;"><b>Search</b></div>
 
-                    <td class="card-body">
+                    <div class="card-body">
 
                         <table class="table table-sm">
                             <thead>
@@ -20,11 +20,11 @@
                             <tbody>
                                 @foreach($results as $result)
                                     <tr>
-                                        <td>{{ $result->devices->brand->name }} {{ $result->devices->model_name }} {{ $result->part_name }}</td>
+                                        <td>{{ $result->devices->brand->name }} {{ $result->devices->model_name }} <b>{{ $result->part_name }}</b></td>
                                         <td>${{ $result->price->selling_price_b2c }}</td>
                                         <td>
                                             @foreach($result->stock as $stock)
-                                                {{$stock->location->location_code}} - <b>{{ $stock->stock_qty }}</b><br>
+                                                {{ $stock->location->location_code }} - <b>{{ $stock->stock_qty }}</b><br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -34,6 +34,12 @@
 
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 1em">
+            <div class="col-md-12">
+                {{ $results->links() }}
             </div>
         </div>
     </div>
