@@ -14,7 +14,8 @@ class SearchController extends Controller
         if ( is_numeric($searchTerm) ) {
             return redirect('itemlookup/sku/'.$barcode);
         } else {
-            return redirect('itemlookup/sku/664281477');
+            $parts = \App\Models\Part::search($searchTerm)->get();
+            return view('search.results')->with('results', $parts);
         }
     }
 

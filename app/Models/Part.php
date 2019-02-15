@@ -3,9 +3,12 @@ namespace App\Models;
 
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
+use Laravel\Scout\Searchable as ScoutSearchable;
 
 class Part extends Base\Part implements Searchable
 {
+    use ScoutSearchable;
+    
     public function getSearchResult(): SearchResult
     {
         // $url = route('categories.show', $this->id);
