@@ -23,7 +23,33 @@ class StockCountController extends Controller
     public function index()
     {
         $stock_counts = StockCount::all();
-        return view('stockcount')->with('stock_counts',$stock_counts);
+
+        $stock_counts_active = $stock_counts->filter(
+            function ($value,$key){
+                if('Ended' !== $value->StockCountStatus->status) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        );
+
+        $stock_counts_ended = $stock_counts->filter(
+            function ($value,$key){
+                if('Ended' == $value->StockCountStatus->status) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        );
+        return view(
+            'stockcount',
+            [
+                'stock_counts_active'=>$stock_counts_active,
+                'stock_counts_ended'=>$stock_counts_ended
+            ]
+        );
     }
 
 
