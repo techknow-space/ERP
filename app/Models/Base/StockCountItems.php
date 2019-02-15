@@ -31,7 +31,14 @@ class StockCountItems extends Model
     'id'=>'string',
     'qty'=>'integer',
     'stockCount_id'=>'string',
-    'part_id'=>'string'
+    'part_id'=>'string',
+    'cost'=>'float',
+    'inhand_qty'=>'integer',
+    'count_qty'=>'integer',
+    'inhand_value'=>'float',
+    'count_value'=>'float',
+    'diff_qty'=>'integer',
+    'diff_value'=>'float'
   ];
   public function StockCount()
   {

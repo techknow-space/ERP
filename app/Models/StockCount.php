@@ -1,7 +1,10 @@
 <?php
 namespace App\Models;
 use Webpatser\Uuid\Uuid as Uuid;
-
+/**
+ * Class StockCount
+ * @package App\Models
+ */
 class StockCount extends Base\StockCount
 {
     public $timestamps = false;
