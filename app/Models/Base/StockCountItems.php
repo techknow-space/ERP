@@ -34,7 +34,6 @@ class StockCountItems extends Model
     'part_id'=>'string',
     'cost'=>'float',
     'inhand_qty'=>'integer',
-    'count_qty'=>'integer',
     'inhand_value'=>'float',
     'count_value'=>'float',
     'diff_qty'=>'integer',

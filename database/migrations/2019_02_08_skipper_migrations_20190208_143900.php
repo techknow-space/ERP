@@ -31,14 +31,14 @@ class Migrations20190208143900 extends Migration
     });
     Schema::create('stock_count_items_seqs', function (Blueprint $table) {
       $table->uuid('id')->unique();
-      $table->integer('qty')->nullable(true)->unsigned();
+      $table->integer('qty')->nullable(true);
       $table->uuid('part_id')->nullable(true);
       $table->uuid('stockCount_id')->nullable(true);
       $table->unique(['id'],'stock_count_item_seq_pk');
     });
     Schema::create('stock_count_items', function (Blueprint $table) {
       $table->uuid('id')->unique();
-      $table->integer('qty')->nullable(true)->unsigned();
+      $table->integer('qty')->nullable(true);
       $table->uuid('stockCount_id')->nullable(true);
       $table->uuid('part_id')->nullable(true);
       $table->unique(['id'],'stock_count_items_pk');

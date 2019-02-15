@@ -130,6 +130,8 @@ class StockCountController extends Controller
                     $stock_count->ended_at = Carbon::now()->format('Y-m-d H:i:s');
                     $stock_count->save();
 
+                    $this->createStockCountSummary($stock_count);
+
                     return $this->aggregate($id);
                 }
             }
@@ -182,9 +184,9 @@ class StockCountController extends Controller
     {
 
         try{
-            $part = Part::where('sku',$request->get('sku'))->firstOrFail();
+            $part = Part::where('sku',$request->get('sku'))->with('price')->with('stock')->firstOrFail();
             $sc = StockCount::find($request->get('scid'));
-            $this->addItemtoStockCount($sc,$part);
+            $result = $this->addItemtoStockCount($sc,$part);
 
             $result = ['error'=> false];
 
@@ -230,7 +232,12 @@ class StockCountController extends Controller
             } catch (ModelNotFoundException $exception){
                 $part_in_aggregate = new StockCountItems();
                 $part_in_aggregate->Part()->associate($item);
+                $part_in_aggregate->cost = $item->price->last_cost;
                 $part_in_aggregate->qty = 1;
+
+                $stock = $item->stock()->where('location_id','=',$stockCount->location->id)->first();
+
+                $part_in_aggregate->inhand_qty = $stock->stock_qty;
                 $part_in_aggregate->StockCount()->associate($stockCount);
                 $part_in_aggregate->save();
             }
@@ -257,5 +264,28 @@ class StockCountController extends Controller
         $stock_count->StockCountStatus()->associate($status_started);
         $stock_count->save();
         return $stock_count;
+    }
+
+
+    /**
+     * @param StockCount $stockCount
+     * @return StockCount
+     */
+    public function createStockCountSummary(StockCount $stockCount)
+    {
+        if('Ended' == $stockCount->StockCountStatus->status){
+            $items = $stockCount->StockCountItems();
+
+            $stockCount->count_qty = $items->sum('qty');
+            $stockCount->count_value = $items->sum('count_value');
+            $stockCount->diff_qty = $items->sum('diff_qty');
+            $stockCount->diff_value = $items->sum('diff_value');
+            $stockCount->inhand_qty = $items->sum('inhand_qty');
+            $stockCount->inhand_value = $items->sum('inhand_value');
+
+            $stockCount->save();
+        }
+
+        return $stockCount;
     }
 }
