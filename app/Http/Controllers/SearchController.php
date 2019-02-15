@@ -12,7 +12,7 @@ class SearchController extends Controller
 
         // Test for numeric (barcode input) or text (freeform search)
         if ( is_numeric($searchTerm) ) {
-            return redirect('itemlookup/sku/'.$barcode);
+            return redirect('itemlookup/sku/'.$searchTerm);
         } else {
             $parts = \App\Models\Part::search($searchTerm)->paginate(10);
             return view('search.results')->with('results', $parts);
