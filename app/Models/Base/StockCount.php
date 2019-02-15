@@ -33,7 +33,13 @@ class StockCount extends Model
     'started_at'=>'datetime',
     'ended_at'=>'datetime',
     'stockCountStatus_id'=>'string',
-    'location_id'=>'string'
+    'location_id'=>'string',
+    'diff_qty'=>'integer',
+    'diff_value'=>'float',
+    'inhand_qty'=>'integer',
+    'inhand_value'=>'float',
+    'count_qty'=>'integer',
+    'count_value'=>'float'
   ];
   public function StockCountStatus()
   {
