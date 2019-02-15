@@ -24,22 +24,20 @@
                                 <th scope="col">SC #</th>
                                 <th scope="col">Started At</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Ended At</th>
+
                                 <th scope="col">Location</th>
 
                             </tr>
                             </thead>
                             <tbody>
 
-                            @if($stock_counts->filter(function ($value,$key){
-                            if('Ended' !== $value->StockCountStatus->status) {return true;} else {return false;}
-                            })->count() > 0)
-                                @foreach($stock_counts as $stock_count)
+                            @if($stock_counts_active->count() > 0)
+                                @foreach($stock_counts_active as $stock_count)
                                     <tr>
                                         <td><a href="/stockcount/count/id/{{ $stock_count->id  }}">{{ $stock_count->number }}</a></td>
                                         <td>{{ $stock_count->started_at }}</td>
                                         <td>{{ $stock_count->StockCountStatus->status }}</td>
-                                        <td>{{ $stock_count->ended_at }}</td>
+
                                         <td>{{ $stock_count->Location->location }}</td>
                                     </tr>
                                 @endforeach
@@ -85,10 +83,8 @@
                             </thead>
                             <tbody>
 
-                            @if($stock_counts->filter(function ($value,$key){
-                            if('Ended' == $value->StockCountStatus->status) {return true;} else {return false;}
-                            })->count() > 0)
-                                @foreach($stock_counts as $stock_count)
+                            @if($stock_counts_ended->count() > 0)
+                                @foreach($stock_counts_ended as $stock_count)
                                     <tr>
                                         <td><a href="/stockcount/count/id/{{ $stock_count->id  }}">{{ $stock_count->number }}</a></td>
                                         <td>{{ $stock_count->started_at }}</td>
