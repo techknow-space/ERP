@@ -13,13 +13,20 @@
                             <thead>
                             <tr>
                                 <th scope="col">Part</th>
-                                <th scope="col">Selling Price</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Qty</th>
                             </tr>
                             </thead>
                             <tbody>
                                 @foreach($results as $result)
                                     <tr>
-                                        <td>{{ $result->part_name }}</td>
+                                        <td>{{ $result->devices->brand->name }} {{ $result->devices->model_name }} {{ $result->part_name }}</td>
+                                        <td>${{ $result->price->selling_price_b2c }}</td>
+                                        <td>
+                                            @foreach($result->stock as $stock)
+                                                {{$stock->location->location_code}} - <b>{{ $stock->stock_qty }}</b><br>
+                                            @endforeach
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

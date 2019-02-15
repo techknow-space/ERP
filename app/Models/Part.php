@@ -8,7 +8,15 @@ use Laravel\Scout\Searchable as ScoutSearchable;
 class Part extends Base\Part implements Searchable
 {
     use ScoutSearchable;
-    
+    protected $with = array('devices', 'price', 'stock', 'devices.brand');
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        return $array;
+    }
+
     public function getSearchResult(): SearchResult
     {
         // $url = route('categories.show', $this->id);
