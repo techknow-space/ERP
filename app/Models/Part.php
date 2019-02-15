@@ -40,7 +40,7 @@ class Part extends Base\Part implements Searchable
 
     public function stock()
     {
-        return $this->hasMany('App\Models\PartStock','part_id');
+        return $this->hasMany('App\Models\PartStock','part_id')->orderBy('location_id', 'asc');
     }
 
     public function category()
