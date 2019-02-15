@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="card main-operations-card" style="display: none;">
+                <div class="card main-operations-card">
                     <div class="card-header" style="font-size: 1.2em;">
                         <div class="text-center" ><b>Select Your Operation</b></div>
                     </div>
@@ -65,7 +65,7 @@
                     <div class="card-body">
                         <ol class="main-operations-ol">
                             <li>
-                                <b><a href="" id="main-initiate-stock-count-link">Stock Count</a></b>
+                                <b><a href="/stockcount/create" id="main-initiate-stock-count-link">Stock Count</a></b>
                             </li>
                             <br>
                             <li>

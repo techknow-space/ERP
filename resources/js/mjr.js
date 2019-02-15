@@ -200,7 +200,6 @@ $(document).ready(function() {
 
                     $('#main-initiate-stock-count-link').attr('href','stockcount/initiate/'+part_id);
                     $('#main-part-details-card').show();
-                    $('.main-operations-card').show();
                     barcode_box.val('');
                 }
                 else {

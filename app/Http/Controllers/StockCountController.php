@@ -44,55 +44,15 @@ class StockCountController extends Controller
             ->get();
 
         if($open_stock_count->count() == 0){
-
-            $stock_count = new StockCount();
-            $stock_count->number = $this->create_sc_number();
-            $stock_count->Location()->associate($location);
-            $stock_count->StockCountStatus()->associate($status_started);
-            $stock_count->save();
-
-
+            $stock_count = $this->createStockCount($location);
         }
         else{
             $stock_count = $open_stock_count->first();
         }
 
         if(NULL !== $part_id){
-            try{
-                $part = Part::find($part_id);
-
-                $sc = $stock_count;
-
-                $sc_item_seq = new StockCountItemsSeq();
-                $sc_item_seq->Part()->associate($part);
-                $sc_item_seq->StockCount()->associate($sc);
-                $sc_item_seq->qty = 1;
-                $sc_item_seq->save();
-
-            }catch (ModelNotFoundException $exception){
-                $result['error'] = true;
-            }
-
-            /* Add to Agggregate TAble now */
-            try{
-                $part_in_aggregate = StockCountItems::where(
-                    [
-                        ['part_id',$part_id],
-                        ['stockCount_id',$sc->id]
-                    ]
-
-                )->firstOrFail();
-                $part_in_aggregate->qty++;
-                $part_in_aggregate->save();
-
-            } catch (ModelNotFoundException $exception){
-                $part_in_aggregate = new StockCountItems();
-                $part_in_aggregate->Part()->associate($part);
-                $part_in_aggregate->qty = 1;
-                $part_in_aggregate->StockCount()->associate($sc);
-
-                $part_in_aggregate->save();
-            }
+            $item = Part::find($part_id);
+            $this->addItemtoStockCount($stock_count,$item);
         }
 
         return $this->count($stock_count);
@@ -279,5 +239,23 @@ class StockCountController extends Controller
             $error = false;
         }
         return $error;
+    }
+
+    /**
+     * @param Location $location
+     * @param StockCountStatus $status_started
+     * @return StockCount
+     */
+    public function createStockCount(Location $location, StockCountStatus $status_started = NULL)
+    {
+        if(NULL == $status_started){
+            $status_started = StockCountStatus::where('status','Started')->firstOrFail();
+        }
+        $stock_count = new StockCount();
+        $stock_count->number = $this->create_sc_number();
+        $stock_count->Location()->associate($location);
+        $stock_count->StockCountStatus()->associate($status_started);
+        $stock_count->save();
+        return $stock_count;
     }
 }

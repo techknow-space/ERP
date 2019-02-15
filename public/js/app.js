@@ -36712,7 +36712,6 @@ $(document).ready(function () {
           $('.part-details-table-col-sku').html(data.sku);
           $('#main-initiate-stock-count-link').attr('href', 'stockcount/initiate/' + part_id);
           $('#main-part-details-card').show();
-          $('.main-operations-card').show();
           barcode_box.val('');
         } else {
           alert('Unknown SKU');
