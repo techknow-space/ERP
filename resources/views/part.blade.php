@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-
-
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -34,13 +32,23 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- <div>Last Cost - ${{ $part->price->last_cost }}</div>
-                    <div>Price - ${{ $part->price->selling_price_b2c }}</div>
+    <div class="row secondrow">
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header" style="font-size: 1.2em;"><b>Select Operation</b></div>
 
-                    @foreach ($part->stock as $qty)
-                        {{ $qty->location->location }} Qty - {{ $qty->stock_qty }}<br>
-                    @endforeach -->
+                <div class="card-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">Use Part in Repair</a>
+                        <a href="#" class="list-group-item list-group-item-action">Return Part from Repair</a>
+                        <a href="#" class="list-group-item list-group-item-action">Begin Stock Count</a>
+                        <a href="#" class="list-group-item list-group-item-action">Edit Part Details</a>
+                    </div>
                 </div>
             </div>
         </div>

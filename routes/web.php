@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route as Route;
 |
 */
 
-Route::prefix('lookup')->group(function(){
+Route::group([ 'prefix' => 'lookup', 'middleware' => 'auth' ], function(){
     Route::get('/','LookupController@lookup_master');
     Route::get('sku/{sku}','LookupController@lookup_part_sku');
     Route::get('item/{id}','LookupController@lookup_part_id');
     Route::get('device/{id}','LookupController@lookup_device_id');
 });
 
-Route::prefix('stock')->group(function(){
+Route::group([ 'prefix' => 'stock', 'middleware' => 'auth' ], function(){
     Route::get('/','StockCountController@index');
     Route::get('view/{id}','StockCountController@details');
     Route::get('create','StockCountController@create');
@@ -29,7 +29,7 @@ Route::prefix('stock')->group(function(){
     Route::get('summary/{id}','StockCountController@aggregate');
 });
 
-Route::prefix('search')->group(function(){
+Route::group([ 'prefix' => 'search', 'middleware' => 'auth' ], function(){
     Route::get('barcode','SearchController@searchBarcode');
     Route::get('/','SearchController@search')->name('search');
 });
@@ -44,17 +44,13 @@ Route::prefix('api')->group(function(){
 
 // All routes below here require cleanup/removal and handlers to be adjusted accordingly
 
-Route::prefix('stockcount')->group(function (){
-    Route::get('initiate/{part_id}','StockCountController@initiate');
-    Route::get('count/id/{id}','StockCountController@details');
-    Route::get('create','StockCountController@create');
-    Route::get('aggregate/id/{id}','StockCountController@aggregate');
-    Route::get('{status_update}/id/{id}','StockCountController@statusupdate')->where('status_update','(restart|pause|end)');
-    Route::post('additem','StockCountController@additem');
-});
-
 Route::get('/', 'LookupController@index');
 
+Auth::routes();
+// Auth::routes(['register' => false]);
+
+Route::view('/','main');
+Route::view('/home','main');
 Route::view('/main','main');
 
 Route::get('itemlookup/sku/{sku}','LookupController@lookup_part_sku');
@@ -62,8 +58,6 @@ Route::get('itemlookup/sku/{sku}','LookupController@lookup_part_sku');
 Route::get('itemlookup/id/{id}','LookupController@lookup_part_id');
 
 Route::get('devicelookup/id/{id}','LookupController@lookup_device_id');
-
-Route::get('lookup','LookupController@lookup_master');
 
 Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
 
@@ -77,7 +71,15 @@ Route::get('device/{id}','LookupController@lookup_device_id');
 
 Route::get('stockcounts','StockCountController@index');
 
+Route::get('stockcount/count/id/{id}','StockCountController@details');
 
+Route::get('stockcounts/create','StockCountController@create');
+
+Route::post('stockcount/additem','StockCountController@additem');
+
+Route::get('stockcount/aggregate/id/{id}','StockCountController@aggregate');
+
+Route::get('stockcount/{status_update}/id/{id}','StockCountController@statusupdate')->where('status_update','(restart|pause|end)');
 
 
 
@@ -87,8 +89,4 @@ Route::get('/part-price', function () {
     echo json_encode(Part::with('price')->get(),JSON_PRETTY_PRINT);
     echo "</pre>";
     // return view('welcome');
-});
-
-Route::get('/login', function(){
-
 });

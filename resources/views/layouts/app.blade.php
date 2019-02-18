@@ -58,6 +58,10 @@
         .dropdown-menu .show > .dropdown-toggle::after{
             transform: rotate(-90deg);
         } */
+
+        .secondrow {
+            margin-top: 1em;
+        }
     </style>
 </head>
 <body>
@@ -85,20 +89,20 @@
                                 <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
                             </ul>
                         </li> -->
-                        <li class="nav-item dropdown dropdown-mega">
+                        <li class="nav-item dropdown dropdown-mea">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Smartphones
                             </a>
-                            <div class="dropdown-menu mega" aria-labelledby="navbarDropdown">
-                                <div class="container-fluid">
+                            <div class="dropdown-menu mea" aria-labelledby="navbarDropdown">
+                                <!-- <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <span class="text-uppercase">iPhone</span>
+                                        <div class="col-md-2"> -->
                                             <ul class="nav flex-column">
-                                                <li><a class="dropdown-item" href="/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
-                                                <li><a class="dropdown-item" href="/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
-                                                <li><a class="dropdown-item" href="/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
-                                                <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
+                                                <li>iPhone</li>
+                                                <li><a class="dropdown-item" href="/lookup/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
+                                                <li><a class="dropdown-item" href="/lookup/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
+                                                <li><a class="dropdown-item" href="/lookup/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
+                                                <li><a class="dropdown-item" href="/lookup/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
                                                 <!-- <li class="nav-item">
                                                     <a class="nav-link active" href="#">Active</a>
                                                 </li>
@@ -109,7 +113,7 @@
                                                     <a class="nav-link" href="#">Link item</a>
                                                 </li> -->
                                             </ul>
-                                        </div>
+                                        <!-- </div> -->
                                         <!-- <div class="col-md-2">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
@@ -123,10 +127,10 @@
                                                 </li>
                                             </ul>
                                         </div> -->
-                                        <div class="col-md-2">
-                                        </div>
-                                    </div>
-                                </div>
+                                        <!-- <div class="col-md-2">
+                                        </div> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
                                 <!--  /.container  -->
 
 
