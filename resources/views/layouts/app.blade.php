@@ -20,7 +20,26 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
-        .navbar-light .navbar-nav .nav-link {
+        .navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+            display:block!important;
+        }
+
+        .navbar .dropdown-mega { position:static; }
+
+        .navbar .mega {
+            width:100%;
+            left:0;
+            right:0;
+           /*  height of nav-item  */
+            top:45px;
+            background: #fafafa;
+            border: 1px solid #000;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            border-radius: 0;
+        }
+/* .navbar-light .navbar-nav .nav-link {
             color: rgb(64, 64, 64);
         }
         .btco-menu li > a {
@@ -38,7 +57,7 @@
 
         .dropdown-menu .show > .dropdown-toggle::after{
             transform: rotate(-90deg);
-        }
+        } */
     </style>
 </head>
 <body>
@@ -55,16 +74,63 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-target="#" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    iPhone
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
-                                    <li><a class="dropdown-item" href="/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
-                                    <li><a class="dropdown-item" href="/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
-                                    <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
-                                </ul>
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-target="#" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                iPhone
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
+                                <li><a class="dropdown-item" href="/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
+                                <li><a class="dropdown-item" href="/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
+                                <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
+                            </ul>
+                        </li> -->
+                        <li class="nav-item dropdown dropdown-mega">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Smartphones
+                            </a>
+                            <div class="dropdown-menu mega" aria-labelledby="navbarDropdown">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <span class="text-uppercase">iPhone</span>
+                                            <ul class="nav flex-column">
+                                                <li><a class="dropdown-item" href="/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
+                                                <li><a class="dropdown-item" href="/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
+                                                <li><a class="dropdown-item" href="/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
+                                                <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
+                                                <!-- <li class="nav-item">
+                                                    <a class="nav-link active" href="#">Active</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">Link item</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#">Link item</a>
+                                                </li> -->
+                                            </ul>
+                                        </div>
+                                        <!-- <div class="col-md-2">
+                                            <ul class="nav flex-column">
+                                                <li class="nav-item">
+                                                <a class="nav-link active" href="#">Active</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                <a class="nav-link" href="#">Link item</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                <a class="nav-link" href="#">Link item</a>
+                                                </li>
+                                            </ul>
+                                        </div> -->
+                                        <div class="col-md-2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  /.container  -->
+
+
+                            </div>
                         </li>
                     </ul>
 

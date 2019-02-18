@@ -24,7 +24,7 @@
                             <tbody>
                                 @foreach($device->parts as $part)
                                     <tr>
-                                        <td>{{ $part->part_name }}</td>
+                                        <td><a href="/itemlookup/sku/{{ $part->sku }}">{{ $part->part_name }}</a></td>
                                         <td >${{ $part->price->selling_price_b2c }}</td>
                                         @foreach ($part->stock as $qty)
                                             <td>{{ $qty->stock_qty }}</td>

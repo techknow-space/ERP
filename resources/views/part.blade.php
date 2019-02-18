@@ -35,12 +35,12 @@
                         </tbody>
                     </table>
 
-                    <div>Last Cost - ${{ $part->price->last_cost }}</div>
+                    <!-- <div>Last Cost - ${{ $part->price->last_cost }}</div>
                     <div>Price - ${{ $part->price->selling_price_b2c }}</div>
 
                     @foreach ($part->stock as $qty)
                         {{ $qty->location->location }} Qty - {{ $qty->stock_qty }}<br>
-                    @endforeach
+                    @endforeach -->
                 </div>
             </div>
         </div>
