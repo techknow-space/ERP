@@ -44,12 +44,12 @@ Route::prefix('api')->group(function(){
 
 // All routes below here require cleanup/removal and handlers to be adjusted accordingly
 
-Route::get('/', 'LookupController@index');
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 // Auth::routes(['register' => false]);
 
-Route::view('/','main');
+// Route::view('/','main');
 Route::view('/home','main');
 Route::view('/main','main');
 
