@@ -228,7 +228,7 @@ class ImportController extends Controller
         }catch (ModelNotFoundException $e){
             $part_price = new PartPrice();
             $part_price->last_cost = $price_details['last_cost'];
-            $part_price->selling_b2c = $price_details['selling_price_b2c'];
+            $part_price->selling_price_b2c = $price_details['selling_b2c'];
             $part_price->part()->associate($part);
         }
         $part_price->save();
