@@ -1,12 +1,22 @@
 <?php
 namespace App\Models;
 
+use Ramsey\Uuid\Uuid;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Laravel\Scout\Searchable as ScoutSearchable;
 
 class Part extends Base\Part implements Searchable
 {
+    public $timestamps = false;
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function($model){
+            $model->id = Uuid::uuid4()->toString();
+        });
+    }
     use ScoutSearchable;
     protected $with = array('devices', 'price', 'stock', 'devices.brand');
 

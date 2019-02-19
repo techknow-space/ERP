@@ -1,6 +1,17 @@
 <?php
 namespace App\Models;
 
-class StockCountStatus extends \App\Models\Base\StockCountStatus
+use Ramsey\Uuid\Uuid;
+
+class StockCountStatus extends Base\StockCountStatus
 {
+    public $timestamps = false;
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function($model){
+            $model->id = Uuid::uuid4()->toString();
+        });
+    }
 }

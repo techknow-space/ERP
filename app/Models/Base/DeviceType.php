@@ -29,6 +29,7 @@ class DeviceType extends Model
   */
   protected $casts=[
     'id'=>'string',
-    'type'=>'string'
+    'type'=>'string',
+    'import_ref'=>'integer'
   ];
 }

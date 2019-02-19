@@ -90,3 +90,10 @@ Route::get('/part-price', function () {
     echo "</pre>";
     // return view('welcome');
 });
+
+Route::prefix('import')->group(function (){
+    Route::get('/','ImportController@index');
+    Route::post('/upload','ImportController@upload');
+});
+
+Route::get('/import','ImportController@index');
