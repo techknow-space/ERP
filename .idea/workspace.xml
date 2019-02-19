@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="General Fixes StockCounts Summary Page.">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_02_19_skipper_migrations_20190219_093328.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/DeviceTypesTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/import/import.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/import/process.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LaraERP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaraERP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Base/DeviceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/DeviceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Brand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Brand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Device.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/DeviceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DeviceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Location.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Manufacturer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Manufacturer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Part.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Part.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartPrice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartPrice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartStock.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartStock.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PartType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PartType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/StockCountStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/StockCountStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="204" column="46" lean-forward="true" selection-start-line="204" selection-start-column="46" selection-end-line="204" selection-end-column="46" />
+            <state relative-caret-position="316">
+              <caret line="225" column="65" lean-forward="true" selection-start-line="225" selection-start-column="65" selection-end-line="225" selection-end-column="65" />
               <folding>
                 <element signature="e#40#61#0#PHP" expanded="true" />
                 <element signature="e#1587#1666#0#PHP" />
@@ -84,7 +59,6 @@
                 <element signature="e#2741#2827#0#PHP" />
                 <element signature="e#3466#3554#0#PHP" />
                 <element signature="e#5489#5585#0#PHP" />
-                <element signature="e#5590#6258#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -477,7 +451,7 @@
       <workItem from="1550161248115" duration="20012000" />
       <workItem from="1550244553537" duration="18429000" />
       <workItem from="1550587489367" duration="9260000" />
-      <workItem from="1550598807721" duration="9845000" />
+      <workItem from="1550598807721" duration="10774000" />
     </task>
     <task id="LOCAL-00001" summary="IUpdate">
       <created>1549574806779</created>
@@ -661,17 +635,24 @@
       <option name="project" value="LOCAL" />
       <updated>1550268468593</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Added the Import Controller and related Stuff.">
+      <created>1550609305536</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1550609305536</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144328000" />
+    <option name="totallyTimeSpent" value="145257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49779737" weight="0.288874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49779737" visible="true" weight="0.288874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.50220263" side_tool="true" weight="0.3297587" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -684,7 +665,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.04405286" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.04405286" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3277592" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32892805" />
@@ -764,7 +745,8 @@
     <MESSAGE value="Added Summary Values in StockCount and StockCountItems along with Migrations." />
     <MESSAGE value="Completed the Stock Count Summary with Relevant Templates" />
     <MESSAGE value="General Fixes StockCounts Summary Page." />
-    <option name="LAST_COMMIT_MESSAGE" value="General Fixes StockCounts Summary Page." />
+    <MESSAGE value="Added the Import Controller and related Stuff." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the Import Controller and related Stuff." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1117,8 +1099,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="204" column="46" lean-forward="true" selection-start-line="204" selection-start-column="46" selection-end-line="204" selection-end-column="46" />
+        <state relative-caret-position="316">
+          <caret line="225" column="65" lean-forward="true" selection-start-line="225" selection-start-column="65" selection-end-line="225" selection-end-column="65" />
           <folding>
             <element signature="e#40#61#0#PHP" expanded="true" />
             <element signature="e#1587#1666#0#PHP" />
@@ -1126,7 +1108,6 @@
             <element signature="e#2741#2827#0#PHP" />
             <element signature="e#3466#3554#0#PHP" />
             <element signature="e#5489#5585#0#PHP" />
-            <element signature="e#5590#6258#0#PHP" />
           </folding>
         </state>
       </provider>
