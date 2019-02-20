@@ -9,7 +9,7 @@
                 </div>
                 <div class="card-body">
                     <pre>
-                        {{print_r($path)}}
+                        {{var_dump($path)}}
                     </pre>
 
                 </div>

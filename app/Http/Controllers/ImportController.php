@@ -56,7 +56,7 @@ class ImportController extends Controller
         $data = false;
 
         if($file){
-            $file = Storage::get($file);
+            $file = utf8_encode(Storage::get($file));
             $structured_data = str_getcsv($file,"\n");
             foreach ($structured_data as $row){
                 $data[] = str_getcsv($row, ",");
@@ -64,7 +64,45 @@ class ImportController extends Controller
             $headers = array_shift($data);
         }
 
+        if($data){
+            $data = $this->sanitizeData($data);
+        }
         return $data;
+    }
+
+    private function sanitizeData($data)
+    {
+        $data_new = [];
+        foreach ($data as $datum){
+            $datum[5] = utf8_encode(str_replace("\xc2\xa0",' ',$datum[5]));
+            if($datum[6] == ''){
+                $data[6] = intval(0);
+            }
+            if($datum[7] == ''){
+                $data[7] = intval(0);
+            }
+            if($datum[8] == ''){
+                $data[8] = intval(0);
+            }
+            if($datum[9] !== ''){
+
+            }
+            else{
+                $data[9] = intval(0);
+            }
+            if($datum[10] !== ''){
+
+            }
+            else{
+                $data[10] = intval(0);
+            }
+            if($datum[11] == ''){
+                $data[11] = intval(0);
+            }
+            $data_new[] = $datum;
+
+        }
+        return $data_new;
     }
 
     /**
@@ -109,10 +147,14 @@ class ImportController extends Controller
                     $part,
                     [
                         [
-                            'code'=>'S1','stock_qty'=>$item[8],'sold_all_time'=>$item[10]
+                            'code'=>'S1',
+                            'stock_qty'=>$item[8],
+                            'sold_all_time'=>$item[10]
                         ],
                         [
-                            'code'=>'TO1','stock_qty'=>$item[7],'sold_all_time'=>$item[9]
+                            'code'=>'TO1',
+                            'stock_qty'=>$item[7],
+                            'sold_all_time'=>$item[9]
                         ]
                     ]
                 );
@@ -224,7 +266,7 @@ class ImportController extends Controller
             $part_price = PartPrice::where('part_id',$part->id)
                 ->firstOrFail();
             $part_price->last_cost = $price_details['last_cost'];
-            $part_price->selling_b2c = $price_details['selling_price_b2c'];
+            $part_price->selling_price_b2c = $price_details['selling_b2c'];
         }catch (ModelNotFoundException $e){
             $part_price = new PartPrice();
             $part_price->last_cost = $price_details['last_cost'];
@@ -243,14 +285,13 @@ class ImportController extends Controller
     private function updateOrCreatePartStock(Part $part, $stock_details)
     {
         foreach($stock_details as $location){
-
-            $location = Location::where('location_code',$location['code'])
+            $location_obj = Location::where('location_code',$location['code'])
                 ->firstOrFail();
 
             try{
 
                 $part_stock = PartStock::where('part_id',$part->id)
-                    ->where('location_id',$location->id)
+                    ->where('location_id',$location_obj->id)
                     ->firstOrFail();
                 $part_stock->stock_qty = $location['stock_qty'];
                 $part_stock->sold_all_time = $location['sold_all_time'];
@@ -260,7 +301,8 @@ class ImportController extends Controller
                 $part_stock = new PartStock();
                 $part_stock->stock_qty = $location['stock_qty'];
                 $part_stock->sold_all_time = $location['sold_all_time'];
-                $part_stock->location()->associate($location);
+                $part_stock->location()->associate($location_obj);
+                $part_stock->part()->associate($part);
             }
 
             $part_stock->save();
