@@ -34,6 +34,18 @@ Route::group([ 'prefix' => 'search', 'middleware' => 'auth' ], function(){
     Route::get('/','SearchController@search')->name('search');
 });
 
+Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
+
+    Route::prefix('supplier')->group(function (){
+        Route::get('/','SupplierController@index');
+        Route::post('create','SupplierController@create');
+        Route::get('view/{id}','SupplierController@view');
+        Route::get('edit/{$id}','SupplierController@edit');
+        Route::put('edit/{id}','SupplierController@update');
+    });
+
+});
+
 // TODO: Create API controller group
 Route::prefix('api')->group(function(){
     Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
