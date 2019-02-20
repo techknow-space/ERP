@@ -36,6 +36,23 @@ class Part extends Model
     'partType_id'=>'string',
     'partColour_id'=>'string',
     'device_id'=>'string',
-    'first_received'=>'datetime'
+    'first_received'=>'datetime',
+    'part_name'=>'string'
   ];
+  public function StockCountItemsSeqs()
+  {
+    return $this->hasMany('\App\Models\StockCountItemsSeq','part_id','id');
+  }
+  public function StockCountItems()
+  {
+    return $this->hasMany('\App\Models\StockCountItems','part_id','id');
+  }
+  public function PurchaseOrderItems()
+  {
+    return $this->hasMany('\App\Models\PurchaseOrderItems','part_id','id');
+  }
+  public function PurchaseOrderDiffItems()
+  {
+    return $this->hasMany('\App\Models\PurchaseOrderDiffItems','part_id','id');
+  }
 }
