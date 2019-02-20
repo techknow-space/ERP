@@ -89,20 +89,34 @@
                                 <li><a class="dropdown-item" href="/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
                             </ul>
                         </li> -->
-                        <li class="nav-item dropdown dropdown-mea">
+                        @foreach($types as $type)
+                           <li class="nav-item dropdown dropdown-mea">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ $type->type }}
+                                </a>
+                                <div class="dropdown-menu mea" aria-labelledby="navbarDropdown">
+                                    <ul class="nav flex-column">
+                                        @foreach($type->devices as $device)
+                                            <li><a class="dropdown-item" href="/lookup/device/{{ $device->id }}"> {{ $device->brand->name }} {{ $device->model_name }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>
+                        @endforeach
+                        <!-- <li class="nav-item dropdown dropdown-mea">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Smartphones
                             </a>
-                            <div class="dropdown-menu mea" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu mea" aria-labelledby="navbarDropdown"> -->
                                 <!-- <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-2"> -->
-                                            <ul class="nav flex-column">
+                                            <!-- <ul class="nav flex-column">
                                                 <li>iPhone</li>
                                                 <li><a class="dropdown-item" href="/lookup/device/26a2aa03-9aba-4f8a-a6c4-760cb9591cca">6</a></li>
                                                 <li><a class="dropdown-item" href="/lookup/device/b229c140-4505-4734-b894-76b2b39413b8">6 Plus</a></li>
                                                 <li><a class="dropdown-item" href="/lookup/device/6fbd9d65-9498-4e0e-a50c-c35992421be5">6S</a></li>
-                                                <li><a class="dropdown-item" href="/lookup/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li>
+                                                <li><a class="dropdown-item" href="/lookup/device/64f4830c-6eba-4428-a564-1d0473ed8b44">6S Plus</a></li> -->
                                                 <!-- <li class="nav-item">
                                                     <a class="nav-link active" href="#">Active</a>
                                                 </li>
@@ -112,7 +126,7 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#">Link item</a>
                                                 </li> -->
-                                            </ul>
+                                            <!-- </ul> -->
                                         <!-- </div> -->
                                         <!-- <div class="col-md-2">
                                             <ul class="nav flex-column">
@@ -134,8 +148,8 @@
                                 <!--  /.container  -->
 
 
-                            </div>
-                        </li>
+                            <!-- </div>
+                        </li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
