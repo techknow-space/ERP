@@ -17,10 +17,10 @@ class Migrations20190221105547 extends Migration
   public function up()
   {
     Schema::table('parts', function (Blueprint $table) {
-      $table->dropForeign('device_id');
+      $table->dropForeign('parts_device_id_foreign');
     });
     Schema::table('parts', function (Blueprint $table) {
-      $table->dropIndex(device_fk);
+      $table->dropIndex('device_fk');
     });
     Schema::table('parts', function (Blueprint $table) {
       $table->dropColumn('device_id');
