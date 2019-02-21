@@ -45,6 +45,16 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::put('edit/{id}','SupplierController@update');
     });
 
+    Route::prefix('purchase')->group(function (){
+        Route::get('/','PurchaseOrderController@index');
+        Route::get('/create','PurchaseOrderController@create');
+        Route::post('create','PurchaseOrderController@insert');
+        Route::get('view/{id}','PurchaseOrderController@view');
+        Route::get('edit/{id}','PurchaseOrderController@edit');
+        Route::put('edit/{id}','PurchaseOrderController@update');
+
+    });
+
 });
 
 // TODO: Create API controller group

@@ -6,6 +6,10 @@
  */
 
 require('./bootstrap');
+require('./generic');
+require('./mjr');
+require('./purchase_order');
+
 
 //window.Vue = require('vue');
 
@@ -31,6 +35,7 @@ require('./bootstrap');
 //const app = new Vue({
 //    el: '#app'
 //});
+
 
 function speechRecognition(form, mic)
 {
