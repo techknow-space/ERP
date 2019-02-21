@@ -17,13 +17,24 @@ class SupplierController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create(Request $request)
+    public function create()
     {
+        return view('order.supplier.create');
+    }
+
+    public function insert(Request $request)
+    {
+        $form_data = $request->all();
+
         $supplier = new Supplier();
-        return view('order.supplier.view')->with('supplier',$supplier);
+        $supplier->name = $form_data['supplier-name'];
+        $supplier->country = $form_data['supplier-country'];
+        $supplier->lead_time = $form_data['lead-time'];
+        $supplier->payment_details = $form_data['supplier-payment-details'];
+        $supplier->save();
+        return view('order.supplier.edit')->with('supplier',$supplier);
     }
 
     /**
@@ -53,7 +64,15 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $form_data = $request->all();
+
         $supplier = Supplier::findOrFail($id);
+        $supplier->name = $form_data['supplier-name'];
+        $supplier->country = $form_data['supplier-country'];
+        $supplier->lead_time = $form_data['lead-time'];
+        $supplier->payment_details = $form_data['supplier-payment-details'];
+        $supplier->save();
+
         return view('order.supplier.edit')->with('supplier',$supplier);
     }
 }

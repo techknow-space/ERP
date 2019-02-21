@@ -7,6 +7,9 @@
                 <div class="card">
                     <div class="card-header">
                         <b>{{$supplier->name}}</b>
+                        <div class="float-right">
+                            <a href="/order/supplier/edit/{{$supplier->id}}">Edit</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">

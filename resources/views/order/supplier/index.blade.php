@@ -16,6 +16,7 @@
                                     <th scope="col">Country</th>
                                     <th scope="col">Lead Time</th>
                                     <th scope="col">Payment Details</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -23,7 +24,7 @@
                                     @foreach ($suppliers as $supplier)
                                         <tr>
                                             <td>
-                                                {{$supplier->name}}
+                                                <a href="/order/supplier/view/{{$supplier->id}}">{{$supplier->name}}</a>
                                             </td>
                                             <td>
                                                 {{$supplier->country}}
@@ -33,6 +34,9 @@
                                             </td>
                                             <td>
                                                 {{$supplier->payment_details}}
+                                            </td>
+                                            <td>
+                                                <a href="/order/supplier/edit/{{$supplier->id}}">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach

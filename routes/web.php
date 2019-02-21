@@ -38,9 +38,10 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
     Route::prefix('supplier')->group(function (){
         Route::get('/','SupplierController@index');
-        Route::post('create','SupplierController@create');
+        Route::get('create','SupplierController@create');
+        Route::post('create','SupplierController@insert');
         Route::get('view/{id}','SupplierController@view');
-        Route::get('edit/{$id}','SupplierController@edit');
+        Route::get('edit/{id}','SupplierController@edit');
         Route::put('edit/{id}','SupplierController@update');
     });
 
