@@ -55,4 +55,8 @@ class Part extends Model
   {
     return $this->hasMany('\App\Models\PurchaseOrderDiffItems','part_id','id');
   }
+    public function Devices()
+    {
+        return $this->belongsToMany('\App\Models\Device','device_parts','part_id','device_id');
+    }
 }

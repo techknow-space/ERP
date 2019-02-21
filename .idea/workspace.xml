@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="">
+    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="Seeder for Multiple Status Tables in PO Functionality">
+      <change afterPath="$PROJECT_DIR$/app/Models/Base/DevicePart.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/DevicePart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LaraERP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LaraERP.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Base/Device.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/Device.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Base/Part.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/Part.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,52 +52,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/Device.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="36" column="4" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/Part.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="225" column="65" lean-forward="true" selection-start-line="225" selection-start-column="65" selection-end-line="225" selection-end-column="65" />
-              <folding>
-                <element signature="e#40#61#0#PHP" expanded="true" />
-                <element signature="e#1587#1666#0#PHP" />
-                <element signature="e#2086#2185#0#PHP" />
-                <element signature="e#2741#2827#0#PHP" />
-                <element signature="e#3466#3554#0#PHP" />
-                <element signature="e#5489#5585#0#PHP" />
-              </folding>
+            <state relative-caret-position="433">
+              <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/temp_import_folder/others_import_sample.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state>
-              <caret column="70" selection-start-column="70" selection-end-column="70" />
-            </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LookupController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="41" column="78" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="78" />
-              <folding>
-                <element signature="e#41#71#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/storage/app/imports/43d8e56f-afb6-4703-b5f3-f759036c1ab9.csv">
-          <provider selected="true" editor-type-id="csv-text-editor" />
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
@@ -118,12 +92,20 @@
       <find>stockcount)</find>
       <find>view('stockcount</find>
       <find>view('stock</find>
+      <find>timestmap</find>
+      <find>'type'</find>
+      <find>enct</find>
+      <find>multi</find>
     </findStrings>
     <replaceStrings>
       <replace>$stockCount</replace>
+      <replace>timestamp</replace>
+      <replace>'status'</replace>
     </replaceStrings>
     <dirStrings>
+      <dir>C:\PHP_Projects\LaraERP\resources\views</dir>
       <dir>C:\PHP_Projects\LaraERP</dir>
+      <dir>C:\PHP_Projects\LaraERP\database\migrations</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -132,59 +114,62 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/Base/PartStatus.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/PartStock.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/PartType.php" />
-        <option value="$PROJECT_DIR$/app/Models/PartColour.php" />
-        <option value="$PROJECT_DIR$/resources/views/devices.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/loopup.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/mjr.js" />
-        <option value="$PROJECT_DIR$/resources/views/part.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/lookup.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/barcodesearch.blade.php" />
-        <option value="$PROJECT_DIR$/temp_import_folder/stock_count_statuses.sql" />
-        <option value="$PROJECT_DIR$/resources/views/create_stockcount.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_12_skipper_migrations_20190212_100101.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/StockCountItemsSeq.php" />
-        <option value="$PROJECT_DIR$/app/Models/StockCountItemsSeq.php" />
-        <option value="$PROJECT_DIR$/app/Models/StockCountItems.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/resources/views/count_stock_count.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" />
-        <option value="$PROJECT_DIR$/app/Models/StockCount.php" />
-        <option value="$PROJECT_DIR$/resources/views/main.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/mjr.js" />
-        <option value="$PROJECT_DIR$/app/Models/Base/StockCount.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/StockCountItems.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_15_skipper_migrations_20190215_100144.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_08_skipper_migrations_20190208_143900.php" />
-        <option value="$PROJECT_DIR$/resources/views/aggregate_stock_count.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/stockcount.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StockCountController.php" />
-        <option value="$PROJECT_DIR$/app/Http/ImportController.php" />
-        <option value="$PROJECT_DIR$/resources/views/import.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/import/import.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/import/process.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/DeviceType.php" />
-        <option value="$PROJECT_DIR$/app/Models/Device.php" />
-        <option value="$PROJECT_DIR$/app/Models/Brand.php" />
-        <option value="$PROJECT_DIR$/app/Models/Manufacturer.php" />
-        <option value="$PROJECT_DIR$/app/Models/Part.php" />
-        <option value="$PROJECT_DIR$/app/Models/PartPrice.php" />
-        <option value="$PROJECT_DIR$/app/Models/PartStatus.php" />
         <option value="$PROJECT_DIR$/app/Models/Location.php" />
         <option value="$PROJECT_DIR$/app/Models/PartCategory.php" />
         <option value="$PROJECT_DIR$/app/Models/PartStock.php" />
         <option value="$PROJECT_DIR$/app/Models/PartType.php" />
         <option value="$PROJECT_DIR$/app/Models/StockCountStatus.php" />
         <option value="$PROJECT_DIR$/database/seeds/DeviceTypesTableSeeder.php" />
+        <option value="$PROJECT_DIR$/config/scout.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/import/process.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_111016.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_122828.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_124118.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_125034.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrder.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderCDStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderDiff.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderDiffItems.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderItems.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderPayment.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderPaymentStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/Supplier.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderCDStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderDiff.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderDiffItems.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderPaymentStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Supplier.php" />
+        <option value="$PROJECT_DIR$/database/seeds/PurchaseOrderStatusTablesSeeder.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/view.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/edit.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/resources/js/generic.js" />
+        <option value="$PROJECT_DIR$/resources/js/mjr.js" />
+        <option value="$PROJECT_DIR$/resources/js/purchase_order.js" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SupplierController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_21_skipper_migrations_20190221_094048.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_02_21_skipper_migrations_20190221_105547.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/DevicePart.php" />
+        <option value="$PROJECT_DIR$/app/Models/DevicePart.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Device.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Part.php" />
       </list>
     </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1">
     <include_path>
@@ -292,6 +277,9 @@
       <path value="$PROJECT_DIR$/vendor/react/promise" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/streams" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/ringphp" />
+      <path value="$PROJECT_DIR$/vendor/league/csv" />
+      <path value="$PROJECT_DIR$/vendor/lavary/laravel-menu" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -321,58 +309,14 @@
               <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
               <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
               <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="temp_import_folder" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="Base" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -394,16 +338,16 @@
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\PHP_Projects\LaraERP\app\Models\Base" />
+      <recent name="C:\PHP_Projects\LaraERP\app\Models" />
+      <recent name="C:\PHP_Projects\LaraERP\database\migrations" />
+      <recent name="C:\PHP_Projects\LaraERP\resources\views\order\supplier" />
+      <recent name="C:\PHP_Projects\LaraERP\temp_import_folder" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PHP_Projects\LaraERP\resources\views\import" />
       <recent name="C:\PHP_Projects\LaraERP\app\Http\Controllers" />
-      <recent name="C:\PHP_Projects\LaraERP\database\migrations" />
-      <recent name="C:\PHP_Projects\LaraERP\resources\views" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\PHP_Projects\LaraERP\temp_import_folder" />
-      <recent name="C:\PHP_Projects\LaraERP\resources\views\import" />
-      <recent name="C:\PHP_Projects\LaraERP\app\Models\Base" />
       <recent name="C:\PHP_Projects\LaraERP\database\migrations" />
       <recent name="C:\PHP_Projects\LaraERP\resources\views" />
     </key>
@@ -451,7 +395,13 @@
       <workItem from="1550161248115" duration="20012000" />
       <workItem from="1550244553537" duration="18429000" />
       <workItem from="1550587489367" duration="9260000" />
-      <workItem from="1550598807721" duration="10774000" />
+      <workItem from="1550598807721" duration="17794000" />
+      <workItem from="1550674675128" duration="391000" />
+      <workItem from="1550675120444" duration="1858000" />
+      <workItem from="1550692502416" duration="10707000" />
+      <workItem from="1550761120372" duration="80000" />
+      <workItem from="1550761240470" duration="8068000" />
+      <workItem from="1550775518042" duration="2762000" />
     </task>
     <task id="LOCAL-00001" summary="IUpdate">
       <created>1549574806779</created>
@@ -642,17 +592,94 @@
       <option name="project" value="LOCAL" />
       <updated>1550609305536</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Fixed Typo">
+      <created>1550610100211</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1550610100211</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fixed Typo again">
+      <created>1550610178618</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1550610178618</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fixed encoding Error for Import by using utf8_encode">
+      <created>1550678694292</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1550678694292</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Migration for Adding the Purchase Order Functionality. With all the relevant tables and relations.">
+      <created>1550692861720</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1550692861720</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added Models for the PO functionality. And updated the Migration file for issues.">
+      <created>1550696866372</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1550696866372</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Seeder for Multiple Status Tables in PO Functionality">
+      <created>1550699371504</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1550699371504</updated>
+    </task>
+    <task id="LOCAL-00034" summary="General Scaffolding for Supplier UI and Backend Processing of Requests.">
+      <created>1550704163149</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1550704163149</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Completed the Supplier Management Grid.">
+      <created>1550765132220</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1550765132220</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added Related Migration to deal with the ManyToMany Part to Device Relationship. A few other additions to PO Controllers">
+      <created>1550776055916</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1550776055916</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Fixed Typo in Migration File">
+      <created>1550777006091</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1550777006091</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Typo in Migration">
+      <created>1550777622498</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1550777622498</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145257000" />
+    <option name="totallyTimeSpent" value="176143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49779737" visible="true" weight="0.288874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49779737" visible="true" weight="0.30898124" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.50220263" side_tool="true" weight="0.3297587" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -665,7 +692,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.04405286" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.07195301" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3277592" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32892805" />
@@ -722,16 +749,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="IUpdate" />
-    <MESSAGE value="Excluded .idea folder from git" />
-    <MESSAGE value="Cleaned up Model Files and removed unneeded fullyqualified Class name in Extends to Base Model Class" />
-    <MESSAGE value="Added Prototype Code to Lookup item by SKU and Return Details, Price and Stock" />
-    <MESSAGE value="Added Lookup by Device ID and returning all Parts related to that Device" />
-    <MESSAGE value="Added Master Look Page with Relevant Blade Template and JS" />
-    <MESSAGE value="Returned the Response to parts in Ascending Order by name. And Fixed the precision of Cost numbers." />
-    <MESSAGE value="Fixed HTML markup in look up blade template" />
-    <MESSAGE value="Added BArcode Lookup" />
-    <MESSAGE value="Changed Barcode Scan tech to URL redirect" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Added TimeStamp to StockCount Items Seq and Added Relation to a location in Stock Count" />
     <MESSAGE value="Changed the Protected incrementing to Public. Skipper Bug" />
     <MESSAGE value="Added Basic Stock Count UI" />
@@ -746,369 +764,383 @@
     <MESSAGE value="Completed the Stock Count Summary with Relevant Templates" />
     <MESSAGE value="General Fixes StockCounts Summary Page." />
     <MESSAGE value="Added the Import Controller and related Stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the Import Controller and related Stuff." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/resources/js/mjr.js</url>
-          <line>116</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Fixed Typo" />
+    <MESSAGE value="Fixed Typo again" />
+    <MESSAGE value="Fixed encoding Error for Import by using utf8_encode" />
+    <MESSAGE value="Migration for Adding the Purchase Order Functionality. With all the relevant tables and relations." />
+    <MESSAGE value="Added Models for the PO functionality. And updated the Migration file for issues." />
+    <MESSAGE value="Seeder for Multiple Status Tables in PO Functionality" />
+    <MESSAGE value="General Scaffolding for Supplier UI and Backend Processing of Requests." />
+    <MESSAGE value="Completed the Supplier Management Grid." />
+    <MESSAGE value="Added Related Migration to deal with the ManyToMany Part to Device Relationship. A few other additions to PO Controllers" />
+    <MESSAGE value="Fixed Typo in Migration File" />
+    <MESSAGE value="Typo in Migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Typo in Migration" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/locations">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_15_skipper_migrations_20190215_092201.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-506">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/stock_counts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/aggregate_stock_count.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1058">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#1379#1387#0#HTML" expanded="true" />
-            <element signature="e#1667#1675#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrderStatus.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/StockCount.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="55" column="33" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/types">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_18_193418_add_families.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/stockcount.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockCountController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#40#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/storage/app/public/file.csv/xGSU4Mg3LdgsWqxfBJH1nAt37qVYliMyHH2qhkKB.txt" />
-    <entry file="file://$PROJECT_DIR$/storage/app/app/imports/file_name.csv" />
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/file_name.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/device_types">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/import/process.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/import/import.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Supplier.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2162">
-          <caret line="95" column="53" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
-          <folding>
-            <element signature="e#7#35#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="345">
+          <caret line="33" column="25" lean-forward="true" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderCDStatus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+        <state relative-caret-position="506">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/DeviceType.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderDiff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="7" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="506">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartCategory.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderDiffItems.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="437">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Location.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartStatus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartPrice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#29#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Manufacturer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Brand.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="e#29#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Device.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-          <folding>
-            <element signature="e#29#50#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartStock.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <caret line="23" column="2" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartType.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        <state relative-caret-position="506">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StockCount.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderPaymentStatus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" selection-start-line="9" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="368">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StockCountItemsSeq.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StockCountItems.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/StockCountStatus.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderStatus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/temp_import_folder/stock_count_statuses.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="506">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/DeviceTypesTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/0b6819bd-5c31-41b3-8758-34756b21e665.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/e6aa9c34-3b36-4100-95d4-f42ccc562fc3.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state>
-          <caret column="133" lean-forward="true" selection-start-column="133" selection-end-column="133" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/d39d22eb-f132-42c1-a510-ebca562885b4.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/d8c0867b-0c92-403c-a2a6-e3f7cc729935.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/d7dd2158-c45e-48c5-8544-fc16a222d3d9.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/57707d23-8694-425a-af04-9a0c3ac002af.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/379ea090-03f1-4757-8825-3d5a7d8172cc.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/076a9afa-a543-40c3-94ef-5e1a757ed468.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/43d8e56f-afb6-4703-b5f3-f759036c1ab9.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LookupController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="41" column="78" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="78" />
+          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="21" />
           <folding>
-            <element signature="e#41#71#0#PHP" expanded="true" />
+            <element signature="e#7#38#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp_import_folder/others_import_sample.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
+    <entry file="file://$PROJECT_DIR$/resources/views/search/results.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="70" selection-start-column="70" selection-end-column="70" />
+          <caret selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/PurchaseOrderStatusTablesSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="46" column="10" lean-forward="true" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
+          <folding>
+            <element signature="e#7#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/aggregate_stock_count.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1334">
+          <caret line="5" column="46" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="46" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="225" column="65" lean-forward="true" selection-start-line="225" selection-start-column="65" selection-end-line="225" selection-end-column="65" />
+        <state relative-caret-position="4048">
+          <caret line="194" column="53" lean-forward="true" selection-start-line="194" selection-start-column="53" selection-end-line="194" selection-end-column="53" />
           <folding>
             <element signature="e#40#61#0#PHP" expanded="true" />
-            <element signature="e#1587#1666#0#PHP" />
-            <element signature="e#2086#2185#0#PHP" />
-            <element signature="e#2741#2827#0#PHP" />
-            <element signature="e#3466#3554#0#PHP" />
-            <element signature="e#5489#5585#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/import/import.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="64" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Supplier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/stockcount.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockCountController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <element signature="e#40#76#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/DeviceType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/supplier/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="46" column="35" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="46" selection-end-column="35" />
+          <folding>
+            <element signature="e#428#1377#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/supplier/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="38" column="105" lean-forward="true" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/supplier/view.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="85" selection-end-line="10" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/supplier/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="15" column="107" lean-forward="true" selection-start-line="15" selection-start-column="107" selection-end-line="15" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.mix.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/mjr.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="n#!!block;n#speechRecognition#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/generic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/mjr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#251#1034#0" />
+            <element signature="e#1079#1978#0" />
+            <element signature="e#2023#2923#0" />
+            <element signature="e#2967#4048#0" />
+            <element signature="e#4103#5825#0" />
+            <element signature="e#5882#6033#0" />
+            <element signature="e#6074#7403#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/purchase_order.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SupplierController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+          <folding>
+            <element signature="e#7#35#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/brands">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/part_categories">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/part_statuses">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/suppliers">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_21_skipper_migrations_20190221_093838.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_21_skipper_migrations_20190221_094048.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="64" column="7" lean-forward="true" selection-start-line="64" selection-start-column="7" selection-end-line="64" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_11_skipper_migrations_20190211_075248.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-441" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_08_skipper_migrations_20190208_143900.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1568" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_21_skipper_migrations_20190221_105547.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/DevicePart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/DevicePart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-322">
+          <caret line="22" column="39" lean-forward="true" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Device.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-280">
+          <folding>
+            <element signature="e#392#628#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Device.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="36" column="4" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
         </state>
       </provider>
     </entry>

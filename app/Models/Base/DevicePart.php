@@ -4,10 +4,17 @@
 
 namespace App\Models\Base;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Device extends Model
+class DevicePart extends Pivot
 {
+  /**  
+  * Primary key name.
+  * 
+  * @var string
+  */
+  public $primaryKey='device_id';
+  
   /**  
   * Primary key type.
   * 
@@ -28,16 +35,7 @@ class Device extends Model
   * @var array
   */
   protected $casts=[
-    'id'=>'string',
-    'model_name'=>'string',
-    'details'=>'string',
-    'brand_id'=>'string',
-    'deviceType_id'=>'string',
-      'model_number'=>'string'
+    'device_id'=>'string',
+    'part_id'=>'string'
   ];
-
-    public function Parts()
-    {
-        return $this->belongsToMany('\App\Models\Part','device_parts','device_id','part_id');
-    }
 }
