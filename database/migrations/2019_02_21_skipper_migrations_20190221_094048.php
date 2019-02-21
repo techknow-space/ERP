@@ -16,6 +16,7 @@ class Migrations20190221094048 extends Migration
   */
   public function up()
   {
+      /*
     Schema::table('brands', function (Blueprint $table) {
       $table->text('description')->nullable(true)->change();
     });
@@ -37,6 +38,7 @@ class Migrations20190221094048 extends Migration
     Schema::table('part_types', function (Blueprint $table) {
       $table->text('details')->nullable(true)->change();
     });
+      */
   }
   /**
    * Reverse the migrations.
@@ -45,6 +47,7 @@ class Migrations20190221094048 extends Migration
   */
   public function down()
   {
+      /*
     Schema::table('part_types', function (Blueprint $table) {
       $table->multiLineString('details')->nullable(true)->change();
     });
@@ -66,5 +69,6 @@ class Migrations20190221094048 extends Migration
     Schema::table('brands', function (Blueprint $table) {
       $table->multiLineString('description')->nullable(true)->change();
     });
+      */
   }
 }
