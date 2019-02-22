@@ -40,10 +40,11 @@ class ImportController extends Controller
             }
         }
 
+
         $data = $this->convertFileToCSV($file);
 
-        //return view('import.process')->with('path',$data);
-        return $this->process($data);
+        return view('import.process')->with('path',$data);
+        //return $this->process($data);
 
     }
 
@@ -57,6 +58,7 @@ class ImportController extends Controller
 
         if($file){
             $file = utf8_encode(Storage::get($file));
+
             $structured_data = str_getcsv($file,"\n");
             foreach ($structured_data as $row){
                 $data[] = str_getcsv($row, ",");
@@ -75,30 +77,43 @@ class ImportController extends Controller
         $data_new = [];
         foreach ($data as $datum){
             $datum[5] = utf8_encode(str_replace("\xc2\xa0",' ',$datum[5]));
+
             if($datum[6] == ''){
-                $data[6] = intval(0);
+                $datum[6] = intval(0);
             }
+
             if($datum[7] == ''){
-                $data[7] = intval(0);
+                $datum[7] = intval(0);
             }
+
             if($datum[8] == ''){
-                $data[8] = intval(0);
+                $datum[8] = intval(0);
             }
-            if($datum[9] !== ''){
 
+            if($datum[9] == ''){
+                $datum[9] = intval(0);
             }
-            else{
-                $data[9] = intval(0);
-            }
-            if($datum[10] !== ''){
 
+            if($datum[6] == ''){
+                $datum[6] = intval(0);
             }
-            else{
-                $data[10] = intval(0);
+
+            if($datum[10] == ''){
+                $datum[10] = intval(0);
             }
+
             if($datum[11] == ''){
-                $data[11] = intval(0);
+                $datum[11] = intval(0);
             }
+            if($datum[13] == ''){
+                $datum[13] = false;
+            }
+
+            if($datum[16] == ''){
+                $datum[16] = false;
+            }
+
+
             $data_new[] = $datum;
 
         }
@@ -132,7 +147,8 @@ class ImportController extends Controller
                     [
                         'sku' => $item[13],
                         'name' => $item[5],
-                        'first_received' => $item[12]
+                        'first_received' => $item[12],
+                        'parent_sku' => $item[16]
                     ]);
 
                 $part_price = $this->updateOrCreatePartPrice(
@@ -247,7 +263,7 @@ class ImportController extends Controller
             $part->sku = $part_details['sku'];
             $part->part_name = $part_details['name'];
             //$part->first_received = $part_details['first_received'];
-            $part->devices()->associate($device);
+            $part->Devices()->attach($device->id);
             $part->save();
         }
 
@@ -307,6 +323,21 @@ class ImportController extends Controller
 
             $part_stock->save();
         }
+    }
+
+    /**
+     * @param Device $device
+     * @param Part $part
+     */
+    private function attachParttoDevice(Device $device, Part $part)
+    {
+        $part->Devices()->attach($device->id);
+        $part->save();
+    }
+
+    private function setCompatiblePart(Device $device, $sku)
+    {
+
     }
 
 }
