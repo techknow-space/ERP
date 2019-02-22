@@ -38,6 +38,6 @@ class Device extends Model
 
     public function Parts()
     {
-        return $this->belongsToMany('\App\Models\Part','device_parts','device_id','part_id');
+        return $this->hasMany('\App\Models\Part','device_id','id');
     }
 }

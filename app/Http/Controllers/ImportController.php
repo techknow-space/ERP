@@ -32,6 +32,9 @@ class ImportController extends Controller
      */
     public function upload(Request $request)
     {
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
         $file = false;
         $name = Uuid::uuid4()->toString();
         if ($request->hasFile('csv_upload_file')) {
@@ -43,8 +46,8 @@ class ImportController extends Controller
 
         $data = $this->convertFileToCSV($file);
 
-        return view('import.process')->with('path',$data);
-        //return $this->process($data);
+        //return view('import.process')->with('path',$data);
+        return $this->process($data);
 
     }
 
@@ -128,11 +131,14 @@ class ImportController extends Controller
     {
         if($data){
             $data = collect($data);
+
             $data->each(function ($item){
 
-                $manufacturer = $this->findOrCreateManufacturer($item[1]);
+                //$manufacturer = $this->findOrCreateManufacturer($item[1]);
 
-                $brand = $this->findOrCreateBrand($manufacturer,$item[2]);
+                //$brand = $this->findOrCreateBrand($manufacturer,$item[2]);
+
+                $brand = $this->findOrCreateBrandwithoutManufacturer($item[2]);
 
                 $device = $this->findOrCreateModel(
                     $brand,
@@ -140,7 +146,10 @@ class ImportController extends Controller
                         'type_id_ref' => $item[0],
                         'name' => $item[3],
                         'number' => $item[4]
-                    ]);
+                    ]
+                );
+
+                $is_child_part = $item[16];
 
                 $part = $this->findOrCreatePart(
                     $device,
@@ -149,31 +158,34 @@ class ImportController extends Controller
                         'name' => $item[5],
                         'first_received' => $item[12],
                         'parent_sku' => $item[16]
-                    ]);
-
-                $part_price = $this->updateOrCreatePartPrice(
-                    $part,
-                    [
-                        'last_cost' => $item[11],
-                        'selling_b2c' => $item[6]
                     ]
                 );
 
-                $part_stock = $this->updateOrCreatePartStock(
-                    $part,
-                    [
+                if(!$is_child_part){
+                    $part_price = $this->updateOrCreatePartPrice(
+                        $part,
                         [
-                            'code'=>'S1',
-                            'stock_qty'=>$item[8],
-                            'sold_all_time'=>$item[10]
-                        ],
-                        [
-                            'code'=>'TO1',
-                            'stock_qty'=>$item[7],
-                            'sold_all_time'=>$item[9]
+                            'last_cost' => $item[11],
+                            'selling_b2c' => $item[6]
                         ]
-                    ]
-                );
+                    );
+                    $part_stock = $this->updateOrCreatePartStock(
+                        $part,
+                        [
+                            [
+                                'code'=>'S1',
+                                'stock_qty'=>$item[8],
+                                'sold_all_time'=>$item[10]
+                            ],
+                            [
+                                'code'=>'TO1',
+                                'stock_qty'=>$item[7],
+                                'sold_all_time'=>$item[9]
+                            ]
+                        ]
+                    );
+                }
+
             });
 
         }
@@ -255,17 +267,44 @@ class ImportController extends Controller
      */
     private function findOrCreatePart(Device $device, $part_details)
     {
-        try{
-            $part = Part::where('sku',$part_details['sku'])
-                ->firstOrFail();
-        }catch (ModelNotFoundException $e){
-            $part = new Part();
-            $part->sku = $part_details['sku'];
-            $part->part_name = $part_details['name'];
-            //$part->first_received = $part_details['first_received'];
-            $part->Devices()->attach($device->id);
-            $part->save();
+        if($part_details['sku']){
+            try{
+                $part = Part::where('sku',$part_details['sku'])
+                    ->firstOrFail();
+            }catch (ModelNotFoundException $e){
+                $part = new Part();
+                $part->sku = $part_details['sku'];
+                $part->part_name = $part_details['name'];
+                $part->Devices()->associate($device);
+                $part->save();
+            }
         }
+        else{
+
+            try{
+                $parent_part = Part::where('sku',$part_details['parent_sku'])
+                    ->firstOrFail();
+            }catch (ModelNotFoundException $e){
+                $parent_part = false;
+            }
+
+            try{
+                $part = Part::where('part_name',$part_details['name'])
+                    ->where('device_id',$device->id)
+                    ->firstOrFail();
+                $part->is_child = true;
+                $part->ParentPart()->associate($parent_part);
+                $part->save();
+            }catch (ModelNotFoundException $e){
+                $part = new Part();
+                $part->part_name = $part_details['name'];
+                $part->Devices()->associate($device);
+                $part->is_child = true;
+                $part->ParentPart()->associate($parent_part);
+                $part->save();
+            }
+        }
+
 
         return $part;
 
@@ -325,20 +364,20 @@ class ImportController extends Controller
         }
     }
 
-    /**
-     * @param Device $device
-     * @param Part $part
-     */
-    private function attachParttoDevice(Device $device, Part $part)
+    private function findOrCreateBrandwithoutManufacturer($brand_name)
     {
-        $part->Devices()->attach($device->id);
-        $part->save();
+        try{
+
+            $brand = Brand::where('name',$brand_name)
+                ->firstOrFail();
+
+        }catch (ModelNotFoundException $e){
+            $brand = new Brand();
+            $brand->name = $brand_name;
+            $brand->save();
+        }
+        return $brand;
+
     }
-
-    private function setCompatiblePart(Device $device, $sku)
-    {
-
-    }
-
 }
 

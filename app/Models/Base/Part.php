@@ -37,7 +37,9 @@ class Part extends Model
     'partColour_id'=>'string',
     'device_id'=>'string',
     'first_received'=>'datetime',
-    'part_name'=>'string'
+    'part_name'=>'string',
+      'parent_part_id'=>'string',
+      'is_child'=>'boolean'
   ];
   public function StockCountItemsSeqs()
   {
@@ -55,8 +57,16 @@ class Part extends Model
   {
     return $this->hasMany('\App\Models\PurchaseOrderDiffItems','part_id','id');
   }
-    public function Devices()
+    public function Device()
     {
-        return $this->belongsToMany('\App\Models\Device','device_parts','part_id','device_id');
+        return $this->belongsTo('\App\Models\Device','device_id','id');
+    }
+    public function ParentPart()
+    {
+        return $this->belongsTo('\App\Models\Part','parent_part_id','id');
+    }
+    public function ChildParts()
+    {
+        return $this->hasMany('\App\Models\Part','parent_part_id','id');
     }
 }
