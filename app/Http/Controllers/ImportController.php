@@ -320,12 +320,33 @@ class ImportController extends Controller
         try{
             $part_price = PartPrice::where('part_id',$part->id)
                 ->firstOrFail();
-            $part_price->last_cost = $price_details['last_cost'];
-            $part_price->selling_price_b2c = $price_details['selling_b2c'];
+
+            $part_price->last_cost = floatval(
+                trim(
+                    str_replace('Â', '',$price_details['last_cost'])
+                )
+            );
+
+            $part_price->selling_price_b2c = floatval(
+                trim(
+                    str_replace('Â', '',$price_details['selling_b2c'])
+                )
+            );
         }catch (ModelNotFoundException $e){
             $part_price = new PartPrice();
-            $part_price->last_cost = $price_details['last_cost'];
-            $part_price->selling_price_b2c = $price_details['selling_b2c'];
+
+            $part_price->last_cost = floatval(
+                trim(
+                    str_replace('Â', '',$price_details['last_cost'])
+                )
+            );
+
+            $part_price->selling_price_b2c = floatval(
+                trim(
+                    str_replace('Â', '',$price_details['selling_b2c'])
+                )
+            );
+
             $part_price->part()->associate($part);
         }
         $part_price->save();
@@ -348,14 +369,40 @@ class ImportController extends Controller
                 $part_stock = PartStock::where('part_id',$part->id)
                     ->where('location_id',$location_obj->id)
                     ->firstOrFail();
-                $part_stock->stock_qty = $location['stock_qty'];
-                $part_stock->sold_all_time = $location['sold_all_time'];
+
+                $part_stock->stock_qty = intval(
+                    trim(
+                        str_replace('Â', '',
+                            $location['stock_qty']
+                        )
+                    )
+                );
+                $part_stock->sold_all_time = intval(
+                    trim(
+                        str_replace('Â', '',
+                            $location['sold_all_time']
+                        )
+                    )
+                );
+
 
             }catch (ModelNotFoundException $e){
 
                 $part_stock = new PartStock();
-                $part_stock->stock_qty = $location['stock_qty'];
-                $part_stock->sold_all_time = $location['sold_all_time'];
+                $part_stock->stock_qty = intval(
+                    trim(
+                        str_replace('Â', '',
+                            $location['stock_qty']
+                        )
+                    )
+                );
+                $part_stock->sold_all_time = intval(
+                    trim(
+                        str_replace('Â', '',
+                            $location['sold_all_time']
+                        )
+                    )
+                );
                 $part_stock->location()->associate($location_obj);
                 $part_stock->part()->associate($part);
             }
