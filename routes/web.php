@@ -58,11 +58,21 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 });
 
 // TODO: Create API controller group
-Route::prefix('api')->group(function(){
+
+Route::group([ 'prefix' => 'api', 'middleware' => 'auth' ],function (){
+
     Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
     Route::get('findPartWithDeviceID/{id}','LookupController@findPartWithDeviceID');
     Route::get('getPartDetailsWithID/{id}','LookupController@getPartDetailsWithID');
     Route::get('getPartDetailsWithSKU/{sku}','LookupController@getPartDetailsWithSKU');
+
+    Route::prefix('part')->group(function (){
+
+        Route::put('stock/increase/{id}','PartOperationController@increaseStock');
+        Route::put('stock/decrease/{id}','PartOperationController@reduceStock');
+
+    });
+
 });
 
 // All routes below here require cleanup/removal and handlers to be adjusted accordingly

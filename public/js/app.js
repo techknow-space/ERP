@@ -36404,7 +36404,9 @@ __webpack_require__(/*! ./generic */ "./resources/js/generic.js");
 
 __webpack_require__(/*! ./mjr */ "./resources/js/mjr.js");
 
-__webpack_require__(/*! ./purchase_order */ "./resources/js/purchase_order.js"); //window.Vue = require('vue');
+__webpack_require__(/*! ./purchase_order */ "./resources/js/purchase_order.js");
+
+__webpack_require__(/*! ./part_operation */ "./resources/js/part_operation.js"); //window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -36893,6 +36895,62 @@ $(document).ready(function () {
   }
 });
 /*End JS MJR*/
+
+/***/ }),
+
+/***/ "./resources/js/part_operation.js":
+/*!****************************************!*\
+  !*** ./resources/js/part_operation.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Start Part Operation JS*/
+$(document).ready(function () {
+  $('.partButtonDecrease').on('click', function () {
+    start_part_stock_decrease();
+  });
+  $('.partButtonIncrease').on('click', function () {
+    start_part_stock_increase();
+  });
+});
+
+function start_part_stock_increase() {
+  var part_id = $('tbody tr').data('partid');
+  increase_stock(part_id);
+}
+
+function increase_stock(part_id) {
+  $.ajax({
+    url: '/api/part/stock/increase/' + part_id,
+    type: "PUT",
+    dataType: "json",
+    success: function success(data) {
+      $('#return-part-from-repair-dialog').modal('hide');
+      location.reload();
+      console.log(data);
+    }
+  });
+}
+
+function start_part_stock_decrease() {
+  var part_id = $('tbody tr').data('partid');
+  decrease_stock(part_id);
+}
+
+function decrease_stock(part_id) {
+  $.ajax({
+    url: '/api/part/stock/decrease/' + part_id,
+    type: "PUT",
+    dataType: "json",
+    success: function success(data) {
+      $('#use-part-in-repair-dialog').modal('hide');
+      location.reload();
+      console.log(data);
+    }
+  });
+}
+/* End Part Operation JS*/
 
 /***/ }),
 

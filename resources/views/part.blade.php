@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-partid = "{{$part->id}}">
                                 <td>{{ $part->part_name }}</td>
                                 <td >${{ $part->price->selling_price_b2c }}</td>
                                 @foreach ($part->stock as $qty)
