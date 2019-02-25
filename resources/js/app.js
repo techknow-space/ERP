@@ -9,7 +9,7 @@ require('./bootstrap');
 require('./generic');
 require('./mjr');
 require('./purchase_order');
-
+require('./part_operation');
 
 //window.Vue = require('vue');
 
