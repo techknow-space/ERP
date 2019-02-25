@@ -6,7 +6,7 @@ namespace App\Models\Base;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class PartMovement extends Model
 {
   /**  
   * Primary key type.
@@ -29,21 +29,21 @@ class Location extends Model
   */
   protected $casts=[
     'id'=>'string',
-    'location'=>'string',
-    'location_code'=>'string',
-    'description'=>'string'
+    'qty'=>'integer',
+    'movement_at'=>'datetime',
+    'part_id'=>'string',
+    'part_name'=>'string'
   ];
-  public function StockCounts()
+  public function Part()
   {
-    return $this->hasMany('\App\Models\StockCount','location_id','id');
+    return $this->belongsTo('\App\Models\Part','part_id','id');
   }
-  public function partMvmntFroms()
+  public function PartMvmntFrom()
   {
-      return $this->hasMany('\App\Models\PartMvmntFrom','location_id','id');
+    return $this->hasOne('\App\Models\PartMvmntFrom','partMovement_id','id');
   }
   public function PartMvmntTos()
   {
-      return $this->hasMany('\App\Models\PartMvmntTo','location_id','id');
+    return $this->hasOne('\App\Models\PartMvmntTo','partMovement_id','id');
   }
-
 }
