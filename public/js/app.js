@@ -36962,7 +36962,29 @@ function decrease_stock(part_id) {
 /***/ (function(module, exports) {
 
 /*PO JS*/
-$(document).ready(function () {});
+$(document).ready(function () {
+  $('#poItemsTablePartSearchAddForm').submit(function (e) {
+    var form = $(this);
+    var url = form.attr('action');
+    var part_id = $('#poItemsTablePartSelect').val();
+    var qty = $('#poItemsAddQty').val();
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: {
+        "po_id": purchase_order_id,
+        "part_id": part_id,
+        "qty": qty
+      },
+      // serializes the form's elements.
+      success: function success(data) {
+        console.log(data);
+        location.reload();
+      }
+    });
+    e.preventDefault();
+  });
+});
 
 /***/ }),
 

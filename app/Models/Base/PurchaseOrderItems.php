@@ -40,7 +40,9 @@ class PurchaseOrderItems extends Model
     'qty'=>'integer',
     'cost'=>'float',
     'cost_currency'=>'string',
-    'qty_received'=>'integer'
+    'qty_received'=>'integer',
+      'total_cost'=>'float',
+      'actual_cost'=>'float'
   ];
   public function Part()
   {

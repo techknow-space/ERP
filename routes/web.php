@@ -46,12 +46,23 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
     });
 
     Route::prefix('purchase')->group(function (){
+
         Route::get('/','PurchaseOrderController@index');
         Route::get('/create','PurchaseOrderController@create');
         Route::post('create','PurchaseOrderController@insert');
         Route::get('view/{id}','PurchaseOrderController@view');
         Route::get('edit/{id}','PurchaseOrderController@edit');
         Route::put('edit/{id}','PurchaseOrderController@update');
+
+        Route::prefix('item')->group(function (){
+            Route::get('/','PurchaseOrderItemController@index');
+            Route::get('/create','PurchaseOrderItemController@create');
+            Route::post('create','PurchaseOrderItemController@insert');
+            Route::get('view/{id}','PurchaseOrderItemController@view');
+            Route::get('edit/{id}','PurchaseOrderItemController@edit');
+            Route::put('edit/{id}','PurchaseOrderItemController@update');
+
+        });
 
     });
 
