@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <b>Purchase Orders</b>
                         <div class="float-right">
-                            <a href="/order/purchase/create" type="button" class="btn btn-primary">Create New Purchase Order</a>
+                            <a href="/order/purchase/create" class="btn btn-primary">Create New Purchase Order</a>
                         </div>
                     </div>
                     <div class="card-body">
