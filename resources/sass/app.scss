@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
+// @import '~bootstrap/scss/mixins';
 @import 'variables';
+@import 'slate';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -14,6 +16,6 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 .navbar-laravel {
-  background-color: #fff;
+  // background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }

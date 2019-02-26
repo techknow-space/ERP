@@ -10,8 +10,8 @@
 
                     <div class="card-body">
 
-                        <table class="table table-sm">
-                            <thead>
+                        <table class="table table-sm table-dark table-bordered table-hover">
+                            <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Part</th>
                                 <th scope="col">Price</th>
