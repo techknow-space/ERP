@@ -69,4 +69,8 @@ class Part extends Model
     {
         return $this->hasMany('\App\Models\Part','parent_part_id','id');
     }
+    public function PartMovements()
+    {
+        return $this->hasMany('\App\Models\PartMovement','part_id','id');
+    }
 }
