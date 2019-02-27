@@ -38,21 +38,25 @@ class PurchaseOrderItemController extends Controller
             $part = Part::find($data['part_id']);
             $purchase_order = PurchaseOrder::find($data['poid']);
 
-            $po_item = new PurchaseOrderItems();
+            try{
+                $po_item = PurchaseOrderItems::
+                where('part_id',$part->id)
+                ->where('purchaseOrder_id',$purchase_order->id)
+                ->firstOrFail();
+                $po_item->qty += $data['qty'];
+                $po_item->save();
+            }catch (ModelNotFoundException $e){
+                $po_item = new PurchaseOrderItems();
+                $po_item->PurchaseOrder()->associate($purchase_order);
+                $po_item->Part()->associate($part);
 
-            $po_item->PurchaseOrder()->associate($purchase_order);
-            $po_item->Part()->associate($part);
+                $po_item->cost_currency = 'CAD';
 
-            $po_item->cost_currency = 'CAD';
+                $po_item->qty = $data['qty'];
+                $po_item->cost = $part->price->last_cost;
 
-            $po_item->qty = $data['qty'];
-            $po_item->cost = $part->price->last_cost;
-
-            $po_item->save();
-
-
-
-
+                $po_item->save();
+            }
         }catch (ModelNotFoundException $e) {
             $error = true;
         }
@@ -72,8 +76,41 @@ class PurchaseOrderItemController extends Controller
 
     }
 
-    public function update()
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(Request $request, $id)
     {
+        $error = false;
+
+        try{
+            $poItem = PurchaseOrderItems::findOrFail($id);
+            $poItem->cost = $request->input('cost');
+            $poItem->qty = $request->input('qty');
+            $poItem->save();
+        }catch (ModelNotFoundException $e){
+            $error = true;
+        }
+
+        return response()->json($error);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id)
+    {
+        $error = false;
+        try{
+            PurchaseOrderItems::destroy($id);
+        }catch (ModelNotFoundException $e){
+            $error = true;
+        }
+
+        return response()->json($error);
 
     }
 }

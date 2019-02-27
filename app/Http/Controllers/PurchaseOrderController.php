@@ -60,8 +60,20 @@ class PurchaseOrderController extends Controller
         ]);
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $purchase_order = PurchaseOrder::findOrFail($id);
+
+        $status = PurchaseOrderStatus::findOrFail($request->input('poStatus'));
+        $payment_status = PurchaseOrderPaymentStatus::findOrFail($request->input('poPaymentStatus'));
+
+        $purchase_order->PurchaseOrderStatus()->associate($status);
+        $purchase_order->PurchaseOrderPaymentStatus()->associate($payment_status);
+
+        $purchase_order->save();
+
+        return $this->edit($id);
+
 
     }
 

@@ -6,10 +6,15 @@
  */
 
 require('./bootstrap');
+
+window.Select2 = require('select2');
+
 require('./generic');
 require('./mjr');
 require('./purchase_order');
 require('./part_operation');
+
+
 
 //window.Vue = require('vue');
 

@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Part as Part;
+use App\Models\PurchaseOrder;
 use Illuminate\Support\Facades\Route as Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,14 @@ Route::group([ 'prefix' => 'stock', 'middleware' => 'auth' ], function(){
 Route::group([ 'prefix' => 'search', 'middleware' => 'auth' ], function(){
     Route::get('barcode','SearchController@searchBarcode');
     Route::get('/','SearchController@search')->name('search');
+
+    /*Temp Solution for AJAX search Results*/
+    // TODO: Clean and Organize the Ajax Search.
+    Route::get('ajax', function (Request $request) {
+        return Part::search($request->input('search'))->get();
+    });
+    /* End AJAX Search*/
+
 });
 
 Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
@@ -61,7 +71,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
             Route::get('view/{id}','PurchaseOrderItemController@view');
             Route::get('edit/{id}','PurchaseOrderItemController@edit');
             Route::put('edit/{id}','PurchaseOrderItemController@update');
-
+            Route::delete('delete/{id}','PurchaseOrderItemController@delete');
         });
 
     });
