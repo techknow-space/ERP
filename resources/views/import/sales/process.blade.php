@@ -8,9 +8,9 @@
                     Imported Sales Data
                 </div>
                 <div class="card-body">
-                    <pre>
-                        {{var_dump($not_found)}}
-                    </pre>
+
+                    SKUs not found: <br>
+
 
                 </div>
             </div>

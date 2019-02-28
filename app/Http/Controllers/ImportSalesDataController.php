@@ -94,10 +94,13 @@ class ImportSalesDataController extends Controller
 
                 }
                 else{
+
                     $part_not_found[] = $datum;
                 }
             }
         }
+
+        $part_not_found = collect($part_not_found)->unique('1');
 
         return view('import.sales.process')->with('not_found',$part_not_found);
     }

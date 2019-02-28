@@ -30,7 +30,8 @@ class PurchaseOrderStatus extends Model
   protected $casts=[
     'id'=>'string',
     'status'=>'string',
-    'description'=>'string'
+    'description'=>'string',
+	'seq_id'=>'integer'
   ];
   public function PurchaseOrders()
   {
