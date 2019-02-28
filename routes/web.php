@@ -148,6 +148,15 @@ Route::get('/part-price', function () {
 Route::prefix('import')->group(function (){
     Route::get('/','ImportController@index');
     Route::post('/upload','ImportController@upload');
+
+    Route::prefix('sales')->group(function (){
+
+        Route::get('/','ImportSalesDataController@index');
+        Route::post('/upload','ImportSalesDataController@upload');
+
+    });
+
+
 });
 
 Route::get('/import','ImportController@index');

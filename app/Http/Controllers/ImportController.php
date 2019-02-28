@@ -54,6 +54,7 @@ class ImportController extends Controller
     /**
      * @param $file
      * @return array|bool
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function convertFileToCSV($file)
     {
@@ -413,6 +414,10 @@ class ImportController extends Controller
         }
     }
 
+    /**
+     * @param $brand_name
+     * @return Brand
+     */
     private function findOrCreateBrandwithoutManufacturer($brand_name)
     {
         try{
@@ -428,5 +433,7 @@ class ImportController extends Controller
         return $brand;
 
     }
+
+
 }
 
