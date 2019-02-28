@@ -73,4 +73,8 @@ class Part extends Model
     {
         return $this->hasMany('\App\Models\PartMovement','part_id','id');
     }
+    public function WODeviceParts()
+    {
+        return $this->hasMany('\App\Models\WODevicePart','part_id','id');
+    }
 }

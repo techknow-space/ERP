@@ -6,7 +6,7 @@ namespace App\Models\Base;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Device extends Model
+class WorkOrder extends Model
 {
   /**  
   * Primary key type.
@@ -29,19 +29,12 @@ class Device extends Model
   */
   protected $casts=[
     'id'=>'string',
-    'model_name'=>'string',
-    'details'=>'string',
-    'brand_id'=>'string',
-    'deviceType_id'=>'string',
-      'model_number'=>'string'
+    'number'=>'string',
+    'created_at'=>'datetime',
+    'updated_at'=>'datetime'
   ];
-
-    public function Parts()
-    {
-        return $this->hasMany('\App\Models\Part','device_id','id');
-    }
-    public function WorkOrderDevices()
-    {
-        return $this->hasMany('\App\Models\WorkOrderDevice','device_id','id');
-    }
+  public function WorkOrderDevices()
+  {
+    return $this->hasMany('\App\Models\WorkOrderDevice','work_order_id','id');
+  }
 }

@@ -14,18 +14,18 @@ class PurchaseOrderStatusTablesSeeder extends Seeder
     {
         DB::table('purchase_order_statuses')->insert(
             [
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Generated'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Created'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'InReview'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Waiting for PI'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'PI Received'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'PI Updated'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Awaiting Shipment'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Shipped'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Shipment Received'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Verified'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Stock Distributed'],
-                ['id'=>Uuid::uuid4()->toString(),'status'=>'Completed']
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Generated','seq_id'=>0],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Created','seq_id'=>1],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'InReview','seq_id'=>2],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Sent','seq_id'=>3],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'PI Received','seq_id'=>4],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'PI Updated','seq_id'=>5],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Awaiting Shipment','seq_id'=>6],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Shipped','seq_id'=>7],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Shipment Received','seq_id'=>8],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Verified','seq_id'=>9],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Stock Distributed','seq_id'=>10],
+                ['id'=>Uuid::uuid4()->toString(),'status'=>'Completed','seq_id'=>11]
             ]
         );
 

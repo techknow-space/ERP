@@ -17,7 +17,7 @@ $(document).ready(function() {
                 console.log(data);
                 let parsed = [];
                 data.forEach(function (part) {
-                    parsed.push({id: part.id,text: part.devices.brand.name+' '+part.devices.model_name+' '+part.part_name+''+part.sku});
+                    parsed.push({id: part.id,text: part.devices.brand.name+' '+part.devices.model_name+' '+part.part_name+' '+part.sku});
                 });
                 return {
                     results: parsed,
@@ -62,22 +62,30 @@ $(document).ready(function() {
 
     let poItemEditableField = $('.poItemEditableField');
 
+    poItemEditableField.keypress(function (e) {
+        if(13 === e.which){
+            $(this).blur();
+            let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
+            $(saveBtnID).click();
+        }
+    });
+
     poItemEditableField.on('click',function () {
         if(!poItemEditableField.is(":focus")){
             $(this).focus();
         }
-    })
+    });
 
     poItemEditableField.on('focus',function () {
         $(this).prop("readonly",false);
         let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
         $(saveBtnID).show();
 
-    })
+    });
 
     poItemEditableField.on('blur',function () {
         $(this).prop("readonly",true);
-    })
+    });
 
 });
 

@@ -271,6 +271,8 @@ class ImportController extends Controller
             try{
                 $part = Part::where('sku',$part_details['sku'])
                     ->firstOrFail();
+                $part->part_name = $part_details['name'];
+                $part->save();
             }catch (ModelNotFoundException $e){
                 $part = new Part();
                 $part->sku = $part_details['sku'];

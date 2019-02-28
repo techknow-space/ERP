@@ -31,10 +31,10 @@
                 </td>
                 <form data-poItemID="{{$po_item->id}}">
                     <td>
-                        <input class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemCost" id="poItemCost-{{$po_item->id}}" value="{{$po_item->cost}}" readonly='readonly'>
+                        <input type="number" step="0.01" min="0" type="number" class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemCost" id="poItemCost-{{$po_item->id}}" value="{{$po_item->cost}}" readonly='readonly'>
                     </td>
                     <td>
-                        <input class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemQty" id="poItemQty-{{$po_item->id}}" value="{{$po_item->qty}}" readonly='readonly'>
+                        <input type="number" step="1" min="0" class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemQty" id="poItemQty-{{$po_item->id}}" value="{{$po_item->qty}}" readonly='readonly'>
                     </td>
 
                     <td>
@@ -51,16 +51,15 @@
 </table>
     <div id="poItemsTablePartSearchAdd">
         <form class="form-inline" id="poItemsTablePartSearchAddForm" action="/order/purchase/item/create">
-
-            <select name="poItemsTablePartSelect col-md-3" id="poItemsTablePartSelect" class="form-control">
-                <option value="0">Please Search for a Part</option>
-            </select>
-
-            &nbsp;&nbsp;&nbsp;
-            <label class="sr-only" for="poItemsAddQty">Qty</label>
-            <input type="number" class="form-control" id="poItemsAddQty" placeholder="Qty" required>
-
-            &nbsp;&nbsp;&nbsp;
+            <div class="form-group mb-2">
+                <select name="poItemsTablePartSelect" id="poItemsTablePartSelect" class="form-control">
+                    <option value="0">Please Search for a Part</option>
+                </select>
+            </div>
+            <div class="form-group mb-2">
+                <label class="sr-only" for="poItemsAddQty">Qty</label>
+                <input type="number" class="form-control" id="poItemsAddQty" placeholder="Qty" required>
+            </div>
             <button type="submit" class="btn btn-primary mb-2">Add</button>
 
         </form>

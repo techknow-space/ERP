@@ -42721,7 +42721,7 @@ $(document).ready(function () {
         data.forEach(function (part) {
           parsed.push({
             id: part.id,
-            text: part.devices.brand.name + ' ' + part.devices.model_name + ' ' + part.part_name + '' + part.sku
+            text: part.devices.brand.name + ' ' + part.devices.model_name + ' ' + part.part_name + ' ' + part.sku
           });
         });
         return {
@@ -42761,6 +42761,13 @@ $(document).ready(function () {
     editPOItemRow(action, po_item_id);
   });
   var poItemEditableField = $('.poItemEditableField');
+  poItemEditableField.keypress(function (e) {
+    if (13 === e.which) {
+      $(this).blur();
+      var saveBtnID = '#poItemSaveBtn-' + $(this).data('poitemid');
+      $(saveBtnID).click();
+    }
+  });
   poItemEditableField.on('click', function () {
     if (!poItemEditableField.is(":focus")) {
       $(this).focus();

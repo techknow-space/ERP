@@ -32,4 +32,10 @@ class DeviceType extends Model
     'type'=>'string',
     'import_ref'=>'integer'
   ];
+
+    public function WorkOrderDevices()
+    {
+        return $this->hasMany('\App\Models\WorkOrderDevice','device_type_id','id');
+    }
+
 }
