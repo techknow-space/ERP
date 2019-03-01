@@ -61,13 +61,12 @@ class PurchaseOrderController extends Controller
     {
         $purchase_order = PurchaseOrder::findOrFail($id);
 
-        $suppliers = Supplier::all();
-        $purchase_order_statuses = PurchaseOrderStatus::all();
+        //$suppliers = Supplier::all();
+        $purchase_order_statuses = PurchaseOrderStatus::all()->sortBy('seq_id');
         $purchase_order_payment_statuses = PurchaseOrderPaymentStatus::all();
 
         return view('order.purchase.edit',[
             'purchase_order' => $purchase_order,
-            'suppliers' => $suppliers,
             'purchase_order_statuses' => $purchase_order_statuses,
             'purchase_order_payment_statuses' => $purchase_order_payment_statuses
         ]);

@@ -27,17 +27,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="poSupplier">Supplier</label>
-                                    <select name="poSupplier" id="poSupplier" class="form-control">
-                                        @foreach ($suppliers as $supplier)
-                                            <option
-                                                @if($supplier->id == $purchase_order->Supplier->id)
-                                                    selected
-                                                @endif
-                                                value="{{$supplier->id}}">
-                                                {{$supplier->name}} {{$supplier->country}}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <input name="poSupplier" id="poSupplier" value="{{$purchase_order->Supplier->name}} {{$purchase_order->Supplier->country}}" class="form-control" readonly>
                                 </div>
 
                                 <div class="form-group col-md-3">
