@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Import;
 
+use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Device;
 use App\Models\DeviceType;

@@ -146,20 +146,19 @@ Route::get('/part-price', function () {
 });
 
 Route::prefix('import')->group(function (){
-    Route::get('/','ImportController@index');
-    Route::post('/upload','ImportController@upload');
+    Route::get('/','Import\ImportController@index');
+    Route::post('/upload','Import\ImportController@upload');
 
     Route::prefix('sales')->group(function (){
 
-        Route::get('/','ImportSalesDataController@index');
-        Route::post('/upload','ImportSalesDataController@upload');
+        Route::get('/','Import\ImportSalesDataController@index');
+        Route::post('/upload','Import\ImportSalesDataController@upload');
 
     });
 
 
 });
 
-Route::get('/import','ImportController@index');
 Route::get('/sales','SalesDataController@index');
 Route::get('/sales/monthly','SalesDataController@listByMonth');
 Route::get('/sales/part/{id}','SalesDataController@part');
