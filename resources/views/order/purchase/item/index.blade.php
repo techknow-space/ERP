@@ -39,7 +39,7 @@
 
                     <td>
                         @csrf
-                        <i class="fas fa-check-circle poItemInlineFunctionButton" id="poItemSaveBtn-{{$po_item->id}}" data-action="save" data-poItemID="{{$po_item->id}}" style="display: none"></i>
+                        <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save" data-poItemID="{{$po_item->id}}"></i>
                         <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete" data-poItemID="{{$po_item->id}}"></i>
                     </td>
                 </form>
