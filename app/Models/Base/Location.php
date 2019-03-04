@@ -45,5 +45,9 @@ class Location extends Model
   {
       return $this->hasMany('\App\Models\PartMvmntTo','location_id','id');
   }
+    public function WorkOrders()
+    {
+        return $this->hasMany('\App\Models\WorkOrder','location_id','id');
+    }
 
 }

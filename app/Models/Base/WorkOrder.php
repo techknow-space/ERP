@@ -31,8 +31,13 @@ class WorkOrder extends Model
     'id'=>'string',
     'number'=>'string',
     'created_at'=>'datetime',
-    'updated_at'=>'datetime'
+    'updated_at'=>'datetime',
+      'location_id'=>'string'
   ];
+    public function Location()
+    {
+        return $this->belongsTo('\App\Models\Location','location_id','id');
+    }
   public function WorkOrderDevices()
   {
     return $this->hasMany('\App\Models\WorkOrderDevice','work_order_id','id');
