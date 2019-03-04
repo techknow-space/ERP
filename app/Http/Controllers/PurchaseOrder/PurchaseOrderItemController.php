@@ -1,6 +1,7 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\PurchaseOrder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Part;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;

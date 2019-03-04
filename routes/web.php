@@ -47,31 +47,31 @@ Route::group([ 'prefix' => 'search', 'middleware' => 'auth' ], function(){
 Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
     Route::prefix('supplier')->group(function (){
-        Route::get('/','SupplierController@index');
-        Route::get('create','SupplierController@create');
-        Route::post('create','SupplierController@insert');
-        Route::get('view/{id}','SupplierController@view');
-        Route::get('edit/{id}','SupplierController@edit');
-        Route::put('edit/{id}','SupplierController@update');
+        Route::get('/','PurchaseOrder\SupplierController@index');
+        Route::get('create','PurchaseOrder\SupplierController@create');
+        Route::post('create','PurchaseOrder\SupplierController@insert');
+        Route::get('view/{id}','PurchaseOrder\SupplierController@view');
+        Route::get('edit/{id}','PurchaseOrder\SupplierController@edit');
+        Route::put('edit/{id}','PurchaseOrder\SupplierController@update');
     });
 
     Route::prefix('purchase')->group(function (){
 
-        Route::get('/','PurchaseOrderController@index');
-        Route::get('/create','PurchaseOrderController@create');
-        Route::post('create','PurchaseOrderController@insert');
-        Route::get('view/{id}','PurchaseOrderController@view');
-        Route::get('edit/{id}','PurchaseOrderController@edit');
-        Route::put('edit/{id}','PurchaseOrderController@update');
+        Route::get('/','PurchaseOrder\PurchaseOrderController@index');
+        Route::get('/create','PurchaseOrder\PurchaseOrderController@create');
+        Route::post('create','PurchaseOrder\PurchaseOrderController@insert');
+        Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
+        Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
+        Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
 
         Route::prefix('item')->group(function (){
-            Route::get('/','PurchaseOrderItemController@index');
-            Route::get('/create','PurchaseOrderItemController@create');
-            Route::post('create','PurchaseOrderItemController@insert');
-            Route::get('view/{id}','PurchaseOrderItemController@view');
-            Route::get('edit/{id}','PurchaseOrderItemController@edit');
-            Route::put('edit/{id}','PurchaseOrderItemController@update');
-            Route::delete('delete/{id}','PurchaseOrderItemController@delete');
+            Route::get('/','PurchaseOrder\PurchaseOrderItemController@index');
+            Route::get('/create','PurchaseOrder\PurchaseOrderItemController@create');
+            Route::post('create','PurchaseOrder\PurchaseOrderItemController@insert');
+            Route::get('view/{id}','PurchaseOrder\PurchaseOrderItemController@view');
+            Route::get('edit/{id}','PurchaseOrder\PurchaseOrderItemController@edit');
+            Route::put('edit/{id}','PurchaseOrder\PurchaseOrderItemController@update');
+            Route::delete('delete/{id}','PurchaseOrder\PurchaseOrderItemController@delete');
         });
 
     });
