@@ -160,3 +160,7 @@ Route::prefix('import')->group(function (){
 });
 
 Route::get('/import','ImportController@index');
+Route::get('/sales','SalesDataController@index');
+Route::get('/sales/monthly','SalesDataController@listByMonth');
+Route::get('/sales/part/{id}','SalesDataController@part');
+Route::get('/sales/monthly/part/{id}','SalesDataController@partByMonth');

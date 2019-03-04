@@ -13,8 +13,7 @@ require('./generic');
 require('./mjr');
 require('./purchase_order');
 require('./part_operation');
-
-
+require('tablesorter');
 
 //window.Vue = require('vue');
 
@@ -82,6 +81,8 @@ function speechRecognition(form, mic)
 }
 
 $(document).ready(function() {
+    $("#sortable").tablesorter();
+
     $('body').on('click','.mic', function(){
         speechRecognition('search', $(this));
     });
