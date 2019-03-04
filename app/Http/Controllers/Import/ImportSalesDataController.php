@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Import;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use App\Models\WODevicePart;
 use App\Models\WorkOrder;
 use App\Models\WorkOrderDevice;
@@ -71,11 +72,26 @@ class ImportSalesDataController extends Controller
     public function process($data)
     {
         $part_not_found = [];
+
+        $location_so = Location::where('location_code','S1')->firstOrFail();
+        $location_to = Location::where('location_code','TO')->firstOrFail();
+
         if($data){
             foreach ($data as $datum){
                 $part = $this->getPartwithSKU($datum['1']);
+                $datum['2'] = 'S1';
                 if($part){
                     $wo = new WorkOrder();
+
+                    if('TO' == $datum[2]){
+                        $location = $location_to;
+                    }
+                    elseif ('S1' == $datum[2]){
+                        $location = $location_so;
+                    }
+
+                    $wo->Location()->associate($location);
+
                     $wo->save();
 
                     $wo_device = new WorkOrderDevice();

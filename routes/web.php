@@ -156,7 +156,6 @@ Route::prefix('import')->group(function (){
 
     });
 
-
 });
 
 Route::get('/sales','SalesDataController@index');
