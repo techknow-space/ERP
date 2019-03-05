@@ -90,12 +90,23 @@ $(document).ready(function() {
 
     poItemsTable.on('focus','.poItemEditableField',function(){
         $(this).prop("readonly",false);
-        let saveBtnID = '#poItemSaveBtn-'+$(this).closest('tr').attr('id');
-        $(saveBtnID).removeClass('d-none');
     });
 
     poItemsTable.on('blur','.poItemEditableField',function(){
         $(this).prop("readonly",true);
+    });
+
+    poItemsTable.on('change','.poItemEditableField',function(){
+        if($(this).val() !== $(this).data('value')){
+            let saveBtnID = '#poItemSaveBtn-'+$(this).closest('tr').attr('id');
+            $(saveBtnID).removeClass('d-none');
+        }
+        else {
+            let saveBtn = $('#poItemSaveBtn-'+$(this).closest('tr').attr('id'));
+            if(!saveBtn.hasClass('d-none')){
+                saveBtn.addClass('d-none');
+            }
+        }
     });
 
 
@@ -159,6 +170,7 @@ function editPOItemRow(action,po_item_id) {
     }
     else if( 'save' === action ){
 
+
         let cost = $('#poItemCost-'+po_item_id).val();
         let qty = $('#poItemQty-'+po_item_id).val();
 
@@ -172,6 +184,10 @@ function editPOItemRow(action,po_item_id) {
                     alert('There was an error in updating this ROW. Please try again');
                 }
                 else{
+
+                    $('#poItemCost-'+po_item_id).data('value',cost);
+                    $('#poItemQty-'+po_item_id).data('value',qty);
+
                     $('#poItemSaveBtn-'+po_item_id).addClass('d-none');
                     let row = $('#'+po_item_id);
                     if(!row.hasClass('table-warning')){

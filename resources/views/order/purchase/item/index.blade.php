@@ -36,10 +36,10 @@
                 </td>
 
                     <td>
-                        <input type="number" step="0.01" min="0" type="number" class="form-control poItemEditableField" name="poItemCost" id="poItemCost-{{$po_item->id}}" value="{{$po_item->cost}}" readonly='readonly'>
+                        <input type="number" step="0.01" min="0" class="form-control poItemEditableField" name="poItemCost" id="poItemCost-{{$po_item->id}}" data-value="{{$po_item->cost}}" value="{{$po_item->cost}}" readonly='readonly'>
                     </td>
                     <td>
-                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" value="{{$po_item->qty}}" readonly='readonly'>
+                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" data-value="{{$po_item->qty}}" value="{{$po_item->qty}}" readonly='readonly'>
                     </td>
 
                     <td>
