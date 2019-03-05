@@ -101,10 +101,14 @@ class AutoPurchaseOrderController extends PurchaseOrderController
     }
 
     /**
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function initiatePurchaseOrder()
     {
+        //TODO: Remove this shit.
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
         $parts = $this->getPartsToOrder();
         $qty = $this->getPurchaseOrderItemsQty($parts);
         $supplier = Supplier::first();
