@@ -27,29 +27,10 @@ class PurchaseOrderController extends Controller
     {
 
         $supplier = Supplier::findOrFail($request->input('poSupplier'));
-        $status = PurchaseOrderStatus::where('status','InReview')->first();
 
-
-        try{
-            $purchase_order = PurchaseOrder::
-                ofSupplier($supplier)
-                ->isOrBeforeStatus($status)
-                ->firstOrFail();
-        }catch (ModelNotFoundException $e){
-
-            $purchase_order = new PurchaseOrder();
-            $purchase_order_status = PurchaseOrderStatus::where('status','Created')->firstOrFail();
-            $purchase_order_payment_status = PurchaseOrderPaymentStatus::where('status','In Queue')->firstOrFail();
-
-            $purchase_order->Supplier()->associate($supplier);
-            $purchase_order->PurchaseOrderStatus()->associate($purchase_order_status);
-            $purchase_order->PurchaseOrderPaymentStatus()->associate($purchase_order_payment_status);
-
-            $purchase_order->save();
-        }
+        $purchase_order = $this->createPurchaseOrder($supplier);
 
         return $this->edit($purchase_order->id);
-
 
     }
 
@@ -90,5 +71,39 @@ class PurchaseOrderController extends Controller
     public function delete($id)
     {
 
+    }
+
+    /**
+     * @param Supplier $supplier
+     * @return PurchaseOrder
+     */
+    public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
+    {
+        $status = PurchaseOrderStatus::where('status','InReview')->first();
+
+        try{
+            $purchase_order = PurchaseOrder::
+            ofSupplier($supplier)
+                ->isOrBeforeStatus($status)
+                ->firstOrFail();
+        }catch (ModelNotFoundException $e){
+
+            $purchase_order = new PurchaseOrder();
+            if(NULL === $in_status){
+                $purchase_order_status = PurchaseOrderStatus::where('status','Created')->firstOrFail();
+            }else{
+                $purchase_order = $in_status;
+            }
+
+            $purchase_order_payment_status = PurchaseOrderPaymentStatus::where('status','In Queue')->firstOrFail();
+
+            $purchase_order->Supplier()->associate($supplier);
+            $purchase_order->PurchaseOrderStatus()->associate($purchase_order_status);
+            $purchase_order->PurchaseOrderPaymentStatus()->associate($purchase_order_payment_status);
+
+            $purchase_order->save();
+        }
+
+        return $purchase_order;
     }
 }

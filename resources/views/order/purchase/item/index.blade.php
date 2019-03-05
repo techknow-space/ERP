@@ -22,7 +22,13 @@
     </thead>
     <tbody>
         @foreach($purchase_order->PurchaseOrderItems as $po_item)
-            <tr id="{{$po_item->id}}" data-po_line_id="{{$po_item->id}}">
+            <tr
+                id="{{$po_item->id}}"
+                data-po_line_id="{{$po_item->id}}"
+                @if($po_item->is_edited)
+                    class="table-warning" style="color: black; background-color: #ffeeba"
+                @endif
+            >
                 <td>
                     {{$po_item->Part->sku}}
                 </td>

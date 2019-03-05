@@ -48897,7 +48897,6 @@ function editPOItemRow(action, po_item_id) {
     $.ajax({
       type: "DELETE",
       url: '/order/purchase/item/delete/' + po_item_id,
-      async: false,
       success: function success(data) {
         if (true === data) {
           alert('There was an error in Deleting this ROW. Please try again');
@@ -48912,7 +48911,6 @@ function editPOItemRow(action, po_item_id) {
     $.ajax({
       type: "PUT",
       url: '/order/purchase/item/edit/' + po_item_id,
-      async: false,
       data: {
         "cost": cost,
         "qty": qty
@@ -48923,6 +48921,15 @@ function editPOItemRow(action, po_item_id) {
           alert('There was an error in updating this ROW. Please try again');
         } else {
           $('#poItemSaveBtn-' + po_item_id).hide();
+          var row = $('#' + po_item_id);
+
+          if (!row.hasClass('table-warning')) {
+            row.addClass('table-warning');
+            row.css({
+              "color": "black",
+              "background-color": "#ffeeba"
+            });
+          }
         }
       }
     });

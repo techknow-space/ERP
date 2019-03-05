@@ -33,6 +33,7 @@ class Location extends Model
     'location_code'=>'string',
     'description'=>'string'
   ];
+
   public function StockCounts()
   {
     return $this->hasMany('\App\Models\StockCount','location_id','id');
@@ -45,9 +46,9 @@ class Location extends Model
   {
       return $this->hasMany('\App\Models\PartMvmntTo','location_id','id');
   }
-    public function WorkOrders()
-    {
-        return $this->hasMany('\App\Models\WorkOrder','location_id','id');
-    }
+  public function WorkOrders()
+  {
+      return $this->hasMany('\App\Models\WorkOrder','location_id','id');
+  }
 
 }

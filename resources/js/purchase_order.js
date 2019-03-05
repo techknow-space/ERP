@@ -95,7 +95,6 @@ function editPOItemRow(action,po_item_id) {
         $.ajax({
             type: "DELETE",
             url: '/order/purchase/item/delete/'+po_item_id,
-            async : false,
             success: function(data)
             {
                 if(true === data){
@@ -115,7 +114,6 @@ function editPOItemRow(action,po_item_id) {
         $.ajax({
             type: "PUT",
             url: '/order/purchase/item/edit/'+po_item_id,
-            async : false,
             data: {"cost":cost,"qty":qty}, // serializes the form's elements.
             success: function(data)
             {
@@ -124,6 +122,14 @@ function editPOItemRow(action,po_item_id) {
                 }
                 else{
                     $('#poItemSaveBtn-'+po_item_id).hide();
+                    let row = $('#'+po_item_id);
+                    if(!row.hasClass('table-warning')){
+                        row.addClass('table-warning');
+                        row.css({
+                            "color": "black",
+                            "background-color": "#ffeeba"
+                        });
+                    }
                 }
             }
         });

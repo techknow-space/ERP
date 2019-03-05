@@ -45,6 +45,7 @@ class PurchaseOrderItemController extends Controller
                 ->where('purchaseOrder_id',$purchase_order->id)
                 ->firstOrFail();
                 $po_item->qty += $data['qty'];
+                $po_item->is_edited = true;
                 $po_item->save();
             }catch (ModelNotFoundException $e){
                 $po_item = new PurchaseOrderItems();
@@ -52,7 +53,7 @@ class PurchaseOrderItemController extends Controller
                 $po_item->Part()->associate($part);
 
                 $po_item->cost_currency = 'CAD';
-
+                $po_item->is_edited = true;
                 $po_item->qty = $data['qty'];
                 $po_item->cost = $part->price->last_cost;
 
@@ -90,6 +91,7 @@ class PurchaseOrderItemController extends Controller
             $poItem = PurchaseOrderItems::findOrFail($id);
             $poItem->cost = $request->input('cost');
             $poItem->qty = $request->input('qty');
+            $poItem->is_edited = true;
             $poItem->save();
         }catch (ModelNotFoundException $e){
             $error = true;
