@@ -53,12 +53,24 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+
+    $('#poItemsTable').on('click','.poItemInlineFunctionButton',function () {
+        let action = $(this).data('action');
+        let po_item_id = $(this).data('poitemid');
+        editPOItemRow(action,po_item_id);
+
+    });
+
+    /*
     $('.poItemInlineFunctionButton').on('click',function () {
         let action = $(this).data('action');
         let po_item_id = $(this).data('poitemid');
         editPOItemRow(action,po_item_id);
 
     });
+
+     */
+
 
     let poItemEditableField = $('.poItemEditableField');
 

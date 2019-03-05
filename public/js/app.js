@@ -48863,11 +48863,19 @@ $(document).ready(function () {
     });
     e.preventDefault();
   });
-  $('.poItemInlineFunctionButton').on('click', function () {
+  $('#poItemsTable').on('click', '.poItemInlineFunctionButton', function () {
     var action = $(this).data('action');
     var po_item_id = $(this).data('poitemid');
     editPOItemRow(action, po_item_id);
   });
+  /*
+  $('.poItemInlineFunctionButton').on('click',function () {
+      let action = $(this).data('action');
+      let po_item_id = $(this).data('poitemid');
+      editPOItemRow(action,po_item_id);
+   });
+    */
+
   var poItemEditableField = $('.poItemEditableField');
   poItemEditableField.keypress(function (e) {
     if (13 === e.which) {
