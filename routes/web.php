@@ -64,6 +64,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
         Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
+        Route::get('export/{id}','PurchaseOrder\AutoPurchaseOrderController@exportPDF');
 
 
         Route::prefix('item')->group(function (){

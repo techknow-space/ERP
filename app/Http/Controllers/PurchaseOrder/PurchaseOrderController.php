@@ -8,6 +8,7 @@ use App\Models\PurchaseOrderStatus;
 use App\Models\Supplier;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\PDF;
 
 class PurchaseOrderController extends Controller
 {
@@ -73,9 +74,11 @@ class PurchaseOrderController extends Controller
 
     }
 
+
     /**
      * @param Supplier $supplier
-     * @return PurchaseOrder
+     * @param PurchaseOrderStatus|NULL $in_status
+     * @return PurchaseOrder|PurchaseOrderStatus
      */
     public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
     {
@@ -106,4 +109,22 @@ class PurchaseOrderController extends Controller
 
         return $purchase_order;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function exportPDF($id)
+    {
+        //TODO: Remove this shit.
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+
+        $po_view = view('order.purchase.pdf.purchaseOrder',['purchaseOrder' => $purchaseOrder]);
+        $pdf = app('dompdf.wrapper')->loadHTML($po_view);
+        return $pdf->download('po.pdf');
+    }
+
 }

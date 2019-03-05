@@ -52,6 +52,7 @@
                                         </td>
                                         <td>
                                             <a href="/order/purchase/edit/{{$purchase_order->id}}">Edit</a>
+                                            <a href="/order/purchase/export/{{$purchase_order->id}}">PDF</a>
                                         </td>
                                     </tr>
                                 @endforeach

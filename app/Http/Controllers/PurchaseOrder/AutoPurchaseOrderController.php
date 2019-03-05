@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\PurchaseOrder;
 
+use App\Models\PartPrice;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderStatus;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -17,7 +18,7 @@ class AutoPurchaseOrderController extends PurchaseOrderController
      */
     public function getParttoOrderwithZeroStock()
     {
-        $part_stock = PartStock::where('stock_qty',0)->get()->unique('part_id');
+        $part_stock = PartPrice::where('last_cost',0)->get();
 
         $parts = [];
 
@@ -124,7 +125,6 @@ class AutoPurchaseOrderController extends PurchaseOrderController
         $po = $this->generatePurchaseOrder($parts,$supplier,$qty);
 
         return $this->edit($po->id);
-
     }
 
 
