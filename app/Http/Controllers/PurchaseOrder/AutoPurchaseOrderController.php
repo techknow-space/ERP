@@ -45,7 +45,14 @@ class AutoPurchaseOrderController extends PurchaseOrderController
         return $purchase_order;
     }
 
-    public function insertItemsToPurchaseOrder(Collection $parts, PurchaseOrder $purchase_order, $qty)
+
+    /**
+     * @param Collection $parts
+     * @param PurchaseOrder $purchase_order
+     * @param array $qty
+     * @return PurchaseOrder
+     */
+    public function insertItemsToPurchaseOrder(Collection $parts, PurchaseOrder $purchase_order, Array $qty)
     {
         $error = false;
 
@@ -76,6 +83,8 @@ class AutoPurchaseOrderController extends PurchaseOrderController
                 $po_item->save();
             }
         }
+
+        return $purchase_order;
 
 
     }
