@@ -48866,7 +48866,7 @@ $(document).ready(function () {
   var poItemsTable = $('#poItemsTable');
   poItemsTable.on('click', '.poItemInlineFunctionButton', function () {
     var action = $(this).data('action');
-    var po_item_id = $(this).data('poitemid');
+    var po_item_id = $(this).closest('tr').attr('id');
     editPOItemRow(action, po_item_id);
   });
   /*
@@ -48880,7 +48880,7 @@ $(document).ready(function () {
   poItemsTable.on('keydown', '.poItemEditableField', function (e) {
     if (13 === e.which) {
       $(this).blur();
-      var saveBtnID = '#poItemSaveBtn-' + $(this).data('poitemid');
+      var saveBtnID = '#poItemSaveBtn-' + $(this).closest('tr').attr('id');
       $(saveBtnID).click();
     }
   });
@@ -48891,8 +48891,8 @@ $(document).ready(function () {
   });
   poItemsTable.on('focus', '.poItemEditableField', function () {
     $(this).prop("readonly", false);
-    var saveBtnID = '#poItemSaveBtn-' + $(this).data('poitemid');
-    $(saveBtnID).show();
+    var saveBtnID = '#poItemSaveBtn-' + $(this).closest('tr').attr('id');
+    $(saveBtnID).removeClass('d-none');
   });
   poItemsTable.on('blur', '.poItemEditableField', function () {
     $(this).prop("readonly", true);
@@ -48951,7 +48951,7 @@ function editPOItemRow(action, po_item_id) {
         if (true === data) {
           alert('There was an error in updating this ROW. Please try again');
         } else {
-          $('#poItemSaveBtn-' + po_item_id).hide();
+          $('#poItemSaveBtn-' + po_item_id).addClass('d-none');
           var row = $('#' + po_item_id);
 
           if (!row.hasClass('table-warning')) {

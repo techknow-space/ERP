@@ -24,7 +24,6 @@
         @foreach($purchase_order->PurchaseOrderItems as $po_item)
             <tr
                 id="{{$po_item->id}}"
-                data-po_line_id="{{$po_item->id}}"
                 @if($po_item->is_edited)
                     class="table-warning" style="color: black; background-color: #ffeeba"
                 @endif
@@ -35,20 +34,20 @@
                 <td>
                     {{$po_item->Part->devices->brand->name}} {{$po_item->Part->devices->model_name}} {{$po_item->Part->part_name}}
                 </td>
-                <form data-poItemID="{{$po_item->id}}">
+
                     <td>
-                        <input type="number" step="0.01" min="0" type="number" class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemCost" id="poItemCost-{{$po_item->id}}" value="{{$po_item->cost}}" readonly='readonly'>
+                        <input type="number" step="0.01" min="0" type="number" class="form-control poItemEditableField" name="poItemCost" id="poItemCost-{{$po_item->id}}" value="{{$po_item->cost}}" readonly='readonly'>
                     </td>
                     <td>
-                        <input type="number" step="1" min="0" class="form-control poItemEditableField" data-poitemid="{{$po_item->id}}" name="poItemQty" id="poItemQty-{{$po_item->id}}" value="{{$po_item->qty}}" readonly='readonly'>
+                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" value="{{$po_item->qty}}" readonly='readonly'>
                     </td>
 
                     <td>
                         @csrf
-                        <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save" data-poItemID="{{$po_item->id}}"></i>
-                        <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete" data-poItemID="{{$po_item->id}}"></i>
+                        <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save"></i>
+                        <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete"></i>
                     </td>
-                </form>
+
             </tr>
         @endforeach
     </tbody>

@@ -59,7 +59,7 @@ $(document).ready(function() {
 
     poItemsTable.on('click','.poItemInlineFunctionButton',function () {
         let action = $(this).data('action');
-        let po_item_id = $(this).data('poitemid');
+        let po_item_id = $(this).closest('tr').attr('id');
         editPOItemRow(action,po_item_id);
 
     });
@@ -77,7 +77,7 @@ $(document).ready(function() {
     poItemsTable.on('keydown','.poItemEditableField',function(e){
         if(13 === e.which){
             $(this).blur();
-            let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
+            let saveBtnID = '#poItemSaveBtn-'+$(this).closest('tr').attr('id');
             $(saveBtnID).click();
         }
     });
@@ -90,8 +90,8 @@ $(document).ready(function() {
 
     poItemsTable.on('focus','.poItemEditableField',function(){
         $(this).prop("readonly",false);
-        let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
-        $(saveBtnID).show();
+        let saveBtnID = '#poItemSaveBtn-'+$(this).closest('tr').attr('id');
+        $(saveBtnID).removeClass('d-none');
     });
 
     poItemsTable.on('blur','.poItemEditableField',function(){
@@ -172,7 +172,7 @@ function editPOItemRow(action,po_item_id) {
                     alert('There was an error in updating this ROW. Please try again');
                 }
                 else{
-                    $('#poItemSaveBtn-'+po_item_id).hide();
+                    $('#poItemSaveBtn-'+po_item_id).addClass('d-none');
                     let row = $('#'+po_item_id);
                     if(!row.hasClass('table-warning')){
                         row.addClass('table-warning');
