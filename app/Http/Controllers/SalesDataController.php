@@ -48,7 +48,28 @@ class SalesDataController extends Controller
     public function reorderStrategy()
     {
         $parts = WODevicePart::select(DB::raw('((count(part_id) / 3) * 3) AS count, part_id'))->where("created_at", ">", Carbon::now()->subMonths(3))->groupBy('part_id')->get();
+        $partIds = $parts->pluck('part_id')->toArray();
+        $stock = \App\Models\PartStock::whereIn('part_id', $partIds)->get();
+
+        $summed = $stock->groupBy('part_id')->map(function ($row) {
+            return $row->sum('stock_qty');
+        });
+
+        foreach ($parts as $part) {
+            foreach($summed as $summedPartId => $count) {
+                if ($summedPartId == $part->part_id) {
+                    $part->count -= $count;
+                }
+            }
+        }
+
+        foreach ($parts as $partId => $part) {
+            if($part->count < 1) {
+                unset($parts[$partId]);
+            }
+        }
 
         return $parts;
     }
+
 }
