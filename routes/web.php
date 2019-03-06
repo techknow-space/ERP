@@ -57,12 +57,18 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
     Route::prefix('purchase')->group(function (){
 
-        Route::get('/','PurchaseOrderController@index');
-        Route::get('/create','PurchaseOrderController@create');
-        Route::post('create','PurchaseOrderController@insert');
-        Route::get('view/{id}','PurchaseOrderController@view');
-        Route::get('edit/{id}','PurchaseOrderController@edit');
-        Route::put('edit/{id}','PurchaseOrderController@update');
+        Route::get('/','PurchaseOrder\PurchaseOrderController@index');
+        Route::get('/create','PurchaseOrder\PurchaseOrderController@create');
+        Route::post('create','PurchaseOrder\PurchaseOrderController@insert');
+        Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
+        Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
+        Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
+        Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
+
+        Route::prefix('export')->group(function (){
+            Route::get('PDF/{id}','PurchaseOrder\AutoPurchaseOrderController@exportPDF');
+            Route::get('CSV/{id}','PurchaseOrder\AutoPurchaseOrderController@exportCSV');
+        });
 
         Route::prefix('item')->group(function (){
             Route::get('/','PurchaseOrderItemController@index');

@@ -8,6 +8,7 @@ use App\Models\PurchaseOrderStatus;
 use App\Models\Supplier;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\PDF;
 
 class PurchaseOrderController extends Controller
 {
@@ -73,9 +74,11 @@ class PurchaseOrderController extends Controller
 
     }
 
+
     /**
      * @param Supplier $supplier
-     * @return PurchaseOrder
+     * @param PurchaseOrderStatus|NULL $in_status
+     * @return PurchaseOrder|PurchaseOrderStatus
      */
     public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
     {
@@ -106,4 +109,92 @@ class PurchaseOrderController extends Controller
 
         return $purchase_order;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function exportPDF($id)
+    {
+        //TODO: Remove this shit.
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+
+        $parts = $purchaseOrder->PurchaseOrderItems->sortBy(function ($part,$key){
+            return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
+        });
+
+
+        $po_view = view('order.purchase.pdf.purchaseOrder',['purchaseOrder' => $purchaseOrder,'parts'=>$parts]);
+        $pdf = app('dompdf.wrapper')->loadHTML($po_view);
+        return $pdf->download('po.pdf');
+    }
+
+    public function exportCSV($id)
+    {
+        //TODO: Remove this shit.
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+
+        $items = $purchaseOrder->PurchaseOrderItems->sortBy(function ($part,$key){
+            return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
+        });
+
+        $csvListHeaders = [
+            '#',
+            'SKU',
+            'Brand',
+            'Model',
+            'Part',
+            'Qty'
+        ];
+
+        $csvPOHeader = [
+            'Date: '.date("F j, Y"),
+            'PO#: '.$purchaseOrder->number,
+            'The TechKnow Space Inc.',
+            '',
+            'Total SKUs: '.$purchaseOrder->PurchaseOrderItems->count(),
+            'Total Qty: '.$purchaseOrder->PurchaseOrderItems->sum('qty')
+        ];
+
+        $PO_ARRAY = [$csvPOHeader,$csvListHeaders];
+
+        $i = 1;
+        foreach ($items as $item){
+            $PO_ARRAY[] = [
+                $i,
+                $item->Part->sku,
+                $item->Part->devices->brand->name,
+                $item->Part->devices->model_name,
+                $item->Part->part_name,
+                $item->qty
+            ];
+            $i++;
+        }
+
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename='.$purchaseOrder->number.'.csv',
+            'Expires'             => '0',
+            'Pragma'              => 'public'
+        ];
+
+        $callback = function() use ($PO_ARRAY)
+        {
+            $FH = fopen('php://output', 'w');
+            foreach ($PO_ARRAY as $row) {
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+
+        return response()->stream($callback,200,$headers);
+    }
+
 }
