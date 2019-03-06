@@ -7,10 +7,10 @@
 
     <style type="text/css">
         @page {
-            margin: 0px;
+            margin: 10px;
         }
         body {
-            margin: 0px;
+            margin: 10px;
         }
         * {
             font-family: Verdana, Arial, sans-serif;
@@ -31,6 +31,7 @@
         }
         .invoice h3 {
             margin-left: 15px;
+            margin-right: 15px;
         }
         .information {
             background-color: #60A7A6;
@@ -53,27 +54,27 @@
 <div class="information">
     <table width="100%">
         <tr>
-            <td align="left" style="width: 40%;">
+            <td align="left" style="width: 33%;">
                 <h3>The Techknow Space</h3>
                 <pre>
-3, City Center Drive
+33, City Center Drive
 Missisuaga, ON
 Canada
 <br /><br />
-Date: {{$purchaseOrder->updated_at}}
-Status: {{$purchaseOrder->PurchaseOrderStatus->status}}
+Date: March-05-2019
 </pre>
 
 
             </td>
             <td align="center">
-                <h3>PO ID: {{$purchaseOrder->id}}</h3>
+                <h3>PO#: {{$purchaseOrder->number}}</h3>
+                Ordered <br> SKUs:{{$purchaseOrder->PurchaseOrderItems->count()}} | Qty: {{$purchaseOrder->PurchaseOrderItems->sum('qty')}}
             </td>
-            <td align="right" style="width: 40%;">
+            <td align="right" style="width: 33%;">
 
-                <h3>{{$purchaseOrder->Supplier->name}}</h3>
+                <h3>REWA</h3>
                 <pre>
-                    https://company.com
+                    www.rewatechnology.com
                 </pre>
             </td>
         </tr>
@@ -85,58 +86,65 @@ Status: {{$purchaseOrder->PurchaseOrderStatus->status}}
 <br/>
 
 <div class="invoice">
-    <h3>#{{$purchaseOrder->number}}</h3>
+
     <table width="100%">
         <thead>
         <tr>
-            <th style="width: 10%">
+            <th style="width: 8%">
+                #
+            </th>
+            <th style="width: 12%">
                 SKU
             </th>
-            <th style="width: 70%">
-                Part Name
-            </th>
             <th style="width: 10%">
-                Cost
+                Brand
             </th>
-            <th style="width: 10%">
+            <th style="width: 25%">
+                Model
+            </th>
+            <th style="width: 40%">
+                Part
+            </th>
+            <th style="width: 5%">
                 Qty
             </th>
         </tr>
         </thead>
         <tbody>
 
-        <?php $i = 0; ?>
-        @foreach($purchaseOrder->PurchaseOrderItems->chunk(38) as $po_items_page)
-            @if($i == 2)
-                <?php break; ?>
-            @endif
-            @foreach($po_items_page as $po_item)
+            <?php $j = 1 ?>
+            @foreach($parts as $po_item)
                 <tr>
-                    <td style="width: 15%">
+                    <td style="width: 8%">
+                        {{$j}}
+                    </td>
+                    <td style="width: 12%">
                         {{$po_item->Part->sku}}
                     </td>
-                    <td style="width: 65%">
-                        {{$po_item->Part->devices->brand->name}} {{$po_item->Part->devices->model_name}} {{$po_item->Part->part_name}}
-                    </td>
                     <td style="width: 10%">
-                        {{$po_item->cost}}
+                        {{$po_item->Part->devices->brand->name}}
                     </td>
-                    <td style="width: 10%">
+                    <td style="width: 25%">
+                        {{$po_item->Part->devices->model_name}}
+                    </td>
+                    <td style="width: 40%">
+                        {{$po_item->Part->part_name}}
+                    </td>
+                    <td style="width: 5%">
                         {{$po_item->qty}}
                     </td>
-
+                    <?php $j++; ?>
                 </tr>
             @endforeach
-            <?php $i++ ?>
-
-        @endforeach
         </tbody>
 
         <tfoot>
         <tr>
             <td colspan="1"></td>
             <td colspan="1"></td>
-            <td align="left" class="gray">${{$purchaseOrder->PurchaseOrderItems->sum('total_cost')}} </td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td align="left" class="gray"></td>
             <td align="left">{{$purchaseOrder->PurchaseOrderItems->sum('qty')}} </td>
         </tr>
         </tfoot>

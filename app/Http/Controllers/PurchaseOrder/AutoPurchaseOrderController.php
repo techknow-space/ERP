@@ -90,7 +90,7 @@ class AutoPurchaseOrderController extends PurchaseOrderController
 
     }
 
-    public function getPurchaseOrderItemsQty(Collection $parts)
+           public function getPurchaseOrderItemsQty(Collection $parts)
     {
         $part_qty = [];
 

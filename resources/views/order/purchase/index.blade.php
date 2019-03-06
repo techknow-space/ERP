@@ -52,7 +52,8 @@
                                         </td>
                                         <td>
                                             <a href="/order/purchase/edit/{{$purchase_order->id}}">Edit</a>
-                                            <a href="/order/purchase/export/{{$purchase_order->id}}">PDF</a>
+                                            <a href="/order/purchase/export/PDF/{{$purchase_order->id}}">PDF</a>
+                                            <a href="/order/purchase/export/CSV/{{$purchase_order->id}}">CSV</a>
                                         </td>
                                     </tr>
                                 @endforeach
