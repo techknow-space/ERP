@@ -82,14 +82,17 @@ class PurchaseOrderController extends Controller
      */
     public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
     {
-        $status = PurchaseOrderStatus::where('status','InReview')->first();
 
+        //$status = PurchaseOrderStatus::where('status','InReview')->first();
+
+        /*
         try{
             $purchase_order = PurchaseOrder::
             ofSupplier($supplier)
                 ->isOrBeforeStatus($status)
                 ->firstOrFail();
-        }catch (ModelNotFoundException $e){
+        }
+        catch (ModelNotFoundException $e){
 
             $purchase_order = new PurchaseOrder();
             if(NULL === $in_status){
@@ -106,6 +109,22 @@ class PurchaseOrderController extends Controller
 
             $purchase_order->save();
         }
+        */
+
+        $purchase_order = new PurchaseOrder();
+        if(NULL === $in_status){
+            $purchase_order_status = PurchaseOrderStatus::where('status','Created')->firstOrFail();
+        }else{
+            $purchase_order_status = $in_status;
+        }
+
+        $purchase_order_payment_status = PurchaseOrderPaymentStatus::where('status','In Queue')->firstOrFail();
+
+        $purchase_order->Supplier()->associate($supplier);
+        $purchase_order->PurchaseOrderStatus()->associate($purchase_order_status);
+        $purchase_order->PurchaseOrderPaymentStatus()->associate($purchase_order_payment_status);
+
+        $purchase_order->save();
 
         return $purchase_order;
     }

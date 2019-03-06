@@ -52,7 +52,11 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
         Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
         Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
+
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
+
+        Route::get('temp','PurchaseOrder\AutoPurchaseOrderController@createPurchaseOrderForReplishment');
+
         Route::prefix('export')->group(function (){
             Route::get('PDF/{id}','PurchaseOrder\AutoPurchaseOrderController@exportPDF');
             Route::get('CSV/{id}','PurchaseOrder\AutoPurchaseOrderController@exportCSV');
@@ -123,3 +127,5 @@ Route::get('/sales/part/{id}','SalesDataController@part');
 Route::get('/sales/monthly/part/{id}','SalesDataController@partByMonth');
 
 Route::get('/sales/reorder', 'SalesDataController@reorderStrategy');
+
+

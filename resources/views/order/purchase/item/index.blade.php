@@ -7,7 +7,13 @@
             SKU
         </th>
         <th>
-            Part Name
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Part
         </th>
         <th>
             Cost
@@ -32,7 +38,13 @@
                     {{$po_item->Part->sku}}
                 </td>
                 <td>
-                    {{$po_item->Part->devices->brand->name}} {{$po_item->Part->devices->model_name}} {{$po_item->Part->part_name}}
+                    {{$po_item->Part->devices->brand->name}}
+                </td>
+                <td>
+                    {{$po_item->Part->devices->model_name}}
+                </td>
+                <td>
+                     {{$po_item->Part->part_name}}
                 </td>
 
                     <td>
@@ -43,7 +55,6 @@
                     </td>
 
                     <td>
-                        @csrf
                         <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save"></i>
                         <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete"></i>
                     </td>
