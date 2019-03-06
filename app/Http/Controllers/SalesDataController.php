@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\WODevicePart;
+use Carbon\Carbon;
 
 class SalesDataController extends Controller
 {
@@ -42,5 +43,12 @@ class SalesDataController extends Controller
         ->get();
 
         return view('reports.monthly.part')->with('sales', $count)->with('part', $id);
+    }
+
+    public function reorderStrategy()
+    {
+        $parts = WODevicePart::select(DB::raw('((count(part_id) / 3) * 3) AS count, part_id'))->where("created_at", ">", Carbon::now()->subMonths(3))->groupBy('part_id')->get();
+
+        return $parts;
     }
 }
