@@ -1,10 +1,12 @@
 <?php
 namespace App\Models;
 
+use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
 use Laravel\Scout\Searchable as ScoutSearchable;
+use Illuminate\Support\Facades\DB;
 
 class Part extends Base\Part implements Searchable
 {
@@ -72,4 +74,49 @@ class Part extends Base\Part implements Searchable
     {
         return $this->belongsTo('App\Models\PartColour','partColour_id');
     }
+
+    public function getTotalstockAttribute()
+    {
+        return DB::table('part_stocks')
+            ->where('part_id',$this->id)
+            ->sum('stock_qty');
+    }
+
+    public function getSoldpastyearAttribute()
+    {
+        $from = date('Y-m-d', strtotime('-1 year'));;
+        $to = date('Y-m-d');
+
+        return DB::table('wodevice_parts')
+            ->where('part_id',$this->id)
+            ->whereBetween('created_at',[$from,$to])
+            ->count();
+    }
+
+    public function getSoldcurrentqtrAttribute()
+    {
+        $now = Carbon::now();
+        $firstOfQuarter = $now->copy()->firstOfQuarter();
+
+        $to = $now->format('Y-m-d');
+        $from = $firstOfQuarter->format('Y-m-d');
+
+        return DB::table('wodevice_parts')
+            ->where('part_id',$this->id)
+            ->whereBetween('created_at',[$from,$to])
+            ->count();
+    }
+
+    public function getSoldpast3monthsAttribute()
+    {
+        $from = date('Y-m-d', strtotime('-3 month'));;
+        $to = date('Y-m-d');
+
+        return DB::table('wodevice_parts')
+            ->where('part_id',$this->id)
+            ->whereBetween('created_at',[$from,$to])
+            ->count();
+    }
+
+
 }

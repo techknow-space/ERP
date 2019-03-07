@@ -6,6 +6,7 @@ use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderPaymentStatus;
 use App\Models\PurchaseOrderStatus;
 use App\Models\Supplier;
+use DebugBar\DebugBar;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
@@ -42,11 +43,14 @@ class PurchaseOrderController extends Controller
 
     public function edit($id)
     {
+        app('debugbar')->disable();
         $purchase_order = PurchaseOrder::findOrFail($id);
 
         //$suppliers = Supplier::all();
         $purchase_order_statuses = PurchaseOrderStatus::all()->sortBy('seq_id');
         $purchase_order_payment_statuses = PurchaseOrderPaymentStatus::all();
+
+
 
         return view('order.purchase.edit',[
             'purchase_order' => $purchase_order,

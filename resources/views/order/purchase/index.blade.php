@@ -30,7 +30,7 @@
                                 @foreach ($purchase_orders as $purchase_order)
                                     <tr data-poid="{{$purchase_order->id}}">
                                         <td>
-                                            {{$purchase_order->number}}
+                                            <a href="/order/purchase/edit/{{$purchase_order->id}}">{{$purchase_order->number}}</a>
                                         </td>
                                         <td>
                                             {{$purchase_order->created_at}}

@@ -16,13 +16,25 @@
             Part
         </th>
         <th>
-            Cost
+            InHand
+        </th>
+        <th>
+            Sold Past Year
+        </th>
+        <th>
+            Sold Past 3 Mths
+        </th>
+        <th>
+            Last Cost
+        </th>
+        <th>
+            New Cost
         </th>
         <th>
             Qty
         </th>
         <th>
-            Change
+            Action
         </th>
     </tr>
     </thead>
@@ -44,7 +56,19 @@
                     {{$po_item->Part->devices->model_name}}
                 </td>
                 <td>
-                     {{$po_item->Part->part_name}}
+                    {{$po_item->Part->part_name}}
+                </td>
+                <td>
+                    {{$po_item->Part->totalstock}}
+                </td>
+                <td>
+                    {{$po_item->Part->soldpastyear}}
+                </td>
+                <td>
+                    <a href="/sales/part/{{$po_item->Part->id}}" target="_blank" >{{$po_item->Part->soldpast3months}}</a>
+                </td>
+                <td>
+                    {{$po_item->Part->price->last_cost}}
                 </td>
 
                     <td>
@@ -62,9 +86,7 @@
             </tr>
         @endforeach
     </tbody>
-
-
-</table>
+    </table>
     <div id="poItemsTablePartSearchAdd">
         <form class="form-inline" id="poItemsTablePartSearchAddForm" action="/order/purchase/item/create">
             <div class="form-group mb-2">
