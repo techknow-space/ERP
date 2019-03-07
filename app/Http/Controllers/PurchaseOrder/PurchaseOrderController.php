@@ -75,7 +75,8 @@ class PurchaseOrderController extends Controller
 
     public function delete($id)
     {
-
+        PurchaseOrder::destroy($id);
+        return redirect('order/purchase');
     }
 
 

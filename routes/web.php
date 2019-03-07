@@ -52,6 +52,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
         Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
         Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
+        Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
 

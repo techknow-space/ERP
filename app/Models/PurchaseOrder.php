@@ -12,8 +12,11 @@ class PurchaseOrder extends Base\PurchaseOrder
         parent::boot();
         self::creating(function($model){
             $model->id = Uuid::uuid4()->toString();
-
             $model->number = HelperController::createSerialNumber('PurchaseOrder');
+        });
+
+        static::deleting(function(PurchaseOrder $purchaseOrder) {
+            $purchaseOrder->PurchaseOrderItems()->delete();
         });
     }
 
