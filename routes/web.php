@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/setLocation/{id}', function($id){
+    \App\Http\Controllers\HelperController::setCurrentLocation($id);
+    return redirect('/');
+});
+
 Route::group([ 'prefix' => 'lookup', 'middleware' => 'auth' ], function(){
     Route::get('/','LookupController@lookup_master');
     Route::get('sku/{sku}','LookupController@lookup_part_sku');
@@ -59,6 +65,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
         Route::prefix('payment')->group(function (){
             Route::get('/','PurchaseOrder\PurchaseOrderPaymentController@index');
+            Route::get('delete/{id}','PurchaseOrder\PurchaseOrderPaymentController@delete');
         });
 
         Route::prefix('export')->group(function (){

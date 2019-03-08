@@ -20,4 +20,17 @@ class PurchaseOrderPaymentController extends Controller
         $purchaseOrderPayments = PurchaseOrderPayment::all();
         return view('order.purchase.payment.index')->with('purchaseOrderPayments',$purchaseOrderPayments);
     }
+
+    public function delete($id)
+    {
+        $purchaseOrderPayment = PurchaseOrderPayment::findOrFail($id);
+
+        foreach($purchaseOrderPayment->PurchaseOrders as $purchaseOrder){
+            $purchaseOrder->purchaseOrderPayment_id = NULL;
+            $purchaseOrder->save();
+        }
+
+        $result = $purchaseOrderPayment->delete();
+        return $this->index();
+    }
 }

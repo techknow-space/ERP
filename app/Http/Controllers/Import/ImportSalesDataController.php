@@ -79,7 +79,7 @@ class ImportSalesDataController extends Controller
         if($data){
             foreach ($data as $datum){
                 $part = $this->getPartwithSKU($datum['1']);
-                $datum['2'] = 'TO';
+                $datum['2'] = 'S1';
                 if($part){
                     $wo = new WorkOrder();
 

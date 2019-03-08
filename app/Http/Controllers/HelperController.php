@@ -3,19 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HelperController extends Controller
 {
-    public static function getCurrentLocation()
+    public static function getCurrentLocation(): Location
     {
-        return Location::findOrFail('acc39f12-68bb-4c9a-8791-d52ab49fcd12');
+        $request = request();
+        $location = false;
+        if($request->session()->has('location_id')){
+            try{
+                $location = Location::findOrFail(session('location_id'));
+            }catch (ModelNotFoundException $e){
+                $location = Location::where('location_code','S1')->firstOrFail();
+                session(['location_id'=>$location->id]);
+            }
+        }
+        else{
+            $location = Location::where('location_code','S1')->firstOrFail();
+            session(['location_id'=>$location->id]);
+        }
+
+        return $location;
     }
 
-    public static function createSerialNumber($entity)
+    public static function setCurrentLocation($location_id): void
+    {
+        session(['location_id'=>$location_id]);
+    }
+
+
+    public static function createSerialNumber($entity): string
     {
         $date = date('Md/y');
         $digits = 2;
         $random = rand(pow(10, $digits-1), pow(10, $digits)-1);
+
+        $entity_short_code = '#';
 
         switch ($entity){
             case 'PurchaseOrder':
@@ -23,6 +47,12 @@ class HelperController extends Controller
                 break;
             case 'StockCount':
                 $entity_short_code = 'SC';
+                break;
+            case 'PurchaseOrderPayment':
+                $entity_short_code = 'PAY';
+                break;
+            case 'Supplier':
+                $entity_short_code = 'SUPP';
                 break;
         }
 
