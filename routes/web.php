@@ -55,6 +55,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
+        Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@createPurchaseOrderForReplishment');
 
         Route::prefix('payment')->group(function (){
             Route::get('/','PurchaseOrder\PurchaseOrderPaymentController@index');

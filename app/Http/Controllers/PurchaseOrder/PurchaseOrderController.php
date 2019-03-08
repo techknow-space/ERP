@@ -13,9 +13,14 @@ use Barryvdh\DomPDF\PDF;
 
 class PurchaseOrderController extends Controller
 {
-    public function index()
+    public function index($filter = NULL)
     {
-        $purchase_orders = PurchaseOrder::all();
+        if(NULL == $filter){
+            $purchase_orders = PurchaseOrder::all();
+        }
+        else{
+            $purchase_orders = $this->filter($filter);
+        }
         return view('order.purchase.index')->with('purchase_orders',$purchase_orders);
     }
 
@@ -248,6 +253,12 @@ class PurchaseOrderController extends Controller
         };
 
         return response()->stream($callback,200,$headers);
+    }
+
+    public function filter($criteria)
+    {
+        $purchaseOrders = PurchaseOrder::all();
+        return $purchaseOrders;
     }
 
 }
