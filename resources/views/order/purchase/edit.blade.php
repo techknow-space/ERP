@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/order/purchase/edit/{{$purchase_order->id}}" method="post">
+                        <form action="/order/purchase/edit/{{$purchase_order->id}}" method="post" id="purchaseOrderForm">
                             @method('PUT')
                             <div class="form-row">
                                 <div class="form-group col-md-3">
@@ -62,11 +62,12 @@
 
                             </div>
                             @csrf
-                            <button type="submit" class="btn btn-primary float-right">Update</button>
-                            <br><br>
+                            <br>
                         </form>
 
                         @include('order.purchase.item.index')
+
+                        @include('order.purchase.payment')
 
                     </div>
                 </div>

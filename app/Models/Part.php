@@ -118,5 +118,4 @@ class Part extends Base\Part implements Searchable
             ->count();
     }
 
-
 }

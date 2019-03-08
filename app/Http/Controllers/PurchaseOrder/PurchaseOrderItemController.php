@@ -37,7 +37,14 @@ class PurchaseOrderItemController extends Controller
 
         try{
             $part = Part::find($data['part_id']);
+
             $purchase_order = PurchaseOrder::find($data['poid']);
+
+            if($purchase_order->PurchaseOrderStatus->seq_id > 6){
+                $result['error'] = $error;
+
+                return response()->json($result);
+            }
 
             try{
                 $po_item = PurchaseOrderItems::
@@ -89,6 +96,15 @@ class PurchaseOrderItemController extends Controller
 
         try{
             $poItem = PurchaseOrderItems::findOrFail($id);
+
+            $purchase_order = PurchaseOrder::findOrFail($poItem->PurchaseOrder->id);
+
+            if($purchase_order->PurchaseOrderStatus->seq_id > 6){
+                $result['error'] = $error;
+
+                return response()->json($result);
+            }
+
             $poItem->cost = $request->input('cost');
             $poItem->qty = $request->input('qty');
             $poItem->is_edited = true;

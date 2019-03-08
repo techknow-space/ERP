@@ -26,6 +26,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
-    "tablesorter": "^2.31.1"
+    "moment": "^2.24.0",
+    "tablesorter": "^2.31.1",
+    "tempusdominus-bootstrap-4": "^5.1.2",
+    "tempusdominus-core": "^5.0.3"
   }
 }

@@ -1,3 +1,4 @@
+
 <div class="row align-content-center">
     <b>Parts</b>
     <table id="poItemsTable" class="table" data-poid="{{$purchase_order->id}}">
@@ -33,13 +34,19 @@
         <th>
             Qty
         </th>
+
+        @if($is_editable = ($purchase_order->PurchaseOrderStatus->seq_id > 6 ? false : true))
         <th>
             Action
         </th>
+        @endif
+
     </tr>
     </thead>
     <tbody>
-        @foreach($purchase_order->PurchaseOrderItems as $po_item)
+        @foreach($purchase_order->PurchaseOrderItems->sortBy(function ($part,$key){
+            return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
+        }) as $po_item)
             <tr
                 id="{{$po_item->id}}"
                 @if($po_item->is_edited)
@@ -71,22 +78,37 @@
                     {{$po_item->Part->price->last_cost}}
                 </td>
 
-                    <td>
+                <td>
+                    @if($is_editable)
                         <input type="number" step="0.01" min="0" class="form-control poItemEditableField" name="poItemCost" id="poItemCost-{{$po_item->id}}" data-value="{{$po_item->cost}}" value="{{$po_item->cost}}" readonly='readonly'>
-                    </td>
-                    <td>
-                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" data-value="{{$po_item->qty}}" value="{{$po_item->qty}}" readonly='readonly'>
-                    </td>
+                    @else
+                        {{$po_item->cost}}
+                    @endif
 
-                    <td>
-                        <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save"></i>
-                        <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete"></i>
-                    </td>
+                </td>
+                <td>
+                    @if($is_editable)
+                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" data-value="{{$po_item->qty}}" value="{{$po_item->qty}}" readonly='readonly'>
+                    @else
+                        {{$po_item->qty}}
+                    @endif
+
+                </td>
+
+                @if($is_editable)
+                <td>
+                    <i class="fas fa-check-circle poItemInlineFunctionButton d-none" id="poItemSaveBtn-{{$po_item->id}}" data-action="save"></i>
+                    <i class="fas fa-trash-alt poItemInlineFunctionButton" id="poItemDeleteBtn-{{$po_item->id}}" data-action="delete"></i>
+                </td>
+                @endif
 
             </tr>
         @endforeach
     </tbody>
     </table>
+
+    @if($is_editable)
+
     <div id="poItemsTablePartSearchAdd">
         <form class="form-inline" id="poItemsTablePartSearchAddForm" action="/order/purchase/item/create">
             <div class="form-group mb-2">
@@ -102,4 +124,5 @@
 
         </form>
     </div>
+    @endif
 </div>

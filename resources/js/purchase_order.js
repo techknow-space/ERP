@@ -29,9 +29,6 @@ $(document).ready(function() {
         minimumInputLength: 4,
     });
 
-
-
-
     $('#poItemsTablePartSearchAddForm').submit(function (e) {
 
         let form = $(this);
@@ -53,6 +50,17 @@ $(document).ready(function() {
         e.preventDefault();
     });
 
+    let poStatus = $('#poStatus');
+    let poPaymentStatus = $('#poPaymentStatus');
+    let purchaseOrderForm = $('#purchaseOrderForm');
+
+    poPaymentStatus.on('change',function () {
+       purchaseOrderForm.submit();
+    });
+
+    poStatus.on('change',function () {
+        purchaseOrderForm.submit();
+    });
 
     let poItemsTable = $('#poItemsTable');
 
@@ -63,16 +71,6 @@ $(document).ready(function() {
         editPOItemRow(action,po_item_id);
 
     });
-
-    /*
-    $('.poItemInlineFunctionButton').on('click',function () {
-        let action = $(this).data('action');
-        let po_item_id = $(this).data('poitemid');
-        editPOItemRow(action,po_item_id);
-
-    });
-
-     */
 
     poItemsTable.on('keydown','.poItemEditableField',function(e){
         if(13 === e.which){
@@ -109,45 +107,18 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-    /*
-
-let poItemEditableField = $('.poItemEditableField');
-
-    poItemEditableField.keypress(function (e) {
-        if(13 === e.which){
-            $(this).blur();
-            let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
-            $(saveBtnID).click();
-        }
+    let poPaymentTransactionDate = $('#poPaymentTransactionDate');
+    poPaymentTransactionDate.datetimepicker({
+        format: 'L'
     });
 
+    let poPaymentForm = $('#purchaseOrderPaymentForm');
 
-
-    poItemEditableField.on('click',function () {
-        if(!poItemEditableField.is(":focus")){
-            $(this).focus();
-        }
+    poPaymentForm.on('submit',function (e) {
+        var v = poPaymentForm.serialize();
+        console.log(v);
+        e.preventDefault();
     });
-
-
-
-    poItemEditableField.on('focus',function () {
-        $(this).prop("readonly",false);
-        let saveBtnID = '#poItemSaveBtn-'+$(this).data('poitemid');
-        $(saveBtnID).show();
-
-    });
-
-
-
-    poItemEditableField.on('blur',function () {
-        $(this).prop("readonly",true);
-    });
-
-     */
 
 });
 

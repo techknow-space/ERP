@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Select2 = require('select2');
+window.moment = require('moment');
+window.datetimepicker = require('tempusdominus-bootstrap-4');
+
 
 require('./generic');
 require('./mjr');
