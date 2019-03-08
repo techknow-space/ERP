@@ -56,7 +56,9 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
 
-        Route::post('payment/create','PurchaseOrder\PurchaseOrderPaymentController@test');
+        Route::prefix('payment')->group(function (){
+            Route::get('/','PurchaseOrder\PurchaseOrderPaymentController@index');
+        });
 
         Route::prefix('export')->group(function (){
             Route::get('PDF/{id}','PurchaseOrder\AutoPurchaseOrderController@exportPDF');

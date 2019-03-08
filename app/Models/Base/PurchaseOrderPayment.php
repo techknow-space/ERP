@@ -31,8 +31,8 @@ class PurchaseOrderPayment extends Model
     'id'=>'string',
     'transaction_date'=>'datetime',
     'transaction_details'=>'string',
-    'amount'=>'float',
-    'currency'=>'string',
+    'amount_CAD'=>'float',
+    'amount_USD'=>'float',
     'exchange_rate_to_CAD'=>'float'
   ];
   public function PurchaseOrders()

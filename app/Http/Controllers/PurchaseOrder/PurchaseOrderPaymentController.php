@@ -13,4 +13,9 @@ class PurchaseOrderPaymentController extends Controller
     {
         dd($request->all());
     }
+
+    public function index()
+    {
+
+    }
 }
