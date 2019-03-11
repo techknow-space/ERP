@@ -23,6 +23,7 @@ class PartOperationController extends Controller
         }catch (ModelNotFoundException $e){
             $result = false;
         }
+
         return response()->json($result);
 
     }

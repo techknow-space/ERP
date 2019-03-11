@@ -11,27 +11,32 @@ class HelperController extends Controller
     {
         $request = request();
         $location = false;
+
         if($request->session()->has('location_id')){
             try{
                 $location = Location::findOrFail(session('location_id'));
             }catch (ModelNotFoundException $e){
-                $location = Location::where('location_code','S1')->firstOrFail();
-                session(['location_id'=>$location->id]);
+                $location = self::getDefaultLocation();
+                self::setCurrentLocation($location);
             }
         }
         else{
-            $location = Location::where('location_code','S1')->firstOrFail();
-            session(['location_id'=>$location->id]);
+            $location = self::getDefaultLocation();
+            self::setCurrentLocation($location);
         }
 
         return $location;
     }
 
-    public static function setCurrentLocation($location_id): void
+    public static function getDefaultLocation(): Location
     {
-        session(['location_id'=>$location_id]);
+        return Location::where('location_code','S1')->firstOrFail();
     }
 
+    public static function setCurrentLocation(Location $location): void
+    {
+        session(['location_id'=>$location->id]);
+    }
 
     public static function createSerialNumber($entity): string
     {

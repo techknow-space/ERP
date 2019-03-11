@@ -3,6 +3,8 @@ use App\Models\Part as Part;
 use App\Models\PurchaseOrder;
 use Illuminate\Support\Facades\Route as Route;
 use Illuminate\Http\Request;
+use App\Models\Location;
+use App\Http\Controllers\HelperController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/setLocation/{id}', function($id){
-    \App\Http\Controllers\HelperController::setCurrentLocation($id);
-    return redirect('/');
+Route::get('/setLocation/{location}', function(Location $location){
+    HelperController::setCurrentLocation($location);
+    $to = session('_previous')['url'];
+    return redirect($to);
 });
 
 Route::group([ 'prefix' => 'lookup', 'middleware' => 'auth' ], function(){
