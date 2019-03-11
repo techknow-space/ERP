@@ -105,6 +105,7 @@
         </nav>
 
         <main class="py-4">
+            @include('global.notifications')
             @yield('content')
         </main>
     </div>

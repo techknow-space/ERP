@@ -39,7 +39,7 @@ class LookupController extends Controller
      */
     public function lookup_part_sku($sku)
     {
-        app('debugbar')->disable();
+        //app('debugbar')->disable();
         $part = Part::where('sku',$sku)->with('devices.brand')->firstOrFail();
         return view('part')->with('part', $part);
     }

@@ -18,12 +18,12 @@ use App\Http\Controllers\HelperController;
 
 /* Debugging Routes */
 
-Route::get('/test/createwo/{number}/{part_id}','PartOperationController@testsetWorkOrderDetails');
 
 /* End Debugging Routes */
 
 Route::get('/setLocation/{location}', function(Location $location){
     HelperController::setCurrentLocation($location);
+    session()->flash('success',['Your Location is updated to : '.$location->location]);
     $to = session('_previous')['url'];
     return redirect($to);
 });

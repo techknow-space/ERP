@@ -14,6 +14,11 @@ use Illuminate\Http\Request;
 
 class PartOperationController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function reduceStock(Request $request, $id)
     {
         $wo_number = $request->input('wo');
@@ -34,6 +39,12 @@ class PartOperationController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function increaseStock(Request $request, $id)
     {
         $wo_number = $request->input('wo');
