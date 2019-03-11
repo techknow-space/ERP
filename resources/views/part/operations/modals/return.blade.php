@@ -10,6 +10,12 @@
             </div>
             <div class="modal-body">
                 This action will increase the Stock of the Part by 1. <br>
+                <form action="" class="form-inline">
+                    <div class="form-group">
+                        <label for="partOperationReturnWONumber">Work Order:</label>
+                        <input type="number" placeholder="WO#" id="partOperationReturnWONumber" class="form-control">
+                    </div>
+                </form>
                 Please make sure that the Part is returned to Appropriate location.
             </div>
             <div class="modal-footer">

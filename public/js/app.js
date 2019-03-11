@@ -69172,10 +69172,14 @@ function start_part_stock_increase() {
 }
 
 function increase_stock(part_id) {
+  var wo_number = $('#partOperationReturnWONumber').val();
   $.ajax({
     url: '/api/part/stock/increase/' + part_id,
     type: "PUT",
     dataType: "json",
+    data: {
+      "wo": wo_number
+    },
     success: function success(data) {
       $('#return-part-from-repair-dialog').modal('hide');
       location.reload();
@@ -69190,10 +69194,14 @@ function start_part_stock_decrease() {
 }
 
 function decrease_stock(part_id) {
+  var wo_number = $('#partOperationUseWONumber').val();
   $.ajax({
     url: '/api/part/stock/decrease/' + part_id,
     type: "PUT",
     dataType: "json",
+    data: {
+      "wo": wo_number
+    },
     success: function success(data) {
       $('#use-part-in-repair-dialog').modal('hide');
       location.reload();

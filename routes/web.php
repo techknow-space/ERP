@@ -16,6 +16,12 @@ use App\Http\Controllers\HelperController;
 |
 */
 
+/* Debugging Routes */
+
+Route::get('/test/createwo/{number}/{part_id}','PartOperationController@testsetWorkOrderDetails');
+
+/* End Debugging Routes */
+
 Route::get('/setLocation/{location}', function(Location $location){
     HelperController::setCurrentLocation($location);
     $to = session('_previous')['url'];
@@ -86,6 +92,8 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         });
     });
 });
+
+
 // TODO: Create API controller group
 Route::group([ 'prefix' => 'api', 'middleware' => 'auth' ],function (){
     Route::get('findModelWithBrandID/{id}','LookupController@findModelWithBrandID');
@@ -97,6 +105,8 @@ Route::group([ 'prefix' => 'api', 'middleware' => 'auth' ],function (){
         Route::put('stock/decrease/{id}','PartOperationController@reduceStock');
     });
 });
+
+
 // All routes below here require cleanup/removal and handlers to be adjusted accordingly
 Route::get('/', 'HomeController@index');
 Auth::routes();

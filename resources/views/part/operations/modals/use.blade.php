@@ -8,7 +8,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                This action will reduce the Stock of the Part by 1.
+                This action will reduce the Stock of the Part by 1. <br><br>
+                <form action="" class="form-inline">
+                    <div class="form-group">
+                        <label for="partOperationUseWONumber">Work Order:</label>
+                        <input type="number" placeholder="WO#" id="partOperationUseWONumber" class="form-control">
+                    </div>
+                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
