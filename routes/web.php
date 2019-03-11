@@ -74,7 +74,11 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
         Route::prefix('payment')->group(function (){
             Route::get('/','PurchaseOrder\PurchaseOrderPaymentController@index');
-            Route::get('delete/{id}','PurchaseOrder\PurchaseOrderPaymentController@delete');
+            Route::get('create','PurchaseOrder\PurchaseOrderPaymentController@create');
+            Route::post('create','PurchaseOrder\PurchaseOrderPaymentController@insert');
+            Route::get('edit/{purchaseOrderPayment}','PurchaseOrder\PurchaseOrderPaymentController@edit');
+            Route::put('edit/{purchaseOrderPayment}','PurchaseOrder\PurchaseOrderPaymentController@update');
+            Route::get('delete/{purchaseOrderPayment}','PurchaseOrder\PurchaseOrderPaymentController@delete');
         });
 
         Route::prefix('export')->group(function (){

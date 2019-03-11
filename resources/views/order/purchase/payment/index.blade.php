@@ -45,7 +45,7 @@
                                         </td>
                                         <td>
                                             @foreach($purchaseOrderPayment->PurchaseOrders as $purchaseOrder)
-                                                <a href="/order/purchase/edit/{{$purchaseOrder->id}}">{{$purchaseOrder->number}} {{$purchaseOrder->Supplier->name}}-{{$purchaseOrder->Supplier->country}}</a>
+                                                <a href="/order/purchase/edit/{{$purchaseOrder->id}}">{{$purchaseOrder->number}} {{$purchaseOrder->Supplier->name}}-{{$purchaseOrder->Supplier->country}}</a> <br/>
                                             @endforeach
                                         </td>
                                         <td>
