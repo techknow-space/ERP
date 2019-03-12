@@ -74,8 +74,19 @@ class PurchaseOrderPaymentController extends Controller
         $purchaseOrderPayment->amount_CAD = (float)$request->input('poPaymentValueCAD');
         $purchaseOrderPayment->amount_USD = (float)$request->input('poPaymentValueUSD');
 
-        $updatedPurchaseOrder_ids = $request->input('poPaymentPOCheckBox');
+
+
         $oldPurchaseOrders = $purchaseOrderPayment->PurchaseOrders;
+        foreach($oldPurchaseOrders as $oldPurchaseOrder){
+            $oldPurchaseOrder->purchaseOrderPayment_id = NULL;
+            $oldPurchaseOrder->save();
+        }
+
+        foreach ($request->input('poPaymentPOCheckBox') as $purchaseOrder_id){
+            $purchaseOrder = PurchaseOrder::find($purchaseOrder_id);
+            $purchaseOrder->PurchaseOrderPayment()->associate($purchaseOrderPayment);
+            $purchaseOrder->save();
+        }
 
         $purchaseOrderPayment->save();
         return $this->edit($purchaseOrderPayment);
