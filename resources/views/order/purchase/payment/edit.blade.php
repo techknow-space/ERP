@@ -37,11 +37,19 @@
                                 <textarea class="form-control" name="PoPaymentTransactionDetails" id="PoPaymentTransactionDetails">{{$purchaseOrderPayment->transaction_details}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Related Purchase Orders:</label>
+                                <label>Related Purchase Orders: </label>
                                 @foreach($purchaseOrderPayment->PurchaseOrders as $purchaseOrder)
                                     <div class="form-check form-check-inline">
-                                        <input name="poPaymentPOCheckBox[]" class="form-check-input" type="checkbox" value="{{$purchaseOrder->id}}" checked>
-                                        <label class="form-check-label" for="poPaymentPOCheckBox[]">{{$purchaseOrder->number}}</label>
+                                        <input id="poPaymentPOCheckBox-{{$purchaseOrder->id}}" name="poPaymentPOCheckBox[]" class="form-check-input" type="checkbox" value="{{$purchaseOrder->id}}" checked>
+                                        <label class="form-check-label" for="poPaymentPOCheckBox-{{$purchaseOrder->id}}">{{$purchaseOrder->number}}</label>
+                                    </div>
+                                @endforeach
+                                <br/>
+                                <label>Other Purchase Orders: </label>
+                                @foreach($purchaseOrders as $purchaseOrder)
+                                    <div class="form-check form-check-inline">
+                                        <input id="poPaymentPOCheckBox-{{$purchaseOrder->id}}" name="poPaymentPOCheckBox[]" class="form-check-input" type="checkbox" value="{{$purchaseOrder->id}}">
+                                        <label class="form-check-label" for="poPaymentPOCheckBox-{{$purchaseOrder->id}}">{{$purchaseOrder->number}}</label>
                                     </div>
                                 @endforeach
                             </div>

@@ -58,7 +58,8 @@ class PurchaseOrderPaymentController extends Controller
      */
     public function edit(PurchaseOrderPayment $purchaseOrderPayment)
     {
-        return view('order.purchase.payment.edit')->with('purchaseOrderPayment',$purchaseOrderPayment);
+        $purchaseOrders = PurchaseOrder::doesntHave('PurchaseOrderPayment')->get();
+        return view('order.purchase.payment.edit',['purchaseOrderPayment'=>$purchaseOrderPayment,'purchaseOrders'=>$purchaseOrders]);
     }
 
     /**
@@ -89,6 +90,9 @@ class PurchaseOrderPaymentController extends Controller
         }
 
         $purchaseOrderPayment->save();
+
+        session()->flash('success',['PurchaseOrder Payment Transaction was successfully updated']);
+
         return $this->edit($purchaseOrderPayment);
     }
 
@@ -104,6 +108,9 @@ class PurchaseOrderPaymentController extends Controller
             $purchaseOrder->save();
         }
         $result = $purchaseOrderPayment->delete();
+
+        session()->flash('error',['PurchaseOrder Payment Transaction was successfully deleted']);
+
         return $this->index();
     }
 }
