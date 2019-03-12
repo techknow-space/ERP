@@ -67,8 +67,6 @@
 
                         @include('order.purchase.item.index')
 
-                        @include('order.purchase.payment')
-
                     </div>
                 </div>
             </div>

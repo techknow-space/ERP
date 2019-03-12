@@ -68,6 +68,8 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
         Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
         Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
+        Route::get('verify/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@verify');
+        Route::post('receiveItem/{sku}/{purchaseOrderID}','PurchaseOrder\PurchaseOrderActionsController@itemReceived');
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
         Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@createPurchaseOrderForReplishment');

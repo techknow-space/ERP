@@ -69328,6 +69328,41 @@ $(document).ready(function () {
     console.log(v);
     e.preventDefault();
   });
+  var poVerifyBarcodeEntryForm = $('#purchaseOrderVerifyBarcodeEntryForm');
+  poVerifyBarcodeEntryForm.on('submit', function (e) {
+    var barcode_box = $('#purchaseOrderVerifyBarcodeEntry');
+    barcode_box.attr("disabled", "disabled");
+    var sku = barcode_box.val();
+    $.ajax({
+      type: "POST",
+      url: '/order/purchase/receiveItem/' + sku + '/' + purchase_order_id,
+      success: function success(data) {
+        if (data.error) {
+          alert('There was an Error !!!');
+        } else {
+          console.log(data);
+          var row = $('#' + data.item.id);
+          row.find('.poItemsVerifyTableItemRowQtyReceived').text(data.item.qty_received);
+          row.find('.poItemsVerifyTableItemRowQtyDiff').text(data.item.diff);
+
+          if (!row.hasClass(data.item.class)) {
+            row.removeClass(function (index, className) {
+              return (className.match(/(^|\s)table-\S+/g) || []).join(' ');
+            });
+            row.addClass(data.item.class);
+          }
+        }
+
+        barcode_box.removeAttr("disabled");
+        barcode_box.focus();
+      }
+    });
+    e.preventDefault();
+  });
+  var poItemsVerifyTable = $('#poItemsVerifyTable');
+  poItemsVerifyTable.on('change', '.poItemsVerifyTableItemRowQtyReceived > input', function () {
+    alert('Qty Changed');
+  });
 });
 
 function editPOItemRow(action, po_item_id) {

@@ -54,7 +54,12 @@
                                             <a href="/order/purchase/edit/{{$purchase_order->id}}">Edit</a>
                                             <a href="/order/purchase/export/PDF/{{$purchase_order->id}}">PDF</a>
                                             <a href="/order/purchase/export/CSV/{{$purchase_order->id}}">CSV</a>
-                                            <a href="/order/purchase/delete/{{$purchase_order->id}}">Delete</a>
+                                            @if(7 > $purchase_order->PurchaseOrderStatus->seq_id)
+                                                <a href="/order/purchase/delete/{{$purchase_order->id}}">Delete</a>
+                                            @endif
+                                            @if(9 == $purchase_order->PurchaseOrderStatus->seq_id)
+                                                <a href="/order/purchase/verify/{{$purchase_order->id}}">Verify</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
