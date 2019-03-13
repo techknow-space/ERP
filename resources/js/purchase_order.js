@@ -147,6 +147,7 @@ $(document).ready(function() {
                         row.removeClass (function (index, className) {
                             return (className.match (/(^|\s)table-\S+/g) || []).join(' ');
                         });
+
                         row.addClass(data.item.class);
                     }
 
@@ -155,7 +156,6 @@ $(document).ready(function() {
                 barcode_box.focus();
             }
         });
-
 
         e.preventDefault();
     });

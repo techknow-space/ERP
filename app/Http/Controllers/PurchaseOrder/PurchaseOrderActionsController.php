@@ -56,4 +56,9 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
         return response()->json($response);
     }
+
+    public function createDistributionRecords(PurchaseOrder $purchaseOrder)
+    {
+        //
+    }
 }

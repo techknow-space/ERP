@@ -7,6 +7,7 @@ namespace App\Http\Controllers\PurchaseOrder;
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderPayment;
+use App\Models\PurchaseOrderPaymentStatus;
 use Illuminate\Http\Request;
 
 class PurchaseOrderPaymentController extends Controller
@@ -42,8 +43,11 @@ class PurchaseOrderPaymentController extends Controller
         $purchaseOrderPayment->save();
 
         foreach($request->input('poPaymentPOCheckBox') as $purchaseOrder_id){
+
             $purchaseOrder = PurchaseOrder::find($purchaseOrder_id);
             $purchaseOrder->PurchaseOrderPayment()->associate($purchaseOrderPayment);
+            $puchaseOrderPaymentStatus = PurchaseOrderPaymentStatus::where('seq_id',3)->first();
+            $purchaseOrder->PurchaseOrderPaymentStatus()->associate($puchaseOrderPaymentStatus);
             $purchaseOrder->save();
         }
 
@@ -80,12 +84,18 @@ class PurchaseOrderPaymentController extends Controller
         $oldPurchaseOrders = $purchaseOrderPayment->PurchaseOrders;
         foreach($oldPurchaseOrders as $oldPurchaseOrder){
             $oldPurchaseOrder->purchaseOrderPayment_id = NULL;
+
+            $puchaseOrderPaymentStatus = PurchaseOrderPaymentStatus::where('seq_id',2)->first();
+            $oldPurchaseOrder->PurchaseOrderPaymentStatus()->associate($puchaseOrderPaymentStatus);
+
             $oldPurchaseOrder->save();
         }
 
         foreach ($request->input('poPaymentPOCheckBox') as $purchaseOrder_id){
             $purchaseOrder = PurchaseOrder::find($purchaseOrder_id);
             $purchaseOrder->PurchaseOrderPayment()->associate($purchaseOrderPayment);
+            $puchaseOrderPaymentStatus = PurchaseOrderPaymentStatus::where('seq_id',3)->first();
+            $purchaseOrder->PurchaseOrderPaymentStatus()->associate($puchaseOrderPaymentStatus);
             $purchaseOrder->save();
         }
 
