@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseOrderItemsDistribution extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'purchase_order_items_distribution';
+
+    /**
      * Primary key type.
      *
      * @var string
