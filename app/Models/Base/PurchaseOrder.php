@@ -61,4 +61,8 @@ class PurchaseOrder extends Model
   {
     return $this->hasOne('\App\Models\PurchaseOrderDiff','purchaseOrder_id','id');
   }
+    public function PurchaseOrderDistributionItems()
+    {
+        return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','purchaseOrder_id','id');
+    }
 }

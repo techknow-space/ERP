@@ -50,5 +50,9 @@ class Location extends Model
   {
       return $this->hasMany('\App\Models\WorkOrder','location_id','id');
   }
+    public function PurchaseOrderDistributionItems()
+    {
+        return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','location_id','id');
+    }
 
 }

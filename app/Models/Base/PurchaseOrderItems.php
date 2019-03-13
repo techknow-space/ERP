@@ -52,4 +52,8 @@ class PurchaseOrderItems extends Model
   {
     return $this->belongsTo('\App\Models\PurchaseOrder','purchaseOrder_id','id');
   }
+    public function PurchaseOrderDistributionItems()
+    {
+        return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','purchaseOrder_item_id','id');
+    }
 }

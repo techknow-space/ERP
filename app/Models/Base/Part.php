@@ -77,4 +77,8 @@ class Part extends Model
     {
         return $this->hasMany('\App\Models\WODevicePart','part_id','id');
     }
+    public function PurchaseOrderDistributionItems()
+    {
+        return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','part_id','id');
+    }
 }
