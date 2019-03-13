@@ -23,6 +23,14 @@
                 <th>
                     Diff Qty
                 </th>
+                @foreach($locations = \App\Models\Location::all() as $location)
+                    <th>
+                       Allotted For {{$location->location_code}}
+                    </th>
+                    <th>
+                       Scanned For {{$location->location_code}}
+                    </th>
+                @endforeach
             </tr>
         </thead>
         <tbody>
@@ -65,6 +73,14 @@
                     <td class="poItemsVerifyTableItemRowQtyDiff">
                         {{$po_item->qty_received - $po_item->qty}}
                     </td>
+                    @foreach($locations as $location)
+                        <td>
+                            {{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_to_receive}}
+                        </td>
+                        <td>
+                            {{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_scanned}}
+                        </td>
+                    @endforeach
 
                 </tr>
 

@@ -11,10 +11,11 @@ use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderItemsDistribution;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 class PurchaseOrderActionsController extends PurchaseOrderController
 {
-    public function verify(PurchaseOrder $purchaseOrder)
+    public function verify(PurchaseOrder $purchaseOrder): View
     {
         $this->createDistributionRecords($purchaseOrder);
         return view('order.purchase.verify.index',['purchaseOrder'=>$purchaseOrder]);
@@ -25,7 +26,7 @@ class PurchaseOrderActionsController extends PurchaseOrderController
      * @param $purchaseOrderID
      * @return JsonResponse
      */
-    public function itemReceived($sku,$purchaseOrderID)
+    public function itemReceived($sku,$purchaseOrderID): JsonResponse
     {
         $response['error'] = false;
 
@@ -61,7 +62,10 @@ class PurchaseOrderActionsController extends PurchaseOrderController
         return response()->json($response);
     }
 
-    public function createDistributionRecords(PurchaseOrder $purchaseOrder)
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     */
+    public function createDistributionRecords(PurchaseOrder $purchaseOrder): void
     {
         $purchaseOrder_last_item = $purchaseOrder->PurchaseOrderItems->last();
 
