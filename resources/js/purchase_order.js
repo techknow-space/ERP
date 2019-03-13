@@ -137,11 +137,9 @@ $(document).ready(function() {
                     alert('There was an Error !!!')
                 }
                 else{
-                    console.log(data);
                     let row = $('#'+data.item.id);
                     row.find('.poItemsVerifyTableItemRowQtyReceived').text(data.item.qty_received);
                     row.find('.poItemsVerifyTableItemRowQtyDiff').text(data.item.diff);
-
                     if(!row.hasClass(data.item.class)){
 
                         row.removeClass (function (index, className) {
@@ -150,7 +148,12 @@ $(document).ready(function() {
 
                         row.addClass(data.item.class);
                     }
-
+                    if(data.distribution.error){
+                        alert('Issue with Stock Allocation!!!');
+                    }
+                    else{
+                        row.find('.poItemsVerifyTableItemRowScanned-'+data.distribution.location_code).text(data.distribution.scanned);
+                    }
                 }
                 barcode_box.removeAttr("disabled");
                 barcode_box.focus();

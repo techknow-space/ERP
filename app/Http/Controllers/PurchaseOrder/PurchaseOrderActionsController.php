@@ -55,6 +55,8 @@ class PurchaseOrderActionsController extends PurchaseOrderController
                 $response['item']['class'] = 'table-warning';
             }
 
+            $response['distribution'] = $this->updateDistributionRecord($poItem);
+
         }catch (ModelNotFoundException $e){
             $response['error'] = true;
         }
@@ -106,5 +108,32 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
             }
         }
+    }
+
+    /**
+     * @param PurchaseOrderItems $purchaseOrderItem
+     * @return array
+     */
+    public function updateDistributionRecord(PurchaseOrderItems $purchaseOrderItem): array
+    {
+        $response['error'] = true;
+
+        foreach($purchaseOrderItem->PurchaseOrderDistributionItems->sortBy(function($item,$key){
+            return $item['Location']['seq_id'];
+        }) as $distributionItem){
+            if(0 == $distributionItem->qty_to_receive){
+                continue;
+            }
+            if($distributionItem->qty_to_receive > $distributionItem->qty_scanned){
+                $distributionItem->increment('qty_scanned');
+                $response['location_code'] = $distributionItem->Location->location_code;
+                $response['scanned'] = $distributionItem->qty_scanned;
+                $response['error'] = false;
+                break;
+            }
+        }
+
+        return $response;
+
     }
 }

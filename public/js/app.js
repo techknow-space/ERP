@@ -69340,7 +69340,6 @@ $(document).ready(function () {
         if (data.error) {
           alert('There was an Error !!!');
         } else {
-          console.log(data);
           var row = $('#' + data.item.id);
           row.find('.poItemsVerifyTableItemRowQtyReceived').text(data.item.qty_received);
           row.find('.poItemsVerifyTableItemRowQtyDiff').text(data.item.diff);
@@ -69350,6 +69349,12 @@ $(document).ready(function () {
               return (className.match(/(^|\s)table-\S+/g) || []).join(' ');
             });
             row.addClass(data.item.class);
+          }
+
+          if (data.distribution.error) {
+            alert('Issue with Stock Allocation!!!');
+          } else {
+            row.find('.poItemsVerifyTableItemRowScanned-' + data.distribution.location_code).text(data.distribution.scanned);
           }
         }
 
