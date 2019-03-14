@@ -18,7 +18,34 @@
                         </div>
                     </div>
                     <div class="card-body">
-
+                        <table class="table" id="poVerifySummaryTable">
+                            <thead>
+                                <tr>
+                                    <th># SKUs Scanned</th>
+                                    <th># Qty Scanned</th>
+                                    <th># Diff</th>
+                                    <th>$ Diff</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="poVerifySummaryRow">
+                                    <td class="poVerifySummarySKUScanned">
+                                        {{$purchaseOrder->PurchaseOrderItems->filter(function($item, $key){
+                                                return $item['qty_received'] > 0;
+                                        })->count()}}
+                                    </td>
+                                    <td class="poVerifySummaryQtyScanned">
+                                        {{ $purchaseOrder->PurchaseOrderItems->sum('qty_received') }}
+                                    </td>
+                                    <td class="poVerifySummaryDiffQty">
+                                        {{ $purchaseOrder->PurchaseOrderItems->sum('qty_received') - $purchaseOrder->PurchaseOrderItems->sum('qty') }}
+                                    </td>
+                                    <td class="poVerifySummaryDiffDollar">
+                                        {{$diff_dollar}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <br>

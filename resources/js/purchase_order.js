@@ -161,6 +161,10 @@ $(document).ready(function() {
                                     closeButton: true
                                 }
                             );
+                        $('.poVerifySummarySKUScanned').text(data.summary.sku_scanned);
+                        $('.poVerifySummaryQtyScanned').text(data.summary.qty_scanned);
+                        $('.poVerifySummaryDiffQty').text(data.summary.diff_qty);
+                        $('.poVerifySummaryDiffDollar').text(data.summary.diff_dollar);
                     }
                 }
                 barcode_box.removeAttr("disabled");

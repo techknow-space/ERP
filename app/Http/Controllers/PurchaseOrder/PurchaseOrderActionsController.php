@@ -9,6 +9,7 @@ use App\Models\PartStock;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderItemsDistribution;
+use function foo\func;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
@@ -18,7 +19,13 @@ class PurchaseOrderActionsController extends PurchaseOrderController
     public function verify(PurchaseOrder $purchaseOrder): View
     {
         $this->createDistributionRecords($purchaseOrder);
-        return view('order.purchase.verify.index',['purchaseOrder'=>$purchaseOrder]);
+
+        $diff_dollar = 0;
+        foreach($purchaseOrder->PurchaseOrderItems as $item){
+            $diff_dollar += ($item->qty_received - $item->qty) * $item->cost;
+        }
+
+        return view('order.purchase.verify.index',['purchaseOrder'=>$purchaseOrder,'diff_dollar'=>round($diff_dollar,2)]);
     }
 
     /**
@@ -42,6 +49,20 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
             $poItem->save();
 
+            $purchaseOrder = PurchaseOrder::findorFail($purchaseOrderID);
+
+            $sku_scanned = $purchaseOrder->PurchaseOrderItems->filter(function($item, $key){
+                return $item['qty_received'] > 0;
+            })->count();
+
+            //$sku_scanned = $purchaseOrder->PurchaseOrderItems->whereNotIn('qty_received',[0])->count();
+            $qty_scanned = $purchaseOrder->PurchaseOrderItems->sum('qty_received');
+            $diff_qty = $purchaseOrder->PurchaseOrderItems->sum('qty_received') - $purchaseOrder->PurchaseOrderItems->sum('qty');
+            $diff_dollar = 0;
+            foreach($purchaseOrder->PurchaseOrderItems as $item){
+                $diff_dollar += ($item->qty_received - $item->qty) * $item->cost;
+            }
+
             $response['item']['id'] = $poItem->id;
             $response['item']['qty_received'] = $poItem->qty_received;
             $response['item']['diff'] = $poItem->qty_received - $poItem->qty;
@@ -54,6 +75,11 @@ class PurchaseOrderActionsController extends PurchaseOrderController
             } elseif (0 < $response['item']['diff']) {
                 $response['item']['class'] = 'table-warning';
             }
+
+            $response['summary']['sku_scanned'] = $sku_scanned;
+            $response['summary']['qty_scanned'] = $qty_scanned;
+            $response['summary']['diff_qty'] = $diff_qty;
+            $response['summary']['diff_dollar'] = round($diff_dollar,2);
 
             $response['distribution'] = $this->updateDistributionRecord($poItem);
 
