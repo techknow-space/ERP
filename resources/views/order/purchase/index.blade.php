@@ -51,15 +51,30 @@
                                             {{$purchase_order->PurchaseOrderItems->sum('total_cost')}}
                                         </td>
                                         <td>
-                                            <a href="/order/purchase/edit/{{$purchase_order->id}}">Edit</a>
-                                            <a href="/order/purchase/export/PDF/{{$purchase_order->id}}">PDF</a>
-                                            <a href="/order/purchase/export/CSV/{{$purchase_order->id}}">CSV</a>
-                                            @if(7 > $purchase_order->PurchaseOrderStatus->seq_id)
-                                                <a href="/order/purchase/delete/{{$purchase_order->id}}">Delete</a>
-                                            @endif
-                                            @if(9 == $purchase_order->PurchaseOrderStatus->seq_id)
-                                                <a href="/order/purchase/verify/{{$purchase_order->id}}">Verify</a>
-                                            @endif
+                                            <div class="btn-group" role="group">
+
+                                                    @if(6 >= $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/edit/{{$purchase_order->id}}" class="btn btn-info">
+                                                        Edit
+                                                    </a>
+                                                    @else
+                                                    <a href="/order/purchase/edit/{{$purchase_order->id}}" class="btn btn-success">
+                                                        View
+                                                    </a>
+                                                    @endif
+
+                                                <a href="/order/purchase/export/PDF/{{$purchase_order->id}}" class="btn btn-secondary">PDF</a>
+                                                <a href="/order/purchase/export/CSV/{{$purchase_order->id}}" class="btn btn-secondary">CSV</a>
+                                                @if(7 > $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/delete/{{$purchase_order->id}}" class="btn btn-danger">Delete</a>
+                                                @endif
+                                                @if(9 == $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/verify/{{$purchase_order->id}}" class="btn btn-warning">Verify</a>
+                                                @endif
+                                                @if(10 <= $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/shortexcess/{{$purchase_order->PurchaseOrderDiffs->id}}" class="btn btn-secondary">View Short/Excess</a>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

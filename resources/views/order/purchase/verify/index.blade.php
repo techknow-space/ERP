@@ -71,6 +71,14 @@
                         @include('order.purchase.verify.item.index',[''])
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header align-content-center">
+                        <div class="text-center">
+                            <b>Finalize this Shipment</b><br><br>
+                            <button type="button" class="btn btn-danger">Mark As Verified</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

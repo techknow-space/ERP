@@ -3,6 +3,7 @@ namespace App\Http\Controllers\PurchaseOrder;
 
 use App\Http\Controllers\Controller;
 use App\Models\PurchaseOrder;
+use App\Models\PurchaseOrderDiff;
 use App\Models\PurchaseOrderPaymentStatus;
 use App\Models\PurchaseOrderStatus;
 use App\Models\Supplier;
@@ -250,6 +251,11 @@ class PurchaseOrderController extends Controller
     {
         $purchaseOrders = PurchaseOrder::all();
         return $purchaseOrders;
+    }
+
+    public function viewDiff(PurchaseOrderDiff $purchaseOrderDiff)
+    {
+        return view('order.purchase.diff.index')->with('purchaseOrderDiff',$purchaseOrderDiff);
     }
 
 }

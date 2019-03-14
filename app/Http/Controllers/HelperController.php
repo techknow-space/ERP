@@ -59,6 +59,9 @@ class HelperController extends Controller
             case 'Supplier':
                 $entity_short_code = 'SUPP';
                 break;
+            case 'PurchaseOrderDiff':
+                $entity_short_code = 'PI/DIFF';
+                break;
         }
 
         return $entity_short_code.'/'.$date.'/'.$random;

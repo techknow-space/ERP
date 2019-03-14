@@ -70,6 +70,8 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
         Route::get('verify/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@verify');
         Route::post('receiveItem/{sku}/{purchaseOrderID}','PurchaseOrder\PurchaseOrderActionsController@itemReceived');
+        Route::get('finalize/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@finalizeShipment');
+        Route::get('shortexcess/{purchaseOrderDiff}','PurchaseOrder\PurchaseOrderController@viewDiff');
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
         Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@createPurchaseOrderForReplishment');

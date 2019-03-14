@@ -7,8 +7,11 @@ use App\Models\Location;
 use App\Models\Part;
 use App\Models\PartStock;
 use App\Models\PurchaseOrder;
+use App\Models\PurchaseOrderDiff;
+use App\Models\PurchaseOrderDiffItems;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderItemsDistribution;
+use App\Models\PurchaseOrderStatus;
 use function foo\func;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -161,5 +164,49 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
         return $response;
 
+    }
+
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return View
+     */
+    public function finalizeShipment(PurchaseOrder $purchaseOrder): View
+    {
+        if(!$purchaseOrder->PurchaseOrderDiffs()->exists()){
+            $diff_dollar = 0;
+            foreach($purchaseOrder->PurchaseOrderItems as $item){
+                $diff_dollar += ($item->qty_received - $item->qty) * $item->cost;
+            }
+
+            $purchaseOrder_diff = new PurchaseOrderDiff();
+            $purchaseOrder_diff->PurchaseOrder()->associate($purchaseOrder);
+            $purchaseOrder_diff->qty_diff = $purchaseOrder->PurchaseOrderItems->sum('qty_received') - $purchaseOrder->PurchaseOrderItems->sum('qty');
+            $purchaseOrder_diff->value_diff_CAD = $diff_dollar;
+
+            $purchaseOrder_diff->save();
+
+            foreach ($purchaseOrder->PurchaseOrderItems as $item){
+                if($item->qty !== $item->qty_received){
+                    $purchaseOrder_diff_item = new PurchaseOrderDiffItems();
+                    $purchaseOrder_diff_item->PurchaseOrderDiff()->associate($purchaseOrder_diff);
+                    $purchaseOrder_diff_item->Part()->associate($item->Part);
+                    $purchaseOrder_diff_item->qty_paid_for = $item->qty;
+                    $purchaseOrder_diff_item->cost = $item->cost;
+                    $purchaseOrder_diff_item->qty_received = $item->qty_received;
+
+                    $purchaseOrder_diff_item->save();
+                }
+            }
+
+            $status = PurchaseOrderStatus::where('seq_id',10)->first();
+
+            $purchaseOrder->PurchaseOrderStatus()->associate($status);
+            $purchaseOrder->save();
+        }
+        else{
+            $purchaseOrder_diff = $purchaseOrder->PurchaseOrderDiffs;
+        }
+
+        return $this->viewDiff($purchaseOrder_diff);
     }
 }
