@@ -69852,17 +69852,17 @@ $(document).ready(function () {
             alert('Issue with Stock Allocation!!!');
           } else {
             row.find('.poItemsVerifyTableItemRowScanned-' + data.distribution.location_code).text(data.distribution.scanned);
-            toastr.info(data.item.name + ' is going to ' + data.distribution.location_code, 'For Location: ' + data.distribution.location_code, {
+            toastr.success(data.item.name + ' is going to ' + data.distribution.location_code, 'For Location: ' + data.distribution.location_code, {
               timeOut: 1000,
               progressBar: true,
               positionClass: "toast-top-center",
               closeButton: true
             });
-            console.log(toastr);
           }
         }
 
         barcode_box.removeAttr("disabled");
+        barcode_box.val('');
         barcode_box.focus();
       }
     });
