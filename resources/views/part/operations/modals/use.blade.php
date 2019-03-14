@@ -12,7 +12,7 @@
                 <form action="" class="form-inline">
                     <div class="form-group">
                         <label for="partOperationUseWONumber">Work Order:</label>
-                        <input type="number" placeholder="WO#" id="partOperationUseWONumber" class="form-control">
+                        <input min="0" step="1" type="number" placeholder="WO#" id="partOperationUseWONumber" class="form-control">
                     </div>
                 </form>
 

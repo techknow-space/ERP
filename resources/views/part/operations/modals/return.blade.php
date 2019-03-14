@@ -13,7 +13,7 @@
                 <form action="" class="form-inline">
                     <div class="form-group">
                         <label for="partOperationReturnWONumber">Work Order:</label>
-                        <input type="number" placeholder="WO#" id="partOperationReturnWONumber" class="form-control">
+                        <input min="0" step="1" type="number" placeholder="WO#" id="partOperationReturnWONumber" class="form-control">
                     </div>
                 </form>
                 Please make sure that the Part is returned to Appropriate location.
