@@ -32,8 +32,17 @@
 
                                 <div class="form-group col-md-3">
                                     <label for="poStatus">Status</label>
-                                    <select name="poStatus" id="poStatus" class="form-control">
+                                    <select name="poStatus" id="poStatus" class="form-control"
+                                        @if($purchase_order->PurchaseOrderStatus->seq_id >= 9)
+                                            disabled
+                                        @endif
+                                    >
                                         @foreach ($purchase_order_statuses as $status)
+                                            @if( ($purchase_order->PurchaseOrderStatus->seq_id < 9) && ($status->seq_id >= 9))
+                                                @php
+                                                    continue;
+                                                @endphp
+                                            @endif
                                             <option
                                                 @if($status->id == $purchase_order->PurchaseOrderStatus->id)
                                                 selected
