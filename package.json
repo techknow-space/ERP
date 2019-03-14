@@ -29,6 +29,7 @@
     "moment": "^2.24.0",
     "tablesorter": "^2.31.1",
     "tempusdominus-bootstrap-4": "^5.1.2",
-    "tempusdominus-core": "^5.0.3"
+    "tempusdominus-core": "^5.0.3",
+    "toastr": "^2.1.4"
   }
 }

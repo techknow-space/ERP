@@ -153,6 +153,15 @@ $(document).ready(function() {
                     }
                     else{
                         row.find('.poItemsVerifyTableItemRowScanned-'+data.distribution.location_code).text(data.distribution.scanned);
+                        toastr.info(data.item.name+' is going to '+data.distribution.location_code, 'For Location: '+data.distribution.location_code,
+                                {
+                                    timeOut: 1000,
+                                    progressBar: true,
+                                    positionClass: "toast-top-center",
+                                    closeButton: true
+                                }
+                            );
+                        console.log(toastr);
                     }
                 }
                 barcode_box.removeAttr("disabled");

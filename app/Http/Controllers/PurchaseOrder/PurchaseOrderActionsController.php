@@ -32,7 +32,6 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
         try{
             $part = Part::where('sku',$sku)
-                ->select('id')
                 ->firstOrFail();
 
             $poItem = PurchaseOrderItems::where('part_id',$part->id)
@@ -46,6 +45,7 @@ class PurchaseOrderActionsController extends PurchaseOrderController
             $response['item']['id'] = $poItem->id;
             $response['item']['qty_received'] = $poItem->qty_received;
             $response['item']['diff'] = $poItem->qty_received - $poItem->qty;
+            $response['item']['name'] = $part->devices->brand->name.' '.$part->devices->model_name.' '.$part->part_name;
 
             if ($response['item']['diff'] == 0) {
                 $response['item']['class'] = 'table-success';
