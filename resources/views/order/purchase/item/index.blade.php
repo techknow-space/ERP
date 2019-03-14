@@ -16,15 +16,17 @@
         <th>
             Part
         </th>
-        <th>
-            InHand
-        </th>
-        <th>
-            Sold Past Year
-        </th>
-        <th>
-            Sold Past 3 Mths
-        </th>
+        @if(7 >= $purchase_order->PurchaseOrderStatus->seq_id)
+            <th>
+                InHand
+            </th>
+            <th>
+                Sold Past Year
+            </th>
+            <th>
+                Sold Past 3 Mths
+            </th>
+        @endif
         <th>
             Last Cost
         </th>
@@ -65,15 +67,17 @@
                 <td>
                     {{$po_item->Part->part_name}}
                 </td>
-                <td>
-                    {{$po_item->Part->totalstock}}
-                </td>
-                <td>
-                    {{$po_item->Part->soldpastyear}}
-                </td>
-                <td>
-                    <a href="/sales/part/{{$po_item->Part->id}}" target="_blank" >{{$po_item->Part->soldpast3months}}</a>
-                </td>
+                @if(7 >= $purchase_order->PurchaseOrderStatus->seq_id)
+                    <td>
+                        {{$po_item->Part->totalstock}}
+                    </td>
+                    <td>
+                        {{$po_item->Part->soldpastyear}}
+                    </td>
+                    <td>
+                        <a href="/sales/part/{{$po_item->Part->id}}" target="_blank" >{{$po_item->Part->soldpast3months}}</a>
+                    </td>
+                @endif
                 <td>
                     {{$po_item->Part->price->last_cost}}
                 </td>
