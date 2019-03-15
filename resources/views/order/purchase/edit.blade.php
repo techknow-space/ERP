@@ -38,7 +38,7 @@
                                         @endif
                                     >
                                         @foreach ($purchase_order_statuses as $status)
-                                            @if( ($purchase_order->PurchaseOrderStatus->seq_id < 9) && ($status->seq_id >= 9))
+                                            @if( ($purchase_order->PurchaseOrderStatus->seq_id < 10) && ($status->seq_id > 9))
                                                 @php
                                                     continue;
                                                 @endphp

@@ -68,14 +68,14 @@
                         <b>Parts</b>
                     </div>
                     <div class="card-body">
-                        @include('order.purchase.verify.item.index',[''])
+                        @include('order.purchase.verify.item.index')
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header align-content-center">
                         <div class="text-center">
-                            <b>Finalize this Shipment</b><br><br>
-                            <button type="button" class="btn btn-danger">Mark As Verified</button>
+                            <b>All items scanned ? <br> Click below to Generate a Short/Excess report.</b><br><br>
+                            <a href="/order/purchase/finalize/{{$purchaseOrder->id}}" type="button" class="btn btn-danger">Create Short Excess Report</a>
                         </div>
                     </div>
                 </div>

@@ -73,6 +73,10 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('finalize/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@finalizeShipment');
         Route::get('shortexcess/{purchaseOrderDiff}','PurchaseOrder\PurchaseOrderController@viewDiff');
 
+        Route::prefix('mark')->group(function (){
+            Route::get('verified/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@markVerified');
+        });
+
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');
         Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@createPurchaseOrderForReplishment');
 

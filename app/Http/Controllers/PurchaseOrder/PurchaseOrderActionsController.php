@@ -12,9 +12,9 @@ use App\Models\PurchaseOrderDiffItems;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderItemsDistribution;
 use App\Models\PurchaseOrderStatus;
-use function foo\func;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 class PurchaseOrderActionsController extends PurchaseOrderController
@@ -168,9 +168,9 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
     /**
      * @param PurchaseOrder $purchaseOrder
-     * @return View
+     * @return Redirect
      */
-    public function finalizeShipment(PurchaseOrder $purchaseOrder): View
+    public function finalizeShipment(PurchaseOrder $purchaseOrder)
     {
         if(!$purchaseOrder->PurchaseOrderDiffs()->exists()){
             $diff_dollar = 0;
@@ -198,15 +198,30 @@ class PurchaseOrderActionsController extends PurchaseOrderController
                 }
             }
 
+            /*
             $status = PurchaseOrderStatus::where('seq_id',10)->first();
-
             $purchaseOrder->PurchaseOrderStatus()->associate($status);
             $purchaseOrder->save();
+            */
         }
         else{
             $purchaseOrder_diff = $purchaseOrder->PurchaseOrderDiffs;
         }
 
-        return $this->viewDiff($purchaseOrder_diff);
+        return redirect('/order/purchase/shortexcess/'.$purchaseOrder_diff->id);
+    }
+
+    public function markVerified(PurchaseOrder $purchaseOrder)
+    {
+        $status = PurchaseOrderStatus::where('seq_id',10)->first();
+        $purchaseOrder->PurchaseOrderStatus()->associate($status);
+        $purchaseOrder->save();
+
+        session()->flash('success',['This Order is Marked as Verified.']);
+
+        return redirect('/order/purchase/shortexcess/'.$purchaseOrder->PurchaseOrderDiffs->id);
+
+
+
     }
 }

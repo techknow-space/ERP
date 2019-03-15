@@ -22,6 +22,9 @@ class PurchaseOrderController extends Controller
         else{
             $purchase_orders = $this->filter($filter);
         }
+
+        $purchase_orders = PurchaseOrder::all();
+
         return view('order.purchase.index')->with('purchase_orders',$purchase_orders);
     }
 
