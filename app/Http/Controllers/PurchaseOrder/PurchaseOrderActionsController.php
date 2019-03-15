@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PurchaseOrderActionsController extends PurchaseOrderController
 {
@@ -168,9 +169,9 @@ class PurchaseOrderActionsController extends PurchaseOrderController
 
     /**
      * @param PurchaseOrder $purchaseOrder
-     * @return Redirect
+     * @return RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function finalizeShipment(PurchaseOrder $purchaseOrder)
+    public function finalizeShipment(PurchaseOrder $purchaseOrder): RedirectResponse
     {
         if(!$purchaseOrder->PurchaseOrderDiffs()->exists()){
             $diff_dollar = 0;
@@ -211,7 +212,11 @@ class PurchaseOrderActionsController extends PurchaseOrderController
         return redirect('/order/purchase/shortexcess/'.$purchaseOrder_diff->id);
     }
 
-    public function markVerified(PurchaseOrder $purchaseOrder)
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function markVerified(PurchaseOrder $purchaseOrder): RedirectResponse
     {
         $status = PurchaseOrderStatus::where('seq_id',10)->first();
         $purchaseOrder->PurchaseOrderStatus()->associate($status);
@@ -220,8 +225,14 @@ class PurchaseOrderActionsController extends PurchaseOrderController
         session()->flash('success',['This Order is Marked as Verified.']);
 
         return redirect('/order/purchase/shortexcess/'.$purchaseOrder->PurchaseOrderDiffs->id);
+    }
 
-
-
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return \Illuminate\Contracts\View\Factory|View
+     */
+    public function distributeShipment(PurchaseOrder $purchaseOrder): View
+    {
+        return view('order.purchase.distribute.index',['purchaseOrder'=>$purchaseOrder]);
     }
 }

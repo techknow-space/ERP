@@ -74,6 +74,9 @@
                                                 @if(10 <= $purchase_order->PurchaseOrderStatus->seq_id)
                                                     <a href="/order/purchase/shortexcess/{{$purchase_order->PurchaseOrderDiffs->id}}" class="btn btn-secondary">View Short/Excess</a>
                                                 @endif
+                                                @if(10 == $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/distribute/{{$purchase_order->id}}" class="btn btn-secondary">Stock Distribution</a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
