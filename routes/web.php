@@ -65,8 +65,8 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('/create','PurchaseOrder\PurchaseOrderController@create');
         Route::post('create','PurchaseOrder\PurchaseOrderController@insert');
         Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
-        Route::get('edit/{id}','PurchaseOrder\PurchaseOrderController@edit');
-        Route::put('edit/{id}','PurchaseOrder\PurchaseOrderController@update');
+        Route::get('edit/{purchaseOrder}','PurchaseOrder\PurchaseOrderController@edit');
+        Route::put('edit/{purchaseOrder}','PurchaseOrder\PurchaseOrderController@update');
         Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
         Route::get('verify/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@verify');
         Route::post('receiveItem/{sku}/{purchaseOrderID}','PurchaseOrder\PurchaseOrderActionsController@itemReceived');

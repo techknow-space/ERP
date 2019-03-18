@@ -39,9 +39,11 @@ class PurchaseOrderController extends Controller
 
         $supplier = Supplier::findOrFail($request->input('poSupplier'));
 
-        $purchase_order = $this->createPurchaseOrder($supplier);
+        $purchaseOrder = $this->createPurchaseOrder($supplier);
 
-        return $this->edit($purchase_order->id);
+        session()->flash('success',['Created Successfully.']);
+
+        return redirect('/order/purchase/edit/'.$purchaseOrder->id);
 
     }
 
@@ -50,11 +52,11 @@ class PurchaseOrderController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(PurchaseOrder $purchaseOrder)
     {
         app('debugbar')->disable();
 
-        $purchase_order = PurchaseOrder::findOrFail($id);
+        $purchase_order = $purchaseOrder;
 
 
 
@@ -71,9 +73,9 @@ class PurchaseOrderController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, PurchaseOrder $purchaseOrder)
     {
-        $purchase_order = PurchaseOrder::findOrFail($id);
+        $purchase_order = $purchaseOrder;
 
         $status = PurchaseOrderStatus::findOrFail($request->input('poStatus'));
         $payment_status = PurchaseOrderPaymentStatus::findOrFail($request->input('poPaymentStatus'));
@@ -82,7 +84,7 @@ class PurchaseOrderController extends Controller
         $purchase_order->PurchaseOrderPaymentStatus()->associate($payment_status);
         $purchase_order->save();
 
-        return $this->edit($id);
+        return $this->edit($purchaseOrder);
     }
 
     public function delete($id)
