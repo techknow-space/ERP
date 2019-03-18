@@ -42,15 +42,7 @@
 
             <tr
                 id="{{$po_item->id}}"
-                class="poItemsDistributeTableItemRow
-                    @if(0 == $po_item->qty_received - $po_item->qty)
-                        table-success
-                    @elseif(0 > $po_item->qty_received - $po_item->qty)
-                        table-danger
-                    @elseif(0 < $po_item->qty_received - $po_item->qty)
-                        table-warning
-                    @endif
-                    "
+                class="poItemsDistributeTableItemRow table-success"
                 style="color: black;"
             >
 
@@ -82,7 +74,7 @@
                 @endforeach
                 @foreach($locations as $location)
                     <td class="poItemsDistributeTableItemRowScanned-{{$location->location_code}}">
-                        <input value="{{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_scanned}}" disabled>
+                        <input class="poItemDistributeEditableField form-control" data-oldValue="{{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_scanned}}" value="{{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_scanned}}" readonly>
                     </td>
                 @endforeach
             </tr>

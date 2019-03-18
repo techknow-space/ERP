@@ -73,6 +73,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('finalize/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@finalizeShipment');
         Route::get('shortexcess/{purchaseOrderDiff}','PurchaseOrder\PurchaseOrderController@viewDiff');
         Route::get('distribute/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@distributeShipment');
+        Route::put('distribute/item/edit','PurchaseOrder\PurchaseOrderActionsController@editDistributionRecord');
 
         Route::prefix('mark')->group(function (){
             Route::get('verified/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@markVerified');

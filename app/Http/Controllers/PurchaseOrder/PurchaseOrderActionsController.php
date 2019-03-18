@@ -17,6 +17,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PurchaseOrderActionsController extends PurchaseOrderController
 {
@@ -234,5 +235,39 @@ class PurchaseOrderActionsController extends PurchaseOrderController
     public function distributeShipment(PurchaseOrder $purchaseOrder): View
     {
         return view('order.purchase.distribute.index',['purchaseOrder'=>$purchaseOrder]);
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function editDistributionRecord(Request $request): JsonResponse
+    {
+        $response['error'] = false;
+
+        $purchaseOrder_id = $request->input('purchaseOrder_id');
+        $purchaseOrderItem_id = $request->input('purchaseOrderItem_id');
+
+        $location_values = $request->input('location_values');
+
+        foreach ($location_values as $location_code => $qty_scanned){
+
+            try{
+                $location = Location::where('location_code',$location_code)->firstOrFail();
+                $purchaseOrderDistributionItem = PurchaseOrderItemsDistribution::
+                where('purchaseOrder_id',$purchaseOrder_id)
+                    ->where('purchaseOrder_item_id',$purchaseOrderItem_id)
+                    ->where('location_id',$location->id)
+                    ->firstOrFail();
+
+                $purchaseOrderDistributionItem->qty_scanned = $qty_scanned;
+                $purchaseOrderDistributionItem->save();
+            }catch (ModelNotFoundException $e){
+                $response['error'] = true;
+            }
+
+        }
+
+        return response()->json($response);
     }
 }

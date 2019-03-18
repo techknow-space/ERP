@@ -15,6 +15,7 @@ window.datetimepicker = require('tempusdominus-bootstrap-4');
 require('./generic');
 require('./mjr');
 require('./purchase_order');
+require('./purchaseOrderStockDistribution');
 require('./part_operation');
 require('tablesorter');
 

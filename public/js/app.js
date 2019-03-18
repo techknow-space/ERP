@@ -69146,6 +69146,8 @@ __webpack_require__(/*! ./mjr */ "./resources/js/mjr.js");
 
 __webpack_require__(/*! ./purchase_order */ "./resources/js/purchase_order.js");
 
+__webpack_require__(/*! ./purchaseOrderStockDistribution */ "./resources/js/purchaseOrderStockDistribution.js");
+
 __webpack_require__(/*! ./part_operation */ "./resources/js/part_operation.js");
 
 __webpack_require__(/*! tablesorter */ "./node_modules/tablesorter/dist/js/jquery.tablesorter.combined.js"); //window.Vue = require('vue');
@@ -69707,6 +69709,113 @@ function decrease_stock(part_id) {
   });
 }
 /* End Part Operation JS*/
+
+/***/ }),
+
+/***/ "./resources/js/purchaseOrderStockDistribution.js":
+/*!********************************************************!*\
+  !*** ./resources/js/purchaseOrderStockDistribution.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Start PO Distribute JS */
+$(document).ready(function () {
+  var poItemsDistributeTable = $('#poItemsDistributeTable');
+  poItemsDistributeTable.find('tbody tr').each(function () {
+    var available = parseInt($(this).find('td.poItemsDistributeTableItemRowQtyReceived').text().trim());
+    var distributed = 0;
+    $(this).find('.poItemDistributeEditableField').each(function () {
+      distributed += parseInt($(this).val());
+    });
+
+    if (available !== distributed) {
+      $(this).removeClass(function (index, className) {
+        return (className.match(/(^|\s)table-\S+/g) || []).join(' ');
+      });
+      $(this).addClass('table-danger');
+    }
+  });
+  poItemsDistributeTable.on('click', '.poItemDistributeEditableField', function () {
+    if (!$('.poItemDistributeEditableField').is(":focus")) {
+      $(this).focus();
+    }
+  });
+  poItemsDistributeTable.on('focus', '.poItemDistributeEditableField', function () {
+    if (!$(this).hasClass('border-info')) {
+      $(this).addClass('border-info');
+    }
+
+    $(this).prop("readonly", false);
+  });
+  poItemsDistributeTable.on('blur', '.poItemDistributeEditableField', function () {
+    if ($(this).hasClass('border-info')) {
+      $(this).removeClass('border-info');
+      $(this).prop("readonly", true);
+    }
+  });
+  poItemsDistributeTable.on('change', '.poItemDistributeEditableField', function () {
+    var oldValue = parseInt($(this).data('oldvalue'));
+    var newValue = parseInt($(this).val());
+
+    if (oldValue !== newValue) {
+      var row = $(this).closest('tr');
+      var available = parseInt(row.find('td.poItemsDistributeTableItemRowQtyReceived').text().trim());
+
+      if (newValue > -1) {
+        if (available - newValue >= 0) {
+          var locations = ['S1', 'TO'];
+          var currentLocation = $(this).parent().prop('className').split('-');
+          currentLocation = [currentLocation[1]];
+          var otherLocation = locations.filter(function (e) {
+            return !currentLocation.includes(e);
+          });
+          var otherLocationInput = row.find('td.poItemsDistributeTableItemRowScanned-' + otherLocation[0] + ' input');
+          var otherLocationValue = available - newValue;
+          otherLocationInput.val(otherLocationValue);
+          $(this).data('oldvalue', newValue);
+          otherLocationInput.data('oldvalue', otherLocationValue);
+          var location_values = {};
+          location_values[currentLocation[0]] = newValue;
+          location_values[otherLocation[0]] = otherLocationValue;
+          editPODistributionRow(row.attr('id'), location_values);
+        } else {
+          $(this).val(oldValue);
+          alert('Sending more Qty than received!!! Please Check');
+        }
+      } else {
+        $(this).val(oldValue);
+        alert('Error!!!');
+      }
+    }
+  });
+});
+
+function editPODistributionRow(po_item_id, location_values) {
+  var poid = $('table').data('poid');
+  $.ajax({
+    type: "PUT",
+    url: '/order/purchase/distribute/item/edit',
+    data: {
+      "purchaseOrder_id": poid,
+      "purchaseOrderItem_id": po_item_id,
+      "location_values": location_values
+    },
+    success: function success(data) {
+      if (data.error) {
+        alert('There was an error updating the Database Entry');
+      } else {
+        var row = $('#' + po_item_id);
+        row.removeClass(function (index, className) {
+          return (className.match(/(^|\s)table-\S+/g) || []).join(' ');
+        });
+        row.addClass('table-success');
+        console.log(data);
+      }
+    }
+  });
+}
+/* End PO Distribute JS */
 
 /***/ }),
 
