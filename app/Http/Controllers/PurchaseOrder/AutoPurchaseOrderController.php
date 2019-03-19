@@ -237,11 +237,15 @@ class AutoPurchaseOrderController extends PurchaseOrderController
 
     }
 
-    public function partsToReplenish()
+    /**
+     * @return Collection
+     */
+    public function partsToReplenish(): Collection
     {
         $for_months = 3;
         $required_if_no_sale_in_3_months = 2;
         $date = new Carbon('first day of March 2019');
+        $percentage_for_buffer = 10;
 
         $requirement = collect();
 
@@ -263,10 +267,15 @@ class AutoPurchaseOrderController extends PurchaseOrderController
         }
 
         foreach ($parts_last_3_month_sales as $key=>$value){
+
+            $stock_req = $parts_all_sales->get($key)->avg_sold * $for_months;
+            $stock_req *= (1 + $percentage_for_buffer / 100);
+
             $requirement->push(
                 [
                     'part_id' => $key,
-                    'stock_req' => round( ($value['avg_sold'] * $for_months) )
+                    'stock_req' => round( $stock_req )
+                    //'stock_req' => round( ($value['avg_sold'] * $for_months) )
                 ]
             );
         }
@@ -289,9 +298,13 @@ class AutoPurchaseOrderController extends PurchaseOrderController
             if($required_stock_level > $current_stock_level){
 
                 $item= Part::find($part_id);
-                $item->qty = $required_stock_level - $current_stock_level;
 
-                $to_order->push($item);
+                $partPrice = PartPrice::where('part_id',$part_id)->first();
+
+                if($partPrice->last_cost > 0){
+                    $item->qty = $required_stock_level - $current_stock_level;
+                    $to_order->push($item);
+                }
             }
         }
 
