@@ -118,4 +118,11 @@ class Part extends Base\Part implements Searchable
             ->count();
     }
 
+    public function getSoldalltimespreadsheetAttribute()
+    {
+        return DB::table('part_stocks')
+            ->where('part_id',$this->id)
+            ->sum('sold_all_time');
+    }
+
 }

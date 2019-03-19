@@ -21,6 +21,9 @@
                 InHand
             </th>
             <th>
+                Sold All Time
+            </th>
+            <th>
                 Sold Past Year
             </th>
             <th>
@@ -71,6 +74,9 @@
                     <td>
                         {{$po_item->Part->totalstock}}
                     </td>
+                    <th>
+                        {{$po_item->Part->soldalltimespreadsheet}}
+                    </th>
                     <td>
                         {{$po_item->Part->soldpastyear}}
                     </td>
