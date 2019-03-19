@@ -180,10 +180,13 @@ class AutoPurchaseOrderController extends PurchaseOrderController
 
     public function createPurchaseOrderForReplishment()
     {
-        $partToOrder = $this->reorderStrategy();
+        //$partToOrder = $this->reorderStrategy();
+        $partToOrder = $this->partsToReplenish();
         $supplier = Supplier::where('name','Rewa Technologies')->firstOrFail();
-        $po = $this->generatePurchaseOrderbySystem($partToOrder,$supplier);
-        return $this->edit($po->id);
+        $purchaseOrder = $this->generatePurchaseOrderbySystem($partToOrder,$supplier);
+
+        session()->flash('success',['This Order is System Generated PO.']);
+        return redirect('/order/purchase/edit/'.$purchaseOrder->id);
     }
 
     public function generatePurchaseOrderbySystem(Collection $parts,Supplier $supplier)
@@ -232,6 +235,67 @@ class AutoPurchaseOrderController extends PurchaseOrderController
         return $purchase_order;
 
 
+    }
+
+    public function partsToReplenish()
+    {
+        $for_months = 3;
+        $required_if_no_sale_in_3_months = 2;
+        $date = new Carbon('first day of March 2019');
+
+        $requirement = collect();
+
+        $to_order = collect();
+
+        $parts_all_sales = WODevicePart::select(DB::raw('(count(part_id)/12) AS avg_sold, part_id'))->groupBy('part_id')->get()->keyBy('part_id');
+
+        $parts_last_3_month_sales = WODevicePart::select(DB::raw('(count(part_id)/3) AS avg_sold, part_id'))->where("created_at", ">", $date->subMonths(3))->groupBy('part_id')->get()->keyBy('part_id');
+
+        $not_used_in_last_3_months = $parts_all_sales->diffKeys($parts_last_3_month_sales);
+
+        foreach ($not_used_in_last_3_months->keys() as $part_id){
+            $requirement->push(
+                [
+                    'part_id' => $part_id,
+                    'stock_req' => $required_if_no_sale_in_3_months
+                ]
+            );
+        }
+
+        foreach ($parts_last_3_month_sales as $key=>$value){
+            $requirement->push(
+                [
+                    'part_id' => $key,
+                    'stock_req' => round( ($value['avg_sold'] * $for_months) )
+                ]
+            );
+        }
+
+        $parts_in_required = $requirement->keyBy('part_id')->keys();
+
+        $stock = PartStock::whereIn('part_id', $parts_in_required)->get();
+
+        $current_stock = $stock->groupBy('part_id')->map(function ($row) {
+            return $row->sum('stock_qty');
+        });
+
+
+        foreach ($requirement as $item){
+            $part_id = $item['part_id'];
+            $required_stock_level = $item['stock_req'];
+
+            $current_stock_level = $current_stock->get($part_id);
+
+            if($required_stock_level > $current_stock_level){
+
+                $item= Part::find($part_id);
+                $item->qty = $required_stock_level - $current_stock_level;
+
+                $to_order->push($item);
+            }
+        }
+
+        return $to_order;
     }
 
 

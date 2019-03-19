@@ -18,6 +18,7 @@ use App\Http\Controllers\HelperController;
 
 /* Debugging Routes */
 
+Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@partsToReplenish');
 
 /* End Debugging Routes */
 
