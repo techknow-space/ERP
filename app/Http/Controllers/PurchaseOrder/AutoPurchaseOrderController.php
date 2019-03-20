@@ -244,6 +244,7 @@ class AutoPurchaseOrderController extends PurchaseOrderController
     {
         $for_months = 3;
         $required_if_no_sale_in_3_months = 2;
+        $min_req = 2;
         $date = new Carbon('first day of March 2019');
         $percentage_for_buffer = 10;
 
@@ -274,6 +275,10 @@ class AutoPurchaseOrderController extends PurchaseOrderController
             $stock_req = $parts_all_sales->get($key)->avg_sold * $for_months;
             $stock_req *= (1 + $percentage_for_buffer / 100);
 
+            if($stock_req < $min_req){
+                $stock_req = $min_req;
+            }
+
             $requirement->push(
                 [
                     'part_id' => $key,
@@ -289,7 +294,6 @@ class AutoPurchaseOrderController extends PurchaseOrderController
         $current_stock = $stock->groupBy('part_id')->map(function ($row) {
             return $row->sum('stock_qty');
         });
-
 
         foreach ($requirement as $item){
             $part_id = $item['part_id'];
