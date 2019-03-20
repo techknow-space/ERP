@@ -69989,18 +69989,19 @@ $(document).ready(function () {
 
 function editPOItemRow(action, po_item_id) {
   if ('delete' === action) {
-    alert('Are You Sure ?');
-    $.ajax({
-      type: "DELETE",
-      url: '/order/purchase/item/delete/' + po_item_id,
-      success: function success(data) {
-        if (true === data) {
-          alert('There was an error in Deleting this ROW. Please try again');
-        } else {
-          $("#" + po_item_id).remove();
+    if (confirm('Are You Sure to Delete this Item?')) {
+      $.ajax({
+        type: "DELETE",
+        url: '/order/purchase/item/delete/' + po_item_id,
+        success: function success(data) {
+          if (true === data) {
+            alert('There was an error in Deleting this ROW. Please try again');
+          } else {
+            $("#" + po_item_id).remove();
+          }
         }
-      }
-    });
+      });
+    }
   } else if ('save' === action) {
     var cost = $('#poItemCost-' + po_item_id).val();
     var qty = $('#poItemQty-' + po_item_id).val();
