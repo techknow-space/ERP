@@ -253,6 +253,8 @@ class AutoPurchaseOrderController extends PurchaseOrderController
 
         $parts_all_sales = WODevicePart::select(DB::raw('(count(part_id)/12) AS avg_sold, part_id'))->groupBy('part_id')->get()->keyBy('part_id');
 
+        /*
+
         $parts_last_3_month_sales = WODevicePart::select(DB::raw('(count(part_id)/3) AS avg_sold, part_id'))->where("created_at", ">", $date->subMonths(3))->groupBy('part_id')->get()->keyBy('part_id');
 
         $not_used_in_last_3_months = $parts_all_sales->diffKeys($parts_last_3_month_sales);
@@ -265,8 +267,9 @@ class AutoPurchaseOrderController extends PurchaseOrderController
                 ]
             );
         }
+        */
 
-        foreach ($parts_last_3_month_sales as $key=>$value){
+        foreach ($parts_all_sales as $key=>$value){
 
             $stock_req = $parts_all_sales->get($key)->avg_sold * $for_months;
             $stock_req *= (1 + $percentage_for_buffer / 100);
@@ -275,7 +278,6 @@ class AutoPurchaseOrderController extends PurchaseOrderController
                 [
                     'part_id' => $key,
                     'stock_req' => round( $stock_req )
-                    //'stock_req' => round( ($value['avg_sold'] * $for_months) )
                 ]
             );
         }
