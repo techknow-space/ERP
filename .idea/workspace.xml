@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="">
+    <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="Updated Auto Generation Logic.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,71 +50,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_08_164721_update_po_payments_columns.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderActionsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+            <state relative-caret-position="1462">
+              <caret line="203" column="71" selection-start-line="203" selection-start-column="71" selection-end-line="203" selection-end-column="71" />
               <folding>
-                <element signature="e#7#45#0#PHP" expanded="true" />
+                <element signature="e#55#79#0#PHP" expanded="true" />
+                <element signature="e#1178#3546#0#PHP" />
+                <element signature="e#3611#5322#0#PHP" />
+                <element signature="e#5417#6250#0#PHP" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
+            <state relative-caret-position="1156">
+              <caret line="68" column="156" selection-start-line="68" selection-start-column="131" selection-end-line="68" selection-end-column="156" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/payment.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-              <folding>
-                <element signature="e#6#34#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/purchase_order.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-653">
-              <caret line="111" column="19" lean-forward="true" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#85#878#0" />
-                <element signature="e#942#1497#0" />
-                <element signature="e#1683#1725#0" />
-                <element signature="e#1766#1809#0" />
-                <element signature="e#1928#2082#0" />
-                <element signature="e#2150#2337#0" />
-                <element signature="e#2402#2501#0" />
-                <element signature="e#2566#2613#0" />
-                <element signature="e#2677#2723#0" />
-                <element signature="e#2789#3196#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/purchase_order_payments">
+        <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/purchase_order_statuses">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -125,46 +83,70 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderController.php">
+        <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/purchase_orders">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/item/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2135">
-              <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
+            <state relative-caret-position="1190">
+              <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/purchase_order.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1598">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
-                <element signature="e#53#89#0#PHP" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderPaymentController.php">
+        <entry file="file://$PROJECT_DIR$/resources/js/generic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              <folding>
-                <element signature="e#56#92#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderItemController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/helpers/selectLocation.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="52" />
-              <folding>
-                <element signature="e#53#89#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/edit.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
+            <state relative-caret-position="1802">
+              <caret line="106" column="27" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportUpdatedStockAndNameController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="125" column="40" lean-forward="true" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
+              <folding>
+                <element signature="e#48#84#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,17 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>805005146</find>
-      <find>blade.php</find>
-      <find>$stock_count</find>
-      <find>where</find>
-      <find>function</find>
-      <find>get</find>
-      <find>create</find>
-      <find>stockcount)</find>
-      <find>view('stockcount</find>
-      <find>view('stock</find>
-      <find>timestmap</find>
       <find>'type'</find>
       <find>enct</find>
       <find>multi</find>
@@ -209,16 +180,30 @@
       <find>.data(</find>
       <find>price</find>
       <find>ti</find>
+      <find>itemloo</find>
+      <find>PUT</find>
+      <find>format('</find>
+      <find>decre</find>
+      <find>@sec</find>
+      <find>&lt;div class=&quot;&quot;&gt;</find>
+      <find>transaction</find>
+      <find>VerifyTable</find>
+      <find>redirect</find>
+      <find>$request</find>
+      <find>sold</find>
+      <find>debug</find>
     </findStrings>
     <replaceStrings>
       <replace>$stockCount</replace>
       <replace>timestamp</replace>
       <replace>'status'</replace>
+      <replace>DistributeTable</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>C:\PHP_Projects\LaraERP\database\migrations</dir>
-      <dir>C:\PHP_Projects\LaraERP\resources\views</dir>
       <dir>C:\PHP_Projects\LaraERP</dir>
+      <dir>C:\PHP_Projects\LaraERP\resources\views</dir>
+      <dir>C:\PHP_Projects\LaraERP\database\migrations</dir>
+      <dir>C:\PHP_Projects\LaraERP\app\Http\Controllers</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -227,57 +212,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/PurchaseOrderStatusTablesSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/Part.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/DeviceType.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/Device.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_28_skipper_migrations_20190228_101029.php" />
-        <option value="$PROJECT_DIR$/resources/views/import/sales/import.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/Service.php" />
-        <option value="$PROJECT_DIR$/app/Models/WODeviceService.php" />
-        <option value="$PROJECT_DIR$/app/Models/WorkOrder.php" />
-        <option value="$PROJECT_DIR$/app/Models/WorkOrderDevice.php" />
-        <option value="$PROJECT_DIR$/app/Models/WODevicePart.php" />
-        <option value="$PROJECT_DIR$/resources/views/import/sales/process.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/app/Providers/BladeServiceProvider.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_28_skipper_migrations_20190228_100344.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HelperController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkDeviceService.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrderDevicePartController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrderDeviceController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrderDeviceServiceController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrderController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrder/WorkOrderDeviceController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrder/WorkOrderDevicePartController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/WorkOrder/WorkOrderDeviceServiceController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/WorkOrder.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Import/ImportController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ImportSalesDataController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ImportController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/SupplierController.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/Location.php" />
+        <option value="$PROJECT_DIR$/resources/js/part_operation.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PartOperationController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/resources/views/order/purchase/pdf/purchaseOrder.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Import/ImportSalesDataController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php" />
-        <option value="$PROJECT_DIR$/app/Models/PartStock.php" />
-        <option value="$PROJECT_DIR$/app/Models/PurchaseOrder.php" />
-        <option value="$PROJECT_DIR$/resources/views/order/purchase/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/Part.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderController.php" />
-        <option value="$PROJECT_DIR$/resources/views/order/purchase/item/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderItemController.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_08_164721_update_po_payments_columns.php" />
-        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderPayment.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/global/notifications.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/supplier/view.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderVerifyController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderPaymentController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_13_114908_create_po_items_distribution_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderItemsDistribution.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Part.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Location.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderItemsDistribution.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/verify/item/index.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_13_165832_add_seq_id_to_locations.php" />
+        <option value="$PROJECT_DIR$/resources/sass/app.scss" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_14_122528_make_payment_details_nullable__p_o__payment__table.php" />
+        <option value="$PROJECT_DIR$/resources/views/part/operations/modals/return.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/part/operations/modals/use.blade.php" />
+        <option value="$PROJECT_DIR$/app/Models/PurchaseOrderDiff.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HelperController.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/diff/item/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/verify/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/order/purchase/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/diff/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/distribute/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderPayment.php" />
-        <option value="$PROJECT_DIR$/resources/views/order/purchase/payment.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/purchase_order.js" />
-        <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/distribute/item/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/purchaseOrderStockDistribution.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderController.php" />
+        <option value="$PROJECT_DIR$/app/Models/Part.php" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/item/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php" />
+        <option value="$PROJECT_DIR$/resources/views/import/update/nameandstock.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderActionsController.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/resources/views/order/purchase/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/purchase_order.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Import/ImportUpdatedStockAndNameController.php" />
       </list>
     </option>
   </component>
@@ -403,119 +388,16 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1543" />
-    <option name="y" value="-7" />
-    <option name="width" value="1550" />
-    <option name="height" value="878" />
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="PurchaseOrder" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-              <item name="purchase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-              <item name="purchase" type="462c0819:PsiDirectoryNode" />
-              <item name="item" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mariadb&#10;mysql" />
@@ -529,7 +411,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -555,8 +437,8 @@
       <command value="php composer dumpautoload" />
       <command value="composer dumpautoload" />
       <command value="composer install" />
-      <command value="php artisan serve" />
       <command value="npm run watch" />
+      <command value="php artisan serve" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -660,280 +542,22 @@
       <workItem from="1551886047122" duration="68000" />
       <workItem from="1551886265051" duration="18727000" />
       <workItem from="1551970872157" duration="22467000" />
-      <workItem from="1552062037011" duration="11162000" />
-    </task>
-    <task id="LOCAL-00025" summary="Completed the Stock Count Summary with Relevant Templates">
-      <created>1550262178952</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1550262178952</updated>
-    </task>
-    <task id="LOCAL-00026" summary="General Fixes StockCounts Summary Page.">
-      <created>1550268468593</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1550268468593</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Added the Import Controller and related Stuff.">
-      <created>1550609305536</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1550609305536</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Fixed Typo">
-      <created>1550610100211</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1550610100211</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Fixed Typo again">
-      <created>1550610178618</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1550610178618</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Fixed encoding Error for Import by using utf8_encode">
-      <created>1550678694292</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1550678694292</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Migration for Adding the Purchase Order Functionality. With all the relevant tables and relations.">
-      <created>1550692861720</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1550692861720</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Added Models for the PO functionality. And updated the Migration file for issues.">
-      <created>1550696866372</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1550696866372</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Seeder for Multiple Status Tables in PO Functionality">
-      <created>1550699371504</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1550699371504</updated>
-    </task>
-    <task id="LOCAL-00034" summary="General Scaffolding for Supplier UI and Backend Processing of Requests.">
-      <created>1550704163149</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1550704163149</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Completed the Supplier Management Grid.">
-      <created>1550765132220</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1550765132220</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Added Related Migration to deal with the ManyToMany Part to Device Relationship. A few other additions to PO Controllers">
-      <created>1550776055916</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1550776055916</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Fixed Typo in Migration File">
-      <created>1550777006091</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1550777006091</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Typo in Migration">
-      <created>1550777622498</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1550777622498</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Updated Models for Device to Part ManyToMany relationship">
-      <created>1550778388579</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1550778388579</updated>
-    </task>
-    <task id="LOCAL-00040" summary="New Migrations for Removing ManyToMany Part Device and Adding OneToMany Device to Part . Along with adding Recursive relationship for the part to partPart.">
-      <created>1550852910392</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1550852910393</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Updated the Import Script">
-      <created>1550867071809</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1550867071809</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Added Trim and UTF functions to the import script">
-      <created>1550869835572</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1550869835572</updated>
-    </task>
-    <task id="LOCAL-00043" summary="UI elements and General refactoring for handling Part Operations.">
-      <created>1551113536502</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1551113536502</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Basic Increase and Decrease of Part Stock with Repair">
-      <created>1551120699940</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1551120699940</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Added Migration and Relevant Models for Recording Parts Movement.">
-      <created>1551130004549</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1551130004549</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Added Relevant Models with boot function.">
-      <created>1551133039777</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1551133039777</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Basic Prototype of Purchase Order Functionalities.">
-      <created>1551217190941</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1551217190941</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Removed Butoon from Create new">
-      <created>1551217368324</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1551217368324</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Added CRUD for PO items.">
-      <created>1551296937210</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1551296937210</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Added General Prototype Migrations and Models for WO">
-      <created>1551378309239</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1551378309239</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Added Import Sales Data controller. And some basic features for WO Models.">
-      <created>1551384136370</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1551384136370</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Additional functions for PO">
-      <created>1551394620103</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1551394620103</updated>
-    </task>
-    <task id="LOCAL-00053" summary="PO No Supplier Edit and Status in SEQ">
-      <created>1551459382351</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1551459382351</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Created an Empty blade service provider and registered it.">
-      <created>1551462213401</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1551462213401</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Added WO Controllers and Small changes to DB by creating 2 migrations">
-      <created>1551719630317</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1551719630317</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Added Location Relation to WO">
-      <created>1551725743398</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1551725743399</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Re-Organizing Controllers in Sub-Folders and updating the relevant routes.">
-      <created>1551728441551</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1551728441551</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Re-Organized PO Controller and relevant Routes">
-      <created>1551728897989</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1551728897989</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Updated the Import Controller for Location of Sales (Temp Fix)">
-      <created>1551731629719</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1551731629720</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Added Basic Auto Generation of PO">
-      <created>1551805220523</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1551805220523</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Updated Max Execution as a temp fix.">
-      <created>1551805755139</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1551805755139</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Added the missing return statement">
-      <created>1551806985795</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1551806985795</updated>
-    </task>
-    <task id="LOCAL-00063" summary="changed Event binding for JQ to Delegated for increased performance.">
-      <created>1551807529697</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1551807529697</updated>
+      <workItem from="1552062037011" duration="22925000" />
+      <workItem from="1552312085415" duration="99000" />
+      <workItem from="1552312214095" duration="27656000" />
+      <workItem from="1552398618877" duration="22932000" />
+      <workItem from="1552485650018" duration="26745000" />
+      <workItem from="1552572034733" duration="22225000" />
+      <workItem from="1552658482379" duration="901000" />
+      <workItem from="1552660232902" duration="2772000" />
+      <workItem from="1552665440811" duration="14740000" />
+      <workItem from="1552918225405" duration="41000" />
+      <workItem from="1552918291714" duration="19716000" />
+      <workItem from="1553004719554" duration="17515000" />
+      <workItem from="1553091113583" duration="9032000" />
+      <workItem from="1553105774926" duration="3399000" />
+      <workItem from="1553112296355" duration="1653000" />
+      <workItem from="1553116296453" duration="104000" />
     </task>
     <task id="LOCAL-00064" summary="Delegated all the jQ events in PO Grid">
       <created>1551808700511</created>
@@ -1005,11 +629,284 @@
       <option name="project" value="LOCAL" />
       <updated>1552073434156</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Added Updates to DB Structure.">
+      <created>1552074019168</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1552074019168</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Auto PO Fix">
+      <created>1552077539227</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1552077539227</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Multiple Updates include Session and Location Selection.">
+      <created>1552086239095</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1552086239095</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Cleaned Up Code to Location for System Wide operations.">
+      <created>1552316605497</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1552316605497</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Option to Specify the WO# when using or returning the Part to Inventory">
+      <created>1552324324220</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1552324324220</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Added Flash notification on Location Change.">
+      <created>1552330476924</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1552330476924</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Managing PO Payments">
+      <created>1552341328980</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1552341328980</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Added option to Edit POs associated to a PO Payment">
+      <created>1552402518689</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1552402518690</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Added Container Fluid to all">
+      <created>1552405342938</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1552405342938</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Basic UI and Persisting of Recording Qty Received Implemented. Verify button shows up on the main list of POs after the status is set to shipped on PO.">
+      <created>1552426938381</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1552426938381</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Added New Migration to create Stock Distribution table. And smaller changes to PO Controllers.">
+      <created>1552497969203</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1552497969203</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Added and updated Models for PO Item Distribution.">
+      <created>1552499194947</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1552499194947</updated>
+    </task>
+    <task id="LOCAL-00086" summary="General Logic on Distribution of Stock Evenly.">
+      <created>1552507612488</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1552507612488</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Updated UI for Stock Distribution.">
+      <created>1552509482879</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1552509482879</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Updated UI for Stock Distribution for Response from Server and Added Seq Id to Locations.">
+      <created>1552513921845</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1552513921845</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Added Toastr Notification to display the Location a PArt is going when scanned for PO verify.">
+      <created>1552575279289</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1552575279289</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Make Toastr Notifications with Proper Color.">
+      <created>1552580767207</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1552580767207</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Migration to make payment Details in Po Payment Nullable.">
+      <created>1552581823708</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1552581823708</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Added HTML Constraints on WO# for being only positive and step to 1">
+      <created>1552583391010</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1552583391010</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Added logic to remove sales and stock level in PI screen after it is finalized. As the data added no value to the end user when PI is at that stage.">
+      <created>1552583461090</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1552583461090</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Add Realtime updating Summary to PO Verify process.">
+      <created>1552588590999</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1552588590999</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Restrict Status Change in UI after shipment is Received.">
+      <created>1552597776434</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1552597776434</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Processing for Creating the Diff Records.">
+      <created>1552598974863</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1552598974863</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Complete PO Verification and Short Excess Report">
+      <created>1552674403827</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1552674403871</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Basic Scaffolding for Stock Distribution">
+      <created>1552685868548</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1552685868548</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Stock Distribution UI with ability to Edit items to be sent to Each Location.">
+      <created>1552939150692</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1552939150693</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Added Route Model Binding to PO Controller Functions.">
+      <created>1552944700072</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1552944700073</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Updated the Code and Strategy for Auto PO Generation">
+      <created>1553016619596</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1553016619598</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Added Sold All time to Part as Model Attribute Getter. And displayed it in Edit PO UI.">
+      <created>1553029021832</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1553029021832</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Updated Auto Generation Logic.">
+      <created>1553030287407</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1553030287407</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Updated Auto Generation Logic.&#10;Get all parts sold in past year. Need a minimum of 2 of these. Calculate average monthly sale of each, and order for 3 months + 10 %. Now check the current stock and other what is needed after substracting the needed from it.">
+      <created>1553098481070</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1553098481071</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Updated Auto Generation Logic.">
+      <created>1553101888321</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1553101888322</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Functionality to import and update just stock levels and part name.">
+      <created>1553105861822</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1553105861822</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Confirmation on Delete of Item in PO list Fixed.">
+      <created>1553108932399</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1553108932399</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Enabled the change of status on Finalizing of Shipment on order verification.">
+      <created>1553109393996</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1553109393996</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Auto Generated File. Missed in earlier commit.">
+      <created>1553109467755</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1553109467755</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Added Confirmation Dialogue before Deleting a PO">
+      <created>1553111535698</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1553111535698</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Updated Stock Import Code to be Exclusive. Delete Old rows and then create new one.">
+      <created>1553113841633</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1553113841633</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Updated Hard-Coded Location Codes in Script. Need to make it dynamic.">
+      <created>1553116401922</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1553116401922</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="394820000" />
+    <option name="totallyTimeSpent" value="576113000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1022,24 +919,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496208" visible="true" weight="0.29904053" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496208" weight="0.22814499" />
       <window_info id="Structure" order="1" sideWeight="0.50403875" side_tool="true" weight="0.26279318" />
       <window_info id="npm" order="2" sideWeight="0.503792" side_tool="true" weight="0.27665246" />
       <window_info id="Favorites" order="3" sideWeight="0.503792" side_tool="true" weight="0.27665246" />
       <window_info id="DB Browser" order="4" sideWeight="0.49779737" weight="0.3297587" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.19934994" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.2383532" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.2383532" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5021322" side_tool="true" weight="0.19934994" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.4968017" weight="0.32827735" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
@@ -1124,32 +1020,32 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added CRUD for PO items." />
-    <MESSAGE value="Added General Prototype Migrations and Models for WO" />
-    <MESSAGE value="Added Import Sales Data controller. And some basic features for WO Models." />
-    <MESSAGE value="Additional functions for PO" />
-    <MESSAGE value="PO No Supplier Edit and Status in SEQ" />
-    <MESSAGE value="Created an Empty blade service provider and registered it." />
-    <MESSAGE value="Added WO Controllers and Small changes to DB by creating 2 migrations" />
-    <MESSAGE value="Added Location Relation to WO" />
-    <MESSAGE value="Re-Organizing Controllers in Sub-Folders and updating the relevant routes." />
-    <MESSAGE value="Re-Organized PO Controller and relevant Routes" />
-    <MESSAGE value="Updated the Import Controller for Location of Sales (Temp Fix)" />
-    <MESSAGE value="Added Basic Auto Generation of PO" />
-    <MESSAGE value="Updated Max Execution as a temp fix." />
-    <MESSAGE value="Added the missing return statement" />
-    <MESSAGE value="changed Event binding for JQ to Delegated for increased performance." />
-    <MESSAGE value="Delegated all the jQ events in PO Grid" />
-    <MESSAGE value="Refactoring the MarkUp for Performance enhancement in UI" />
-    <MESSAGE value="Refactoring of the PO Items Grid and related JS" />
-    <MESSAGE value="Export of PO Details as PDF (Basic)" />
-    <MESSAGE value="Updates to Import and Export" />
-    <MESSAGE value="Fixed Routes File issue due to Git Merge" />
-    <MESSAGE value="Auto PO" />
-    <MESSAGE value="Additional Columns to PO Data Grid" />
-    <MESSAGE value="Added PO Delete Function" />
-    <MESSAGE value="PO Payment Function Prototype" />
-    <option name="LAST_COMMIT_MESSAGE" value="PO Payment Function Prototype" />
+    <MESSAGE value="Updated UI for Stock Distribution." />
+    <MESSAGE value="Updated UI for Stock Distribution for Response from Server and Added Seq Id to Locations." />
+    <MESSAGE value="Added Toastr Notification to display the Location a PArt is going when scanned for PO verify." />
+    <MESSAGE value="Make Toastr Notifications with Proper Color." />
+    <MESSAGE value="Migration to make payment Details in Po Payment Nullable." />
+    <MESSAGE value="Added HTML Constraints on WO# for being only positive and step to 1" />
+    <MESSAGE value="Added logic to remove sales and stock level in PI screen after it is finalized. As the data added no value to the end user when PI is at that stage." />
+    <MESSAGE value="Add Realtime updating Summary to PO Verify process." />
+    <MESSAGE value="Restrict Status Change in UI after shipment is Received." />
+    <MESSAGE value="Processing for Creating the Diff Records." />
+    <MESSAGE value="Complete PO Verification and Short Excess Report" />
+    <MESSAGE value="Basic Scaffolding for Stock Distribution" />
+    <MESSAGE value="Stock Distribution UI with ability to Edit items to be sent to Each Location." />
+    <MESSAGE value="Added Route Model Binding to PO Controller Functions." />
+    <MESSAGE value="Updated the Code and Strategy for Auto PO Generation" />
+    <MESSAGE value="Added Sold All time to Part as Model Attribute Getter. And displayed it in Edit PO UI." />
+    <MESSAGE value="Updated Auto Generation Logic.&#10;Get all parts sold in past year. Need a minimum of 2 of these. Calculate average monthly sale of each, and order for 3 months + 10 %. Now check the current stock and other what is needed after substracting the needed from it." />
+    <MESSAGE value="Updated Auto Generation Logic." />
+    <MESSAGE value="Functionality to import and update just stock levels and part name." />
+    <MESSAGE value="Confirmation on Delete of Item in PO list Fixed." />
+    <MESSAGE value="Enabled the change of status on Finalizing of Shipment on order verification." />
+    <MESSAGE value="Auto Generated File. Missed in earlier commit." />
+    <MESSAGE value="Added Confirmation Dialogue before Deleting a PO" />
+    <MESSAGE value="Updated Stock Import Code to be Exclusive. Delete Old rows and then create new one." />
+    <MESSAGE value="Updated Hard-Coded Location Codes in Script. Need to make it dynamic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Hard-Coded Location Codes in Script. Need to make it dynamic." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1159,202 +1055,333 @@
           <line>4</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportUpdatedStockAndNameController.php</url>
+          <line>192</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_01_skipper_migrations_20190301_104206.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_26_skipper_migrations_20190226_074727.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="119">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/console.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportSalesDataController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ImportController.php" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/SupplierController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_skipper_migrations_20190225_122756.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="-442">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_22_skipper_migrations_20190222_081345.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_22_skipper_migrations_20190222_080433.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_08_164721_update_po_payments_columns.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
           <folding>
-            <element signature="e#54#90#0#PHP" expanded="true" />
+            <element signature="e#7#45#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/wodevice_parts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/WorkOrder/WorkOrderController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_125034.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="198">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/locations">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/5d7f62ef-a6e4-4084-87c5-1d0638712a59.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1377" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/f57f7d56-68bd-4f51-a586-c57eff758f75.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-654" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/app/imports/1d0d1a1e-c5ed-4337-85f4-b45e7aa766b4.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="84" lean-forward="true" selection-start-line="18" selection-start-column="84" selection-end-line="18" selection-end-column="84" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/work_orders">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/work_orders">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/Location.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="30" column="19" lean-forward="true" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="417" column="45" lean-forward="true" selection-start-line="417" selection-start-column="15" selection-end-line="417" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/purchase_order_items">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_14_122528_make_payment_details_nullable__p_o__payment__table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="8" selection-end-line="36" selection-end-column="41" />
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/purchase_order_payments">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://49cfafbe-6b2e-4e79-bdc6-c0d88dae4f73/schema/erp/table/purchase_order_statuses">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/part/operations/modals/return.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/phpunit.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="536">
+            <caret line="56" column="45" lean-forward="true" selection-start-line="56" selection-start-column="45" selection-end-line="56" selection-end-column="45" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/part/operations/modals/use.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrderDiff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
           <folding>
-            <element signature="e#47#83#0#PHP" expanded="true" />
+            <element signature="e#29#71#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartPrice.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderDiff.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="884">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/PartPrice.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HelperController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        <state relative-caret-position="1037">
+          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/pdf/purchaseOrder.blade.php">
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/fb3bd820319640b18d57763f789bf77e381a77a9.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/a917b762a33671c3c7cb066643286a58a76a6a65.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/a6434c46090eff057931b9ddfbb3146991f79d47.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="70" column="52" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="52" />
+        <state relative-caret-position="-102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/framework/views/a7c38090ca5ef3a53bd1cffd7c25b28fd4d2eac9.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1179" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/diff/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/distribute/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/distribute/item/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="3203" column="40" lean-forward="true" selection-start-line="3203" selection-start-column="40" selection-end-line="3203" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/verify/item/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/diff/item/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/purchaseOrderStockDistribution.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1598">
+          <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
           <folding>
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportSalesDataController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="119">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/import/import.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="24" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="399" column="25" lean-forward="true" selection-start-line="399" selection-start-column="25" selection-end-line="399" selection-end-column="25" />
           <folding>
-            <element signature="e#48#84#0#PHP" expanded="true" />
+            <element signature="e#47#83#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/wodevice_parts">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="56" column="35" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PartStock.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="273" selection-start-line="273" selection-end-line="273" />
+          <folding>
+            <element signature="e#975#1388#0#PHP" />
+            <element signature="e#1541#2581#0#PHP" />
+            <element signature="e#2587#2794#0#PHP" />
+            <element signature="e#2842#2940#0#PHP" />
+            <element signature="e#2982#3380#0#PHP" />
+            <element signature="e#4441#4800#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/import/update/nameandstock.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SalesDataController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret line="33" column="20" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
+        <state relative-caret-position="187">
+          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="157" column="46" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#6#34#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrder.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        <state relative-caret-position="365">
+          <caret line="104" column="40" lean-forward="true" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="210" column="57" lean-forward="true" selection-start-line="210" selection-start-column="57" selection-end-line="211" selection-end-column="57" />
+        <state relative-caret-position="476">
+          <caret line="40" column="122" selection-start-line="40" selection-start-column="122" selection-end-line="40" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/verify/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="76" column="114" selection-start-line="76" selection-start-column="114" selection-end-line="76" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderActionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="203" column="71" selection-start-line="203" selection-start-column="71" selection-end-line="203" selection-end-column="71" />
+          <folding>
+            <element signature="e#55#79#0#PHP" expanded="true" />
+            <element signature="e#1178#3546#0#PHP" />
+            <element signature="e#3611#5322#0#PHP" />
+            <element signature="e#5417#6250#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="156" selection-start-line="68" selection-start-column="131" selection-end-line="68" selection-end-column="156" />
         </state>
       </provider>
     </entry>
@@ -1365,23 +1392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3054">
-          <caret line="196" column="31" lean-forward="true" selection-start-line="196" selection-start-column="31" selection-end-line="196" selection-end-column="31" />
-          <folding>
-            <element signature="e#53#78#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="688">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/purchase_orders">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1389,169 +1399,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#29#47#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/suppliers">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_skipper_migrations_20190304_104749.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#183#221#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrderPayment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_01_skipper_migrations_20190301_105020.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="47" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="90" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/item/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="82" column="59" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="69" column="58" selection-start-line="69" selection-start-column="58" selection-end-line="69" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderItemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="52" />
-          <folding>
-            <element signature="e#53#89#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="1190">
+          <caret line="70" column="49" selection-start-line="70" selection-start-column="49" selection-end-line="70" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/purchase_order.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-653">
-          <caret line="111" column="19" lean-forward="true" selection-start-line="111" selection-start-column="19" selection-end-line="111" selection-end-column="19" />
+        <state relative-caret-position="1598">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#85#878#0" />
-            <element signature="e#942#1497#0" />
-            <element signature="e#1683#1725#0" />
-            <element signature="e#1766#1809#0" />
-            <element signature="e#1928#2082#0" />
-            <element signature="e#2150#2337#0" />
-            <element signature="e#2402#2501#0" />
-            <element signature="e#2566#2613#0" />
-            <element signature="e#2677#2723#0" />
-            <element signature="e#2789#3196#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderController.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/generic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2135">
-          <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/helpers/selectLocation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="106" column="27" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportUpdatedStockAndNameController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="125" column="40" lean-forward="true" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
           <folding>
-            <element signature="e#53#89#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_08_164721_update_po_payments_columns.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding>
-            <element signature="e#7#45#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderPaymentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#56#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/payment.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://15000f76-3a18-4aa8-b6a4-53375a74a9ca/schema/ttserp01/table/purchase_order_payments">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderPayment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#6#34#0#PHP" expanded="true" />
+            <element signature="e#48#84#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
