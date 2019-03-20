@@ -133,7 +133,7 @@ class ImportUpdatedStockAndNameController extends Controller
                                     'sold_all_time'=>$item[4]
                                 ],
                                 [
-                                    'code'=>'TO1',
+                                    'code'=>'TO',
                                     'stock_qty'=>$item[1],
                                     'sold_all_time'=>$item[3]
                                 ]
@@ -143,7 +143,7 @@ class ImportUpdatedStockAndNameController extends Controller
 
 
                 }catch (ModelNotFoundException $e){
-                    //
+                    dd($e);
                 }
 
 
