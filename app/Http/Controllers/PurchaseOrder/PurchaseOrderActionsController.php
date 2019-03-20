@@ -200,11 +200,11 @@ class PurchaseOrderActionsController extends PurchaseOrderController
                 }
             }
 
-            /*
+
             $status = PurchaseOrderStatus::where('seq_id',10)->first();
             $purchaseOrder->PurchaseOrderStatus()->associate($status);
             $purchaseOrder->save();
-            */
+
         }
         else{
             $purchaseOrder_diff = $purchaseOrder->PurchaseOrderDiffs;
