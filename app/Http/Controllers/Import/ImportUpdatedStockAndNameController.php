@@ -164,6 +164,32 @@ class ImportUpdatedStockAndNameController extends Controller
             $location_obj = Location::where('location_code',$location['code'])
                 ->firstOrFail();
 
+
+            $deleted_rows = PartStock::where('part_id',$part->id)
+                ->where('location_id',$location_obj->id)
+                ->delete();
+
+            $part_stock = new PartStock();
+            $part_stock->stock_qty = intval(
+                trim(
+                    str_replace('Â', '',
+                        $location['stock_qty']
+                    )
+                )
+            );
+            $part_stock->sold_all_time = intval(
+                trim(
+                    str_replace('Â', '',
+                        $location['sold_all_time']
+                    )
+                )
+            );
+            $part_stock->location()->associate($location_obj);
+            $part_stock->part()->associate($part);
+
+            $part_stock->save();
+
+            /*
             try{
 
                 $part_stock = PartStock::where('part_id',$part->id)
@@ -186,7 +212,8 @@ class ImportUpdatedStockAndNameController extends Controller
                 );
 
 
-            }catch (ModelNotFoundException $e){
+            }
+            catch (ModelNotFoundException $e){
 
                 $part_stock = new PartStock();
                 $part_stock->stock_qty = intval(
@@ -208,6 +235,7 @@ class ImportUpdatedStockAndNameController extends Controller
             }
 
             $part_stock->save();
+            */
         }
     }
 
