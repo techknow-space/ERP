@@ -2,6 +2,13 @@
 $(document).ready(function() {
 
 
+    let poTableAcive = $('#purchaseOrderTableActive');
+    poTableAcive.on('click','.purchaseOrderDeleteButton',function (e) {
+        if(!confirm('Sure ?')){
+            e.preventDefault();
+        }
+    });
+
 
     $('#poItemsTablePartSelect').select2({
         ajax:{
@@ -199,6 +206,7 @@ function editPOItemRow(action,po_item_id) {
                     }
                 }
             });
+            console.log('Delete Entered');
         }
     }
     else if( 'save' === action ){

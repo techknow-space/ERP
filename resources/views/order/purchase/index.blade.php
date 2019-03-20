@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table" id="purchaseOrderTableActive">
                             <thead>
                                 <tr>
                                     <th scope="col">PO#</th>
@@ -66,7 +66,7 @@
                                                 <a href="/order/purchase/export/PDF/{{$purchase_order->id}}" class="btn btn-secondary">PDF</a>
                                                 <a href="/order/purchase/export/CSV/{{$purchase_order->id}}" class="btn btn-secondary">CSV</a>
                                                 @if(7 > $purchase_order->PurchaseOrderStatus->seq_id)
-                                                    <a href="/order/purchase/delete/{{$purchase_order->id}}" class="btn btn-danger">Delete</a>
+                                                    <a href="/order/purchase/delete/{{$purchase_order->id}}" class="btn btn-danger purchaseOrderDeleteButton">Delete</a>
                                                 @endif
                                                 @if(9 == $purchase_order->PurchaseOrderStatus->seq_id)
                                                     <a href="/order/purchase/verify/{{$purchase_order->id}}" class="btn btn-warning">Verify</a>

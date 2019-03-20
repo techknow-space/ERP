@@ -69828,6 +69828,12 @@ function editPODistributionRow(po_item_id, location_values) {
 
 /*PO JS*/
 $(document).ready(function () {
+  var poTableAcive = $('#purchaseOrderTableActive');
+  poTableAcive.on('click', '.purchaseOrderDeleteButton', function (e) {
+    if (!confirm('Sure ?')) {
+      e.preventDefault();
+    }
+  });
   $('#poItemsTablePartSelect').select2({
     ajax: {
       url: "/search/ajax",
@@ -70001,6 +70007,7 @@ function editPOItemRow(action, po_item_id) {
           }
         }
       });
+      console.log('Delete Entered');
     }
   } else if ('save' === action) {
     var cost = $('#poItemCost-' + po_item_id).val();
