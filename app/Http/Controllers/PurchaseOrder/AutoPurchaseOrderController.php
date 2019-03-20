@@ -182,7 +182,7 @@ class AutoPurchaseOrderController extends PurchaseOrderController
     {
         //$partToOrder = $this->reorderStrategy();
         $partToOrder = $this->partsToReplenish();
-        $supplier = Supplier::where('name','Rewa Technologies')->firstOrFail();
+        $supplier = Supplier::where('name','Supp1')->firstOrFail();
         $purchaseOrder = $this->generatePurchaseOrderbySystem($partToOrder,$supplier);
 
         session()->flash('success',['This Order is System Generated PO.']);
