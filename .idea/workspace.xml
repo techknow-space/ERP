@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="Migration to Create Tables for Stock Transfer Order.">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_03_21_104908_stock_transfers_tables.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Base/StockTransfer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Base/StockTransferItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Base/StockTransferStatus.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/StockTransfer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/StockTransferItem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/StockTransferStatus.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HelperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HelperController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Base/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/Location.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Base/Part.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Base/Part.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,32 +57,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_21_104908_stock_transfers_tables.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="238">
+              <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransferStatus.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/StockTransferStatus.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransfer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="773">
+              <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransferItem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="43" column="41" lean-forward="true" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/Part.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="807">
+              <caret line="87" column="78" selection-start-line="87" selection-start-column="78" selection-end-line="87" selection-end-column="78" />
               <folding>
-                <element signature="e#7#45#0#PHP" expanded="true" />
+                <element signature="e#142#181#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HelperController.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+            <state relative-caret-position="-876">
+              <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_125034.php">
+        <entry file="file://$PROJECT_DIR$/app/Models/StockTransferItem.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="114" column="72" lean-forward="true" selection-start-line="114" selection-start-column="72" selection-end-line="114" selection-end-column="72" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Base/Location.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/StockTransfer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#32#74#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,13 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PartOperationController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LookupController.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/resources/views/global/notifications.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/order/purchase/payment/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/order/purchase/create.blade.php" />
@@ -160,10 +225,8 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/PurchaseOrderPaymentController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_13_114908_create_po_items_distribution_table.php" />
         <option value="$PROJECT_DIR$/app/Models/PurchaseOrderItemsDistribution.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/Part.php" />
         <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php" />
         <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php" />
-        <option value="$PROJECT_DIR$/app/Models/Base/Location.php" />
         <option value="$PROJECT_DIR$/app/Models/Base/PurchaseOrderItemsDistribution.php" />
         <option value="$PROJECT_DIR$/resources/views/order/purchase/verify/item/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_13_165832_add_seq_id_to_locations.php" />
@@ -193,6 +256,15 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HelperController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_03_21_104908_stock_transfers_tables.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/StockTransferOrderStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/StockTransferOrderStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/StockTransfer.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/StockTransferStatus.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Location.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/StockTransfer.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/StockTransferItem.php" />
+        <option value="$PROJECT_DIR$/app/Models/StockTransferItem.php" />
+        <option value="$PROJECT_DIR$/app/Models/Base/Part.php" />
       </list>
     </option>
   </component>
@@ -358,13 +430,6 @@
               <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-              <item name="Base" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
@@ -557,21 +622,7 @@
       <workItem from="1553116737908" duration="95000" />
       <workItem from="1553117632643" duration="1468000" />
       <workItem from="1553178976259" duration="91000" />
-      <workItem from="1553179293283" duration="4693000" />
-    </task>
-    <task id="LOCAL-00066" summary="Refactoring of the PO Items Grid and related JS">
-      <created>1551814109016</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1551814109016</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Export of PO Details as PDF (Basic)">
-      <created>1551824381517</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1551824381517</updated>
+      <workItem from="1553179293283" duration="7894000" />
     </task>
     <task id="LOCAL-00068" summary="Updates to Import and Export">
       <created>1551899721213</created>
@@ -902,11 +953,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553117892461</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="Migration to Create Tables for Stock Transfer Order.">
+      <created>1553184185735</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1553184185737</updated>
+    </task>
+    <task id="LOCAL-00116" summary="Added StockTransfer Number Generation Logic to Helper.">
+      <created>1553184279447</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1553184279447</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="582460000" />
+    <option name="totallyTimeSpent" value="585661000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -937,7 +1002,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.2383532" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5021322" side_tool="true" weight="0.19934994" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.4968017" weight="0.32827735" />
       <window_info anchor="bottom" id="DB Execution Console" order="13" />
       <window_info anchor="bottom" id="Tail" order="14" />
@@ -1021,8 +1086,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added Toastr Notification to display the Location a PArt is going when scanned for PO verify." />
-    <MESSAGE value="Make Toastr Notifications with Proper Color." />
     <MESSAGE value="Migration to make payment Details in Po Payment Nullable." />
     <MESSAGE value="Added HTML Constraints on WO# for being only positive and step to 1" />
     <MESSAGE value="Added logic to remove sales and stock level in PI screen after it is finalized. As the data added no value to the end user when PI is at that stage." />
@@ -1046,7 +1109,9 @@
     <MESSAGE value="Updated Hard-Coded Location Codes in Script. Need to make it dynamic." />
     <MESSAGE value="REmoved Dump and Die" />
     <MESSAGE value="Temp change default auto replenish suplier" />
-    <option name="LAST_COMMIT_MESSAGE" value="Temp change default auto replenish suplier" />
+    <MESSAGE value="Migration to Create Tables for Stock Transfer Order." />
+    <MESSAGE value="Added StockTransfer Number Generation Logic to Helper." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added StockTransfer Number Generation Logic to Helper." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1065,108 +1130,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/storage/framework/views/a7c38090ca5ef3a53bd1cffd7c25b28fd4d2eac9.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1179" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/diff/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/distribute/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/distribute/item/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="3203" column="40" lean-forward="true" selection-start-line="3203" selection-start-column="40" selection-end-line="3203" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/verify/item/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/diff/item/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/purchaseOrderStockDistribution.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="20" selection-start-line="94" selection-start-column="20" selection-end-line="94" selection-end-column="20" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportSalesDataController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/import/import.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="24" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Import/ImportController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="399" column="25" lean-forward="true" selection-start-line="399" selection-start-column="25" selection-end-line="399" selection-end-column="25" />
-          <folding>
-            <element signature="e#47#83#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/import/update/nameandstock.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/order/purchase/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="841">
@@ -1174,13 +1137,6 @@
           <folding>
             <element signature="e#6#34#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="104" column="40" lean-forward="true" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1339,20 +1295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-431">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_25_skipper_migrations_20190225_122756.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-765">
@@ -1433,13 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HelperController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_02_20_skipper_migrations_20190220_125034.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-442">
@@ -1447,12 +1382,144 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Brand.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_04_skipper_migrations_20190304_104749.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_21_104908_stock_transfers_tables.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="340">
+          <caret line="32" column="60" lean-forward="true" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
           <folding>
             <element signature="e#7#45#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrderStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HelperController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="41" column="71" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/StockTransfer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#32#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/PurchaseOrderItems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/PurchaseOrderItems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransferStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransfer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="63" column="5" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/StockTransferStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/StockTransferItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/StockTransferItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="43" column="41" lean-forward="true" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-876">
+          <caret line="31" column="51" lean-forward="true" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Location.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="41" column="36" lean-forward="true" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Base/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="87" column="78" selection-start-line="87" selection-start-column="78" selection-end-line="87" selection-end-column="78" />
+          <folding>
+            <element signature="e#142#181#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

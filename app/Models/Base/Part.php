@@ -5,6 +5,7 @@
 namespace App\Models\Base;
 
 use Illuminate\Database\Eloquent\Model;
+use SebastianBergmann\ObjectEnumerator\Fixtures\ExceptionThrower;
 
 class Part extends Model
 {
@@ -80,5 +81,10 @@ class Part extends Model
     public function PurchaseOrderDistributionItems()
     {
         return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','part_id','id');
+    }
+
+    public function StockTransferItems()
+    {
+        return $this->hasMany('\App\Models\StockTransferItem','part_id','id');
     }
 }

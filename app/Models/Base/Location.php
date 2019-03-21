@@ -8,51 +8,66 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-  /**  
-  * Primary key type.
-  * 
-  * @var string
-  */
-  protected $keyType='uuid';
-  
-  /**  
-  * Primary key is non-autoincrementing.
-  * 
-  * @var bool
-  */
-  public $incrementing=false;
-  
-  /**  
-  * The attributes that should be cast to native types.
-  * 
-  * @var array
-  */
-  protected $casts=[
-    'id'=>'string',
-    'location'=>'string',
-    'location_code'=>'string',
-    'description'=>'string'
-  ];
+    /**
+    * Primary key type.
+    *
+    * @var string
+    */
+    protected $keyType='uuid';
 
-  public function StockCounts()
-  {
-    return $this->hasMany('\App\Models\StockCount','location_id','id');
-  }
-  public function partMvmntFroms()
-  {
-      return $this->hasMany('\App\Models\PartMvmntFrom','location_id','id');
-  }
-  public function PartMvmntTos()
-  {
-      return $this->hasMany('\App\Models\PartMvmntTo','location_id','id');
-  }
-  public function WorkOrders()
-  {
-      return $this->hasMany('\App\Models\WorkOrder','location_id','id');
-  }
+    /**
+    * Primary key is non-autoincrementing.
+    *
+    * @var bool
+    */
+    public $incrementing=false;
+
+    /**
+    * The attributes that should be cast to native types.
+    *
+    * @var array
+    */
+    protected $casts=[
+      'id'=>'string',
+      'location'=>'string',
+      'location_code'=>'string',
+      'description'=>'string'
+    ];
+
+    public function StockCounts()
+    {
+      return $this->hasMany('\App\Models\StockCount','location_id','id');
+    }
+
+    public function partMvmntFroms()
+    {
+        return $this->hasMany('\App\Models\PartMvmntFrom','location_id','id');
+    }
+
+    public function PartMvmntTos()
+    {
+        return $this->hasMany('\App\Models\PartMvmntTo','location_id','id');
+    }
+
+    public function WorkOrders()
+    {
+        return $this->hasMany('\App\Models\WorkOrder','location_id','id');
+    }
     public function PurchaseOrderDistributionItems()
     {
         return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','location_id','id');
     }
+
+    public function StockTransfersFrom()
+    {
+        return $this->hasMany('\App\Models\StockTransfer','fromLocation_id','id');
+    }
+
+    public function StockTransfersTo()
+    {
+        return $this->hasMany('\App\Models\StockTransfer','toLocation_id','id');
+    }
+
+
 
 }
