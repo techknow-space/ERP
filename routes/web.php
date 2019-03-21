@@ -1,7 +1,7 @@
 <?php
 use App\Models\Part as Part;
 use App\Models\PurchaseOrder;
-use Illuminate\Support\Facades\Route as Route;
+use Illuminate\Support\Facades;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Http\Controllers\HelperController;
@@ -159,6 +159,10 @@ Route::prefix('import')->group(function (){
         Route::get('/','Import\ImportSalesDataController@index');
         Route::post('/upload','Import\ImportSalesDataController@upload');
     });
+});
+
+Route::prefix('stocktransfer')->group(function (){
+    Route::get('/','StockTransfer\StockTransferController@index');
 });
 
 
