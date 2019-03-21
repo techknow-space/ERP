@@ -18,6 +18,8 @@ use App\Http\Controllers\HelperController;
 
 /* Debugging Routes */
 
+app('debugbar')->disable();
+
 Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@partsToReplenish');
 
 /* End Debugging Routes */
@@ -161,8 +163,13 @@ Route::prefix('import')->group(function (){
     });
 });
 
-Route::prefix('stocktransfer')->group(function (){
+
+Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function (){
     Route::get('/','StockTransfer\StockTransferController@index');
+    Route::get('create','StockTransfer\StockTransferController@create');
+    Route::post('create','StockTransfer\StockTransferController@insert');
+    Route::get('edit/{stockTransfer}','StockTransfer\StockTransferController@edit');
+    Route::put('update/{stockTransfer}','StockTransfer\StockTransferController@update');
 });
 
 

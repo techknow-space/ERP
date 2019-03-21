@@ -78,7 +78,7 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group">
-                                                    <a href="/stockTransfer/edit/{{$stockTransfer->id}}" class="btn btn-info">
+                                                    <a href="/stocktransfer/edit/{{$stockTransfer->id}}" class="btn btn-info">
                                                         Edit
                                                     </a>
                                                 </div>

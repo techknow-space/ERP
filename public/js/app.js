@@ -69150,6 +69150,8 @@ __webpack_require__(/*! ./purchaseOrderStockDistribution */ "./resources/js/purc
 
 __webpack_require__(/*! ./part_operation */ "./resources/js/part_operation.js");
 
+__webpack_require__(/*! ./stockTransfer */ "./resources/js/stockTransfer.js");
+
 __webpack_require__(/*! tablesorter */ "./node_modules/tablesorter/dist/js/jquery.tablesorter.combined.js"); //window.Vue = require('vue');
 
 /**
@@ -70042,6 +70044,42 @@ function editPOItemRow(action, po_item_id) {
   }
 }
 /* End PO JS */
+
+/***/ }),
+
+/***/ "./resources/js/stockTransfer.js":
+/*!***************************************!*\
+  !*** ./resources/js/stockTransfer.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Start stockTransfer.js */
+$(document).ready(function () {
+  var STcreateFormLocationFromSelect = $('#stockTransferFrom');
+  var STcreateFormLocationToSelect = $('#stockTransferTo');
+  STcreateFormLocationFromSelect.on('change', function () {
+    if (STcreateFormLocationFromSelect.val() === STcreateFormLocationToSelect.val()) {
+      STcreateFormLocationToSelect.prop('selectedIndex', 0);
+    }
+  });
+  STcreateFormLocationToSelect.on('change', function () {
+    if (STcreateFormLocationToSelect.val() === STcreateFormLocationFromSelect.val()) {
+      STcreateFormLocationFromSelect.prop('selectedIndex', 0);
+    }
+  });
+  var STeditFormTransferStatus = $('#stockTransferStatus');
+  var STeditFormDescription = $('#stockTransferDescription');
+  STeditFormTransferStatus.on('change', function () {
+    submitStockTransferEditForm();
+  });
+});
+
+function submitStockTransferEditForm() {
+  var STeditForm = $('#stockTransferEditForm');
+  STeditForm.submit();
+}
+/* End stockTransfer.js */
 
 /***/ }),
 

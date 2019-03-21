@@ -17,6 +17,7 @@ require('./mjr');
 require('./purchase_order');
 require('./purchaseOrderStockDistribution');
 require('./part_operation');
+require('./stockTransfer');
 require('tablesorter');
 
 //window.Vue = require('vue');
