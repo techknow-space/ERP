@@ -35,7 +35,7 @@
                                             {{$purchaseOrderPayment->amount_USD}}
                                         </td>
                                         <td>
-                                            {{$purchaseOrderPayment->amount_USD}}
+                                            {{$purchaseOrderPayment->amount_CAD}}
                                         </td>
                                         <td>
                                             {{$purchaseOrderPayment->exchange_rate_to_CAD}}

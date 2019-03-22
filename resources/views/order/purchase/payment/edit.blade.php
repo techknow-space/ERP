@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="poPaymentExchangeRateCAD" class="col-form-label">Exchange Rate to CAD:</label>
-                                    <input class="form-control" type="number" step="0.01" min="0" name="poPaymentExchangeRateCAD" id="poPaymentExchangeRateCAD" value="{{$purchaseOrderPayment->exchange_rate_to_CAD}}">
+                                    <input class="form-control" type="number" step="0.0001" min="0" name="poPaymentExchangeRateCAD" id="poPaymentExchangeRateCAD" value="{{$purchaseOrderPayment->exchange_rate_to_CAD}}">
                                 </div>
                             </div>
                             <div class="form-group">
