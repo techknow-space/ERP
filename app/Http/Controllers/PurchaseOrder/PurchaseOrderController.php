@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\PurchaseOrder;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use App\Models\PurchaseOrder;
 use App\Models\PurchaseOrderDiff;
 use App\Models\PurchaseOrderPaymentStatus;
@@ -102,6 +103,7 @@ class PurchaseOrderController extends Controller
     public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
     {
 
+        $location = Location::where('location_code','S1')->firstOrFail();
         //$status = PurchaseOrderStatus::where('status','InReview')->first();
 
         if(NULL == $in_status){
@@ -117,6 +119,7 @@ class PurchaseOrderController extends Controller
             $purchase_order->Supplier()->associate($supplier);
             $purchase_order->PurchaseOrderStatus()->associate($purchase_order_status);
             $purchase_order->PurchaseOrderPaymentStatus()->associate($purchase_order_payment_status);
+            $purchase_order->Location()->associate($location);
 
             $purchase_order->save();
         }
@@ -156,6 +159,7 @@ class PurchaseOrderController extends Controller
                 $purchase_order->Supplier()->associate($supplier);
                 $purchase_order->PurchaseOrderStatus()->associate($purchase_order_status);
                 $purchase_order->PurchaseOrderPaymentStatus()->associate($purchase_order_payment_status);
+                $purchase_order->Location()->associate($location);
 
                 $purchase_order->save();
             }
