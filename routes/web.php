@@ -170,6 +170,13 @@ Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function ()
     Route::post('create','StockTransfer\StockTransferController@insert');
     Route::get('edit/{stockTransfer}','StockTransfer\StockTransferController@edit');
     Route::put('update/{stockTransfer}','StockTransfer\StockTransferController@update');
+
+    Route::prefix('item')->group(function(){
+        Route::post('add','StockTransfer\StockTransferController@requestAddItem');
+        Route::delete('delete/{stockTransferItem}','StockTransfer\StockTransferController@requestDeleteItem');
+        Route::put('update/{stockTransferItem}','StockTransfer\StockTransferController@requestUpdateItem');
+    });
+
 });
 
 

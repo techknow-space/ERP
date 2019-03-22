@@ -70084,7 +70084,6 @@ $(document).ready(function () {
         };
       },
       processResults: function processResults(data, params) {
-        console.log(data);
         var parsed = [];
         data.forEach(function (part) {
           parsed.push({
@@ -70101,11 +70100,122 @@ $(document).ready(function () {
     placeholder: 'Search for a Part',
     minimumInputLength: 4
   });
+  $('#stItemsTablePartSearchAddForm').submit(function (e) {
+    e.preventDefault();
+    var form = $(this);
+    var url = form.attr('action');
+    var data = getFormDataJson(form);
+    $.ajax({
+      type: "POST",
+      url: url,
+      async: false,
+      data: data,
+      success: function success(data) {
+        if (!data.result) {
+          alert(data.message);
+        } else {
+          window.location.reload();
+        }
+      }
+    });
+  });
+  var stoItemsTable = $('#stoItemsTable');
+  stoItemsTable.on('click', '.stoItemInlineFunctionButton', function () {
+    var action = $(this).data('action');
+    var po_item_id = $(this).closest('tr').attr('id');
+    editSTOItemRow(action, po_item_id);
+  });
+  stoItemsTable.on('keydown', '.stoItemEditableField', function (e) {
+    if (13 === e.which) {
+      $(this).blur();
+      var saveBtnID = '#stoItemSaveBtn-' + $(this).closest('tr').attr('id');
+      $(saveBtnID).click();
+    }
+  });
+  stoItemsTable.on('click', '.stoItemEditableField', function () {
+    if (!$('.stoItemEditableField').is(":focus")) {
+      $(this).focus();
+    }
+  });
+  stoItemsTable.on('focus', '.stoItemEditableField', function () {
+    $(this).prop("readonly", false);
+  });
+  stoItemsTable.on('blur', '.stoItemEditableField', function () {
+    $(this).prop("readonly", true);
+  });
+  stoItemsTable.on('change', '.stoItemEditableField', function () {
+    if ($(this).val() !== $(this).data('value')) {
+      var saveBtnID = '#stoItemSaveBtn-' + $(this).closest('tr').attr('id');
+      $(saveBtnID).removeClass('d-none');
+    } else {
+      var saveBtn = $('#stoItemSaveBtn-' + $(this).closest('tr').attr('id'));
+
+      if (!saveBtn.hasClass('d-none')) {
+        saveBtn.addClass('d-none');
+      }
+    }
+  });
 });
 
 function submitStockTransferEditForm() {
   var STeditForm = $('#stockTransferEditForm');
   STeditForm.submit();
+}
+
+function getFormDataJson(form) {
+  var unindexedArray = form.serializeArray();
+  var indexedArray = {};
+  $.map(unindexedArray, function (n, i) {
+    indexedArray[n['name']] = n['value'];
+  });
+  return indexedArray;
+}
+
+function editSTOItemRow(action, sto_item_id) {
+  if ('delete' === action) {
+    if (confirm('Are You Sure to Delete this Item?')) {
+      $.ajax({
+        type: "DELETE",
+        url: '/stocktransfer/item/delete/' + sto_item_id,
+        success: function success(data) {
+          if (true === data) {
+            alert('There was an error in Deleting this ROW. Please try again');
+          } else {
+            $("#" + sto_item_id).remove();
+          }
+        }
+      });
+    }
+  } else if ('save' === action) {
+    var qty = parseInt($('#stoItemQty-' + sto_item_id).val());
+
+    if (0 === qty) {
+      editSTOItemRow('delete', sto_item_id);
+    } else {
+      $.ajax({
+        type: "PUT",
+        url: '/stocktransfer/item/update/' + sto_item_id,
+        data: {
+          "qty": qty
+        },
+        // serializes the form's elements.
+        success: function success(data) {
+          var qty_input_box = $('#stoItemQty-' + sto_item_id);
+          var save_btn = $('#stoItemSaveBtn-' + sto_item_id);
+
+          if (data.result) {
+            qty_input_box.data('value', qty);
+            save_btn.addClass('d-none');
+          } else {
+            alert(data.message);
+            qty_input_box.val(qty_input_box.data('value'));
+            qty_input_box.focus();
+            save_btn.addClass('d-none');
+          }
+        }
+      });
+    }
+  }
 }
 /* End stockTransfer.js */
 
