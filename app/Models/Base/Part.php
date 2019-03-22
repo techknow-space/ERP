@@ -87,4 +87,9 @@ class Part extends Model
     {
         return $this->hasMany('\App\Models\StockTransferItem','part_id','id');
     }
+
+    public function Stocks()
+    {
+        return $this->hasMany('\App\Models\PartStock','part_id','id');
+    }
 }
