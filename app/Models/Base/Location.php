@@ -68,6 +68,11 @@ class Location extends Model
         return $this->hasMany('\App\Models\StockTransfer','toLocation_id','id');
     }
 
+    public function PurchaseOrders()
+    {
+        return $this->hasMany('\App\Models\PurchaseOrder','location_id','id');
+    }
+
 
 
 }

@@ -8,61 +8,65 @@ use Illuminate\Database\Eloquent\Model;
 
 class PurchaseOrder extends Model
 {
-  /**  
-  * Primary key type.
-  * 
-  * @var string
-  */
-  protected $keyType='uuid';
-  
-  /**  
-  * Primary key is non-autoincrementing.
-  * 
-  * @var bool
-  */
-  public $incrementing=false;
-  
-  /**  
-  * The attributes that should be cast to native types.
-  * 
-  * @var array
-  */
-  protected $casts=[
-    'id'=>'string',
-    'number'=>'string',
-    'supplier_id'=>'string',
-    'purchaseOrderStatus_id'=>'string',
-    'purchaseOrderPayment_id'=>'string',
-    'purchaseOrderPaymentStatus_id'=>'string',
-    'value_CAD'=>'float',
-    'value_USD'=>'float'
-  ];
-  public function Supplier()
-  {
-    return $this->belongsTo('\App\Models\Supplier','supplier_id','id');
-  }
-  public function PurchaseOrderStatus()
-  {
-    return $this->belongsTo('\App\Models\PurchaseOrderStatus','purchaseOrderStatus_id','id');
-  }
-  public function PurchaseOrderPayment()
-  {
-    return $this->belongsTo('\App\Models\PurchaseOrderPayment','purchaseOrderPayment_id','id');
-  }
-  public function PurchaseOrderPaymentStatus()
-  {
-    return $this->belongsTo('\App\Models\PurchaseOrderPaymentStatus','purchaseOrderPaymentStatus_id','id');
-  }
-  public function PurchaseOrderItems()
-  {
-    return $this->hasMany('\App\Models\PurchaseOrderItems','purchaseOrder_id','id');
-  }
-  public function PurchaseOrderDiffs()
-  {
-    return $this->hasOne('\App\Models\PurchaseOrderDiff','purchaseOrder_id','id');
-  }
+    /**
+    * Primary key type.
+    *
+    * @var string
+    */
+    protected $keyType='uuid';
+
+    /**
+    * Primary key is non-autoincrementing.
+    *
+    * @var bool
+    */
+    public $incrementing=false;
+
+    /**
+    * The attributes that should be cast to native types.
+    *
+    * @var array
+    */
+    protected $casts=[
+      'id'=>'string',
+      'number'=>'string',
+      'supplier_id'=>'string',
+      'purchaseOrderStatus_id'=>'string',
+      'purchaseOrderPayment_id'=>'string',
+      'purchaseOrderPaymentStatus_id'=>'string',
+      'value_CAD'=>'float',
+      'value_USD'=>'float'
+    ];
+    public function Supplier()
+    {
+      return $this->belongsTo('\App\Models\Supplier','supplier_id','id');
+    }
+    public function PurchaseOrderStatus()
+    {
+      return $this->belongsTo('\App\Models\PurchaseOrderStatus','purchaseOrderStatus_id','id');
+    }
+    public function PurchaseOrderPayment()
+    {
+      return $this->belongsTo('\App\Models\PurchaseOrderPayment','purchaseOrderPayment_id','id');
+    }
+    public function PurchaseOrderPaymentStatus()
+    {
+      return $this->belongsTo('\App\Models\PurchaseOrderPaymentStatus','purchaseOrderPaymentStatus_id','id');
+    }
+    public function PurchaseOrderItems()
+    {
+      return $this->hasMany('\App\Models\PurchaseOrderItems','purchaseOrder_id','id');
+    }
+    public function PurchaseOrderDiffs()
+    {
+      return $this->hasOne('\App\Models\PurchaseOrderDiff','purchaseOrder_id','id');
+    }
     public function PurchaseOrderDistributionItems()
     {
         return $this->hasMany('\App\Models\PurchaseOrderItemsDistribution','purchaseOrder_id','id');
+    }
+    public function Location()
+    {
+        return $this->belongsTo('\App\Models\Location','location_id','id');
     }
 }
