@@ -16193,6 +16193,10 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.select2-results__option {
+  color: #000000;
+}
+
 .toast-success {
   background-color: darkgreen !important;
 }

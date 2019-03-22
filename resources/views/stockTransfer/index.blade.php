@@ -7,6 +7,9 @@
                 <div class="card">
                     <div class="card-header">
                         <b>Stock Transfers</b>
+                        <div class="float-right">
+                            <a href="/stocktransfer/create" class="btn">Start a New Transfer</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <table id="stockTransfersActive" class="table">

@@ -81,13 +81,13 @@
         </div>
         <div class="card-footer">
             <div id="stItemsTablePartSearchAdd">
-                <form class="form-inline" id="stItemsTablePartSearchAddForm" action="/order/purchase/item/create">
-                    <div class="form-group mb-2">
-                        <select name="stItemsTablePartSelect" id="stItemsTablePartSelect" class="form-control">
+                <form class="form-inline row" id="stItemsTablePartSearchAddForm" action="/stocktransfer/item/create">
+                    <div class="form-group col-md-6">
+                        <select name="stItemsTablePartSelect" id="stItemsTablePartSelect" class="form-control" style="width: 100%">
                             <option value="">Please Search for a Part</option>
                         </select>
                     </div>
-                    <div class="form-group mb-2">
+                    <div class="form-group col-md-2">
                         <label class="sr-only" for="stItemsTablePartAddQty">Qty</label>
                         <input type="number" class="form-control" id="stItemsTablePartAddQty" placeholder="Qty" required>
                     </div>

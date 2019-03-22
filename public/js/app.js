@@ -70069,9 +70069,37 @@ $(document).ready(function () {
     }
   });
   var STeditFormTransferStatus = $('#stockTransferStatus');
-  var STeditFormDescription = $('#stockTransferDescription');
   STeditFormTransferStatus.on('change', function () {
     submitStockTransferEditForm();
+  });
+  $('#stItemsTablePartSelect').select2({
+    ajax: {
+      url: "/search/ajax",
+      dataType: 'json',
+      delay: 250,
+      data: function data(params) {
+        return {
+          search: params.term // search term
+
+        };
+      },
+      processResults: function processResults(data, params) {
+        console.log(data);
+        var parsed = [];
+        data.forEach(function (part) {
+          parsed.push({
+            id: part.id,
+            text: part.devices.brand.name + ' ' + part.devices.model_name + ' ' + part.part_name + ' ' + part.sku
+          });
+        });
+        return {
+          results: parsed
+        };
+      },
+      cache: true
+    },
+    placeholder: 'Search for a Part',
+    minimumInputLength: 4
   });
 });
 
