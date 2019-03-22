@@ -53,7 +53,7 @@ class PurchaseOrderPaymentController extends Controller
 
         session()->flash('success',['PurchaseOrder Payment Transaction is Recorded']);
 
-        return $this->edit($purchaseOrderPayment);
+        return redirect('/order/purchase/payment/edit/'.$purchaseOrderPayment->id);
     }
 
     /**
