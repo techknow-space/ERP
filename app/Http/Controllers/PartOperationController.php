@@ -10,20 +10,25 @@ use App\Models\WODevicePart;
 use App\Models\WorkOrder;
 use App\Models\WorkOrderDevice;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PartOperationController extends Controller
 {
     /**
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
+     * @throws \Exception
      */
-    public function reduceStock(Request $request, $id)
+    public function reduceStock(Request $request, $id): JsonResponse
     {
         $wo_number = $request->input('wo');
 
         try{
+            DB::beginTransaction();
+
             $part_stock = $this->getPartStockByID($id);
 
             $part_stock->decrement('stock_qty');
@@ -31,7 +36,10 @@ class PartOperationController extends Controller
             $part_stock->save();
             $wo_device_part = $this->setWorkOrderDetails($wo_number,$id);
             $result = true;
+
+            DB::commit();
         }catch (ModelNotFoundException $e){
+            DB::rollBack();
             $result = false;
         }
 
@@ -42,13 +50,14 @@ class PartOperationController extends Controller
     /**
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      * @throws \Exception
      */
-    public function increaseStock(Request $request, $id)
+    public function increaseStock(Request $request, $id): JsonResponse
     {
         $wo_number = $request->input('wo');
         try{
+            DB::beginTransaction();
             $part_stock = $this->getPartStockByID($id);
 
             $part_stock->increment('stock_qty');
@@ -59,9 +68,11 @@ class PartOperationController extends Controller
             $wo_device_part->delete();
 
             $result = true;
+            DB::commit();
         }catch (ModelNotFoundException $e){
+            DB::rollBack();
             $result = false;
-        }
+    }
         return response()->json($result);
     }
 
@@ -77,9 +88,9 @@ class PartOperationController extends Controller
     /**
      * @param Part $part
      * @param Location $location
-     * @return mixed
+     * @return PartStock|null
      */
-    public function getPartStock(Part $part, Location $location)
+    public function getPartStock(Part $part, Location $location): ?PartStock
     {
         return PartStock::
             where(
@@ -93,9 +104,9 @@ class PartOperationController extends Controller
 
     /**
      * @param $part_id
-     * @return mixed
+     * @return PartStock|null
      */
-    public function getPartStockByID($part_id)
+    public function getPartStockByID($part_id): ?PartStock
     {
         $part = $this->getPartwithID($part_id);
         $current_location = HelperController::getCurrentLocation();
