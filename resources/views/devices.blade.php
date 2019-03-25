@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header" style="font-size: 1.2em;"><b>{{ $device->brand->manufacturer->manufacturer  }} {{ $device->brand->name  }} {{$device->model_name}}</b> ({{$device->model_number}})</div>
+                    <div class="card-header" style="font-size: 1.2em;">
+                        <b>{{ $device->brand->name  }} {{$device->model_name}}</b>
+                        <div class="float-right">
+                            @if($device->model_number)
+                                ({{$device->model_number}})
+                            @endif
+                        </div>
+                    </div>
 
                     <td class="card-body">
 
