@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\StockTransfer;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Statistics\SalesAndTargetController;
 use App\Http\Controllers\Statistics\SalesAndTargetsController;
 use App\Models\Location;
 use App\Models\Part;
