@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HelperController extends Controller
 {
+    /**
+     * @return Location
+     */
     public static function getCurrentLocation(): Location
     {
         $request = request();
@@ -28,16 +31,26 @@ class HelperController extends Controller
         return $location;
     }
 
+    /**
+     * @return Location
+     */
     public static function getDefaultLocation(): Location
     {
         return Location::where('location_code','S1')->firstOrFail();
     }
 
+    /**
+     * @param Location $location
+     */
     public static function setCurrentLocation(Location $location): void
     {
         session(['location_id'=>$location->id]);
     }
 
+    /**
+     * @param $entity
+     * @return string
+     */
     public static function createSerialNumber($entity): string
     {
         $date = date('Md/y');
