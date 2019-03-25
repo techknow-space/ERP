@@ -21,13 +21,37 @@
                             <tbody>
                                 @foreach($results as $result)
                                     <tr>
-                                        <td><a href="/itemlookup/sku/{{ $result->sku }}">{{ $result->devices->brand->name }} {{ $result->devices->model_name }} <b>{{ $result->part_name }}</a></b></td>
-                                        <td>${{ $result->price->selling_price_b2c }}</td>
-                                        <td>
-                                            @foreach($result->stock as $stock)
-                                                {{ $stock->location->location_code }} - <b>{{ $stock->stock_qty }}</b><br>
-                                            @endforeach
-                                        </td>
+                                        @if($result->is_child)
+                                            <td>
+                                                <a href="/itemlookup/sku/{{ $result->ParentPart->sku }}">{{ $result->devices->brand->name }} {{ $result->devices->model_name }} <b>{{ $result->part_name }}</b></a> <br>
+                                                Compatible Part is: <a href="/itemlookup/sku/{{ $result->ParentPart->sku }}">{{ $result->ParentPart->devices->brand->name }} {{ $result->ParentPart->devices->model_name }} <b>{{ $result->ParentPart->part_name }}</b></a>
+                                            </td>
+                                            <td>
+                                                @if(null !== $result->price)
+                                                    ${{ $result->price->selling_price_b2c }}
+                                                @elseif(null !== $result->ParentPart->price)
+                                                    ${{$result->ParentPart->price->selling_price_b2c}}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @foreach($result->ParentPart->stock as $stock)
+                                                    {{ $stock->location->location_code }} - <b>{{ $stock->stock_qty }}</b><br>
+                                                @endforeach
+                                            </td>
+                                        @else
+                                            <td><a href="/itemlookup/sku/{{ $result->sku }}">{{ $result->devices->brand->name }} {{ $result->devices->model_name }} <b>{{ $result->part_name }}</b></a></td>
+                                            <td>
+                                                @if(null !== $result->price)
+                                                    ${{ $result->price->selling_price_b2c }}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @foreach($result->stock as $stock)
+                                                    {{ $stock->location->location_code }} - <b>{{ $stock->stock_qty }}</b><br>
+                                                @endforeach
+                                            </td>
+                                        @endif
+
                                     </tr>
                                 @endforeach
                             </tbody>
