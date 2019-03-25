@@ -177,6 +177,8 @@ Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function ()
         Route::put('update/{stockTransferItem}','StockTransfer\StockTransferController@requestUpdateItem');
     });
 
+    Route::get('generate','StockTransfer\StockTransferController@generateTransferOrder');
+
 });
 
 

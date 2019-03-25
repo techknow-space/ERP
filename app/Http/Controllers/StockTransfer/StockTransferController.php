@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\StockTransfer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Statistics\SalesAndTargetController;
+use App\Http\Controllers\Statistics\SalesAndTargetsController;
 use App\Models\Location;
 use App\Models\Part;
 use App\Models\PartStock;
 use App\Models\StockTransfer;
 use App\Models\StockTransferItem;
 use App\Models\StockTransferStatus;
+use App\Models\WODevicePart;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -348,8 +352,38 @@ class StockTransferController extends Controller
         return $error;
     }
 
+    /**
+     * @param array $partTargets
+     * @return array
+     */
+    public function generateStockTransferList(array $partTargets): array
+    {
+        foreach ($partTargets as $partID=>$partTarget){
+
+            $partStock = PartStock::where('part_id',$partID)->get();
+            $stockInHand = $partStock->sum('stock_qty');
+
+            if(0 >= $stockInHand){
+                continue;
+            }
+
+            $partTargets[$partID]['inHand'] = $stockInHand;
+
+            foreach ($partTarget['locations'] as $locationID=>$data) {
+                $partTargets[$partID]['locations'][$locationID]['shareInHand'] = ceil(($data['share'] / 100) * $stockInHand);
+                $partTargets[$partID]['locations'][$locationID]['InHand'] = $partStock->where('location_id',$locationID)->first()->stock_qty;
+            }
+        }
+
+        return $partTargets;
+    }
+
     public function generateTransferOrder(): void
     {
+        $partsTargets = SalesAndTargetsController::getSalesTargets();
 
+        $partsTargets = $this->generateStockTransferList($partsTargets);
+
+        dd($partsTargets);
     }
 }
