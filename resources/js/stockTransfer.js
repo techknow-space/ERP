@@ -21,8 +21,6 @@ $(document).ready(function() {
         submitStockTransferEditForm();
     });
 
-
-
     $('#stItemsTablePartSelect').select2({
         ajax:{
             url: "/search/ajax",

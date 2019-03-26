@@ -16,6 +16,7 @@
                             @method('put')
                             <div class="form-group col-md-4">
                                 <label for="stockTransferDescription">Details</label>
+
                                 <input
                                     type="text"
                                     class="form-control"
@@ -23,12 +24,22 @@
                                     name="stockTransferDescription"
                                     data-oldvalue="{{$stockTransfer->description}}"
                                     value="{{$stockTransfer->description}}"
+                                    @if(!$is_editable)
+                                    readonly='readonly'
+                                    @endif
                                 >
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="stockTransferStatus">Status</label>
-                                <select name="stockTransferStatus" id="stockTransferStatus" class="form-control">
+                                <select
+                                    name="stockTransferStatus"
+                                    id="stockTransferStatus"
+                                    class="form-control"
+                                    @if(!$is_editable)
+                                    disabled
+                                    @endif
+                                >
                                     @foreach($statuses as $status)
                                         <option
                                             value="{{$status->id}}"

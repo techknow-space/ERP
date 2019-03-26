@@ -27,9 +27,21 @@
                         <th>
                             Transfer Qty
                         </th>
-                        <th>
-                            Actions
-                        </th>
+                        @if($status_id > 2)
+                            <th>
+                                Qty Sent
+                            </th>
+                        @endif
+                        @if($status_id > 3)
+                            <th>
+                                Qty Received
+                            </th>
+                        @endif
+                        @if($status_id < 5)
+                            <th>
+                                Actions
+                            </th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -49,17 +61,48 @@
                             <td>
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
                             </td>
-                            <td>
-                                @if($is_editable)
+
+                            @if($status_id < 2)
+                                <td>
                                     <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQty" id="stoItemQty-{{$item->id}}" data-value="{{$item->qty}}" value="{{$item->qty}}" readonly='readonly'>
-                                @else
+                                </td>
+                            @else
+                                <td>
                                     {{$item->qty}}
+                                </td>
+                            @endif
+
+                            @if($status_id < 3)
+                                <td>
+                                    <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                </td>
+                            @else
+
+                                <td>
+                                    {{$item->qty_sent}}
+                                </td>
+
+                            @endif
+
+                            @if($status_id > 3)
+                                @if($status_id < 5)
+                                    <td>
+                                        <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtyReceived" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
+                                    </td>
+                                @else
+                                    <td>
+                                        {{$item->qty_received}}
+                                    </td>
                                 @endif
-                            </td>
+                            @endif
+
                             <td>
-                                @if($is_editable)
+                                @if($status_id < 5)
                                     <i class="fas fa-check-circle stoItemInlineFunctionButton d-none" id="stoItemSaveBtn-{{$item->id}}" data-action="save"></i>
-                                    <i class="fas fa-trash-alt stoItemInlineFunctionButton" id="stoItemDeleteBtn-{{$item->id}}" data-action="delete"></i>
+                                    @if($status_id < 3)
+                                        <i class="fas fa-trash-alt stoItemInlineFunctionButton" id="stoItemDeleteBtn-{{$item->id}}" data-action="delete"></i>
+                                    @endif
+
                                 @endif
                             </td>
                         </tr>
@@ -69,6 +112,7 @@
             </div>
         </div>
         <div class="card-footer">
+            @if($status_id < 3)
             <div id="stItemsTablePartSearchAdd">
                 <form class="form-inline row" id="stItemsTablePartSearchAddForm" action="/stocktransfer/item/add">
 
@@ -88,6 +132,7 @@
 
                 </form>
             </div>
+            @endif
         </div>
     </div>
 

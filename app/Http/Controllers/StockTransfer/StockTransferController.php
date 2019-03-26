@@ -69,7 +69,8 @@ class StockTransferController extends Controller
                         return $status['seq_id'] < 5 ;
                     })
                     ->sortBy('seq_id'),
-                'is_editable' => ($stockTransfer->Status->seq_id < 5 ? true : false)
+                'is_editable' => ($stockTransfer->Status->seq_id < 5 ? true : false),
+                'status_id' => $stockTransfer->Status->seq_id
             ]
         );
     }
@@ -430,6 +431,35 @@ class StockTransferController extends Controller
         return $error;
     }
 
+    /**
+     * @param StockTransfer $stockTransfer
+     * @return bool
+     * @throws Exception
+     */
+    public function markAllItemsReceived(StockTransfer $stockTransfer): bool
+    {
+        $error = false;
+        try{
+            DB::beginTransaction();
+
+            foreach ($stockTransfer->Items as $item){
+
+                $item->qty_received = $item->qty_sent;
+                $item->save();
+
+            }
+
+            DB::commit();
+
+            session()->flash('success',['All Items Received Qty Updated']);
+        }catch (Exception $exception){
+            DB::rollBack();
+            session()->flash('error',['Sorry!!! There was an error. The received Quantities are unchanged']);
+            $error = true;
+        }
+        return $error;
+    }
+
 
     /**
      * @param StockTransfer $stockTransfer
@@ -441,7 +471,7 @@ class StockTransferController extends Controller
     {
         $error = false;
 
-        if($stockTransfer->Status()->id !== $stockTransferStatus->id){
+        if($stockTransfer->Status->id !== $stockTransferStatus->id){
             try{
                 DB::beginTransaction();
 
@@ -480,7 +510,8 @@ class StockTransferController extends Controller
             $partStock = PartStock::where('part_id',$partID)->get();
             $stockInHand = $partStock->sum('stock_qty');
 
-            if(0 >= $stockInHand){
+            if( (1 >= $stockInHand) || (count($partTarget['locations']) < 2) ) {
+                unset($partTargets[$partID]);
                 continue;
             }
 
@@ -489,6 +520,41 @@ class StockTransferController extends Controller
             foreach ($partTarget['locations'] as $locationID=>$data) {
                 $partTargets[$partID]['locations'][$locationID]['shareInHand'] = ceil(($data['share'] / 100) * $stockInHand);
                 $partTargets[$partID]['locations'][$locationID]['InHand'] = $partStock->where('location_id',$locationID)->first()->stock_qty;
+            }
+        }
+
+        $locations = Location::all();
+
+        //dd($locations);
+
+        foreach ($partTargets as $partID=>$partTarget){
+
+            foreach ($partTarget['locations'] as $locationID=>$data){
+
+                $otherLocation_id = $locations->whereNotIn('id',$locationID)->first()->id;
+
+                $inhand_current_location = $data['shareInHand'];
+                $inhand_other_location = $partTarget['locations'][$otherLocation_id]['shareInHand'];
+                $inhand_total = $partTarget['inHand'];
+
+                if( ($inhand_current_location + $inhand_other_location) > $inhand_total ){
+                    $diff = ($inhand_current_location + $inhand_other_location) - $inhand_total;
+
+                    if($inhand_current_location > $inhand_other_location){
+                        $partTargets[$partID]['locations'][$locationID]['shareInHand'] -= $diff;
+                        break;
+                    }
+                    else{
+                        $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] -= $diff;
+                        break;
+                    }
+                }
+            }
+        }
+
+        foreach ($partTargets as $partID=>$partTarget){
+            foreach ($partTarget['locations'] as $locationID=>$data){
+
             }
         }
 
