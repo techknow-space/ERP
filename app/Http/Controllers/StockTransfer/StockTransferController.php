@@ -25,11 +25,17 @@ use Exception;
 class StockTransferController extends Controller
 {
     /**
+     * @param null $filter
      * @return View
      */
-    public function index(): View
+    public function index($filter = null): View
     {
-        return view('stockTransfer.index');
+        if(null == $filter){
+            return view('stockTransfer.index');
+        }
+        else{
+            return view('stockTransfer.filteredIndex',['filter'=>$filter]);
+        }
     }
 
     /**
@@ -159,6 +165,7 @@ class StockTransferController extends Controller
     {
         $stockTransfers = collect([]);
         if(is_string($filter)){
+
             switch ($filter){
                 case 'outbound':
                     $stockTransfers = StockTransfer::
@@ -412,15 +419,13 @@ class StockTransferController extends Controller
 
             session()->flash('success',['All the Stock Levels have been updated']);
 
-        }catch(\Exception $e){
+        }catch(Exception $e){
 
             DB::rollBack();
             session()->flash('error',['Sorry!!! There was an error. All the Stock levels are as they were before this Operation.']);
             $error = true;
 
         }
-
-
 
         return $error;
     }

@@ -170,7 +170,13 @@ Route::prefix('import')->group(function (){
 
 
 Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function (){
+
     Route::get('/','StockTransfer\StockTransferController@index');
+    Route::prefix('list')->group(function (){
+        Route::get('/','StockTransfer\StockTransferController@index');
+        Route::get('/{filter}','StockTransfer\StockTransferController@index');
+    });
+
     Route::get('create','StockTransfer\StockTransferController@create');
     Route::post('create','StockTransfer\StockTransferController@insert');
     Route::get('edit/{stockTransfer}','StockTransfer\StockTransferController@edit');
