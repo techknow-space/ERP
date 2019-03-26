@@ -98,7 +98,7 @@ class HelperController extends Controller
             $devices[$device_type->id]['label'] = $device_type->type;
             $devices[$device_type->id]['brands'] = [];
 
-            foreach ($device_type->Devices as $device){
+            foreach ($device_type->Devices->sortBy('model_name') as $device){
 
                 if(array_key_exists($device->brand->id, $devices[$device_type->id]['brands'])){
                     $devices[$device_type->id]['brands'][$device->brand->id]['devices'][] = $device;
