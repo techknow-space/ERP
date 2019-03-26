@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         View::share('types', DeviceType::orderBy('import_ref')->get());
+        View::share('deviceTypes',HelperController::getDeviceListForNavigationMenu());
     }
 
     /**

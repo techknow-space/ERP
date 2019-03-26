@@ -98,6 +98,8 @@ $(document).ready(function() {
         }
     });
 
+    /*
+
     $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
         var $el = $( this );
         var $parent = $( this ).offsetParent( ".dropdown-menu" );
@@ -119,6 +121,8 @@ $(document).ready(function() {
 
         return false;
     } );
+
+     */
 
     $('#brand').on('change', function() {
         var brandID = $(this).val();

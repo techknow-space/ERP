@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeviceType;
 use App\Models\Location;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -81,5 +82,35 @@ class HelperController extends Controller
         }
 
         return $entity_short_code.'/'.$date.'/'.$random;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getDeviceListForNavigationMenu(): array
+    {
+        $devices = [];
+
+        $device_types = DeviceType::orderBy('import_ref')->get();
+
+        foreach($device_types as $device_type){
+
+            $devices[$device_type->id]['label'] = $device_type->type;
+            $devices[$device_type->id]['brands'] = [];
+
+            foreach ($device_type->Devices as $device){
+
+                if(array_key_exists($device->brand->id, $devices[$device_type->id]['brands'])){
+                    $devices[$device_type->id]['brands'][$device->brand->id]['devices'][] = $device;
+                }
+                else{
+                    $devices[$device_type->id]['brands'][$device->brand->id]['name'] = $device->brand->name;
+                    $devices[$device_type->id]['brands'][$device->brand->id]['devices'][] = $device;
+                }
+
+            }
+        }
+
+        return $devices;
     }
 }

@@ -69223,30 +69223,26 @@ $(document).ready(function () {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
-    var $el = $(this);
-    var $parent = $(this).offsetParent(".dropdown-menu");
+  /*
+   $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
+      var $el = $( this );
+      var $parent = $( this ).offsetParent( ".dropdown-menu" );
+      if ( !$( this ).next().hasClass( 'show' ) ) {
+          $( this ).parents( '.dropdown-menu' ).first().find( '.show' ).removeClass( "show" );
+      }
+      var $subMenu = $( this ).next( ".dropdown-menu" );
+      $subMenu.toggleClass( 'show' );
+       $( this ).parent( "li" ).toggleClass( 'show' );
+       $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
+          $( '.dropdown-menu .show' ).removeClass( "show" );
+      } );
+       if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
+          $el.next().css( { "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 } );
+      }
+       return false;
+  } );
+    */
 
-    if (!$(this).next().hasClass('show')) {
-      $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
-    }
-
-    var $subMenu = $(this).next(".dropdown-menu");
-    $subMenu.toggleClass('show');
-    $(this).parent("li").toggleClass('show');
-    $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function (e) {
-      $('.dropdown-menu .show').removeClass("show");
-    });
-
-    if (!$parent.parent().hasClass('navbar-nav')) {
-      $el.next().css({
-        "top": $el[0].offsetTop,
-        "left": $parent.outerWidth() - 4
-      });
-    }
-
-    return false;
-  });
   $('#brand').on('change', function () {
     var brandID = $(this).val();
 
@@ -69445,6 +69441,19 @@ $(document).ready(function () {
   appLocationSelect.on('change', function () {
     var location_id = appLocationSelect.val();
     window.location.replace('/setLocation/' + location_id);
+  });
+  $('.dropdown-submenu > a').hover(function (e) {
+    var submenu = $(this);
+    var current_active = $('ul.active-device-list');
+    current_active.attr('style', 'display: none !important;');
+    current_active.removeClass('active-device-list');
+    submenu.next().removeAttr("style");
+    submenu.next().addClass("active-device-list");
+    e.stopPropagation();
+  });
+  $('.dropdown').on("hidden.bs.dropdown", function () {
+    // hide any open menus when parent closes
+    $('.dropdown-menu.show').removeClass('show');
   });
 });
 

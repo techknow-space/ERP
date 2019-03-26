@@ -8,34 +8,40 @@ use Illuminate\Database\Eloquent\Model;
 
 class DeviceType extends Model
 {
-  /**  
-  * Primary key type.
-  * 
-  * @var string
-  */
-  protected $keyType='uuid';
-  
-  /**  
-  * Primary key is non-autoincrementing.
-  * 
-  * @var bool
-  */
-  public $incrementing=false;
-  
-  /**  
-  * The attributes that should be cast to native types.
-  * 
-  * @var array
-  */
-  protected $casts=[
-    'id'=>'string',
-    'type'=>'string',
-    'import_ref'=>'integer'
-  ];
+    /**
+    * Primary key type.
+    *
+    * @var string
+    */
+    protected $keyType='uuid';
+
+    /**
+    * Primary key is non-autoincrementing.
+    *
+    * @var bool
+    */
+    public $incrementing=false;
+
+    /**
+    * The attributes that should be cast to native types.
+    *
+    * @var array
+    */
+    protected $casts=[
+      'id'=>'string',
+      'type'=>'string',
+      'import_ref'=>'integer'
+    ];
+
 
     public function WorkOrderDevices()
     {
         return $this->hasMany('\App\Models\WorkOrderDevice','device_type_id','id');
+    }
+
+    public function Devices()
+    {
+        return $this->hasMany('App\Models\Device','deviceType_id','id');
     }
 
 }
