@@ -105,6 +105,7 @@ class StockTransferController extends Controller
      * @param Request $request
      * @param StockTransfer $stockTransfer
      * @return RedirectResponse
+     * @throws Exception
      */
     public function update(Request $request, StockTransfer $stockTransfer): RedirectResponse
     {
@@ -116,7 +117,7 @@ class StockTransferController extends Controller
             $status = StockTransferStatus::findOrFail($status_id);
 
             if($status->seq_id >= $stockTransfer->Status->seq_id){
-                if(5 == $status->seq_id){
+                if(3 == $status->seq_id){
                     $this->markShipped($stockTransfer,$status);
                 }
                 else{
@@ -361,9 +362,8 @@ class StockTransferController extends Controller
         $qty = intval($request->input('qty'));
 
         if($qty <= $part_stock->stock_qty){
-            $stockTransferItem = $this->updateItem($stockTransferItem,$qty);
 
-            if($qty !== $stockTransferItem->qty){
+            if(!$this->updateItem($stockTransferItem,$qty)){
                 $result = false;
                 $message = 'Sorry!!! There was an error Updating this Item';
             }
@@ -407,7 +407,10 @@ class StockTransferController extends Controller
             $stockTransfer->Status()->associate($status);
             $stockTransfer->save();
 
+
             DB::commit();
+
+            session()->flash('success',['All the Stock Levels have been updated']);
 
         }catch(\Exception $e){
 
@@ -417,12 +420,18 @@ class StockTransferController extends Controller
 
         }
 
-        session()->flash('success',['All the Stock Levels have been updated']);
+
 
         return $error;
     }
 
 
+    /**
+     * @param StockTransfer $stockTransfer
+     * @param StockTransferStatus $stockTransferStatus
+     * @return bool
+     * @throws Exception
+     */
     public function markShipped(StockTransfer $stockTransfer, StockTransferStatus $stockTransferStatus): bool
     {
         $error = false;
@@ -443,12 +452,16 @@ class StockTransferController extends Controller
 
 
                 DB::commit();
+
+                session()->flash('success',['The Stock Transfer is Marked as Shipped.']);
             }catch (Exception $exception){
                 DB::rollBack();
                 session()->flash('error',['Sorry!!! There was an error. The Status is unchanged']);
                 $error = true;
             }
         }
+
+        return $error;
     }
 
     /**
