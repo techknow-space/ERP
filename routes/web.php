@@ -22,6 +22,11 @@ app('debugbar')->disable();
 
 Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@partsToReplenish');
 
+Route::get('menu', function(){
+    $menu = HelperController::getDeviceListForNavigationMenu();
+    dd($menu);
+});
+
 /* End Debugging Routes */
 
 Route::get('/setLocation/{location}', function(Location $location){

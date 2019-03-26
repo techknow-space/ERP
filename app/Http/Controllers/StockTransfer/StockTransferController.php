@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\StockTransfer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HelperController;
 use App\Http\Controllers\Statistics\SalesAndTargetsController;
 use App\Models\Location;
 use App\Models\Part;
@@ -153,8 +154,7 @@ class StockTransferController extends Controller
      */
     public function filter($filter): Collection
     {
-        $stockTransfers = StockTransfer::all();
-        return $stockTransfers;
+        return self::getFilteredStockTransfers($filter);
     }
 
     /**
@@ -184,7 +184,7 @@ class StockTransferController extends Controller
     /**
      * @param StockTransferItem $stockTransferItem
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
     public function deleteItem(StockTransferItem $stockTransferItem): bool
     {
@@ -316,9 +316,9 @@ class StockTransferController extends Controller
     /**
      * @param StockTransfer $stockTransfer
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
-    public function verified(StockTransfer $stockTransfer): bool
+    public function markVerified(StockTransfer $stockTransfer): bool
     {
         $error = false;
         try{
@@ -336,12 +336,16 @@ class StockTransferController extends Controller
 
             }
 
+            $status = StockTransferStatus::where('seq_id',5)->firstOrFail();
+
+            $stockTransfer->Status()->associate($status);
+
             DB::commit();
 
         }catch(\Exception $e){
 
             DB::rollBack();
-            session()->flash('error',['Sorry!!! There was an error. All the Stock levels are as they were before this Transfer.']);
+            session()->flash('error',['Sorry!!! There was an error. All the Stock levels are as they were before this Operation.']);
             $error = true;
 
         }
@@ -384,5 +388,78 @@ class StockTransferController extends Controller
         $partsTargets = $this->generateStockTransferList($partsTargets);
 
         dd($partsTargets);
+    }
+
+    /**
+     * @param $filter
+     * @return Collection
+     */
+    public static function getFilteredStockTransfers($filter): Collection
+    {
+        $stockTransfers = collect([]);
+        if(is_string($filter)){
+            switch ($filter){
+                case 'outbound':
+                    $stockTransfers = StockTransfer::
+                    where(
+                        'fromLocation_id',
+                        HelperController::getCurrentLocation()->id
+                    )
+                        ->where(
+                            'stockTransferStatus_id',
+                            '!=',
+                            StockTransferStatus::where('seq_id',5)->first()->id
+                        )
+                        ->get();
+
+                    break;
+
+                case 'inbound':
+                    $stockTransfers = StockTransfer::
+                    where(
+                        'toLocation_id',
+                        HelperController::getCurrentLocation()->id
+                    )
+                        ->where(
+                            'stockTransferStatus_id',
+                            '!=',
+                            StockTransferStatus::where('seq_id',5)->first()->id
+                        )
+                        ->get();
+                    break;
+
+                case 'sent':
+                    $stockTransfers = StockTransfer::
+                    where(
+                        'fromLocation_id',
+                        HelperController::getCurrentLocation()->id
+                    )
+                        ->where(
+                            'stockTransferStatus_id',
+                            StockTransferStatus::where('seq_id',5)->first()->id
+                        )
+                        ->get();
+                    break;
+
+                case 'received':
+                    $stockTransfers = StockTransfer::
+                    where(
+                        'toLocation_id',
+                        HelperController::getCurrentLocation()->id
+                    )
+                        ->where(
+                            'stockTransferStatus_id',
+                            StockTransferStatus::where('seq_id',5)->first()->id
+                        )
+                        ->get();
+                    break;
+            }
+
+        }
+        else{
+            $stockTransfers = StockTransfer::all();
+        }
+
+        return $stockTransfers;
     }
 }
