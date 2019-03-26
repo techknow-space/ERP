@@ -19,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        View::share('types', DeviceType::orderBy('import_ref')->get());
         View::share('deviceTypes',HelperController::getDeviceListForNavigationMenu());
     }
 
