@@ -14,7 +14,6 @@ class HelperController extends Controller
     public static function getCurrentLocation(): Location
     {
         $request = request();
-        $location = false;
 
         if($request->session()->has('location_id')){
             try{
