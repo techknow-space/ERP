@@ -71,12 +71,12 @@
                             </td>
 
                             <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
+                                {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
                             </td>
 
 
                             <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
+                                {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
                             </td>
 
                             @if($status_id < 2)

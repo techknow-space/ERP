@@ -110,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="422">
+              <caret line="78" column="95" selection-start-line="78" selection-start-column="95" selection-end-line="78" selection-end-column="95" />
             </state>
           </provider>
         </entry>
@@ -701,14 +701,7 @@
       <workItem from="1553262330108" duration="25199000" />
       <workItem from="1553523558648" duration="23589000" />
       <workItem from="1553608531978" duration="25467000" />
-      <workItem from="1553694717498" duration="9970000" />
-    </task>
-    <task id="LOCAL-00100" summary="Added Route Model Binding to PO Controller Functions.">
-      <created>1552944700072</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1552944700073</updated>
+      <workItem from="1553694717498" duration="10039000" />
     </task>
     <task id="LOCAL-00101" summary="Updated the Code and Strategy for Auto PO Generation">
       <created>1553016619596</created>
@@ -1046,11 +1039,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553706745918</updated>
     </task>
-    <option name="localTasksCounter" value="149" />
+    <task id="LOCAL-00149" summary="Update to Stock Items List UI - Another">
+      <created>1553707006403</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1553707006403</updated>
+    </task>
+    <option name="localTasksCounter" value="150" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="685512000" />
+    <option name="totallyTimeSpent" value="685581000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1165,7 +1165,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Stock Transfer UI and Stuff" />
     <MESSAGE value="Migration to Add Location Field to PO." />
     <MESSAGE value="Added Relationship Defination functions to Models for Location in PO" />
     <MESSAGE value="Selects S1 as Default Location for each PO. No UI to change this implemented yet. Would strictly be used for making the Stock transfer and Adding to Stock after receiving PO work logically." />
@@ -1190,7 +1189,8 @@
     <MESSAGE value="Update to StockTransfer Auto Generation." />
     <MESSAGE value="added additional metrics to Stock Transfer UI" />
     <MESSAGE value="Update to Stock Items List UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to Stock Items List UI" />
+    <MESSAGE value="Update to Stock Items List UI - Another" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update to Stock Items List UI - Another" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1641,8 +1641,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="422">
+          <caret line="78" column="95" selection-start-line="78" selection-start-column="95" selection-end-line="78" selection-end-column="95" />
         </state>
       </provider>
     </entry>
