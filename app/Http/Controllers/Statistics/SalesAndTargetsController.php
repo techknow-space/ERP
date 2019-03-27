@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\Statistics;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
+use App\Models\Part;
 use App\Models\WODevicePart;
 use Carbon\Carbon;
 
@@ -59,5 +61,29 @@ class SalesAndTargetsController extends Controller
         unset($all_parts);
 
         return $summary;
+    }
+
+    /**
+     * @param Part $part
+     * @param Location $location
+     * @return int
+     */
+    public static function totalSalesPast3MonthsforLocation(Part $part, Location $location): int
+    {
+        $total_sales = 0;
+        $date = new Carbon('first day of March 2019');
+        $date = $date->subMonths(3);
+
+
+        foreach ($part->WODeviceParts as $WODP){
+
+            if($location->id == $WODP->WorkOrderDevice->WorkOrder->Location->id){
+                if($WODP->created_at > $date){
+                    $total_sales++;
+                }
+            }
+        }
+
+        return $total_sales;
     }
 }
