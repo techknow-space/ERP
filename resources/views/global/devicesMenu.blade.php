@@ -1,20 +1,4 @@
 
-{{--
-@foreach($types as $type)
-    <li class="nav-item dropdown dropdown-mea">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ $type->type }}
-        </a>
-        <div class="dropdown-menu mea" aria-labelledby="navbarDropdown">
-            <ul class="nav flex-column">
-                @foreach($type->devices as $device)
-                    <li><a class="dropdown-item" href="/lookup/device/{{ $device->id }}"> {{ $device->brand->name }} {{ $device->model_name }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-    </li>
-@endforeach
---}}
 
 @foreach($deviceTypes as $deviceType)
     <li class="nav-item dropdown dropdown-mea">
