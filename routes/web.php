@@ -178,7 +178,7 @@ Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function ()
     });
 
     Route::get('create','StockTransfer\StockTransferController@create');
-    Route::post('create','StockTransfer\StockTransferController@insert');
+    Route::post('create','StockTransfer\StockTransferController@requestInsert');
     Route::get('edit/{stockTransfer}','StockTransfer\StockTransferController@edit');
     Route::put('update/{stockTransfer}','StockTransfer\StockTransferController@update');
 

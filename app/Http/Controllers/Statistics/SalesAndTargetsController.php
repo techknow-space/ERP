@@ -14,7 +14,7 @@ class SalesAndTargetsController extends Controller
         $for_months = 3;
         $date = new Carbon('first day of March 2019');
 
-        $all_parts = WODevicePart::where("created_at", ">", $date->subMonths(12))->get()->unique('part_id')->keyBy('part_id');
+        $all_parts = WODevicePart::where("created_at", ">", $date->subMonths(3))->get()->unique('part_id')->keyBy('part_id');
         $parts = [];
 
         foreach($all_parts as $item){
@@ -43,7 +43,7 @@ class SalesAndTargetsController extends Controller
             }
 
             foreach ($summary[$part->id]['locations'] as $location_code=>$data){
-                $summary[$part->id]['locations'][$location_code]['average'] = ($data['sales'] / 12);
+                $summary[$part->id]['locations'][$location_code]['average'] = ($data['sales'] / 3);
                 $summary[$part->id]['locations'][$location_code]['target'] = ($summary[$part->id]['locations'][$location_code]['average'] * $for_months);
                 $summary[$part->id]['target'] += $summary[$part->id]['locations'][$location_code]['target'];
 

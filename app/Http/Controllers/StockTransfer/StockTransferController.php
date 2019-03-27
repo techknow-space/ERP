@@ -79,7 +79,7 @@ class StockTransferController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function insert(Request $request): RedirectResponse
+    public function requestInsert(Request $request): RedirectResponse
     {
         try{
 
@@ -106,6 +106,35 @@ class StockTransferController extends Controller
             $to = session('_previous')['url'];
             return redirect($to);
         }
+    }
+
+    /**
+     * @param Location $fromLocation
+     * @param Location $toLocation
+     * @param string|null $details
+     * @return StockTransfer|null
+     */
+    public function insert(Location $fromLocation , Location $toLocation, string $details=null): ?StockTransfer
+    {
+        try{
+            $status = StockTransferStatus::where('seq_id',1)->firstOrFail();
+
+            $stockTransfer = new StockTransfer();
+            $stockTransfer->description = $details;
+            $stockTransfer->fromLocation()->associate($fromLocation);
+            $stockTransfer->toLocation()->associate($toLocation);
+            $stockTransfer->Status()->associate($status);
+
+            $stockTransfer->save();
+
+        }catch (Exception $e){
+
+            $stockTransfer = null;
+            session()->flash('error',[$e->getMessage()]);
+
+        }
+
+        return $stockTransfer;
     }
 
     /**
@@ -505,6 +534,7 @@ class StockTransferController extends Controller
      */
     public function generateStockTransferList(array $partTargets): array
     {
+        $tos = [];
         foreach ($partTargets as $partID=>$partTarget){
 
             $partStock = PartStock::where('part_id',$partID)->get();
@@ -553,12 +583,28 @@ class StockTransferController extends Controller
         }
 
         foreach ($partTargets as $partID=>$partTarget){
+
+
+
             foreach ($partTarget['locations'] as $locationID=>$data){
 
+                $otherLocation_id = $locations->whereNotIn('id',$locationID)->first()->id;
+
+                if($data['shareInHand'] > $data['InHand']){
+                    if( $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] >= $partTargets[$partID]['locations'][$otherLocation_id]['InHand']){
+                        break;
+                    }
+                    elseif( $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] < $partTargets[$partID]['locations'][$otherLocation_id]['InHand']){
+                        $diff = $data['shareInHand'] - $data['InHand'];
+
+                        $tos['from-'.$locations->where('id',$locationID)->first()->location_code.':to-'.$locations->where('id',$otherLocation_id)->first()->location_code][] = ['part_id'=>$partID,'qty'=>$diff];
+                        break;
+                    }
+                }
             }
         }
 
-        return $partTargets;
+        return [$partTargets,$tos];
     }
 
     public function generateTransferOrder(): void
@@ -567,6 +613,41 @@ class StockTransferController extends Controller
 
         $partsTargets = $this->generateStockTransferList($partsTargets);
 
+        $transfer_list = $partsTargets[1];
+
+        $this->createAutoTransferOrders($transfer_list);
+
+        //echo "<pre>";
+        //var_dump($partsTargets);
+        //echo "</pre>";
+        //die();
         dd($partsTargets);
+    }
+
+    public function createAutoTransferOrders(array $transferList): void
+    {
+        $location_s1 = Location::where('location_code','S1')->firstOrFail();
+        $location_to = Location::where('location_code','TO')->firstOrFail();
+
+        $sto_s1_to_to = $this->insert($location_s1,$location_to,'System Generated');
+
+        $sto_to_to_ts1= $this->insert($location_to,$location_s1,'System Generated');
+
+        foreach ($transferList as $direction=>$parts){
+
+            if('from-S1:to-TO' == $direction){
+                foreach ($parts as $item) {
+                    $part = Part::find($item['part_id']);
+                    $this->addItem($sto_to_to_ts1,$part,$item['qty']);
+                }
+            }
+            else{
+                foreach ($parts as $item) {
+                    $part = Part::find($item['part_id']);
+                    $this->addItem($sto_s1_to_to,$part,$item['qty']);
+                }
+            }
+
+        }
     }
 }
