@@ -19,22 +19,14 @@
                             Part
                         </th>
                         <th>
-                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            Total Sales(3M) - <b>{{$stockTransfer->fromLocation->location_code}}</b>
-                        </th>
-                        <th>
                             % Share Sales(3M) - <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
+                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                        </th>
+
+                        <th>
                             InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            Total Sales(3M) - <b>{{$stockTransfer->toLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            % Share Sales(3M) - <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
                         <th>
                             Transfer Qty
@@ -73,23 +65,18 @@
                             <td>
                                 {{$item->Part->devices->brand->name}} {{$item->Part->devices->model_name}} {{$item->Part->part_name}}
                             </td>
-                            <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
-                            </td>
-                            <td>
-                                {{$total_sales_from}}
-                            </td>
+
                             <td>
                                 {{round (($total_sales_from / ($total_sales_from + $total_sales_to))*100,2)}} %
                             </td>
+
+                            <td>
+                                {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
+                            </td>
+
+
                             <td>
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
-                            </td>
-                            <td>
-                                {{$total_sales_to}}
-                            </td>
-                            <td>
-                                {{round (($total_sales_to / ($total_sales_from + $total_sales_to))*100,2)}} %
                             </td>
 
                             @if($status_id < 2)
