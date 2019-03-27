@@ -67,7 +67,7 @@
                             </td>
 
                             <td>
-                                {{round (($total_sales_to / ($total_sales_from + $total_sales_to))*100,2)}} %
+                                {{\App\Http\Controllers\Statistics\SalesAndTargetsController::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->toLocation)}} %
                             </td>
 
                             <td>

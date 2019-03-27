@@ -702,11 +702,12 @@ class StockTransferController extends Controller
                     $stock_otherLocation = $part->Stocks->where('location_id',$otherLocation->id)->first()->stock_qty;
 
 
-                    if($share == 0.00){
+                    if($share < 0.1){
 
                         if($stock > 1){
                             $send_qty = $stock - 1;
-                            $transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$send_qty,'part'=>$part];
+                            //$transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$send_qty,'part'=>$part];
+                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
                         }
 
                         $is_transfer_created = true;

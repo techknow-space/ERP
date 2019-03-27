@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9373155e-d241-43e6-96f3-6144ce8956db" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,11 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4198">
-              <caret line="614" lean-forward="true" selection-start-line="614" selection-end-line="614" />
+            <state relative-caret-position="423">
+              <caret line="709" column="137" selection-start-line="709" selection-start-column="137" selection-end-line="709" selection-end-column="137" />
               <folding>
                 <element signature="e#54#90#0#PHP" expanded="true" />
                 <element signature="e#815#1057#0#PHP" />
@@ -72,7 +73,27 @@
                 <element signature="e#11710#12946#0#PHP" />
                 <element signature="e#13056#13711#0#PHP" />
                 <element signature="e#13877#14802#0#PHP" />
+                <element signature="e#14878#17063#0#PHP" />
+                <element signature="e#22471#23276#0#PHP" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/devices.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -89,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="180" column="80" lean-forward="true" selection-start-line="180" selection-start-column="80" selection-end-line="180" selection-end-column="80" />
+            <state relative-caret-position="-2202">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#6#34#0#PHP" expanded="true" />
               </folding>
@@ -107,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="78" column="95" selection-start-line="78" selection-start-column="95" selection-end-line="78" selection-end-column="95" />
+            <state relative-caret-position="371">
+              <caret line="69" column="165" selection-start-line="69" selection-start-column="165" selection-end-line="69" selection-end-column="165" />
             </state>
           </provider>
         </entry>
@@ -136,10 +157,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Statistics/SalesAndTargetsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+            <state relative-caret-position="612">
+              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
               <folding>
                 <element signature="e#52#88#0#PHP" expanded="true" />
+                <element signature="e#195#2063#0#PHP" />
+                <element signature="e#2241#3030#0#PHP" />
+                <element signature="e#2872#3406#0#PHP" />
+                <element signature="e#3712#3892#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -156,8 +181,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>enct</find>
-      <find>multi</find>
       <find>Sim Reader</find>
       <find>342248367</find>
       <find>Â</find>
@@ -186,6 +209,8 @@
       <find>sold</find>
       <find>debug</find>
       <find>$is_editable</find>
+      <find>$part-&gt;totalstock</find>
+      <find>$part-&gt;totalStock</find>
     </findStrings>
     <replaceStrings>
       <replace>$stockCount</replace>
@@ -198,6 +223,8 @@
       <dir>C:\PHP_Projects\LaraERP\resources\views</dir>
       <dir>C:\PHP_Projects\LaraERP\database\migrations</dir>
       <dir>C:\PHP_Projects\LaraERP\app\Http\Controllers</dir>
+      <dir>C:\PHP_Projects\LaraERP\app</dir>
+      <dir>C:\PHP_Projects\LaraERP\resources</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -253,10 +280,10 @@
         <option value="$PROJECT_DIR$/resources/views/stockTransfer/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/stockTransfer.js" />
         <option value="$PROJECT_DIR$/resources/views/global/devicesMenu.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Statistics/SalesAndTargetsController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php" />
       </list>
     </option>
   </component>
@@ -433,6 +460,12 @@
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
               <item name="StockTransfer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LaraERP" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LaraERP" type="b2602c69:ProjectViewProjectNode" />
@@ -701,28 +734,7 @@
       <workItem from="1553262330108" duration="25199000" />
       <workItem from="1553523558648" duration="23589000" />
       <workItem from="1553608531978" duration="25467000" />
-      <workItem from="1553694717498" duration="10039000" />
-    </task>
-    <task id="LOCAL-00101" summary="Updated the Code and Strategy for Auto PO Generation">
-      <created>1553016619596</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1553016619598</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Added Sold All time to Part as Model Attribute Getter. And displayed it in Edit PO UI.">
-      <created>1553029021832</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1553029021832</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Updated Auto Generation Logic.">
-      <created>1553030287407</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1553030287407</updated>
+      <workItem from="1553694717498" duration="23653000" />
     </task>
     <task id="LOCAL-00104" summary="Updated Auto Generation Logic.&#10;Get all parts sold in past year. Need a minimum of 2 of these. Calculate average monthly sale of each, and order for 3 months + 10 %. Now check the current stock and other what is needed after substracting the needed from it.">
       <created>1553098481070</created>
@@ -1046,11 +1058,32 @@
       <option name="project" value="LOCAL" />
       <updated>1553707006403</updated>
     </task>
-    <option name="localTasksCounter" value="150" />
+    <task id="LOCAL-00150" summary="Update to Stock Items List UI - Another">
+      <created>1553707071965</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1553707071965</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Update to Stock Transfer Algo">
+      <created>1553721286947</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1553721286947</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Fixed a Typo">
+      <created>1553721384197</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1553721384197</updated>
+    </task>
+    <option name="localTasksCounter" value="153" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="685581000" />
+    <option name="totallyTimeSpent" value="699195000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1065,7 +1098,7 @@
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.496208" visible="true" weight="0.24413647" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496208" visible="true" weight="0.24413647" />
       <window_info id="Structure" order="1" sideWeight="0.50403875" side_tool="true" weight="0.26279318" />
       <window_info id="npm" order="2" sideWeight="0.503792" side_tool="true" weight="0.27665246" />
       <window_info id="Favorites" order="3" sideWeight="0.503792" side_tool="true" weight="0.27665246" />
@@ -1075,7 +1108,7 @@
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" visible="true" weight="0.19934994" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.4978678" weight="0.19934994" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.2383532" />
@@ -1165,8 +1198,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Migration to Add Location Field to PO." />
-    <MESSAGE value="Added Relationship Defination functions to Models for Location in PO" />
     <MESSAGE value="Selects S1 as Default Location for each PO. No UI to change this implemented yet. Would strictly be used for making the Stock transfer and Adding to Stock after receiving PO work logically." />
     <MESSAGE value="Part Search Dropdown." />
     <MESSAGE value="Fixed Typo and Made the Exchange Rate to be recordable upto 4 decimal places." />
@@ -1190,7 +1221,9 @@
     <MESSAGE value="added additional metrics to Stock Transfer UI" />
     <MESSAGE value="Update to Stock Items List UI" />
     <MESSAGE value="Update to Stock Items List UI - Another" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to Stock Items List UI - Another" />
+    <MESSAGE value="Update to Stock Transfer Algo" />
+    <MESSAGE value="Fixed a Typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a Typo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1273,13 +1306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="50" column="32" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1373,19 +1399,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="135" column="149" selection-start-line="135" selection-start-column="96" selection-end-line="135" selection-end-column="149" />
-          <folding>
-            <element signature="e#1541#2581#0#PHP" />
-            <element signature="e#2587#2794#0#PHP" />
-            <element signature="e#2842#2940#0#PHP" />
-            <element signature="e#7223#7803#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PartOperationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
@@ -1420,16 +1433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/devices.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#244#269#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1587,16 +1590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="180" column="80" lean-forward="true" selection-start-line="180" selection-start-column="80" selection-end-line="180" selection-end-column="80" />
-          <folding>
-            <element signature="e#6#34#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/global/devicesMenu.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1604,10 +1597,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PurchaseOrder/AutoPurchaseOrderController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="121" column="10" selection-start-line="121" selection-start-column="10" selection-end-line="121" selection-end-column="10" />
+          <folding>
+            <element signature="e#1541#2581#0#PHP" />
+            <element signature="e#2587#2794#0#PHP" />
+            <element signature="e#2842#2940#0#PHP" />
+            <element signature="e#7223#7803#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Part.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/devices.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2202">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#6#34#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Statistics/SalesAndTargetsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#52#88#0#PHP" expanded="true" />
+            <element signature="e#195#2063#0#PHP" />
+            <element signature="e#2241#3030#0#PHP" />
+            <element signature="e#2872#3406#0#PHP" />
+            <element signature="e#3712#3892#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="69" column="165" selection-start-line="69" selection-start-column="165" selection-end-line="69" selection-end-column="165" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StockTransfer/StockTransferController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4198">
-          <caret line="614" lean-forward="true" selection-start-line="614" selection-end-line="614" />
+        <state relative-caret-position="423">
+          <caret line="709" column="137" selection-start-line="709" selection-start-column="137" selection-end-line="709" selection-end-column="137" />
           <folding>
             <element signature="e#54#90#0#PHP" expanded="true" />
             <element signature="e#815#1057#0#PHP" />
@@ -1625,24 +1676,9 @@
             <element signature="e#11710#12946#0#PHP" />
             <element signature="e#13056#13711#0#PHP" />
             <element signature="e#13877#14802#0#PHP" />
+            <element signature="e#14878#17063#0#PHP" />
+            <element signature="e#22471#23276#0#PHP" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Statistics/SalesAndTargetsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
-          <folding>
-            <element signature="e#52#88#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/stockTransfer/items/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="78" column="95" selection-start-line="78" selection-start-column="95" selection-end-line="78" selection-end-column="95" />
         </state>
       </provider>
     </entry>
