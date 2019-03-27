@@ -54,8 +54,8 @@
                 })  as $item)
 
                         @php
-                            $total_sales_from = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsforLocation($item->Part,$stockTransfer->fromLocation);
-                            $total_sales_to = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsforLocation($item->Part,$stockTransfer->toLocation);
+                            $total_sales_from = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->fromLocation);
+                            $total_sales_to = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->toLocation);
                         @endphp
 
                         <tr id="{{$item->id}}">
