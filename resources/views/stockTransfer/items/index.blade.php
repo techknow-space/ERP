@@ -19,14 +19,14 @@
                             Part
                         </th>
                         <th>
-                            % Share Sales(3M) - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            % Share Sales(3M) - <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
                         <th>
-                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
 
                         <th>
-                            InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
                             Transfer Qty
@@ -67,7 +67,7 @@
                             </td>
 
                             <td>
-                                {{round (($total_sales_from / ($total_sales_from + $total_sales_to))*100,2)}} %
+                                {{round (($total_sales_to / ($total_sales_from + $total_sales_to))*100,2)}} %
                             </td>
 
                             <td>
