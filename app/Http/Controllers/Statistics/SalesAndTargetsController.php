@@ -8,6 +8,8 @@ use App\Models\Location;
 use App\Models\Part;
 use App\Models\WODevicePart;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use Exception;
 
 class SalesAndTargetsController extends Controller
 {
@@ -68,22 +70,71 @@ class SalesAndTargetsController extends Controller
      * @param Location $location
      * @return int
      */
-    public static function totalSalesPast3MonthsforLocation(Part $part, Location $location): int
+    public static function totalSalesPast3MonthsForLocations(Part $part, Location $location = null): int
     {
         $total_sales = 0;
+
+        //TODO: Change it to Carbon Now when Sales History is Upto Date
         $date = new Carbon('first day of March 2019');
         $date = $date->subMonths(3);
 
-
         foreach ($part->WODeviceParts as $WODP){
 
-            if($location->id == $WODP->WorkOrderDevice->WorkOrder->Location->id){
-                if($WODP->created_at > $date){
+            if($WODP->created_at > $date){
+
+                if(null !== $location){
+                    if($location->id == $WODP->WorkOrderDevice->WorkOrder->Location->id){
+                        $total_sales++;
+                    }
+                }
+                else{
                     $total_sales++;
                 }
+
             }
         }
 
         return $total_sales;
+    }
+
+    /**
+     * @return Collection
+     */
+    public static function getPartsSoldPast12Months(): Collection
+    {
+        //TODO: Change it to Carbon Now when Sales History is Upto Date
+        $date = new Carbon('first day of March 2019');
+
+        $date = $date->subMonths(12);
+        $parts = Collect([]);
+
+        $WODeviceParts = WODevicePart::where("created_at", ">", $date)->get()->unique('part_id');
+
+        foreach ($WODeviceParts as $WODevicePart){
+            $parts->push($WODevicePart->Part);
+        }
+
+        unset($WODeviceParts);
+
+        return $parts;
+    }
+
+    /**
+     * @param Part $part
+     * @param Location $location
+     * @return float
+     */
+    public static function getSalesShare3MonthsForLocations(Part $part, Location $location): float
+    {
+        $total_sales = self::totalSalesPast3MonthsforLocations($part);
+        $total_sales_current_location = self::totalSalesPast3MonthsforLocations($part,$location);
+
+        try{
+            $share = round( ($total_sales_current_location / $total_sales) * 100 , 2 );
+        }catch (Exception $exception){
+            $share = 0.00;
+        }
+
+        return $share;
     }
 }

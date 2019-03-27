@@ -5,6 +5,7 @@ use Illuminate\Support\Facades;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Http\Controllers\HelperController;
+use App\Http\Controllers\Statistics\SalesAndTargetsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,8 @@ use App\Http\Controllers\HelperController;
 app('debugbar')->disable();
 
 Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@partsToReplenish');
+
+Route::get('stogenerate', 'StockTransfer\StockTransferController@getListOfPartsToTransfer');
 
 Route::get('menu', function(){
     $menu = HelperController::getDeviceListForNavigationMenu();

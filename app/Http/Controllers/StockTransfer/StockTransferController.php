@@ -609,19 +609,23 @@ class StockTransferController extends Controller
 
     public function generateTransferOrder(): void
     {
+        /*
         $partsTargets = SalesAndTargetsController::getSalesTargets();
 
         $partsTargets = $this->generateStockTransferList($partsTargets);
 
         $transfer_list = $partsTargets[1];
+        */
 
-        $this->createAutoTransferOrders($transfer_list);
+        $partToTransfer = $this->getListOfPartsToTransfer();
+
+        $this->createAutoTransferOrders($partToTransfer);
 
         //echo "<pre>";
         //var_dump($partsTargets);
         //echo "</pre>";
         //die();
-        dd($partsTargets);
+        dd($partToTransfer);
     }
 
     public function createAutoTransferOrders(array $transferList): void
@@ -631,23 +635,127 @@ class StockTransferController extends Controller
 
         $sto_s1_to_to = $this->insert($location_s1,$location_to,'System Generated');
 
-        $sto_to_to_ts1= $this->insert($location_to,$location_s1,'System Generated');
+        $sto_to_to_s1= $this->insert($location_to,$location_s1,'System Generated');
 
         foreach ($transferList as $direction=>$parts){
 
-            if('from-S1:to-TO' == $direction){
+            if('S1' == $direction){
                 foreach ($parts as $item) {
-                    $part = Part::find($item['part_id']);
-                    $this->addItem($sto_to_to_ts1,$part,$item['qty']);
+
+                    $this->addItem($sto_s1_to_to,$item['part'],$item['qty']);
                 }
             }
             else{
                 foreach ($parts as $item) {
-                    $part = Part::find($item['part_id']);
-                    $this->addItem($sto_s1_to_to,$part,$item['qty']);
+
+                    $this->addItem($sto_to_to_s1,$item['part'],$item['qty']);
                 }
             }
 
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getListOfPartsToTransfer(): array
+    {
+        $transfer = [];
+        $list = [];
+
+        $parts = SalesAndTargetsController::getPartsSoldPast12Months();
+        $locations = Location::all();
+
+        foreach ($parts as $part){
+
+            $is_transfer_created = false;
+
+            if(($part->total_stock) > 1 ){
+
+                $list[$part->id] = [
+                    'part' => $part->id,
+                    'inHand' => $part->total_stock
+                ];
+
+                foreach ($locations as $location){
+
+                    $share = SalesAndTargetsController::getSalesShare3MonthsForLocations($part,$location);
+
+                    if($location->location_code == 'TO'){
+                        $share_inhand = ceil(round(($share * $part->total_stock) / 100 , 2));
+                    }
+                    else{
+                        $share_inhand = floor(round(($share * $part->total_stock) / 100 , 2));
+                    }
+
+                    $list[$part->id]['locations'][$location->id] = [
+
+                            'share' => $share ,
+                            'share_inHand' => $share_inhand,
+                            'stock' => $part->Stocks->where('location_id',$location->id)->first()->stock_qty
+
+                    ];
+
+                    $otherLocation = $locations->whereNotIn('id',$location->id)->first();
+
+                    $stock = $part->Stocks->where('location_id',$location->id)->first()->stock_qty;
+                    $stock_otherLocation = $part->Stocks->where('location_id',$otherLocation->id)->first()->stock_qty;
+
+
+                    if($share == 0.00){
+
+                        if($stock > 1){
+                            $send_qty = $stock - 1;
+                            $transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$send_qty,'part'=>$part];
+                        }
+
+                        $is_transfer_created = true;
+                        unset($list[$part->id]);
+                        break;
+                    }
+                    elseif($share == 100.0){
+
+                        if($stock_otherLocation > 1){
+                            $send_qty = $stock_otherLocation - 1;
+                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
+                        }
+
+                        $is_transfer_created = true;
+                        unset($list[$part->id]);
+                        break;
+                    }
+
+                }
+
+
+                if(!$is_transfer_created){
+                    foreach ($locations as $location){
+
+                        $otherLocation = $locations->whereNotIn('id',$location->id)->first();
+                        $stock = $list[$part->id]['locations'][$location->id]['stock'];
+                        $stock_otherLocation = $list[$part->id]['locations'][$otherLocation->id]['stock'];
+
+                        if($list[$part->id]['locations'][$location->id]['share_inHand'] > $stock){
+
+                            $send_qty = $stock_otherLocation - $list[$part->id]['locations'][$otherLocation->id]['share_inHand'];
+                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
+
+                            unset($list[$part->id]);
+                            break;
+
+                        }
+
+                    }
+                }
+
+
+            }
+
+        }
+
+        unset($list);
+
+        return $transfer;
+
     }
 }
