@@ -67,11 +67,11 @@ class SalesAndTargetsController extends Controller
 
     /**
      * @param Part $part
-     * @param Location $location
+     * @param Location|null $location
      * @param int $months
      * @return int
      */
-    public static function totalSalesPastFotMonthsForLocations(Part $part, Location $location = null, int $months = 3): int
+    public static function totalSalesPastFotMonthsForLocations(Part $part, ?Location $location = null, int $months = 3): int
     {
         $total_sales = 0;
 
