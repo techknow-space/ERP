@@ -16,15 +16,26 @@
                             SKU
                         </th>
                         <th>
+                            Device
+                        </th>
+                        <th>
                             Part
                         </th>
                         <th>
-                            % Share Sales(3M) - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            Total Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                        </th>
+                        <th>
+                            % Share Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
                             InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
-
+                        <th>
+                            Total Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                        </th>
+                        <th>
+                            % Share Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                        </th>
                         <th>
                             InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
@@ -49,31 +60,41 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                    @inject('stats_controller','App\Http\Controllers\Statistics\SalesAndTargetsController')
+
                     @foreach($stockTransfer->Items->sortBy(function ($part,$key){
                     return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
                 })  as $item)
-
-                        @php
-                            $total_sales_from = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->fromLocation);
-                            $total_sales_to = \App\Http\Controllers\Statistics\SalesAndTargetsController::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->toLocation);
-                        @endphp
 
                         <tr id="{{$item->id}}">
                             <td>
                                 {{$item->Part->sku}}
                             </td>
                             <td>
-                                {{$item->Part->devices->brand->name}} {{$item->Part->devices->model_name}} {{$item->Part->part_name}}
+                                {{$item->Part->devices->brand->name}} {{$item->Part->devices->model_name}}
+                            </td>
+                            <td>
+                                {{$item->Part->part_name}}
                             </td>
 
                             <td>
-                                {{\App\Http\Controllers\Statistics\SalesAndTargetsController::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}} %
+                                {{$stats_controller::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}}
+                            </td>
+                            <td>
+                                {{$stats_controller::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}} %
                             </td>
 
                             <td>
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
                             </td>
 
+                            <td>
+                                {{$stats_controller::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->toLocation)}}
+                            </td>
+                            <td>
+                                {{$stats_controller::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->toLocation)}} %
+                            </td>
 
                             <td>
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
