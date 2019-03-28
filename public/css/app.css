@@ -16201,8 +16201,13 @@ readers do not read off random characters that represent icons */
   background-color: darkgreen !important;
 }
 
-.dropdown-submenu {
-  position: relative;
+.dropdown-menu {
+  margin-top: -3px;
+}
+
+.dropdown-device-list {
+  overflow-y: scroll;
+  max-height: 90vh;
 }
 
 .dropdown-submenu .dropdown-menu {

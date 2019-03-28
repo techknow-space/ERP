@@ -14,8 +14,9 @@ $(document).ready(function() {
 
 
 
-    $('.dropdown-submenu > a').hover(function(e) {
-        let submenu = $(this);
+    $('.dropdown-submenu').hover(function(e) {
+
+        let submenu = $(this).children('a');
         let current_active = $('ul.active-device-list');
 
         current_active.attr('style','display: none !important;');

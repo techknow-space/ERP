@@ -69442,8 +69442,8 @@ $(document).ready(function () {
     var location_id = appLocationSelect.val();
     window.location.replace('/setLocation/' + location_id);
   });
-  $('.dropdown-submenu > a').hover(function (e) {
-    var submenu = $(this);
+  $('.dropdown-submenu').hover(function (e) {
+    var submenu = $(this).children('a');
     var current_active = $('ul.active-device-list');
     current_active.attr('style', 'display: none !important;');
     current_active.removeClass('active-device-list');
