@@ -98,14 +98,15 @@ class SalesAndTargetsController extends Controller
     }
 
     /**
+     * @param int $months
      * @return Collection
      */
-    public static function getPartsSoldPast12Months(): Collection
+    public static function getPartsSoldPastMonths(int $months = 12): Collection
     {
         //TODO: Change it to Carbon Now when Sales History is Upto Date
         $date = new Carbon('first day of March 2019');
 
-        $date = $date->subMonths(12);
+        $date = $date->subMonths($months);
         $parts = Collect([]);
 
         $WODeviceParts = WODevicePart::where("created_at", ">", $date)->get()->unique('part_id');
