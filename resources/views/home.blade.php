@@ -21,12 +21,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">Inventory</div>
-
-                <div class="card-body">
-                    <div class="list-group">
-                        <a href="/" class="list-group-item list-group-item-action">TASK</a>
-                    </div>
-               </div>
+                @include('global.inventoryLinks')
             </div>
         </div>
     </div>
