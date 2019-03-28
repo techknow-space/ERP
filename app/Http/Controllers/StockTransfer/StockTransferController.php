@@ -529,94 +529,10 @@ class StockTransferController extends Controller
     }
 
     /**
-     * @param array $partTargets
-     * @return array
+     *
      */
-    public function generateStockTransferList(array $partTargets): array
-    {
-        $tos = [];
-        foreach ($partTargets as $partID=>$partTarget){
-
-            $partStock = PartStock::where('part_id',$partID)->get();
-            $stockInHand = $partStock->sum('stock_qty');
-
-            if( (1 >= $stockInHand) || (count($partTarget['locations']) < 2) ) {
-                unset($partTargets[$partID]);
-                continue;
-            }
-
-            $partTargets[$partID]['inHand'] = $stockInHand;
-
-            foreach ($partTarget['locations'] as $locationID=>$data) {
-                $partTargets[$partID]['locations'][$locationID]['shareInHand'] = ceil(($data['share'] / 100) * $stockInHand);
-                $partTargets[$partID]['locations'][$locationID]['InHand'] = $partStock->where('location_id',$locationID)->first()->stock_qty;
-            }
-        }
-
-        $locations = Location::all();
-
-        //dd($locations);
-
-        foreach ($partTargets as $partID=>$partTarget){
-
-            foreach ($partTarget['locations'] as $locationID=>$data){
-
-                $otherLocation_id = $locations->whereNotIn('id',$locationID)->first()->id;
-
-                $inhand_current_location = $data['shareInHand'];
-                $inhand_other_location = $partTarget['locations'][$otherLocation_id]['shareInHand'];
-                $inhand_total = $partTarget['inHand'];
-
-                if( ($inhand_current_location + $inhand_other_location) > $inhand_total ){
-                    $diff = ($inhand_current_location + $inhand_other_location) - $inhand_total;
-
-                    if($inhand_current_location > $inhand_other_location){
-                        $partTargets[$partID]['locations'][$locationID]['shareInHand'] -= $diff;
-                        break;
-                    }
-                    else{
-                        $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] -= $diff;
-                        break;
-                    }
-                }
-            }
-        }
-
-        foreach ($partTargets as $partID=>$partTarget){
-
-
-
-            foreach ($partTarget['locations'] as $locationID=>$data){
-
-                $otherLocation_id = $locations->whereNotIn('id',$locationID)->first()->id;
-
-                if($data['shareInHand'] > $data['InHand']){
-                    if( $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] >= $partTargets[$partID]['locations'][$otherLocation_id]['InHand']){
-                        break;
-                    }
-                    elseif( $partTargets[$partID]['locations'][$otherLocation_id]['shareInHand'] < $partTargets[$partID]['locations'][$otherLocation_id]['InHand']){
-                        $diff = $data['shareInHand'] - $data['InHand'];
-
-                        $tos['from-'.$locations->where('id',$locationID)->first()->location_code.':to-'.$locations->where('id',$otherLocation_id)->first()->location_code][] = ['part_id'=>$partID,'qty'=>$diff];
-                        break;
-                    }
-                }
-            }
-        }
-
-        return [$partTargets,$tos];
-    }
-
     public function generateTransferOrder(): void
     {
-        /*
-        $partsTargets = SalesAndTargetsController::getSalesTargets();
-
-        $partsTargets = $this->generateStockTransferList($partsTargets);
-
-        $transfer_list = $partsTargets[1];
-        */
-
         $partToTransfer = $this->getListOfPartsToTransfer();
 
         $this->createAutoTransferOrders($partToTransfer);
@@ -628,6 +544,9 @@ class StockTransferController extends Controller
         dd($partToTransfer);
     }
 
+    /**
+     * @param array $transferList
+     */
     public function createAutoTransferOrders(array $transferList): void
     {
         $location_s1 = Location::where('location_code','S1')->firstOrFail();
@@ -661,29 +580,18 @@ class StockTransferController extends Controller
     public function getListOfPartsToTransfer(): array
     {
         $transfer = [];
-        $list = [];
 
         $parts = SalesAndTargetsController::getPartsSoldPast12Months();
         $locations = Location::all();
 
         foreach ($parts as $part){
 
-            $is_transfer_created = false;
-
             if(($part->total_stock) > 1 ){
-
-                $list[$part->id] = [
-                    'part' => $part->id,
-                    'inHand' => $part->total_stock
-                ];
 
                 foreach ($locations as $location){
 
                     $share = SalesAndTargetsController::getSalesShare3MonthsForLocations($part,$location);
                     $stock = $part->Stocks->where('location_id',$location->id)->first()->stock_qty;
-
-                    $otherLocation = $locations->whereNotIn('id',$location->id)->first();
-                    $stock_otherLocation = $part->Stocks->where('location_id',$otherLocation->id)->first()->stock_qty;
 
                     if($location->location_code == 'TO'){
                         $share_inhand = ceil(round(($share * $part->total_stock) / 100 , 2));
@@ -691,14 +599,6 @@ class StockTransferController extends Controller
                     else{
                         $share_inhand = floor(round(($share * $part->total_stock) / 100 , 2));
                     }
-
-                    $list[$part->id]['locations'][$location->id] = [
-
-                            'share' => $share ,
-                            'share_inHand' => $share_inhand,
-                            'stock' => $stock
-
-                    ];
 
 
                     if($stock > 1){
@@ -711,81 +611,11 @@ class StockTransferController extends Controller
                             }
 
                             $transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$qty_send,'part'=>$part];
-                            $is_transfer_created = true;
-                            unset($list[$part->id]);
+
                             break;
                         }
-
-                        elseif($share_inhand > $stock) {
-                            $qty_send = $share_inhand - $stock;
-
-                            if(($stock_otherLocation - $qty_send) < 1){
-                                $qty_send -= 1;
-                            }
-
-                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$qty_send,'part'=>$part];
-                            $is_transfer_created = true;
-                            unset($list[$part->id]);
-                            break;
-                        }
-                    }
-
-
-
-
-                    /*
-
-                    if($share < 0.1){
-
-                        if($stock > 1){
-                            $send_qty = $stock - 1;
-                            //$transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$send_qty,'part'=>$part];
-                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
-                        }
-
-                        $is_transfer_created = true;
-                        unset($list[$part->id]);
-                        break;
-                    }
-                    elseif($share == 100.0){
-
-                        if($stock_otherLocation > 1){
-                            $send_qty = $stock_otherLocation - 1;
-                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
-                        }
-
-                        $is_transfer_created = true;
-                        unset($list[$part->id]);
-                        break;
-                    }
-                    */
-
-                }
-
-
-                /*
-                if(!$is_transfer_created){
-                    foreach ($locations as $location){
-
-                        $otherLocation = $locations->whereNotIn('id',$location->id)->first();
-                        $stock = $list[$part->id]['locations'][$location->id]['stock'];
-                        $stock_otherLocation = $list[$part->id]['locations'][$otherLocation->id]['stock'];
-
-                        if($list[$part->id]['locations'][$location->id]['share_inHand'] > $stock){
-
-                            $send_qty = $stock_otherLocation - $list[$part->id]['locations'][$otherLocation->id]['share_inHand'];
-                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$send_qty,'part'=>$part];
-
-                            unset($list[$part->id]);
-                            break;
-
-                        }
-
                     }
                 }
-                */
-
-
             }
 
         }

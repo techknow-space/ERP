@@ -19,14 +19,14 @@
                             Part
                         </th>
                         <th>
-                            % Share Sales(3M) - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            % Share Sales(3M) - <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
-                            InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
 
                         <th>
-                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
                         <th>
                             Transfer Qty
@@ -67,16 +67,16 @@
                             </td>
 
                             <td>
-                                {{\App\Http\Controllers\Statistics\SalesAndTargetsController::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->toLocation)}} %
+                                {{\App\Http\Controllers\Statistics\SalesAndTargetsController::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}} %
                             </td>
-
-                            <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
-                            </td>
-
 
                             <td>
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
+                            </td>
+
+
+                            <td>
+                                {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
                             </td>
 
                             @if($status_id < 2)
@@ -89,16 +89,14 @@
                                 </td>
                             @endif
 
-                            @if($status_id < 3)
+                            @if($status_id > 3)
                                 <td>
-                                    <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                    @if($status_id < 4)
+                                        <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                    @else
+                                        {{$item->qty_sent}}
+                                    @endif
                                 </td>
-                            @else
-
-                                <td>
-                                    {{$item->qty_sent}}
-                                </td>
-
                             @endif
 
                             @if($status_id > 3)
