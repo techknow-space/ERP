@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Exception;
+use Log;
 
 class StockTransferController extends Controller
 {
@@ -529,19 +530,17 @@ class StockTransferController extends Controller
     }
 
     /**
-     *
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function generateTransferOrder(): void
+    public function generateTransferOrder(Request $request): RedirectResponse
     {
+        Log::error($request);
         $partToTransfer = $this->getListOfPartsToTransfer();
 
         $this->createAutoTransferOrders($partToTransfer);
 
-        //echo "<pre>";
-        //var_dump($partsTargets);
-        //echo "</pre>";
-        //die();
-        dd($partToTransfer);
+        return redirect('/stocktransfer');
     }
 
     /**
@@ -549,6 +548,7 @@ class StockTransferController extends Controller
      */
     public function createAutoTransferOrders(array $transferList): void
     {
+
         $location_s1 = Location::where('location_code','S1')->firstOrFail();
         $location_to = Location::where('location_code','TO')->firstOrFail();
 
@@ -581,7 +581,7 @@ class StockTransferController extends Controller
     {
         $transfer = [];
 
-        $parts = SalesAndTargetsController::getPartsSoldPast12Months();
+        $parts = SalesAndTargetsController::getPartsSoldPastMonths(3);
         $locations = Location::all();
 
         foreach ($parts as $part){
@@ -619,8 +619,6 @@ class StockTransferController extends Controller
             }
 
         }
-
-        unset($list);
 
         return $transfer;
 
