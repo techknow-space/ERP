@@ -79,10 +79,10 @@
                             </td>
 
                             <td>
-                                {{$stats_controller::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}}
+                                {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->fromLocation)}}
                             </td>
                             <td>
-                                {{$stats_controller::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->fromLocation)}} %
+                                {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->fromLocation)}} %
                             </td>
 
                             <td>
@@ -90,10 +90,10 @@
                             </td>
 
                             <td>
-                                {{$stats_controller::totalSalesPast3MonthsForLocations($item->Part,$stockTransfer->toLocation)}}
+                                {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->toLocation)}}
                             </td>
                             <td>
-                                {{$stats_controller::getSalesShare3MonthsForLocations($item->Part,$stockTransfer->toLocation)}} %
+                                {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->toLocation)}} %
                             </td>
 
                             <td>

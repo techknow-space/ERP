@@ -68,15 +68,16 @@ class SalesAndTargetsController extends Controller
     /**
      * @param Part $part
      * @param Location $location
+     * @param int $months
      * @return int
      */
-    public static function totalSalesPast3MonthsForLocations(Part $part, Location $location = null): int
+    public static function totalSalesPastFotMonthsForLocations(Part $part, Location $location = null, int $months = 3): int
     {
         $total_sales = 0;
 
         //TODO: Change it to Carbon Now when Sales History is Upto Date
         $date = new Carbon('first day of March 2019');
-        $date = $date->subMonths(3);
+        $date = $date->subMonths($months);
 
         foreach ($part->WODeviceParts as $WODP){
 
@@ -123,12 +124,13 @@ class SalesAndTargetsController extends Controller
     /**
      * @param Part $part
      * @param Location $location
+     * @param int $months
      * @return float
      */
-    public static function getSalesShare3MonthsForLocations(Part $part, Location $location): float
+    public static function getSalesShareForMonthsForLocations(Part $part, Location $location, int $months = 3): float
     {
-        $total_sales = self::totalSalesPast3MonthsforLocations($part);
-        $total_sales_current_location = self::totalSalesPast3MonthsforLocations($part,$location);
+        $total_sales = self::totalSalesPastFotMonthsForLocations($part);
+        $total_sales_current_location = self::totalSalesPastFotMonthsForLocations($part, $location);
 
         try{
             $share = round( ($total_sales_current_location / $total_sales) * 100 , 2 );

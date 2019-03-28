@@ -590,7 +590,7 @@ class StockTransferController extends Controller
 
                 foreach ($locations as $location){
 
-                    $share = SalesAndTargetsController::getSalesShare3MonthsForLocations($part,$location);
+                    $share = SalesAndTargetsController::getSalesShareForMonthsForLocations($part, $location);
                     $stock = $part->Stocks->where('location_id',$location->id)->first()->stock_qty;
 
                     if($location->location_code == 'TO'){
