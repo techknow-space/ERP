@@ -680,6 +680,10 @@ class StockTransferController extends Controller
                 foreach ($locations as $location){
 
                     $share = SalesAndTargetsController::getSalesShare3MonthsForLocations($part,$location);
+                    $stock = $part->Stocks->where('location_id',$location->id)->first()->stock_qty;
+
+                    $otherLocation = $locations->whereNotIn('id',$location->id)->first();
+                    $stock_otherLocation = $part->Stocks->where('location_id',$otherLocation->id)->first()->stock_qty;
 
                     if($location->location_code == 'TO'){
                         $share_inhand = ceil(round(($share * $part->total_stock) / 100 , 2));
@@ -692,15 +696,44 @@ class StockTransferController extends Controller
 
                             'share' => $share ,
                             'share_inHand' => $share_inhand,
-                            'stock' => $part->Stocks->where('location_id',$location->id)->first()->stock_qty
+                            'stock' => $stock
 
                     ];
 
-                    $otherLocation = $locations->whereNotIn('id',$location->id)->first();
 
-                    $stock = $part->Stocks->where('location_id',$location->id)->first()->stock_qty;
-                    $stock_otherLocation = $part->Stocks->where('location_id',$otherLocation->id)->first()->stock_qty;
+                    if($stock > 1){
 
+                        if($share_inhand < $stock){
+                            $qty_send = $stock - $share_inhand;
+
+                            if(($stock - $qty_send) < 1){
+                                $qty_send -= 1;
+                            }
+
+                            $transfer[$location->location_code][] = ['location'=>$location->id,'qty'=>$qty_send,'part'=>$part];
+                            $is_transfer_created = true;
+                            unset($list[$part->id]);
+                            break;
+                        }
+
+                        elseif($share_inhand > $stock) {
+                            $qty_send = $share_inhand - $stock;
+
+                            if(($stock_otherLocation - $qty_send) < 1){
+                                $qty_send -= 1;
+                            }
+
+                            $transfer[$otherLocation->location_code][] = ['location'=>$otherLocation->id,'qty'=>$qty_send,'part'=>$part];
+                            $is_transfer_created = true;
+                            unset($list[$part->id]);
+                            break;
+                        }
+                    }
+
+
+
+
+                    /*
 
                     if($share < 0.1){
 
@@ -725,10 +758,12 @@ class StockTransferController extends Controller
                         unset($list[$part->id]);
                         break;
                     }
+                    */
 
                 }
 
 
+                /*
                 if(!$is_transfer_created){
                     foreach ($locations as $location){
 
@@ -748,6 +783,7 @@ class StockTransferController extends Controller
 
                     }
                 }
+                */
 
 
             }
