@@ -31,8 +31,14 @@
     background-color: darkgreen !important;
 }
 
-.dropdown-submenu {
-    position: relative;
+.dropdown-menu {
+    margin-top: -3px;
+}
+
+.dropdown-device-list {
+    overflow-y: scroll;
+    max-height: 90vh;
+//    max-height: 500px;
 }
 
 .dropdown-submenu .dropdown-menu {
