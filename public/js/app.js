@@ -70177,13 +70177,6 @@ $(document).ready(function () {
     var sto_id = $(this).data('stoid');
     var direction = $(this).data('direction');
     var input_class_to_update = '';
-
-    if ('send' == direction) {
-      input_class_to_update = 'stoItemQtySentField';
-    } else {
-      input_class_to_update = 'stoItemQtyReceivedField';
-    }
-
     $.ajax({
       type: "PUT",
       url: $(this).attr('action'),
@@ -70196,6 +70189,15 @@ $(document).ready(function () {
           alert('There was an Error !!!');
         } else {
           var row = $('#' + data.item.id);
+
+          if ('send' === direction) {
+            input_class_to_update = 'stoItemQtySentField';
+            $('.stockTransferTotalQty').text(data.summary.total_qty);
+            $('.stockTransferTotalQtyNotSent').text(data.summary.total_qty_not_sent);
+          } else {
+            input_class_to_update = 'stoItemQtyReceivedField';
+          }
+
           row.find('.' + input_class_to_update).val(data.item.qty_sent);
 
           if (!row.hasClass(data.item.class)) {

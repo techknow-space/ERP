@@ -131,14 +131,6 @@ $(document).ready(function() {
         let sto_id = $(this).data('stoid');
         let direction = $(this).data('direction');
         let input_class_to_update = '';
-        if('send' == direction){
-            input_class_to_update = 'stoItemQtySentField';
-        }
-        else{
-            input_class_to_update = 'stoItemQtyReceivedField';
-        }
-
-
 
         $.ajax({
             type: "PUT",
@@ -151,6 +143,15 @@ $(document).ready(function() {
                 }
                 else{
                     let row = $('#'+data.item.id);
+
+                    if('send' === direction){
+                        input_class_to_update = 'stoItemQtySentField';
+                        $('.stockTransferTotalQty').text(data.summary.total_qty);
+                        $('.stockTransferTotalQtyNotSent').text(data.summary.total_qty_not_sent);
+                    }
+                    else{
+                        input_class_to_update = 'stoItemQtyReceivedField';
+                    }
 
                     row.find('.'+input_class_to_update).val(data.item.qty_sent);
 

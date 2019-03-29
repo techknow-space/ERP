@@ -386,6 +386,7 @@ class StockTransferController extends Controller
         $stockTransferItem = [];
         $error = false;
         $message = '';
+        $summary = [];
 
         $stockTransfer_id = $request->input('sto_id');
         $sku = $request->input('sku');
@@ -397,6 +398,9 @@ class StockTransferController extends Controller
             $error = !$this->sendItem($stockTransferItem);
             $stockTransferItem->refresh();
             $stockTransferItem->class = self::getStockTransferItemDisplayLineColourClassSending($stockTransferItem);
+
+            $summary['total_qty'] = $stockTransfer->Items->sum('qty');
+            $summary['total_qty_not_sent'] = $stockTransfer->Items->sum('qty') - $stockTransfer->Items->sum('qty_sent');
             $message = 'Item Marked as sent.';
 
 
@@ -409,7 +413,8 @@ class StockTransferController extends Controller
         return response()->json([
             'error' => $error,
             'message' => $message,
-            'item' => $stockTransferItem
+            'item' => $stockTransferItem,
+            'summary' => $summary
         ]);
     }
 
