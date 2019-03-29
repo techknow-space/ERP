@@ -10,8 +10,10 @@ use App\Models\PurchaseOrderStatus;
 use App\Models\Supplier;
 use DebugBar\DebugBar;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\PDF;
+use Exception;
 
 class PurchaseOrderController extends Controller
 {
@@ -88,9 +90,26 @@ class PurchaseOrderController extends Controller
         return $this->edit($purchaseOrder);
     }
 
-    public function delete($id)
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return RedirectResponse
+     */
+    public function delete(PurchaseOrder $purchaseOrder): RedirectResponse
     {
-        PurchaseOrder::destroy($id);
+        if(7 > $purchaseOrder->PurchaseOrderStatus->seq_id){
+            try{
+                $purchaseOrder->delete();
+                session()->flash('success',['Deleted Successfully.']);
+
+            }catch (Exception $exception){
+                session()->flash('Error',['Error !!!, Sorry, there was an error deleting this Order.']);
+            }
+
+        }
+        else{
+            session()->flash('Error',['Error !!!, Sorry, Cannot delete this Order at this Stage.']);
+        }
+
         return redirect('order/purchase');
     }
 
@@ -98,9 +117,9 @@ class PurchaseOrderController extends Controller
     /**
      * @param Supplier $supplier
      * @param PurchaseOrderStatus|NULL $in_status
-     * @return PurchaseOrder|PurchaseOrderStatus
+     * @return PurchaseOrder
      */
-    public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL)
+    public function createPurchaseOrder(Supplier $supplier, PurchaseOrderStatus $in_status = NULL): PurchaseOrder
     {
 
         $location = Location::where('location_code','S1')->firstOrFail();
