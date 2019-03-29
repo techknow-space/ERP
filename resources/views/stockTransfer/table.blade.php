@@ -73,6 +73,11 @@
                         <a href="/stocktransfer/edit/{{$stockTransfer->id}}" class="btn btn-info">
                             Edit
                         </a>
+                        @if(5 > $stockTransfer->Status->seq_id)
+                            <a href="/stocktransfer/delete/{{$stockTransfer->id}}" class="btn btn-danger stockTransferDeleteButton">
+                                Delete
+                            </a>
+                        @endif
                     </div>
                 </td>
             </tr>

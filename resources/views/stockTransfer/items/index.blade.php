@@ -42,7 +42,7 @@
                         <th>
                             Transfer Qty
                         </th>
-                        @if($status_id > 2)
+                        @if(true)
                             <th>
                                 Qty Sent
                             </th>
@@ -62,12 +62,21 @@
                     <tbody>
 
                     @inject('stats_controller','App\Http\Controllers\Statistics\SalesAndTargetsController')
+                    @inject('stockTransferController','App\Http\Controllers\StockTransfer\StockTransferController')
 
                     @foreach($stockTransfer->Items->sortBy(function ($part,$key){
                     return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
                 })  as $item)
 
-                        <tr id="{{$item->id}}">
+                        <tr id="{{$item->id}}"
+                            style="color:black;"
+                            class="
+                            @if(4 > $stockTransfer->Status->seq_id)
+                                {{$stockTransferController::getStockTransferItemDisplayLineColourClassSending($item)}}
+                            @else
+                                {{$stockTransferController::getStockTransferItemDisplayLineColourClassReceiving($item)}}
+                            @endif
+                            ">
                             <td>
                                 {{$item->Part->sku}}
                             </td>
@@ -110,26 +119,14 @@
                                 </td>
                             @endif
 
-                            @if($status_id > 3)
-                                <td>
-                                    @if($status_id < 4)
-                                        <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
-                                    @else
-                                        {{$item->qty_sent}}
-                                    @endif
-                                </td>
-                            @endif
+                            <td>
+                                <input type="number" step="1" min="0" class="form-control stoItemQtySentField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                            </td>
 
                             @if($status_id > 3)
-                                @if($status_id < 5)
-                                    <td>
-                                        <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQtyReceived" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
-                                    </td>
-                                @else
-                                    <td>
-                                        {{$item->qty_received}}
-                                    </td>
-                                @endif
+                                <td>
+                                    <input type="number" step="1" min="0" class="form-control stoItemQtyReceivedField" name="stoItemQtyReceived" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
+                                </td>
                             @endif
 
                             <td>
@@ -138,7 +135,6 @@
                                     @if($status_id < 3)
                                         <i class="fas fa-trash-alt stoItemInlineFunctionButton" id="stoItemDeleteBtn-{{$item->id}}" data-action="delete"></i>
                                     @endif
-
                                 @endif
                             </td>
                         </tr>

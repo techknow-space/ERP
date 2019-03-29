@@ -114,6 +114,65 @@ $(document).ready(function() {
         }
     });
 
+    $('.stockTransferDeleteButton').on('click',function (e) {
+        if(!confirm('Are you sure ?. This action cannot be reversed')){
+            e.preventDefault();
+        }
+    });
+
+    let stoVerifyBarcodeEntryForm = $('#stockTransferVerifyBarcodeEntryForm');
+
+    stoVerifyBarcodeEntryForm.on('submit',function (e) {
+
+        let barcode_box = $('#stockTransferVerifyBarcodeEntry');
+        barcode_box.attr("disabled", "disabled");
+
+        let sku = barcode_box.val();
+        let sto_id = $(this).data('stoid');
+        let direction = $(this).data('direction');
+        let input_class_to_update = '';
+        if('send' == direction){
+            input_class_to_update = 'stoItemQtySentField';
+        }
+        else{
+            input_class_to_update = 'stoItemQtyReceivedField';
+        }
+
+
+
+        $.ajax({
+            type: "PUT",
+            url: $(this).attr('action'),
+            data: {"sto_id":sto_id,"sku":sku},
+            success: function(data)
+            {
+                if(data.error){
+                    alert('There was an Error !!!')
+                }
+                else{
+                    let row = $('#'+data.item.id);
+
+                    row.find('.'+input_class_to_update).val(data.item.qty_sent);
+                    if(!row.hasClass(data.item.class)){
+
+                        row.removeClass (function (index, className) {
+                            return (className.match (/(^|\s)table-\S+/g) || []).join(' ');
+                        });
+
+                        row.addClass(data.item.class);
+                    }
+                }
+                barcode_box.removeAttr("disabled");
+                barcode_box.val('');
+                barcode_box.focus();
+            }
+        });
+
+
+
+        e.preventDefault();
+    });
+
 
 });
 

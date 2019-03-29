@@ -56,6 +56,27 @@
                             @csrf
 
                         </form>
+
+                        @includeWhen(
+                            (1 == $stockTransfer->Status->seq_id),
+                            'stockTransfer.verification.barcodeBox',
+                            [
+                                'barcodeBoxTitle'=>'For Sending',
+                                'barcodeBoxFormActionUrl'=>'/stocktransfer/item/send',
+                                'barcodeBoxDirection' => 'send'
+                            ]
+                         )
+
+                        @includeWhen(
+                            (4 == $stockTransfer->Status->seq_id),
+                            'stockTransfer.verification.barcodeBox',
+                            [
+                                'barcodeBoxTitle'=>'For Receiving',
+                                'barcodeBoxFormActionUrl'=>'/stocktransfer/item/receive',
+                                'barcodeBoxDirection' => 'receive'
+                            ]
+                        )
+
                         @include('stockTransfer.items.index')
                     </div>
 

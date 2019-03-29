@@ -77,6 +77,27 @@ class StockTransferController extends Controller
     }
 
     /**
+     * @param StockTransfer $stockTransfer
+     * @return RedirectResponse
+     */
+    public function delete(StockTransfer $stockTransfer): RedirectResponse
+    {
+        if(5 > $stockTransfer->Status->seq_id){
+            try{
+                $stockTransfer->delete();
+                session()->flash('success',['Deleted Successfully.']);
+            }catch (Exception $exception){
+                session()->flash('error',[$exception->getMessage()]);
+            }
+        }
+        else{
+            session()->flash('error',['Sorry Cannot Delete the Transfer after it has been Received and Verified at the other Location.']);
+        }
+
+        return redirect('/stocktransfer');
+    }
+
+    /**
      * @param Request $request
      * @return RedirectResponse
      */
@@ -323,6 +344,128 @@ class StockTransferController extends Controller
     }
 
     /**
+     * @param StockTransfer $stockTransfer
+     * @param Part $part
+     * @return StockTransferItem|null
+     */
+    public function getItemByPart(StockTransfer $stockTransfer, Part $part): ?StockTransferItem
+    {
+        try{
+            $item = StockTransferItem::where('stockTransfer_id',$stockTransfer->id)->where('part_id',$part->id)->firstOrFail();
+        }catch (Exception $exception){
+            $item = null;
+        }
+
+        return $item;
+    }
+
+    /**
+     * @param StockTransferItem $stockTransferItem
+     * @return bool
+     */
+    public function sendItem(StockTransferItem $stockTransferItem): bool
+    {
+
+        try{
+            $stockTransferItem->increment('qty_sent');
+            $result = true;
+        }catch (Exception $exception){
+            $result = false;
+        }
+
+        return $result;
+
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function requestAddItemToSentBySKU(Request $request): JsonResponse
+    {
+        $stockTransferItem = [];
+        $error = false;
+        $message = '';
+
+        $stockTransfer_id = $request->input('sto_id');
+        $sku = $request->input('sku');
+
+        try{
+            $stockTransfer = StockTransfer::findOrFail($stockTransfer_id);
+            $part = Part::where('sku',$sku)->firstOrFail();
+            $stockTransferItem = $this->getItemByPart($stockTransfer,$part);
+            $error = !$this->sendItem($stockTransferItem);
+            $stockTransferItem->refresh();
+            $stockTransferItem->class = self::getStockTransferItemDisplayLineColourClassSending($stockTransferItem);
+            $message = 'Item Marked as sent.';
+
+
+        }catch (Exception $exception){
+            $error = true;
+            $message = $exception->getMessage();
+
+        }
+
+        return response()->json([
+            'error' => $error,
+            'message' => $message,
+            'item' => $stockTransferItem
+        ]);
+    }
+
+    /**
+     * @param StockTransferItem $stockTransferItem
+     * @return bool
+     */
+    public function receiveItem(StockTransferItem $stockTransferItem): bool
+    {
+
+        try{
+            $stockTransferItem->increment('qty_received');
+            $result = true;
+        }catch (Exception $exception){
+            $result = false;
+        }
+
+        return $result;
+
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function requestAddItemToReceivedBySKU(Request $request): JsonResponse
+    {
+        $stockTransferItem = [];
+        $error = false;
+        $message = '';
+
+        $stockTransfer_id = '';
+        $sku = '';
+
+        try{
+            $stockTransfer = StockTransfer::findOrFail($stockTransfer_id);
+            $part = Part::where('sku',$sku)->firstOrFail();
+            $stockTransferItem = $this->getItemByPart($stockTransfer,$part);
+            $error = !$this->receiveItem($stockTransferItem);
+            $stockTransferItem->refresh();
+            $stockTransferItem->class = self::getStockTransferItemDisplayLineColourClassSending($stockTransferItem);
+            $message = 'Item Marked as received.';
+        }catch (Exception $exception){
+            $error = true;
+            $message = 'Item not Marked as received.';
+
+        }
+
+        return response()->json([
+            'error' => $error,
+            'message' => $message,
+            'item' => $stockTransferItem
+        ]);
+    }
+
+    /**
      * @param Request $request
      * @return JsonResponse
      */
@@ -505,23 +648,15 @@ class StockTransferController extends Controller
             try{
                 DB::beginTransaction();
 
-                foreach ($stockTransfer->Items as $item){
-
-                    $item->qty_sent = $item->qty;
-                    $item->save();
-
-                }
-
                 $stockTransfer->Status()->associate($stockTransferStatus);
                 $stockTransfer->save();
-
 
                 DB::commit();
 
                 session()->flash('success',['The Stock Transfer is Marked as Shipped.']);
             }catch (Exception $exception){
                 DB::rollBack();
-                session()->flash('error',['Sorry!!! There was an error. The Status is unchanged']);
+                session()->flash('error',[$exception->getMessage()]);
                 $error = true;
             }
         }
@@ -530,12 +665,10 @@ class StockTransferController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return RedirectResponse
      */
-    public function generateTransferOrder(Request $request): RedirectResponse
+    public function generateTransferOrder(): RedirectResponse
     {
-        Log::error($request);
         $partToTransfer = $this->getListOfPartsToTransfer();
 
         $this->createAutoTransferOrders($partToTransfer);
@@ -622,5 +755,45 @@ class StockTransferController extends Controller
 
         return $transfer;
 
+    }
+
+    /**
+     * @param StockTransferItem $stockTransferItem
+     * @return string
+     */
+    public static function getStockTransferItemDisplayLineColourClassSending(StockTransferItem $stockTransferItem): string
+    {
+
+        if($stockTransferItem->qty > $stockTransferItem->qty_sent){
+            $class = 'table-danger';
+        }
+        elseif($stockTransferItem->qty < $stockTransferItem->qty_sent){
+            $class = 'table-warning';
+        }
+        else{
+            $class = 'table-success';
+        }
+
+        return $class;
+    }
+
+    /**
+     * @param StockTransferItem $stockTransferItem
+     * @return string
+     */
+    public static function getStockTransferItemDisplayLineColourClassReceiving(StockTransferItem $stockTransferItem): string
+    {
+
+        if($stockTransferItem->qty_received > $stockTransferItem->qty_sent){
+            $class = 'table-warning';
+        }
+        elseif($stockTransferItem->qty_received < $stockTransferItem->qty_sent){
+            $class = 'table-danger';
+        }
+        else{
+            $class = 'table-success';
+        }
+
+        return $class;
     }
 }

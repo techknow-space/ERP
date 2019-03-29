@@ -16,5 +16,9 @@ class StockTransfer extends Base\StockTransfer
             $model->id = Uuid::uuid4()->toString();
             $model->number = HelperController::createSerialNumber('StockTransfer');
         });
+
+        static::deleting(function(StockTransfer $stockTransfer) {
+            $stockTransfer->Items()->delete();
+        });
     }
 }
