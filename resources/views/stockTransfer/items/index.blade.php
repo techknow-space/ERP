@@ -76,9 +76,7 @@
                         }
                     @endphp
 
-                    @foreach($stockTransfer->Items->sortBy(function ($part,$key){
-                    return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
-                })  as $item)
+                    @foreach($items as $item)
 
 
 
