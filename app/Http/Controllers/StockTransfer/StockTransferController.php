@@ -13,6 +13,7 @@ use App\Models\StockTransferItem;
 use App\Models\StockTransferStatus;
 use App\Models\WODevicePart;
 use Carbon\Carbon;
+use http\Encoding\Stream;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
@@ -800,5 +801,66 @@ class StockTransferController extends Controller
         }
 
         return $class;
+    }
+
+    public function exportCSV(StockTransfer $stockTransfer)
+    {
+        //TODO: Remove this shit.
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+
+
+        $items = $stockTransfer->Items->sortBy(function ($part,$key){
+            return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
+        });
+
+        $csvListHeaders = [
+            '#',
+            'SKU',
+            'Device',
+            'Part',
+            'Qty'
+        ];
+
+        $csvPOHeader = [
+            'ST#: '.$stockTransfer->number,
+            'From: '.$stockTransfer->fromLocation->location_code,
+            'To: '.$stockTransfer->toLocation->location_code,
+            'Total SKUs: '.$stockTransfer->Items->count(),
+            'Total Qty: '.$stockTransfer->Items->sum('qty')
+        ];
+
+        $PO_ARRAY = [$csvPOHeader,$csvListHeaders];
+
+        $i = 1;
+        foreach ($items as $item){
+            $PO_ARRAY[] = [
+                $i,
+                $item->Part->sku,
+                $item->Part->devices->brand->name.' '.$item->Part->devices->model_name,
+                $item->Part->part_name,
+                $item->qty
+            ];
+            $i++;
+        }
+
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename='.$stockTransfer->number.'.csv',
+            'Expires'             => '0',
+            'Pragma'              => 'public'
+        ];
+
+        $callback = function() use ($PO_ARRAY)
+        {
+            $FH = fopen('php://output', 'w');
+            foreach ($PO_ARRAY as $row) {
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+
+        return response()->stream($callback,200,$headers);
     }
 }

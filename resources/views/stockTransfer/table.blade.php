@@ -78,6 +78,7 @@
                                 Delete
                             </a>
                         @endif
+                        <a class="btn btn-info" href="/stocktransfer/exportCSV/{{$stockTransfer->id}}">CSV</a>
                     </div>
                 </td>
             </tr>
