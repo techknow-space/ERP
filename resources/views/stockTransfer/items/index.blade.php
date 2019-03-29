@@ -78,8 +78,6 @@
 
                     @foreach($items as $item)
 
-
-
                         <tr id="{{$item->id}}"
                             style="color:black;"
                             class="

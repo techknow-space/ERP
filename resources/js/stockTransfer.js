@@ -153,6 +153,7 @@ $(document).ready(function() {
                     let row = $('#'+data.item.id);
 
                     row.find('.'+input_class_to_update).val(data.item.qty_sent);
+
                     if(!row.hasClass(data.item.class)){
 
                         row.removeClass (function (index, className) {
