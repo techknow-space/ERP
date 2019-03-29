@@ -64,9 +64,23 @@
                     @inject('stats_controller','App\Http\Controllers\Statistics\SalesAndTargetsController')
                     @inject('stockTransferController','App\Http\Controllers\StockTransfer\StockTransferController')
 
+                    @php
+                        $items = $stockTransfer->Items->sortBy(function ($part,$key){
+                                                                return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
+                                                            });
+
+                        if(4 == $stockTransfer->Status->seq_id){
+                            $items = $items->filter(function($value,$key){
+                                return $value['qty_sent'] > 0;
+                            });
+                        }
+                    @endphp
+
                     @foreach($stockTransfer->Items->sortBy(function ($part,$key){
                     return strtolower($part['Part']['devices']['brand']['name'].' '.$part['Part']['devices']['model_name'].' '.$part['Part']['part_name']);
                 })  as $item)
+
+
 
                         <tr id="{{$item->id}}"
                             style="color:black;"
