@@ -78,7 +78,7 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
         Route::get('view/{id}','PurchaseOrder\PurchaseOrderController@view');
         Route::get('edit/{purchaseOrder}','PurchaseOrder\PurchaseOrderController@edit');
         Route::put('edit/{purchaseOrder}','PurchaseOrder\PurchaseOrderController@update');
-        Route::get('delete/{id}','PurchaseOrder\PurchaseOrderController@delete');
+        Route::get('delete/{purchaseOrder}','PurchaseOrder\PurchaseOrderController@delete');
         Route::get('verify/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@verify');
         Route::post('receiveItem/{sku}/{purchaseOrderID}','PurchaseOrder\PurchaseOrderActionsController@itemReceived');
         Route::get('finalize/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@finalizeShipment');
@@ -184,11 +184,14 @@ Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function ()
     Route::post('create','StockTransfer\StockTransferController@requestInsert');
     Route::get('edit/{stockTransfer}','StockTransfer\StockTransferController@edit');
     Route::put('update/{stockTransfer}','StockTransfer\StockTransferController@update');
+    Route::get('delete/{stockTransfer}','StockTransfer\StockTransferController@delete');
 
     Route::prefix('item')->group(function(){
         Route::post('add','StockTransfer\StockTransferController@requestAddItem');
         Route::delete('delete/{stockTransferItem}','StockTransfer\StockTransferController@requestDeleteItem');
         Route::put('update/{stockTransferItem}','StockTransfer\StockTransferController@requestUpdateItem');
+        Route::put('send','StockTransfer\StockTransferController@requestAddItemToSentBySKU');
+        Route::put('receive','StockTransfer\StockTransferController@requestAddItemToReceivedBySKU');
     });
 
     Route::get('generate','StockTransfer\StockTransferController@generateTransferOrder');
