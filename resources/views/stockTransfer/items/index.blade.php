@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="card-footer">
-            @if($status_id < 3)
+            @if($status_id < 2)
             <div id="stItemsTablePartSearchAdd">
                 <form class="form-inline row" id="stItemsTablePartSearchAddForm" action="/stocktransfer/item/add">
 
