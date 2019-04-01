@@ -22,6 +22,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Exception;
 use Log;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class StockTransferController extends Controller
 {
@@ -578,9 +579,11 @@ class StockTransferController extends Controller
 
             foreach ($stockTransfer->Items as $item){
 
-                $partStockFrom = $item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first();
-                $partStockFrom->stock_qty = $partStockFrom->stock_qty - $item->qty;
-                $partStockFrom->save();
+                if(!$stockTransfer->is_po){
+                    $partStockFrom = $item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first();
+                    $partStockFrom->stock_qty = $partStockFrom->stock_qty - $item->qty;
+                    $partStockFrom->save();
+                }
 
                 $partStockTo = $item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first();
                 $partStockTo->stock_qty = $partStockTo->stock_qty + $item->qty;
@@ -802,7 +805,11 @@ class StockTransferController extends Controller
         return $class;
     }
 
-    public function exportCSV(StockTransfer $stockTransfer)
+    /**
+     * @param StockTransfer $stockTransfer
+     * @return StreamedResponse
+     */
+    public function exportCSV(StockTransfer $stockTransfer): StreamedResponse
     {
         //TODO: Remove this shit.
         set_time_limit(0);
