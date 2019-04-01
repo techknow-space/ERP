@@ -88,6 +88,9 @@ Route::group([ 'prefix' => 'order', 'middleware' => 'auth' ],function (){
 
         Route::prefix('mark')->group(function (){
             Route::get('verified/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@markVerified');
+            Route::get('distributed/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@generateStockTransfer');
+            Route::get('completed/{purchaseOrder}','PurchaseOrder\PurchaseOrderActionsController@markCompleted');
+
         });
 
         Route::get('generate','PurchaseOrder\AutoPurchaseOrderController@initiatePurchaseOrder');

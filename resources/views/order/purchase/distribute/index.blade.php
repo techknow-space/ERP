@@ -22,7 +22,7 @@
                         @include('order.purchase.distribute.item.index')
                     </div>
                     <div class="card-footer text-center">
-                        <a class="btn btn-danger">Create Stock Transfer List</a>
+                        <a href="/order/purchase/mark/distributed/{{$purchaseOrder->id}}" class="btn btn-danger">Mark as Distributed</a>
                     </div>
                 </div>
             </div>

@@ -12,12 +12,17 @@ use App\Models\PurchaseOrderDiffItems;
 use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderItemsDistribution;
 use App\Models\PurchaseOrderStatus;
+use App\Models\StockTransfer;
+use App\Models\StockTransferItem;
+use App\Models\StockTransferStatus;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseOrderActionsController extends PurchaseOrderController
 {
@@ -269,5 +274,102 @@ class PurchaseOrderActionsController extends PurchaseOrderController
         }
 
         return response()->json($response);
+    }
+
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function generateStockTransfer(PurchaseOrder $purchaseOrder): RedirectResponse
+    {
+        try{
+
+            DB::beginTransaction();
+
+            $stockTransferStatus = StockTransferStatus::where('seq_id',1)->firstOrFail();
+
+            $status = PurchaseOrderStatus::where('seq_id',11)->firstOrFail();
+            $orderLocation = $purchaseOrder->Location;
+            $itemLocation = Location::where('seq_id',2)->firstOrFail();
+            $stockTransfer = new StockTransfer();
+            $stockTransfer->fromLocation()->associate($orderLocation);
+            $stockTransfer->toLocation()->associate($itemLocation);
+            $stockTransfer->is_po = true;
+            $stockTransfer->description = 'From PO: '.$purchaseOrder->number;
+            $stockTransfer->Status()->associate($stockTransferStatus);
+
+            $stockTransfer->save();
+
+            foreach ($purchaseOrder->PurchaseOrderDistributionItems as $item){
+
+                if($item->Location->id !== $orderLocation->id ){
+
+                    if(0 < $item->qty_to_receive){
+                        $stockTransferItem = new StockTransferItem();
+                        $stockTransferItem->StockTransfer()->associate($stockTransfer);
+                        $stockTransferItem->Part()->associate($item->Part);
+                        $stockTransferItem->qty = $item->qty_to_receive;
+                        $stockTransferItem->save();
+                    }
+
+                }
+            }
+
+            $purchaseOrder->PurchaseOrderStatus()->associate($status);
+            $purchaseOrder->save();
+
+            DB::commit();
+            $message = 'The Transfer List is Successfully Created. <a href="/stocktransfer/edit/'.$stockTransfer->id.'">Click Here</a> to See it. <br>Stock in hand for the current Location will be updated when the Mark as Complete is Clicked.';
+            session()->flash(
+                'success',
+                [$message]);
+
+        }catch (Exception $exception){
+
+            session()->flash('error',['Sorry!!! there was an error.', $exception->getMessage()]);
+            DB::rollBack();
+
+        }
+
+        return redirect('/order/purchase');
+
+    }
+
+    /**
+     * @param PurchaseOrder $purchaseOrder
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function markCompleted(PurchaseOrder $purchaseOrder): RedirectResponse
+    {
+        try{
+            DB::beginTransaction();
+
+            $status = PurchaseOrderStatus::where('seq_id',12)->firstOrFail();
+            $orderLocation = $purchaseOrder->Location;
+
+            foreach ($purchaseOrder->PurchaseOrderDistributionItems as $item){
+
+                if($item->Location->id == $orderLocation->id ){
+                    $partStock = PartStock::where('part_id',$item->part_id)->where('location_id',$orderLocation->id)->firstOrFail();
+                    $partStock->stock_qty += $item->qty_to_receive;
+                    $partStock->save();
+                }
+
+            }
+
+            $purchaseOrder->PurchaseOrderStatus()->associate($status);
+            $purchaseOrder->save();
+
+            session()->flash('success',['The PO has be completed now and Stock have been updated. Items going to other location is in the StockTransfer List.']);
+            DB::commit();
+        }catch (Exception $exception){
+
+            session()->flash('error',['<b>Sorry!!! there was an error.</b>', $exception->getMessage()]);
+            DB::rollBack();
+        }
+
+        return redirect('/order/purchase');
     }
 }

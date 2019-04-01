@@ -77,6 +77,9 @@
                                                 @if(10 == $purchase_order->PurchaseOrderStatus->seq_id)
                                                     <a href="/order/purchase/distribute/{{$purchase_order->id}}" class="btn btn-secondary">Stock Distribution</a>
                                                 @endif
+                                                @if(11 == $purchase_order->PurchaseOrderStatus->seq_id)
+                                                    <a href="/order/purchase/mark/completed/{{$purchase_order->id}}" class="btn btn-secondary">Mark Completed</a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
