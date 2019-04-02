@@ -19,7 +19,7 @@ use App\Http\Controllers\Statistics\SalesAndTargetsController;
 
 /* Debugging Routes */
 
-app('debugbar')->disable();
+//app('debugbar')->disable();
 
 Route::get('replenish','PurchaseOrder\AutoPurchaseOrderController@partsToReplenish');
 

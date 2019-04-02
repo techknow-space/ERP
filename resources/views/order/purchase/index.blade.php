@@ -26,7 +26,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @if (0 < $purchase_orders->count())
+                            @if (0 < $purchase_orders->count()->id)
                                 @foreach ($purchase_orders as $purchase_order)
                                     <tr data-poid="{{$purchase_order->id}}">
                                         <td>
