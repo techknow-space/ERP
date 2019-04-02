@@ -73,7 +73,7 @@
                     <td class="poItemsVerifyTableItemRowQtyDiff">
                         {{$po_item->qty_received - $po_item->qty}}
                     </td>
-                    {{--
+
                     @foreach($locations as $location)
                         <td class="poItemsVerifyTableItemRowtoReceive-{{$location->location_code}}">
                                {{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_to_receive}}
@@ -82,7 +82,7 @@
                             {{$po_item->PurchaseOrderDistributionItems->where('location_id',$location->id)->first()->qty_scanned}}
                         </td>
                     @endforeach
-                    --}}
+
                 </tr>
 
             @endforeach
