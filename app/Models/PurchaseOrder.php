@@ -102,7 +102,7 @@ class PurchaseOrder extends Base\PurchaseOrder
      */
     public function hasAttribute(string $attr): bool
     {
-        return array_key_exists($attr, $this->attributes);
+        return array_key_exists($attr, $this->attributesToArray());
     }
 
 

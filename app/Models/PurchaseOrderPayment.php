@@ -19,7 +19,7 @@ class PurchaseOrderPayment extends Base\PurchaseOrderPayment
      */
     public function hasAttribute(string $attr): bool
     {
-        return array_key_exists($attr, $this->attributes);
+        return array_key_exists($attr, $this->attributesToArray());
     }
 }
 
