@@ -70081,12 +70081,12 @@ $(document).ready(function () {
             var location_code = data.distribution.location_code;
 
             if ('TO' === location_code) {
-              location_code = 'T.O';
+              location_code = 'T O';
             }
 
             var message_body = data.item.name + ' is going to :' + location_code;
-            var message_title = 'For Location: ' + data.distribution.location_code;
-            var speechObject = new SpeechSynthesisUtterance(message_title + '  ' + message_body);
+            var message_title = data.distribution.location_code;
+            var speechObject = new SpeechSynthesisUtterance(message_title);
             var voices = window.speechSynthesis.getVoices();
             console.log(voices);
             /*
