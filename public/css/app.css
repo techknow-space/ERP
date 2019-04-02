@@ -16197,8 +16197,16 @@ readers do not read off random characters that represent icons */
   color: #000000;
 }
 
+.toast {
+  font-size: 1.1rem;
+}
+
 .toast-success {
   background-color: darkgreen !important;
+}
+
+#toast-container > div {
+  width: 700px;
 }
 
 .dropdown-menu {
@@ -16214,5 +16222,26 @@ readers do not read off random characters that represent icons */
   top: 0;
   left: 100%;
   margin-top: -1px;
+}
+
+@media print {
+  body,
+  html,
+  a,
+  button,
+  div,
+  tr,
+  th,
+  td {
+    border-color: #000 !important;
+    color: #000 !important;
+    font-weight: bold;
+  }
+}
+
+.table-fixed-head-thead {
+  border-bottom: 1px solid #dddddd;
+  background: #fafafa;
+  color: #222;
 }
 

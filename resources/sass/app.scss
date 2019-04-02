@@ -27,8 +27,14 @@
     color: #000000;
 }
 
+.toast{
+    font-size: 1.1rem;
+}
 .toast-success{
     background-color: darkgreen !important;
+}
+#toast-container>div{
+    width: 700px;
 }
 
 .dropdown-menu {

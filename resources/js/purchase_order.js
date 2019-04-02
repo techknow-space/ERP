@@ -1,7 +1,6 @@
 /*PO JS*/
 $(document).ready(function() {
 
-
     let poTableAcive = $('#purchaseOrderTableActive');
     poTableAcive.on('click','.purchaseOrderDeleteButton',function (e) {
         if(!confirm('Sure ?')){
@@ -160,10 +159,37 @@ $(document).ready(function() {
                     }
                     else{
                         row.find('.poItemsVerifyTableItemRowScanned-'+data.distribution.location_code).text(data.distribution.scanned);
-                        toastr.success(data.item.name+' is going to '+data.distribution.location_code, 'For Location: '+data.distribution.location_code,
+                        toastr.clear();
+                        let location_code  = data.distribution.location_code;
+                        if('TO' === location_code){
+                            location_code = 'T.O';
+                        }
+                        let message_body = data.item.name+' is going to :'+location_code;
+                        let message_title = 'For Location: '+data.distribution.location_code;
+
+
+                        let speechObject = new SpeechSynthesisUtterance(message_title + '  ' + message_body);
+
+                        let voices = window.speechSynthesis.getVoices();
+                        console.log(voices);
+                        /*
+                        let voices = window.speechSynthesis.getVoices();
+                        speechObject.voice = voices[2];
+                        speechObject.voiceURI = 'native';
+                        speechObject.volume = 1; // 0 to 1
+                        speechObject.rate = 1; // 0.1 to 10
+                        speechObject.pitch = 2; //0 to 2
+                        speechObject.lang = 'en-US';
+                        speechObject.message = message_title + '  ' + message_body;
+
+                         */
+
+                        window.speechSynthesis.speak(speechObject);
+
+                        toastr.success(message_body, message_title,
                                 {
-                                    timeOut: 1000,
-                                    progressBar: true,
+                                    timeOut: 0,
+                                    progressBar: false,
                                     positionClass: "toast-top-center",
                                     closeButton: true
                                 }

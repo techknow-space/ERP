@@ -69128,6 +69128,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -69174,6 +69176,99 @@ __webpack_require__(/*! tablesorter */ "./node_modules/tablesorter/dist/js/jquer
 //    el: '#app'
 //});
 
+
+(function ($) {
+  $.fn.tfh = function () {
+    var method = arguments.length === 2 ? arguments[0] : arguments.length === 1 && typeof arguments[0] === 'string' ? arguments[0] : undefined;
+    var options = $.extend({
+      trigger: 0,
+      top: 0
+    }, arguments.length === 2 ? arguments[1] : arguments.length === 1 && _typeof(arguments[0]) === 'object' ? arguments[0] : {});
+
+    this.width = function () {
+      return this.find('thead').attr('data-tmp-width', parseInt(this.find('thead').css('width'))).find('*').each(function () {
+        $(this).attr('data-tmp-width', parseInt($(this).css('width')));
+      }).end().end();
+    };
+
+    this.fix = function () {
+      return this.find('.table-fixed-head-thead').css({
+        'top': options.top + 'px',
+        'position': 'fixed'
+      }).end();
+    };
+
+    this.clone = function () {
+      return this.find('thead').clone(true).prependTo(this).addClass('table-fixed-head-thead').end().end().removeAttr('data-tmp-width').find('*').removeAttr('data-tmp-width').end().end();
+    };
+
+    this.build = function () {
+      return this.tfh('width').tfh('clone').find('[data-tmp-width]').each(function () {
+        $(this).css({
+          'width': $(this).data('tmp-width') + 'px',
+          'minWidth': $(this).data('tmp-width') + 'px',
+          'maxWidth': $(this).data('tmp-width') + 'px'
+        });
+      }).removeAttr('data-tmp-width').end().tfh('fix', options);
+    };
+
+    this.kill = function () {
+      this.find('.table-fixed-head-thead').remove();
+    };
+
+    this.show = function () {
+      return this.addClass('fixed').find('thead').css('visibility', 'visible').not('.table-fixed-head-thead').css('visibility', 'hidden').end().end();
+    };
+
+    this.hide = function () {
+      return this.removeClass('fixed').find('thead').css('visibility', 'hidden').not('.table-fixed-head-thead').css('visibility', 'visible').end().end();
+    };
+
+    if (method !== undefined) {
+      return this[method].call($(this));
+    } else {
+      var table = this.build.call($(this), options);
+      var tableWidth = table.css('width');
+      var tableScrollLeft = table.position().left;
+
+      if ($(document).scrollTop() > options.trigger) {
+        table.tfh('show');
+      } else {
+        table.tfh('hide');
+      }
+
+      var resizeTimer;
+      $(window).resize(function () {
+        window.clearInterval(resizeTimer);
+        resizeTimer = window.setInterval(function () {
+          window.clearInterval(resizeTimer);
+
+          if (tableWidth !== table.css('width')) {
+            tableWidth = table.css('width');
+            table.tfh('kill');
+            table.tfh(options);
+          }
+        }, 1000);
+      }).scroll(function () {
+        if ($(document).scrollTop() > options.trigger) {
+          table.tfh('show');
+          table.find('.table-fixed-head-thead').css('left', tableScrollLeft - $(document).scrollLeft() + 'px');
+        } else {
+          table.tfh('hide');
+        }
+      });
+    }
+  };
+
+  $(document).ready(function () {
+    $('table.table-fixed-head').each(function () {
+      $(this).tfh({
+        trigger: $(this).data('table-fixed-head-trigger') !== undefined ? $(this).data('table-fixed-head-trigger') : 0,
+        top: $(this).data('table-fixed-head-top') !== undefined ? $(this).data('table-fixed-head-top') : $(this).position().top
+      });
+    });
+  });
+})(jQuery);
 
 function speechRecognition(form, mic) {
   var recognition = new webkitSpeechRecognition();
@@ -69224,7 +69319,7 @@ $(document).ready(function () {
     }
   });
   /*
-   $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
+    $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
       var $el = $( this );
       var $parent = $( this ).offsetParent( ".dropdown-menu" );
       if ( !$( this ).next().hasClass( 'show' ) ) {
@@ -69232,16 +69327,16 @@ $(document).ready(function () {
       }
       var $subMenu = $( this ).next( ".dropdown-menu" );
       $subMenu.toggleClass( 'show' );
-       $( this ).parent( "li" ).toggleClass( 'show' );
-       $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
+        $( this ).parent( "li" ).toggleClass( 'show' );
+        $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
           $( '.dropdown-menu .show' ).removeClass( "show" );
       } );
-       if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
+        if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
           $el.next().css( { "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 } );
       }
-       return false;
+        return false;
   } );
-    */
+     */
 
   $('#brand').on('change', function () {
     var brandID = $(this).val();
@@ -69361,6 +69456,10 @@ $(document).ready(function () {
     }
 
     return false;
+  });
+  $('table').tfh({
+    trigger: 300,
+    top: 0
   });
 });
 
@@ -69978,9 +70077,33 @@ $(document).ready(function () {
             alert('Issue with Stock Allocation!!!');
           } else {
             row.find('.poItemsVerifyTableItemRowScanned-' + data.distribution.location_code).text(data.distribution.scanned);
-            toastr.success(data.item.name + ' is going to ' + data.distribution.location_code, 'For Location: ' + data.distribution.location_code, {
-              timeOut: 1000,
-              progressBar: true,
+            toastr.clear();
+            var location_code = data.distribution.location_code;
+
+            if ('TO' === location_code) {
+              location_code = 'T.O';
+            }
+
+            var message_body = data.item.name + ' is going to :' + location_code;
+            var message_title = 'For Location: ' + data.distribution.location_code;
+            var speechObject = new SpeechSynthesisUtterance(message_title + '  ' + message_body);
+            var voices = window.speechSynthesis.getVoices();
+            console.log(voices);
+            /*
+            let voices = window.speechSynthesis.getVoices();
+            speechObject.voice = voices[2];
+            speechObject.voiceURI = 'native';
+            speechObject.volume = 1; // 0 to 1
+            speechObject.rate = 1; // 0.1 to 10
+            speechObject.pitch = 2; //0 to 2
+            speechObject.lang = 'en-US';
+            speechObject.message = message_title + '  ' + message_body;
+              */
+
+            window.speechSynthesis.speak(speechObject);
+            toastr.success(message_body, message_title, {
+              timeOut: 0,
+              progressBar: false,
               positionClass: "toast-top-center",
               closeButton: true
             });
