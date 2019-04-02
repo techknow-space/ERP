@@ -106,8 +106,11 @@ class HelperController extends Controller
                     $devices[$device_type->id]['brands'][$device->brand->id]['name'] = $device->brand->name;
                     $devices[$device_type->id]['brands'][$device->brand->id]['devices'][] = $device;
                 }
-
             }
+
+            $devices[$device_type->id]['brands'] = collect($devices[$device_type->id]['brands'])->sortBy(function ($brand, $key) {
+                return strtolower($brand['name']);
+            })->toArray();
         }
 
         return $devices;
