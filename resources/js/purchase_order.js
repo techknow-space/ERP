@@ -162,13 +162,14 @@ $(document).ready(function() {
                         toastr.clear();
                         let location_code  = data.distribution.location_code;
                         if('TO' === location_code){
-                            location_code = 'T.O';
+                            location_code = 'T O';
                         }
                         let message_body = data.item.name+' is going to :'+location_code;
                         let message_title = 'For Location: '+data.distribution.location_code;
 
 
-                        let speechObject = new SpeechSynthesisUtterance(message_title + '  ' + message_body);
+
+                        let speechObject = new SpeechSynthesisUtterance(message_title );
 
                         let voices = window.speechSynthesis.getVoices();
                         console.log(voices);
