@@ -165,7 +165,7 @@ $(document).ready(function() {
                             location_code = 'T O';
                         }
                         let message_body = data.item.name+' is going to :'+location_code;
-                        let message_title = 'For Location: '+data.distribution.location_code;
+                        let message_title = data.distribution.location_code;
 
 
 
