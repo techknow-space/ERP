@@ -96,6 +96,15 @@ class PurchaseOrder extends Base\PurchaseOrder
         return $query->whereIn('purchaseOrderStatus_id',$status_id_list);
     }
 
+    /**
+     * @param string $attr
+     * @return bool
+     */
+    public function hasAttribute(string $attr): bool
+    {
+        return array_key_exists($attr, $this->attributes);
+    }
+
 
 
 

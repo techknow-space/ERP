@@ -12,4 +12,13 @@ class PurchaseOrderItems extends Base\PurchaseOrderItems
             $model->id = Uuid::uuid4()->toString();
         });
     }
+
+    /**
+     * @param string $attr
+     * @return bool
+     */
+    public function hasAttribute(string $attr): bool
+    {
+        return array_key_exists($attr, $this->attributes);
+    }
 }
