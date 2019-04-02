@@ -46,3 +46,16 @@
     left: 100%;
     margin-top: -1px;
 }
+
+@media print {
+    body, html, a, button, div, tr, th, td { border-color: #000 !important; color: #000 !important; font-weight: bold; }
+}
+
+.table-fixed-head-thead {
+  border-bottom: 1px solid #dddddd;
+  background: #fafafa;
+  color: #222;
+  // left: 20px !important;
+  // margin: 0 auto !important;
+  // left: auto !important;
+}
