@@ -125,4 +125,9 @@ class Part extends Base\Part implements Searchable
             ->sum('sold_all_time');
     }
 
+    public function getLastreceivedAttribute()
+    {
+        return '';
+    }
+
 }
