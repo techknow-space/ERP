@@ -167,4 +167,16 @@ class SalesAndTargetsController extends Controller
         return $onOrder;
 
     }
+
+    /**
+     * @param Part $part
+     * @return int
+     */
+    public static function getETAForPartOnOrder(Part $part): int
+    {
+        $eta = 0;
+
+        return $eta;
+
+    }
 }
