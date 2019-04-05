@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Statistics;
 use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Part;
+use App\Models\PurchaseOrder;
+use App\Models\PurchaseOrderStatus;
 use App\Models\WODevicePart;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -139,5 +141,30 @@ class SalesAndTargetsController extends Controller
         }
 
         return $share;
+    }
+
+    /**
+     * @param Part $part
+     * @return int
+     */
+    public static function getTotalQuantityOnOrder(Part $part): int
+    {
+        $onOrder = 0;
+
+        $completed_status = PurchaseOrderStatus::where('seq_id','=','12')->firstOrFail();
+        $purchaseOrders = PurchaseOrder::where('purchaseOrderStatus_id','!=',$completed_status->id)->get();
+
+        foreach ($purchaseOrders as $purchaseOrder){
+            $items = $purchaseOrder->PurchaseOrderItems->filter(function ($item, $key) use ($part){
+                return $item->Part->id == $part->id;
+            });
+
+            foreach ($items as $item){
+                $onOrder += $item->qty;
+            }
+        }
+
+        return $onOrder;
+
     }
 }
