@@ -4,8 +4,11 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\PartPrice;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 class AjaxRequestController extends Controller
 {
@@ -31,7 +34,17 @@ class AjaxRequestController extends Controller
             'error'=>true,
             'message'=> 'Unknown Error!!! MisMatched Entity Types'
         ];
+
         switch ($entity){
+            case 'Part':
+                $response = $this->updatePartDetails($entity_id,$attributes);
+                break;
+            case 'PartPrice':
+                $response = $this->updatePartPrice($entity_id,$attributes);
+                break;
+            case 'PartStock':
+                $response = $this->updatePartStock($entity_id,$attributes);
+                break;
             case 'PurchaseOrder':
                 $response = $this->updatePurchaseOrder($entity_id,$attributes);
                 break;
@@ -48,7 +61,67 @@ class AjaxRequestController extends Controller
                 $response = $this->updatePurchaseOrderPayment($entity_id,$attributes);
                 break;
             case 'PurchaseOrderDistributionItem':
-                $response = '';
+                $response = $this->updatePurchaseOrderDistributionItem($entity_id,$attributes);
+                break;
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param string $id
+     * @param array $attributes
+     * @return array
+     */
+    public function updatePartDetails(string $id, array $attributes): array
+    {
+
+    }
+
+    /**
+     * @param string $id
+     * @param array $attributes
+     * @return array
+     */
+    public function updatePartStock(string $id, array $attributes): array
+    {
+
+    }
+
+    /**
+     * @param string $id
+     * @param array $attributes
+     * @return array
+     */
+    public function updatePartPrice(string $id, array $attributes): array
+    {
+        $response = [
+            'error'=>true,
+            'message'=> 'Sorry there was an unknown error updating this record.'
+        ];
+
+        try{
+            DB::beginTransaction();
+
+            $partPrice = PartPrice::where('part_id',$id)->firstOrFail();
+
+            foreach ($attributes as $key=>$value){
+                $partPrice->$key = $value;
+                $partPrice->save();
+            }
+            
+            DB::commit();
+            $response = [
+                'error'=>false,
+                'message'=> 'This record has been updated.'
+            ];
+
+        }catch (Exception $exception){
+
+            DB::rollBack();
+            $response['error'] = true;
+            $response['message'] = $exception->getMessage();
+
         }
 
         return $response;
