@@ -20,6 +20,7 @@
                             </thead>
                             <tbody>
                                 @foreach($results as $result)
+
                                     <tr>
                                         @if($result->is_child)
                                             <td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,8 @@ class SearchController extends Controller
         if ( is_numeric($searchTerm) ) {
             return redirect('itemlookup/sku/'.$searchTerm);
         } else {
-            $parts = \App\Models\Part::search($searchTerm)->paginate(10);
+
+            $parts = \App\Models\Part::search($searchTerm)->paginate(5);
             return view('search.results')->with('results', $parts);
         }
     }
