@@ -165,7 +165,6 @@ class SalesAndTargetsController extends Controller
         }
 
         return $onOrder;
-
     }
 
     /**
@@ -177,6 +176,5 @@ class SalesAndTargetsController extends Controller
         $eta = 0;
 
         return $eta;
-
     }
 }
