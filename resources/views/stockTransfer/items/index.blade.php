@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="row align-content-center">
-                <table id="stoItemsTable" class="table" data-stid="{{$stockTransfer->id}}">
+                <table id="stoItemsTable" class="table editableDataItems" data-stid="{{$stockTransfer->id}}">
                     <thead>
                     <tr>
                         <th>
@@ -80,6 +80,7 @@
 
                         <tr id="{{$item->id}}"
                             style="color:black;"
+                            data-entity="StockTransferItem"
                             class="
                             @if(4 > $stockTransfer->Status->seq_id)
                                 {{$stockTransferController::getStockTransferItemDisplayLineColourClassSending($item)}}
@@ -119,18 +120,12 @@
                                 {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
                             </td>
 
-                            @if($status_id < 2)
-                                <td>
-                                    <input type="number" step="1" min="0" class="form-control stoItemEditableField" name="stoItemQty" id="stoItemQty-{{$item->id}}" data-value="{{$item->qty}}" value="{{$item->qty}}" readonly='readonly'>
-                                </td>
-                            @else
-                                <td>
-                                    {{$item->qty}}
-                                </td>
-                            @endif
+                            <td>
+                                {{$item->qty}}
+                            </td>
 
                             <td>
-                                <input type="number" step="1" min="0" class="form-control stoItemQtySentField" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                <input type="number" step="1" min="0" class="form-control ajaxOperationEditBox stoItemQtySentField" data-entity="StockTransferItem" data-entity_id="{{$item->id}}" data-attributename="qty_sent" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
                             </td>
 
                             @if($status_id > 3)
