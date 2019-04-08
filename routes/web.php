@@ -1,11 +1,9 @@
 <?php
 use App\Models\Part as Part;
-use App\Models\PurchaseOrder;
-use Illuminate\Support\Facades;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Http\Controllers\HelperController;
-use App\Http\Controllers\Statistics\SalesAndTargetsController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +36,13 @@ Route::get('/setLocation/{location}', function(Location $location){
     $to = session('_previous')['url'];
     return redirect($to);
 });
+
+Route::group(['prefix'=>'ajax','middleware'=>'auth'],function (){
+
+    Route::put('/operation','AjaxRequestController@processRequest');
+
+});
+
 
 Route::group([ 'prefix' => 'lookup', 'middleware' => 'auth' ], function(){
     Route::get('/','LookupController@lookup_master');
