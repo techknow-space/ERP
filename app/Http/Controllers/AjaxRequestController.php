@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\PartPrice;
+use App\Models\StockTransferItem;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Exception;
@@ -182,7 +183,33 @@ class AjaxRequestController extends Controller
      */
     public function updateStockTransferItem(string $id, array $attributes): array
     {
-        $response = [];
+        $response = [
+            'error'=>true,
+            'message'=> 'Unknown Error!!!'
+        ];
+
+        try{
+            DB::beginTransaction();
+
+            $stockTransferItem = StockTransferItem::findOrFail($id);
+
+            foreach ($attributes as $key=>$value){
+                $stockTransferItem->$key = $value;
+            }
+
+            $stockTransferItem->save();
+
+            DB::commit();
+            $response['error'] = true;
+            $response['message'] = 'Updated Successfully';
+
+        }catch (Exception $exception){
+
+            DB::rollBack();
+
+            $response['error'] = true;
+            $response['message'] = $exception->getMessage();
+        }
 
         return $response;
     }

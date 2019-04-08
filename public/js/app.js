@@ -69307,6 +69307,79 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/ajaxUpdateOperations.js":
+/*!**********************************************!*\
+  !*** ./resources/js/ajaxUpdateOperations.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+$(document).ready(function () {
+  var editableTable = $('.editableDataItems');
+  var editableInputSelector = '.ajaxOperationEditBox';
+  editableTable.on('focus', editableInputSelector, function () {
+    $(this).prop("readonly", false);
+  });
+  editableTable.on('click', editableInputSelector, function () {
+    if (!$(this).is(":focus")) {
+      $(this).prop("readonly", false);
+    }
+  });
+  editableTable.on('blur', editableInputSelector, function () {
+    $(this).prop("readonly", true);
+  });
+  editableTable.on('change', editableInputSelector, function () {});
+  editableTable.on('keydown', editableInputSelector, function (e) {
+    if (13 === e.which) {
+      if ($(this).val() !== $(this).data('value')) {
+        triggerUpdate($(this));
+      }
+
+      $(this).blur();
+    }
+  });
+});
+
+function addRemoveBorder(payload) {
+  if (payload.val() !== payload.data('value')) {
+    payload.addClass('border');
+    payload.addClass('border-danger');
+  } else {
+    payload.removeClass('border');
+    payload.removeClass('border-danger');
+  }
+}
+
+function triggerUpdate(payload) {
+  var entity = payload.data('entity');
+  var entity_id = payload.data('entity_id');
+  var attribute_name = payload.data('attributename');
+  var value = payload.val();
+
+  var attributes = _defineProperty({}, attribute_name, value);
+
+  ajaxUpdateOperation(entity, entity_id, attributes);
+}
+
+function ajaxUpdateOperation(entity, entity_id, attributes) {
+  $.ajax({
+    type: "PUT",
+    url: '/ajax/operation',
+    data: {
+      "entity": entity,
+      "entity_id": entity_id,
+      "attributes": attributes
+    },
+    success: function success(response) {
+      console.log(response);
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -69339,6 +69412,8 @@ __webpack_require__(/*! ./purchaseOrderStockDistribution */ "./resources/js/purc
 __webpack_require__(/*! ./part_operation */ "./resources/js/part_operation.js");
 
 __webpack_require__(/*! ./stockTransfer */ "./resources/js/stockTransfer.js");
+
+__webpack_require__(/*! ./ajaxUpdateOperations */ "./resources/js/ajaxUpdateOperations.js");
 
 __webpack_require__(/*! tablesorter */ "./node_modules/tablesorter/dist/js/jquery.tablesorter.combined.js"); //window.Vue = require('vue');
 
@@ -69505,7 +69580,7 @@ $(document).ready(function () {
     }
   });
   /*
-    $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
+   $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
       var $el = $( this );
       var $parent = $( this ).offsetParent( ".dropdown-menu" );
       if ( !$( this ).next().hasClass( 'show' ) ) {
@@ -69513,16 +69588,16 @@ $(document).ready(function () {
       }
       var $subMenu = $( this ).next( ".dropdown-menu" );
       $subMenu.toggleClass( 'show' );
-        $( this ).parent( "li" ).toggleClass( 'show' );
-        $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
+       $( this ).parent( "li" ).toggleClass( 'show' );
+       $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
           $( '.dropdown-menu .show' ).removeClass( "show" );
       } );
-        if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
+       if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
           $el.next().css( { "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 } );
       }
-        return false;
+       return false;
   } );
-     */
+    */
 
   $('#brand').on('change', function () {
     var brandID = $(this).val();
@@ -70284,7 +70359,7 @@ $(document).ready(function () {
             speechObject.pitch = 2; //0 to 2
             speechObject.lang = 'en-US';
             speechObject.message = message_title + '  ' + message_body;
-               */
+              */
 
             window.speechSynthesis.speak(speechObject);
             toastr.success(message_body, message_title, {
