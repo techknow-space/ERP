@@ -18,6 +18,7 @@ require('./purchase_order');
 require('./purchaseOrderStockDistribution');
 require('./part_operation');
 require('./stockTransfer');
+require('./ajaxUpdateOperations');
 require('tablesorter');
 
 //window.Vue = require('vue');
