@@ -1,3 +1,4 @@
+/*AjaxOperationsJS*/
 $(document).ready(function() {
     let editableTable = $('.editableDataItems');
     let editableInputSelector = '.ajaxOperationEditBox';
