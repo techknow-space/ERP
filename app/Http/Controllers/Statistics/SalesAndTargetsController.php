@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Location;
 use App\Models\Part;
 use App\Models\PurchaseOrder;
+use App\Models\PurchaseOrderItems;
 use App\Models\PurchaseOrderStatus;
 use App\Models\WODevicePart;
 use Carbon\Carbon;
@@ -155,9 +156,8 @@ class SalesAndTargetsController extends Controller
         $purchaseOrders = PurchaseOrder::where('purchaseOrderStatus_id','!=',$completed_status->id)->get();
 
         foreach ($purchaseOrders as $purchaseOrder){
-            $items = $purchaseOrder->PurchaseOrderItems->filter(function ($item, $key) use ($part){
-                return $item->Part->id == $part->id;
-            });
+
+            $items = PurchaseOrderItems::where('purchaseOrder_id',$purchaseOrder->id)->where('part_id',$part->id)->get();
 
             foreach ($items as $item){
                 $onOrder += $item->qty;
