@@ -70083,8 +70083,8 @@ function increase_stock(part_id) {
       "wo": wo_number
     },
     success: function success(data) {
-      $('#return-part-from-repair-dialog').modal('hide'); //location.reload();
-
+      $('#return-part-from-repair-dialog').modal('hide');
+      location.reload();
       console.log(data);
     }
   });
@@ -70105,8 +70105,8 @@ function decrease_stock(part_id) {
       "wo": wo_number
     },
     success: function success(data) {
-      $('#use-part-in-repair-dialog').modal('hide'); //location.reload();
-
+      $('#use-part-in-repair-dialog').modal('hide');
+      location.reload();
       console.log(data);
     }
   });
