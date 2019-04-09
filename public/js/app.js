@@ -70624,8 +70624,8 @@ $(document).ready(function () {
           }
 
           $('html, body').animate({
-            scrollTop: row.offset().top
-          }, 500);
+            scrollTop: row.offset().top + 100
+          }, 10);
         }
 
         barcode_box.removeAttr("disabled");
