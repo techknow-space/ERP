@@ -12,21 +12,22 @@
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Part</th>
-                                <th scope="col">Selling Price</th>
+                                <th scope="col">Desc.</th>
+                                <th scope="col">Selling $</th>
                                 @foreach($part->stock as $stock)
                                     <th scope="col">{{$stock->location->location_code}}</th>
                                 @endforeach
                                 <th scope="col">Avg. Cost</th>
-                                <th scope="col">New Cost</th>
+                                <th scope="col">Cost</th>
                                 <th scope="col">On Order</th>
-                                <th scope="col">Order ETA</th>
-                                <th scope="col">First Received Date</th>
-                                <th scope="col">Last Received Date</th>
+                                <th scope="col">ETA</th>
+                                <th scope="col">First Received</th>
+                                <th scope="col">Last Received</th>
                                 @foreach(\App\Models\Location::all() as $location)
-                                    <th scope="col">Sold {{$location->location_code}} 3 Months</th>
+                                    <th scope="col">{{$location->location_code}} Sales 3M</th>
                                 @endforeach
                                 <th>SKU</th>
+                                <th>Sales History</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +47,7 @@
                                     <td>{{$statsController::totalSalesPastFotMonthsForLocations($part,$location)}}</td>
                                 @endforeach
                                 <td>{{ $part->sku }}</td>
+                                <td>Link</td>
                             </tr>
                         </tbody>
                     </table>
