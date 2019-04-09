@@ -69335,11 +69335,25 @@ $(document).ready(function () {
   editableTable.on('keydown', editableInputSelector, function (e) {
     if (13 === e.which) {
       if ($(this).val() !== $(this).data('value')) {
-        triggerUpdate($(this));
+        triggerColumnCellUpdate($(this));
       }
 
       $(this).blur();
     }
+  });
+  var singleValueForm = $('.ajaxUpdateForm');
+  singleValueForm.submit(function (event) {
+    event.preventDefault();
+    var attributes = {};
+    var entity = $(this).data('entity');
+    var entity_id = $(this).data('entity_id');
+    var attributes_list = $(this).find("input.ajaxFormUpdateInput");
+    attributes_list.each(function (index) {
+      var attribute_name = $(this).data('attributename');
+      var value = $(this).val();
+      attributes[attribute_name] = value;
+    });
+    ajaxUpdateOperation(entity, entity_id, attributes);
   });
 });
 
@@ -69353,7 +69367,7 @@ function addRemoveBorder(payload) {
   }
 }
 
-function triggerUpdate(payload) {
+function triggerColumnCellUpdate(payload) {
   var entity = payload.data('entity');
   var entity_id = payload.data('entity_id');
   var attribute_name = payload.data('attributename');
@@ -69374,7 +69388,24 @@ function ajaxUpdateOperation(entity, entity_id, attributes) {
       "attributes": attributes
     },
     success: function success(response) {
-      console.log(response);
+      if (!response.error) {
+        toastr.success('Success', response.message, {
+          timeOut: 2500,
+          progressBar: true,
+          positionClass: "toast-top-center",
+          closeButton: true
+        });
+      } else {
+        toastr.error('Error', response.message, {
+          timeOut: 2500,
+          progressBar: true,
+          positionClass: "toast-top-center",
+          closeButton: true
+        });
+      }
+
+      $('.modal').modal('hide');
+      location.reload();
     }
   });
 }
@@ -70052,8 +70083,8 @@ function increase_stock(part_id) {
       "wo": wo_number
     },
     success: function success(data) {
-      $('#return-part-from-repair-dialog').modal('hide');
-      location.reload();
+      $('#return-part-from-repair-dialog').modal('hide'); //location.reload();
+
       console.log(data);
     }
   });
@@ -70074,8 +70105,8 @@ function decrease_stock(part_id) {
       "wo": wo_number
     },
     success: function success(data) {
-      $('#use-part-in-repair-dialog').modal('hide');
-      location.reload();
+      $('#use-part-in-repair-dialog').modal('hide'); //location.reload();
+
       console.log(data);
     }
   });
@@ -70591,6 +70622,8 @@ $(document).ready(function () {
             });
             row.addClass(data.item["class"]);
           }
+
+          row.scroll();
         }
 
         barcode_box.removeAttr("disabled");

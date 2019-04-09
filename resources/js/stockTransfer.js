@@ -163,6 +163,9 @@ $(document).ready(function() {
 
                         row.addClass(data.item.class);
                     }
+
+                    row.scroll();
+
                 }
                 barcode_box.removeAttr("disabled");
                 barcode_box.val('');
