@@ -30,8 +30,8 @@ $(document).ready(function() {
         }
     });
 
-    let singleValueForm = $('.ajaxUpdateForm');
-    singleValueForm.submit(function (event) {
+    let form = $('.ajaxUpdateForm');
+    form.submit(function (event) {
         event.preventDefault();
         let attributes = {};
         let entity = $(this).data('entity');

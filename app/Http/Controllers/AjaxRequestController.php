@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Part;
 use App\Models\PartPrice;
 use App\Models\StockTransferItem;
 use Illuminate\Http\JsonResponse;
@@ -85,7 +86,36 @@ class AjaxRequestController extends Controller
      */
     public function updatePartDetails(string $id, array $attributes): array
     {
+        $response = [
+            'error'=>true,
+            'message'=> 'Sorry there was an unknown error updating this record.'
+        ];
 
+        try {
+            DB::beginTransaction();
+
+                $part = Part::findOrFail($id);
+
+                foreach ($attributes as $key=>$value){
+                    $part->$key = $value;
+                }
+
+                $part->save();
+
+            DB::commit();
+            $response = [
+                'error'=>false,
+                'message'=> 'This record has been updated.'
+            ];
+        }catch (Exception $exception){
+            DB::rollBack();
+
+            $response['error'] = true;
+            $response['message'] = $exception->getMessage();
+
+        }
+
+        return $response;
     }
 
     /**
@@ -117,8 +147,9 @@ class AjaxRequestController extends Controller
 
             foreach ($attributes as $key=>$value){
                 $partPrice->$key = $value;
-                $partPrice->save();
             }
+
+            $partPrice->save();
             
             DB::commit();
             $response = [

@@ -69341,8 +69341,8 @@ $(document).ready(function () {
       $(this).blur();
     }
   });
-  var singleValueForm = $('.ajaxUpdateForm');
-  singleValueForm.submit(function (event) {
+  var form = $('.ajaxUpdateForm');
+  form.submit(function (event) {
     event.preventDefault();
     var attributes = {};
     var entity = $(this).data('entity');
