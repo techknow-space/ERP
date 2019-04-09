@@ -24,8 +24,17 @@ class AjaxRequestController extends Controller
 
         $attributes = $request->input('attributes');
 
+        $response = $this->sendRequestToEntity($entity,$entity_id,$attributes);
+
+        if($response['error']){
+            session()->flash('error',[$response['message']]);
+        }
+        else{
+            session()->flash('success',[$response['message']]);
+        }
+
         return response()->json(
-            $this->sendRequestToEntity($entity,$entity_id,$attributes)
+            $response
         );
     }
 
