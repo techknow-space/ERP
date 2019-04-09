@@ -9,12 +9,12 @@
             </div>
             <div class="modal-body">
                 This action will reduce the Stock of the Part by 1. <br><br>
-                <form action="" class="form-inline">
+
                     <div class="form-group">
                         <label for="partOperationUseWONumber">Work Order:</label>
                         <input min="0" step="1" type="number" placeholder="WO#" id="partOperationUseWONumber" class="form-control">
                     </div>
-                </form>
+
 
             </div>
             <div class="modal-footer">
