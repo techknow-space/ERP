@@ -6,7 +6,7 @@
 
         </div>
         <div class="card-header">
-            <div class="text-center" style="font-size: large">
+            <div class="stockTransferItemsListFromTo">
                 Transfer from <b>{{$stockTransfer->fromLocation->location_code}}</b> to <b>{{$stockTransfer->toLocation->location_code}}</b>
             </div>
         </div>

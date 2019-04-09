@@ -16481,7 +16481,8 @@ readers do not read off random characters that represent icons */
   color: #222;
 }
 
-.stockTransferEditScreenSummary {
+.stockTransferEditScreenSummary,
+.stockTransferItemsListFromTo {
   font-size: large;
   color: red;
 }
