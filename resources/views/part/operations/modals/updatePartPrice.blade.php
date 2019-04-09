@@ -7,19 +7,26 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="" class="form-inline ajaxOperationUpdate" data-entity_id="{{$part->id}}" data-entity="PartPrice">
+            <form action="" class="form-inline ajaxUpdateForm" data-entity_id="{{$part->id}}" data-entity="PartPrice">
+                <div class="modal-body">
                     <div class="form-group">
-                        <label for="partOperationUseWONumber">Price: &nbsp;</label>
-                        <input min="1" step="0.1" type="number" placeholder="Price" id="partOperationUseWONumber" name="selling_price_b2c" class="form-control" data-entity_id="{{$part->id}}" >
+                        <div>
+                            <label for="selling_price_b2c">Price: &nbsp;</label>
+                            <input min="1" step="0.01" type="number" placeholder="Price" data-attributename="selling_price_b2c" data-value="{{$part->price->selling_price_b2c}}" name="selling_price_b2c" class="form-control" value="{{$part->price->selling_price_b2c}}">
+                        </div>
+                        <!--
+                        <div>
+                            <label for="selling_price_b2b">Selling Price: &nbsp;</label>
+                            <input min="1" step="0.01" type="number" placeholder="Price" data-attributename="selling_price_b2b" data-value="{{$part->price->selling_price_b2b}}" name="selling_price_b2b" class="form-control" value="{{$part->price->selling_price_b2b}}">
+                        </div>
+                        -->
                     </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
