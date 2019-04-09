@@ -447,8 +447,8 @@ class StockTransferController extends Controller
         $error = false;
         $message = '';
 
-        $stockTransfer_id = '';
-        $sku = '';
+        $stockTransfer_id = $request->input('sto_id');
+        $sku = $request->input('sku');
 
         try{
             $stockTransfer = StockTransfer::findOrFail($stockTransfer_id);
