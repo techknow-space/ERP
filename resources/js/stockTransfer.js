@@ -165,7 +165,7 @@ $(document).ready(function() {
                     }
 
                     $('html, body').animate({
-                        scrollTop: (row.offset().top + 100)
+                        scrollTop: (row.offset().top - 100)
                     },10);
 
                 }
