@@ -70623,7 +70623,9 @@ $(document).ready(function () {
             row.addClass(data.item["class"]);
           }
 
-          row.scroll();
+          $('html, body').animate({
+            scrollTop: row.offset().top
+          }, 500);
         }
 
         barcode_box.removeAttr("disabled");
