@@ -19,7 +19,7 @@ class SalesAndTargetsController extends Controller
     public static function getSalesTargets(): array
     {
         $for_months = 3;
-        $date = new Carbon('first day of March 2019');
+        $date = new Carbon('first day of April 2019');
 
         $all_parts = WODevicePart::where("created_at", ">", $date->subMonths(3))->get()->unique('part_id')->keyBy('part_id');
         $parts = [];
@@ -79,7 +79,7 @@ class SalesAndTargetsController extends Controller
         $total_sales = 0;
 
         //TODO: Change it to Carbon Now when Sales History is Upto Date
-        $date = new Carbon('first day of March 2019');
+        $date = new Carbon('first day of April 2019');
         $date = $date->subMonths($months);
 
         foreach ($part->WODeviceParts as $WODP){
@@ -108,7 +108,7 @@ class SalesAndTargetsController extends Controller
     public static function getPartsSoldPastMonths(int $months = 12): Collection
     {
         //TODO: Change it to Carbon Now when Sales History is Upto Date
-        $date = new Carbon('first day of March 2019');
+        $date = new Carbon('first day of April 2019');
 
         $date = $date->subMonths($months);
         $parts = Collect([]);
