@@ -3,7 +3,10 @@
     <div class="card">
         <div class="card-header">
             <b>Parts</b>
-            <div class="float-right">
+
+        </div>
+        <div class="card-header">
+            <div class="text-center" style="font-size: large">
                 Transfer from <b>{{$stockTransfer->fromLocation->location_code}}</b> to <b>{{$stockTransfer->toLocation->location_code}}</b>
             </div>
         </div>
@@ -125,12 +128,16 @@
                             </td>
 
                             <td>
-                                <input type="number" step="1" min="0" class="form-control ajaxOperationEditBox stoItemQtySentField" data-entity="StockTransferItem" data-entity_id="{{$item->id}}" data-attributename="qty_sent" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                @if($status_id <= 3)
+                                    <input type="number" step="1" min="0" class="form-control ajaxOperationEditBox stoItemQtySentField" data-entity="StockTransferItem" data-entity_id="{{$item->id}}" data-attributename="qty_sent" name="stoItemQtySent" id="stoItemQtySent-{{$item->id}}" data-value="{{$item->qty_sent}}" value="{{$item->qty_sent}}" readonly='readonly'>
+                                @else
+                                    {{$item->qty_sent}}
+                                @endif
                             </td>
 
                             @if($status_id > 3)
                                 <td>
-                                    <input type="number" step="1" min="0" class="form-control stoItemQtyReceivedField" name="stoItemQtyReceived" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
+                                    <input type="number" step="1" min="0" class="form-control ajaxOperationEditBox stoItemQtyReceivedField" name="stoItemQtyReceived" data-entity="StockTransferItem" data-entity_id="{{$item->id}}" data-attributename="qty_received" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
                                 </td>
                             @endif
 
