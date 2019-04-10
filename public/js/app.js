@@ -70481,6 +70481,12 @@ function editPOItemRow(action, po_item_id) {
 
 /* Start stockTransfer.js */
 $(document).ready(function () {
+  var stockTransferTriggerCompleteBtn = $(".stockTransferTriggerCompleteBtn");
+  stockTransferTriggerCompleteBtn.on('click', function (e) {
+    if (!confirm('Are you Sure ?. This actions will update Stock Quantities and the Action is irreversible.')) {
+      e.preventDefault();
+    }
+  });
   var STcreateFormLocationFromSelect = $('#stockTransferFrom');
   var STcreateFormLocationToSelect = $('#stockTransferTo');
   STcreateFormLocationFromSelect.on('change', function () {

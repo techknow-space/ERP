@@ -1,5 +1,14 @@
 /* Start stockTransfer.js */
 $(document).ready(function() {
+
+    let stockTransferTriggerCompleteBtn = $(".stockTransferTriggerCompleteBtn");
+    stockTransferTriggerCompleteBtn.on('click', function (e) {
+       if(!confirm('Are you Sure ?. This actions will update Stock Quantities and the Action is irreversible.')){
+           e.preventDefault();
+       }
+    });
+
+
     let STcreateFormLocationFromSelect = $('#stockTransferFrom');
     let STcreateFormLocationToSelect = $('#stockTransferTo');
 
