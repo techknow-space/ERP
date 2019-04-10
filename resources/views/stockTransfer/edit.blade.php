@@ -16,9 +16,19 @@
                     <div class="card-header">
 
                         <div class="stockTransferEditScreenSummary">
-                            Total SKUs : <b><span class="stockTransferTotalSKUs">{{$stockTransfer->Items->count()}}</span></b> ||
-                            Total Qty : <b><span class="stockTransferTotalQty">{{$stockTransfer->Items->sum('qty')}}</span></b> ||
-                            Total Qty Not Sent: <b><span class="stockTransferTotalQtyNotSent">{{$stockTransfer->Items->sum('qty') - $stockTransfer->Items->sum('qty_sent')}}</span></b>
+                            <div class="float-left">
+                                <b>To Transfer </b>
+                                SKUs: <b><span class="stockTransferTotalSKUs">{{$stockTransfer->Items->count()}}</span></b> ||
+                                Qty: <b><span class="stockTransferTotalQty">{{$stockTransfer->Items->sum('qty')}}</span></b>
+                            </div>
+                            <div class="float-right">
+                                <b>Transfered</b>
+                                SKUs: <b><span class="stockTransferTransfered">{{ $stockTransfer->Items->filter(function ($value,$key){
+                                    return $value['qty_sent'] > 0;
+                                })->count() }}</span></b> ||
+                                Qty : <b><span class="stockTransferTotalQtyNotSent">{{$stockTransfer->Items->sum('qty_sent')}}</span></b>
+                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
