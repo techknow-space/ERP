@@ -240,7 +240,7 @@ class AjaxRequestController extends Controller
             $stockTransferItem->save();
 
             DB::commit();
-            $response['error'] = true;
+            $response['error'] = false;
             $response['message'] = 'Updated Successfully';
 
         }catch (Exception $exception){

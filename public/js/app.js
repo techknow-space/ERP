@@ -69389,14 +69389,14 @@ function ajaxUpdateOperation(entity, entity_id, attributes) {
     },
     success: function success(response) {
       if (!response.error) {
-        toastr.success('Success', response.message, {
+        toastr.success(response.message, 'Success', {
           timeOut: 2500,
           progressBar: true,
           positionClass: "toast-top-center",
           closeButton: true
         });
       } else {
-        toastr.error('Error', response.message, {
+        toastr.error(response.message, 'Error', {
           timeOut: 2500,
           progressBar: true,
           positionClass: "toast-top-center",
