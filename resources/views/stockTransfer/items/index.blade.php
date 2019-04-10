@@ -1,15 +1,7 @@
 
 
     <div class="card">
-        <div class="card-header">
-            <b>Parts</b>
 
-        </div>
-        <div class="card-header">
-            <div class="stockTransferItemsListFromTo">
-                Transfer from <b>{{$stockTransfer->fromLocation->location_code}}</b> to <b>{{$stockTransfer->toLocation->location_code}}</b>
-            </div>
-        </div>
         <div class="card-body">
             <div class="row align-content-center">
                 <table id="stoItemsTable" class="table editableDataItems" data-stid="{{$stockTransfer->id}}">

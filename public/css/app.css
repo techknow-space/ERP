@@ -16485,10 +16485,11 @@ readers do not read off random characters that represent icons */
 .purchaseOrderEditScreenSummary,
 .stockTransferItemsListFromTo {
   font-size: large;
-  color: red;
+  color: white;
 }
 
-.stockTransferItemsListFromTo {
+.stockTransferItemsListFromTo,
+.stockTransferEditScreenSummary {
   text-align: center;
 }
 

@@ -7,7 +7,15 @@
                 <div class="card">
                     <div class="card-header">
                         Transfer Order: <b>{{$stockTransfer->number}}</b>
-                        <div class="float-right stockTransferEditScreenSummary">
+                    </div>
+                    <div class="card-header">
+                        <div class="stockTransferItemsListFromTo">
+                            Transfer from <b>{{$stockTransfer->fromLocation->location_code}}</b> to <b>{{$stockTransfer->toLocation->location_code}}</b>
+                        </div>
+                    </div>
+                    <div class="card-header">
+
+                        <div class="stockTransferEditScreenSummary">
                             Total SKUs : <b><span class="stockTransferTotalSKUs">{{$stockTransfer->Items->count()}}</span></b> ||
                             Total Qty : <b><span class="stockTransferTotalQty">{{$stockTransfer->Items->sum('qty')}}</span></b> ||
                             Total Qty Not Sent: <b><span class="stockTransferTotalQtyNotSent">{{$stockTransfer->Items->sum('qty') - $stockTransfer->Items->sum('qty_sent')}}</span></b>

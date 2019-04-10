@@ -1,7 +1,9 @@
 <div class="card">
+    <!--
     <div class="card-header">
         <b>Scan - {{$barcodeBoxTitle}}</b>
     </div>
+    -->
     <div class="card-body">
         <div class="barcode-box">
             <form

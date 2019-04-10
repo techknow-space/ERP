@@ -70,10 +70,11 @@
 .purchaseOrderEditScreenSummary,
 .stockTransferItemsListFromTo{
     font-size: large;
-    color: red;
+    color: white;
 
 }
 
-.stockTransferItemsListFromTo{
+.stockTransferItemsListFromTo,
+.stockTransferEditScreenSummary{
     text-align: center;
 }
