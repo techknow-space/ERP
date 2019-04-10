@@ -456,7 +456,7 @@ class StockTransferController extends Controller
             $stockTransferItem = $this->getItemByPart($stockTransfer,$part);
             $error = !$this->receiveItem($stockTransferItem);
             $stockTransferItem->refresh();
-            $stockTransferItem->class = self::getStockTransferItemDisplayLineColourClassSending($stockTransferItem);
+            $stockTransferItem->class = self::getStockTransferItemDisplayLineColourClassReceiving($stockTransferItem);
             $message = 'Item Marked as received.';
         }catch (Exception $exception){
             $error = true;
