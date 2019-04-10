@@ -19,7 +19,10 @@
                             SKU
                         </th>
                         <th>
-                            Device
+                            Brand
+                        </th>
+                        <th>
+                            Model
                         </th>
                         <th>
                             Part
@@ -28,7 +31,7 @@
                             Total Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
-                            % Share Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            % Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
                         </th>
                         <th>
                             InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
@@ -37,7 +40,7 @@
                             Total Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
                         <th>
-                            % Share Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            % Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
                         </th>
                         <th>
                             InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
@@ -95,7 +98,10 @@
                                 {{$item->Part->sku}}
                             </td>
                             <td>
-                                {{$item->Part->devices->brand->name}} {{$item->Part->devices->model_name}}
+                                {{$item->Part->devices->brand->name}}
+                            </td>
+                            <td>
+                                {{$item->Part->devices->model_name}}
                             </td>
                             <td>
                                 {{$item->Part->part_name}}

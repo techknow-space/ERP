@@ -5,7 +5,7 @@
     <thead>
     <tr>
         <th>
-            SKU
+            Qty
         </th>
         <th>
             Brand
@@ -37,7 +37,7 @@
             New Cost
         </th>
         <th>
-            Qty
+            SKU
         </th>
 
         @if($is_editable = ($purchase_order->PurchaseOrderStatus->seq_id > 6 ? false : true))
@@ -59,7 +59,12 @@
                 @endif
             >
                 <td>
-                    {{$po_item->Part->sku}}
+                    @if($is_editable)
+                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" data-value="{{$po_item->qty}}" value="{{$po_item->qty}}" readonly='readonly'>
+                    @else
+                        {{$po_item->qty}}
+                    @endif
+
                 </td>
                 <td>
                     {{$po_item->Part->devices->brand->name}}
@@ -97,11 +102,7 @@
 
                 </td>
                 <td>
-                    @if($is_editable)
-                        <input type="number" step="1" min="0" class="form-control poItemEditableField" name="poItemQty" id="poItemQty-{{$po_item->id}}" data-value="{{$po_item->qty}}" value="{{$po_item->qty}}" readonly='readonly'>
-                    @else
-                        {{$po_item->qty}}
-                    @endif
+                    {{$po_item->Part->sku}}
 
                 </td>
 

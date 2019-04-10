@@ -11,7 +11,7 @@
                     <div class="card-header">
                         <b>Purchase Order</b>-
                         ({{$purchase_order->number}})
-                        <div class="float-right">
+                        <div class="float-right purchaseOrderEditScreenSummary">
                             <b>Total SKUs:</b> {{$purchase_order->PurchaseOrderItems->count()}} ||
                             <b>Total Qty:</b> {{$purchase_order->PurchaseOrderItems->sum('qty')}} ||
                             <b>Total Value:</b> ${{$purchase_order->PurchaseOrderItems->sum('total_cost')}}
