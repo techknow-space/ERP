@@ -19,24 +19,28 @@
                         <th>
                             Part
                         </th>
-                        <th>
-                            Total Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            % Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            Total Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            % Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
-                        </th>
-                        <th>
-                            InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
-                        </th>
+
+                        @if(1 == $stockTransfer->Status->seq_id)
+                            <th>
+                                Total Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            </th>
+                            <th>
+                                % Sales - <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            </th>
+                            <th>
+                                InHand <b>{{$stockTransfer->fromLocation->location_code}}</b>
+                            </th>
+                            <th>
+                                Total Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            </th>
+                            <th>
+                                % Sales - <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            </th>
+                            <th>
+                                InHand <b>{{$stockTransfer->toLocation->location_code}}</b>
+                            </th>
+                        @endif
+
                         <th>
                             Transfer Qty
                         </th>
@@ -101,27 +105,31 @@
                                 {{$item->Part->part_name}}
                             </td>
 
-                            <td>
-                                {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->fromLocation)}}
-                            </td>
-                            <td>
-                                {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->fromLocation)}} %
-                            </td>
+                            @if(1 == $stockTransfer->Status->seq_id)
+                                <td>
+                                    {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->fromLocation)}}
+                                </td>
+                                <td>
+                                    {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->fromLocation)}} %
+                                </td>
 
-                            <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
-                            </td>
+                                <td>
+                                    {{$item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first()->stock_qty}}
+                                </td>
 
-                            <td>
-                                {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->toLocation)}}
-                            </td>
-                            <td>
-                                {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->toLocation)}} %
-                            </td>
+                                <td>
+                                    {{$stats_controller::totalSalesPastFotMonthsForLocations($item->Part, $stockTransfer->toLocation)}}
+                                </td>
+                                <td>
+                                    {{$stats_controller::getSalesShareForMonthsForLocations($item->Part, $stockTransfer->toLocation)}} %
+                                </td>
 
-                            <td>
-                                {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
-                            </td>
+                                <td>
+                                    {{$item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first()->stock_qty}}
+                                </td>
+                            @endif
+
+
 
                             <td>
                                 {{$item->qty}}
