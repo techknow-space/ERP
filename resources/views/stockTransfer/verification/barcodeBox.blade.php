@@ -12,7 +12,7 @@
                 data-stoid="{{$stockTransfer->id}}"
                 data-direction="{{$barcodeBoxDirection}}"
             >
-                <label for="stockTransferVerifyBarcodeEntry">Barcode / SKU</label>
+                <label for="stockTransferVerifyBarcodeEntry">Scanned Barcode / SKU</label>
                 <input type="number" min="99999999" step="1" id="stockTransferVerifyBarcodeEntry" class="form-control">
             </form>
         </div>
