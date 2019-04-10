@@ -98,6 +98,9 @@
                         )
 
                         @include('stockTransfer.items.index')
+                        <br>
+                        @includeWhen((4 == $stockTransfer->Status->seq_id),'stockTransfer.verification.markCompleted')
+
                     </div>
 
                 </div>

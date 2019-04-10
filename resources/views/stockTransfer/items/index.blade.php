@@ -135,12 +135,13 @@
                                 @endif
                             </td>
 
-                            @if($status_id > 3)
-                                <td>
+                            <td>
+                                @if($status_id == 4)
                                     <input type="number" step="1" min="0" class="form-control ajaxOperationEditBox stoItemQtyReceivedField" name="stoItemQtyReceived" data-entity="StockTransferItem" data-entity_id="{{$item->id}}" data-attributename="qty_received" id="stoItemQtyReceived-{{$item->id}}" data-value="{{$item->qty_received}}" value="{{$item->qty_received}}" readonly='readonly'>
-                                </td>
-                            @endif
-
+                                @else
+                                    {{$item->qty_received}}
+                                @endif
+                            </td>
                             <td>
                                 <!--
                                 @if($status_id < 5)

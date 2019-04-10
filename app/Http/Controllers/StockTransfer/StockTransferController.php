@@ -619,6 +619,8 @@ class StockTransferController extends Controller
             $to = session('_previous')['url'];
         }
 
+        $to = session('_previous')['url'];
+
         return redirect($to);
 
     }
