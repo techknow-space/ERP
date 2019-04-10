@@ -70610,11 +70610,11 @@ $(document).ready(function () {
             input_class_to_update = 'stoItemQtySentField';
             $('.stockTransferTotalQty').text(data.summary.total_qty);
             $('.stockTransferTotalQtyNotSent').text(data.summary.total_qty_not_sent);
+            row.find('.' + input_class_to_update).val(data.item.qty_sent);
           } else {
             input_class_to_update = 'stoItemQtyReceivedField';
+            row.find('.' + input_class_to_update).val(data.item.qty_received);
           }
-
-          row.find('.' + input_class_to_update).val(data.item.qty_sent);
 
           if (!row.hasClass(data.item["class"])) {
             row.removeClass(function (index, className) {
@@ -70630,6 +70630,10 @@ $(document).ready(function () {
 
         barcode_box.removeAttr("disabled");
         barcode_box.val('');
+        barcode_box.focus();
+      },
+      error: function error() {
+        barcode_box.removeAttr("disabled");
         barcode_box.focus();
       }
     });

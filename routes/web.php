@@ -203,6 +203,10 @@ Route::group([ 'prefix' => 'stocktransfer', 'middleware' => 'auth' ],function ()
         Route::put('receive','StockTransfer\StockTransferController@requestAddItemToReceivedBySKU');
     });
 
+    Route::prefix('mark')->group(function (){
+        Route::get('completed/{stockTransfer}','StockTransfer\StockTransferController@requestMarkVerified');
+    });
+
     Route::get('generate','StockTransfer\StockTransferController@generateTransferOrder');
 
 });

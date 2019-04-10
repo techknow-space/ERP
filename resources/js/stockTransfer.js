@@ -156,8 +156,6 @@ $(document).ready(function() {
                         row.find('.'+input_class_to_update).val(data.item.qty_received);
                     }
 
-
-
                     if(!row.hasClass(data.item.class)){
 
                         row.removeClass (function (index, className) {
@@ -174,6 +172,10 @@ $(document).ready(function() {
                 }
                 barcode_box.removeAttr("disabled");
                 barcode_box.val('');
+                barcode_box.focus();
+            },
+            error: function () {
+                barcode_box.removeAttr("disabled");
                 barcode_box.focus();
             }
         });

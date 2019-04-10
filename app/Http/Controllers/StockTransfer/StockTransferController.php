@@ -581,12 +581,12 @@ class StockTransferController extends Controller
 
                 if(!$stockTransfer->is_po){
                     $partStockFrom = $item->Part->Stocks->where('location_id',$stockTransfer->fromLocation->id)->first();
-                    $partStockFrom->stock_qty = $partStockFrom->stock_qty - $item->qty;
+                    $partStockFrom->stock_qty = $partStockFrom->stock_qty - $item->qty_sent;
                     $partStockFrom->save();
                 }
 
                 $partStockTo = $item->Part->Stocks->where('location_id',$stockTransfer->toLocation->id)->first();
-                $partStockTo->stock_qty = $partStockTo->stock_qty + $item->qty;
+                $partStockTo->stock_qty = $partStockTo->stock_qty + $item->qty_received;
                 $partStockTo->save();
 
             }
@@ -596,7 +596,6 @@ class StockTransferController extends Controller
             $stockTransfer->Status()->associate($status);
             $stockTransfer->save();
 
-
             DB::commit();
 
             session()->flash('success',['All the Stock Levels have been updated']);
@@ -604,12 +603,24 @@ class StockTransferController extends Controller
         }catch(Exception $e){
 
             DB::rollBack();
-            session()->flash('error',['Sorry!!! There was an error. All the Stock levels are as they were before this Operation.']);
+            session()->flash('error',['Sorry!!! There was an error. All the Stock levels are as they were before this Operation.',$e->getMessage()]);
             $error = true;
-
         }
 
-        return $error;
+        return !$error;
+    }
+
+    public function requestMarkVerified(StockTransfer $stockTransfer): RedirectResponse
+    {
+        if($this->markVerified($stockTransfer)){
+            $to = 'stocktransfer';
+        }
+        else{
+            $to = session('_previous')['url'];
+        }
+
+        return redirect($to);
+
     }
 
     /**
