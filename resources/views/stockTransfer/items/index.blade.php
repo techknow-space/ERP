@@ -51,9 +51,11 @@
                             </th>
                         @endif
                         @if($status_id < 5)
+                            <!--
                             <th>
                                 Actions
                             </th>
+                            -->
                         @endif
                     </tr>
                     </thead>
@@ -140,12 +142,14 @@
                             @endif
 
                             <td>
+                                <!--
                                 @if($status_id < 5)
                                     <i class="fas fa-check-circle stoItemInlineFunctionButton d-none" id="stoItemSaveBtn-{{$item->id}}" data-action="save"></i>
                                     @if($status_id < 3)
                                         <i class="fas fa-trash-alt stoItemInlineFunctionButton" id="stoItemDeleteBtn-{{$item->id}}" data-action="delete"></i>
                                     @endif
                                 @endif
+                                -->
                             </td>
                         </tr>
                     @endforeach
